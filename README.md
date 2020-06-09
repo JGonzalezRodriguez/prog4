@@ -13,3 +13,7 @@ Un archivo por clase (puede ser un .h y un .cpp). Ej: include/estudiante.h src/e
 
 ## Asignación de clases
 https://docs.google.com/document/d/1vCeYHBfiU7y9WQZ3G8TUqujO65Tg5t1Ts9cy_EyKF7s/edit?usp=sharing
+
+## Colecciones
+Usamos las colecciones de la libreria STL: http://www.cplusplus.com/reference/stl/
+**Solo usar set y map**
