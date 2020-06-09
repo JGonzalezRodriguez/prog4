@@ -16,4 +16,5 @@ https://docs.google.com/document/d/1vCeYHBfiU7y9WQZ3G8TUqujO65Tg5t1Ts9cy_EyKF7s/
 
 ## Colecciones
 Usamos las colecciones de la libreria STL: http://www.cplusplus.com/reference/stl/
+https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implementacion%20-%20colecciones.pdf
 **Solo usar set y map**
