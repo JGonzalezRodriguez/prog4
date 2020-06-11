@@ -4,7 +4,7 @@
 // #include "Clase-estudiante.h"
 // #include "DtFecha.h"
 
-class AsistenciaVivo:
+class AsistenciaVivo{
     private:
         DtFecha primeringresovivo;
         DtFecha ultimasalidavivo;
@@ -19,3 +19,4 @@ class AsistenciaVivo:
         DtFecha getUltimaSalidaVivo();
         bool getEstaMirando();
         void finalizarVisualizacionVivo();
+};
