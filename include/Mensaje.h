@@ -7,7 +7,7 @@
 #include "Asignatura.h"
 #include "DtFecha.h"
 
-class Mensaje:
+class Mensaje{
     private:
         Clase* clase;
         DtFecha fechayhoraenviado;
@@ -24,3 +24,4 @@ class Mensaje:
         std::string getId();
         std::set<Mensaje*> getHijos();
         void agergarHijo(Mensaje* m);
+};
