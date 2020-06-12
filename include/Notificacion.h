@@ -11,4 +11,6 @@ class Notificacion{
         ~Notificacion();
         Mensaje* getMensaje();
         bool esDeAsignatura(Asignatura* a);
-}
+};
+
+#endif
