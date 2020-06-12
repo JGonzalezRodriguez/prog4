@@ -4,9 +4,9 @@
 #include <string>
 #include <set>
 
-// #include "DtAsignatura.h"
-// #include "DtClase.h"
-// #include "DtMensaje.h"
+#include "dtasignatura.h"
+#include "dtclase.h"
+#include "dtmensaje.h"
 
 class IReproduccion {
     private:
@@ -18,7 +18,6 @@ class IReproduccion {
     virtual std::set<DtClase> listarClasesEstudiante() = 0;
     virtual void elegirClase(std::string id) = 0;
     virtual DtClase mostrarDatosClase() = 0;
-    // virtual void confirmarReproduccionClaseEnDiferido(bool: confi);   #Esta no va si no hay reproduccion en diferido?
     virtual std::set<DtMensaje> ListarMensajes() = 0;
 
 };

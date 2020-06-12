@@ -2,8 +2,8 @@
 #define DICTA_H
 
 #include "modalidad.h"
-#include "Doente.h"
-#include "Asignatura.h"
+#include "docente.h"
+#include "asignatura.h"
 
 class Dicta {
     private:

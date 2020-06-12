@@ -3,10 +3,10 @@
 
 #include <string>
 #include <set>
-//#include "modalidad.h"
-//#include "DtFecha.h"
-//#include "DtEstudiante.h"
-//#include "DtClase.h"
+#include "modalidad.h"
+#include "dtfecha.h"
+#include "dtestudiante.h"
+#include "dtclase.h"
 
 
 class IClase {

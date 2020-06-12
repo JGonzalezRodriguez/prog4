@@ -1,4 +1,4 @@
-#include "../include/Dicta.h"
+#include "../include/dicta.h"
 
 
 Dicta::Dicta(modalidad modalidad, Docente* doc, Asignatura* asig){

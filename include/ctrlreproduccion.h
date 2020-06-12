@@ -1,15 +1,15 @@
 #ifndef CTRLREPRODUCCION_H
 #define CTRLREPRODUCCION_H
 
-#include "IReproduccion.h"
+#include "ireproduccion.h"
 #include <set>
-#include "Clase.h"
-#include "Estudiante.h"
+#include "clase.h"
+#include "estudiante.h"
 
 
-#include "DtClase.h"
-#include "DtAsignatura.h"
-#include "DtMensaje.h"
+#include "dtclase.h"
+#include "dtasignatura.h"
+#include "dtmensaje.h"
 
 class CtrlReproduccion : public IReproduccion {
     private:

@@ -3,9 +3,9 @@
 
 #include <set>
 #include <string>
-//#include "DtAsignatura.h"
-//#include "DtDocente.h"
-//#include "modalidad.h"
+#include "dtasignatura.h"
+#include "dtdocente.h"
+#include "modalidad.h"
 
 class IAsignatura {
     private:

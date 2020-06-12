@@ -1,5 +1,5 @@
 
-#include "../include/CtrlReproduccion.h"
+#include "../include/ctrlreproduccion.h"
 #include <set>
 
     IReproduccion CtrlReproduccion::getInstancia() {
