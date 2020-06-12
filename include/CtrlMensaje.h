@@ -8,8 +8,9 @@
 #include "DtClase.h"
 #include "Mensaje.h"
 #include "DtMensaje.h"
+#include "IMensaje.h"
 
-class CtrlMensaje{
+class CtrlMensaje: public IMensaje{
     private:
         static CtrlMensaje* instancia;
         Usuario* u;
