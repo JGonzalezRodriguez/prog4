@@ -9,7 +9,7 @@ class DtAsignaturaExt: public DtAsignatura{
         bool tieneprac;
         bool tienemon;
     public:
-        DtAsignaturaExt(bool tieneteo, bool tieneprac, bool tienemon);
+        DtAsignaturaExt(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon);
         ~DtAsignaturaExt();
         bool tieneTeo();
         bool tienePrac();

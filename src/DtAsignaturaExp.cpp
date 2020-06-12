@@ -1,6 +1,6 @@
 #include "../include/DtAsignaturaExp.h"
 
-DtAsignaturaExp::DtAsignaturaExp(bool tieneteo, bool tieneprac, bool tienemon){
+DtAsignaturaExp::DtAsignaturaExp(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) : DtAsignatura(nombre, codigo){
     this->tieneteo = tieneteo;
     this->tieneprac = tieneprac;
     this->tienemon = tienemon;

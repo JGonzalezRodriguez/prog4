@@ -1,12 +1,11 @@
-#include "../include/DtFecha.h"
+#include "../include/dt/dtfecha.h"
 
-DtFecha::DtFecha(int dia, int mes, int anio, int hora, int min, int seg){
+DtFecha::DtFecha(int dia, int mes, int anio, int hora, int min){
     this->dia = dia;
     this->mes = mes;
     this->anio = anio;
     this->hora = hora;
     this->min = min;
-    this->seg = seg;
 }
 
 DtFecha::~DtFecha(){}
@@ -31,6 +30,3 @@ int DtFecha::getMin(){
     return this->min;
 }
 
-int DtFecha::getSeg(){
-    return this->seg;
-}

@@ -6,7 +6,7 @@
 
 class DtTiempoAsignatura{
     private:
-        std::string asignatura; //Es el codigo, no? el nombre del atributo es poco descriptivo TODO: Cambiar?
+        std::string asignatura;
         DtFecha* tiempo;
     public:
         DtTiempoAsignatura(std::string asignatura, DtFecha* tiempo);

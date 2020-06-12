@@ -15,7 +15,7 @@ class DtClase{
         DtDocente* docente;
         std::string nombre;
     public: 
-        DtClase(DtFecha fechayhoracomienzo, DtFecha fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente);
+        DtClase(DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente);
         //El constructor nunca se usa solo ya que la clase no se instancia (es abstracta),
         //pero los constructores de cada uno de los hijos usaran este constructor (vease los cpp de DtTeorico, DtPractico, DtMonitoreo)
         virtual ~DtClase() = 0; //Funcion virtual pura; hace que la clase sea abstracta

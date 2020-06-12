@@ -2,11 +2,11 @@
 #define DTDOCENTE_H
 
 #include "dtusuario.h"
-#include "enum.h"
+#include "enums.h"
 
 class DtDocente: public DtUsuario{
     private:
-        instituto instituto;
+        instituto inst;
     public:
         DtDocente(instituto instituto, std::string nombre, std::string email, std::string imagen, std::string contrasenia);
         ~DtDocente();
