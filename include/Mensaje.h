@@ -25,7 +25,7 @@ class Mensaje{
         std::string getTexto();
         std::string getId();
         // std::set<Mensaje*> getHijos();
-        void agergarHijo(Mensaje* m);
+        void agregarHijo(Mensaje* m);
 };
 
 #endif
