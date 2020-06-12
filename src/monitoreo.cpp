@@ -1,6 +1,6 @@
 #include "monitoreo.h"
 
-Estudiante *Monitoreo::setEstudiantes(Estudiante *ColMonitoreo){
+void Monitoreo::setEstudiantes(std::set<Estudiante*> ColMonitoreo){
     return NULL;
 }
 
