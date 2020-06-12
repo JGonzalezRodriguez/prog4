@@ -1,4 +1,4 @@
-#include "DtAsignaturaExp.h"
+#include "../include/DtAsignaturaExp.h"
 
 DtAsignaturaExp::DtAsignaturaExp(bool tieneteo, bool tieneprac, bool tienemon){
     this->tieneteo = tieneteo;
