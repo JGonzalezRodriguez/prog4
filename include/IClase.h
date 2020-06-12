@@ -13,7 +13,6 @@ class IClase {
     private:
     IClase();
     public:
-        virtual void getInstancia() = 0;
         virtual void identificarse(std::string email, std::string contrasenia) = 0;
         virtual std::set<DtAsignatura> listarAsignaturasDocente() = 0;
         virtual void inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha fecha) = 0;

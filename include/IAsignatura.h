@@ -11,7 +11,6 @@ class IAsignatura {
     private:
     IAsignatura();
     public:
-    virtual void getInstancia() = 0;
     virtual std::set<DtAsignatura> listarAsignaturas() = 0;
     virtual void elegirAsignaturaAdmin(std::string codigo) = 0;
     virtual std::set<DtDocente> listarDocentes() = 0;

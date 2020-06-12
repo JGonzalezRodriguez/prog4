@@ -12,7 +12,6 @@ class IReproduccion {
     private:
     IReproduccion();
     public:
-    virtual void getInstancia() = 0;
     virtual void identificarse(std::string email, std::string contrasenia) = 0;
     virtual std::set<DtAsignatura> listarAsignaturasEstudiante() = 0;
     virtual void elegirAsignaturaEst(std::string codigo) = 0;
