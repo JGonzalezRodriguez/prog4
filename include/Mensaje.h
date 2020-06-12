@@ -3,14 +3,16 @@
 
 #include <string>
 #include <set>
-#include "Clase.h"
-#include "Asignatura.h"
-#include "DtFecha.h"
+#include "clase.h"
+#include "asignatura.h"
+#include "dt/dtfecha.h"
+#include "reloj.h"
 
 class Mensaje{
     private:
+        static int seed;
         Clase* clase;
-        DtFecha fechayhoraenviado;
+        DtFecha* fechayhoraenviado;
         std::string id;
         std::string texto;
         std::set<Mensaje*> respondidopor;
@@ -19,10 +21,10 @@ class Mensaje{
         ~Mensaje();
         Asignatura* getAsignatura();
         Clase* getClase();
-        DtFecha getFechaYHoraEnviado();
+        DtFecha* getFechaYHoraEnviado();
         std::string getTexto();
         std::string getId();
-        std::set<Mensaje*> getHijos();
+        // std::set<Mensaje*> getHijos();
         void agergarHijo(Mensaje* m);
 };
 
