@@ -1,3 +1,6 @@
+#ifndef ASIGNATURA_H
+#define ASIGNATURA_H
+
 #include <string>
 #include <set> 
 #include "dicta.h"
@@ -22,3 +25,5 @@ class Asignatura {
         void addClase(Clase c);
         std::set<Clase*> getClases();
 }
+
+#endif 

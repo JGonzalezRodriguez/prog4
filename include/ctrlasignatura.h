@@ -1,3 +1,6 @@
+#ifndef CTRLASIGNATURA_H
+#define CTRLASIGNATURA_H
+
 #include "iasignatura.h"
 // IMPORTAR ARCHIVO CON MODALIDAD ENUM.H ??
 // OTRO CON DATATYPES
@@ -25,3 +28,5 @@ class CtrlAsignatura : public IAsignatura {
         void confirmarAsignacionDocenteAsignatura(bool confi);
         void confirmarEliminacionAsignatura(bool conf);   
 } 
+
+#endif

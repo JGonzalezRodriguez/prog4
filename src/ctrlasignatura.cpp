@@ -4,28 +4,28 @@ CtrlAsignatura getInstancia() {
 
 }
 
-std::set<DtAsignatura> listarAsignaturas() {
+std::set<DtAsignatura> CtrlAsignatura::listarAsignaturas() {
     std::set<DtAsignatura> x;
     return x;
 }
 
-void elegirAsignaturaAdmin(string codigo) {
+void CtrlAsignatura::elegirAsignaturaAdmin(string codigo) {
 
 }
 
-std::set<DtDocente> listarDocentes() {
+std::set<DtDocente> CtrlAsignatura::listarDocentes() {
     std::set<DtDocente> x;
     return x;
 }
 
-void elegirdocente(modalidad modalidad, string emaildocente) {
+void CtrlAsignatura::elegirdocente(modalidad modalidad, string emaildocente) {
 
 }
 
-void confirmarAsignacionDocenteAsignatura(bool confi) {
+void CtrlAsignatura::confirmarAsignacionDocenteAsignatura(bool confi) {
 
 }
 
-void confirmarEliminacionAsignatura(bool conf) {
+void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
 
 }

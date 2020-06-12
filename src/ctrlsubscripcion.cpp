@@ -1,25 +1,25 @@
 #include "ctrlsubscripcion.h"
 
-CtrlSubscripcion getInstancia() {
+CtrlSubscripcion CtrlSubscripcion::getInstancia() {
 
 }
 
-void identificarse(string mail, string constrasenia) {
+void CtrlSubscripcion::identificarse(string mail, string constrasenia) {
 
 }
 
-std::set<DtNotificacion> listarNotificaciones() {
+std::set<DtNotificacion> CtrlSubscripcion::listarNotificaciones() {
     std::set<DtNotificacion> x;
     return x;
 }
-void eliminarNotificaciones() {
+void CtrlSubscripcion::eliminarNotificaciones() {
 
 }
 
-void elegirModo(modosubscripcion : modo) {
+void CtrlSubscripcion::elegirModo(modosubscripcion : modo) {
 
 }
  
-void eliminarSubscripcion() {
+void CtrlSubscripcion::eliminarSubscripcion() {
     
 }

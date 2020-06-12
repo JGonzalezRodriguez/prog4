@@ -1,3 +1,6 @@
+#ifndef CLASEESTUDIANTE_H
+#define CLASEESTUDIANTE_H
+
 #include "clase.h"
 #include "estudiante.h"
 #include "asistenciaVivo.h"
@@ -13,3 +16,5 @@ class ClaseEstudiante {
         Estudiante getEstudiante();
         Clase getClase();
 }
+
+#endif 

@@ -1,3 +1,7 @@
+#ifndef HANDLERASIGNATURAS_H
+#define HANDLERASIGNATURAS_H
+
+
 #include <map>
 #include "asignatura.h"
 
@@ -12,3 +16,5 @@ class HandlerAsignaturas {
         Asignatura find(string codigo);
         void remove(Asignatura a);
 }
+
+#endif 

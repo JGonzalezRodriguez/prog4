@@ -8,25 +8,25 @@ void Asignatura::addDocente(Dicta dic) {
 
 }
 
-void addEstudiante(Estudiante e) {
+void Asignatura::addEstudiante(Estudiante e) {
     
 }
 
-std::set<Estudiante*> getEstudiantes() {
+std::set<Estudiante*> Asignatura::getEstudiantes() {
     std::set<Estudiante> x;
     return x;
 }
 
-Estudiante getEstudiante(string CI) {
+Estudiante Asignatura::getEstudiante(string CI) {
     Estudiante x;
     return x;
 }
 
-void addClase(Clase c) {
+void Asignatura::addClase(Clase c) {
 
 }
 
-std::set<Clase*> getClases() {
+std::set<Clase*> Asignatura::getClases() {
     std::set<Clase> x;
     return x;
 }

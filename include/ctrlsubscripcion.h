@@ -1,3 +1,6 @@
+#ifndef CTRLSUBSCRIPCION_H
+#define CTRLSUBSCRIPCION_H
+
 #include "isubscripcion.h"
 #include "srespuesta.h"
 #include "handlerusuarios.h"
@@ -18,3 +21,5 @@ class CtrlSubscripcion : public ISubscripcion {
         void elegirModo(modosubscripcion : modo);
         void eliminarSubscripcion();
 }
+
+#endif
