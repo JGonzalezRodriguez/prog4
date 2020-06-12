@@ -2,20 +2,17 @@
 #define IREPRODUCCION_H
 
 #include <string>
-#include <map>
 #include <set>
 
-#include "DtAsignatura.h"
-#include "DtClase.h"
-#include "DtMensaje.h"
-
-
+// #include "DtAsignatura.h"
+// #include "DtClase.h"
+// #include "DtMensaje.h"
 
 class IReproduccion {
     private:
-
+    IReproduccion();
     public:
-    virtual IReproduccion getInstancia() = 0;
+    virtual void getInstancia() = 0;
     virtual void identificarse(std::string email, std::string contrasenia) = 0;
     virtual std::set<DtAsignatura> listarAsignaturasEstudiante() = 0;
     virtual void elegirAsignaturaEst(std::string codigo) = 0;
@@ -26,5 +23,7 @@ class IReproduccion {
     virtual std::set<DtMensaje> ListarMensajes() = 0;
 
 };
+
+IReproduccion::~IReproduccion() {};
 
 #endif
