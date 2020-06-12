@@ -25,3 +25,5 @@ class Mensaje{
         std::set<Mensaje*> getHijos();
         void agergarHijo(Mensaje* m);
 };
+
+#endif
