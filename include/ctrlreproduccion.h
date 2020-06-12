@@ -16,17 +16,17 @@ class CtrlReproduccion : public IReproduccion {
         Estudiante est;
         static CtrlReproduccion instancia;
         Clase c;
-        std::set<Clase> colclase;
+        std::set<Clase*> colclase;
         Asignatura a;
     public:
         ~CtrlReproduccion();
         static CtrlReproduccion getInstancia(){};
         void identificarse(std::string email, std::string contrasenia);
-        std::set<DtAsignatura> listarAsignaturasEstudiante();
+        std::set<DtAsignatura*> listarAsignaturasEstudiante();
         void elegirAsignaturaEst(std::string codigo);
-        std::set<DtClase> listarClasesEstudiante();
+        std::set<DtClase*> listarClasesEstudiante();
         void elegirClase(std::string id);
         DtClase mostrarDatosClase();
-        std::set<DtMensaje> ListarMensajes();
+        std::set<DtMensaje*> ListarMensajes();
 };
 #endif

@@ -8,16 +8,16 @@
     void CtrlReproduccion::identificarse(std::string email, std::string contrasenia){
         //todo
     }
-    std::set<DtAsignatura> CtrlReproduccion::listarAsignaturasEstudiante(){
+    std::set<DtAsignatura*> CtrlReproduccion::listarAsignaturasEstudiante(){
         //todo
-        return trash = new set<DtAsignatura>;
+        return trash = new set<DtAsignatura*>;
     }
     void CtrlReproduccion::elegirAsignaturaEst(std::string codigo){
         //todo
     }
-    std::set<DtClase> CtrlReproduccion::listarClasesEstudiante(){
+    std::set<DtClase*> CtrlReproduccion::listarClasesEstudiante(){
         //todo
-        return trash = new set<DtClase>;
+        return trash = new set<DtClase*>;
     }
     void CtrlReproduccion::elegirClase(std::string id){
         //todo
@@ -26,7 +26,7 @@
         return trash = new DtClase;
     }
     // void confirmarReproduccionClaseEnDiferido(bool: confi);   #Esta no va si no hay reproduccion en diferido?
-    std::set<DtMensaje> CtrlReproduccion::ListarMensajes(){
+    std::set<DtMensaje*> CtrlReproduccion::ListarMensajes(){
         //todo
-        return trash = new set<DtMensaje>;
+        return trash = new set<DtMensaje*>;
     }
