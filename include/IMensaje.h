@@ -3,18 +3,18 @@
 
 #include <string>
 #include <set>
-#include "DtClase.h"
-#include "DtMensaje.h"
+#include "dt/dtclase.h"
+#include "dt/dtmensaje.h"
 
 class IMensaje{
     public:
-        virtual void identificarse(std::string email, std::string contrasenia);
-        virtual std::set<DtClase*> listarClases();
-        virtual void elegirClase(std::string id);
-        virtual std::set<DtMensaje*> listarMensajes();
-        virtual void seleccionarMensaje(std::string idMensaje);
-        virtual void textoenviar(std::string texto);
-        virtual void confirmarEnvioMensaje(bool conf);
+        virtual void identificarse(std::string email, std::string contrasenia) = 0;
+        virtual std::set<DtClase*> listarClases() = 0;
+        virtual void elegirClase(std::string id) = 0;
+        virtual std::set<DtMensaje*> listarMensajes() = 0;
+        virtual void seleccionarMensaje(std::string idMensaje) = 0;
+        virtual void textoenviar(std::string texto) = 0;
+        virtual void confirmarEnvioMensaje(bool conf) = 0;
 };
 
 #endif
