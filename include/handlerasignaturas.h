@@ -9,12 +9,12 @@ class HandlerAsignaturas {
     private:
         static HandlerAsignaturas* instancia;
         HandlerAsignaturas();
-        std::map<Asignatura> mapasignaturas;
+        std::map<string, Asignatura*> mapasignaturas;
     public:
-        static HandlerAsignaturas getInstancia();
-        std::map<Asignatura> get();
-        Asignatura find(string codigo);
-        void remove(Asignatura a);
+        static HandlerAsignaturas* getInstancia();
+        std::map<string, Asignatura*> get();
+        Asignatura* find(string codigo);
+        void remove(Asignatura* a);
 }
 
 #endif 

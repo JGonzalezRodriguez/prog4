@@ -4,29 +4,27 @@ Asignatura::Asignatura(string nombre, string codigo, bool tieneteo, bool tienepr
 
 }
 
-void Asignatura::addDocente(Dicta dic) {
+void Asignatura::addDocente(Dicta* dic) {
 
 }
 
-void Asignatura::addEstudiante(Estudiante e) {
+void Asignatura::addEstudiante(Estudiante* e) {
     
 }
 
 std::set<Estudiante*> Asignatura::getEstudiantes() {
-    std::set<Estudiante> x;
+    std::set<Estudiante*> x;
     return x;
 }
 
-Estudiante Asignatura::getEstudiante(string CI) {
-    Estudiante x;
-    return x;
+Estudiante* Asignatura::getEstudiante(string CI) {
+    return NULL;
 }
 
-void Asignatura::addClase(Clase c) {
+void Asignatura::addClase(Clase* c) {
 
 }
 
 std::set<Clase*> Asignatura::getClases() {
-    std::set<Clase> x;
-    return x;
+    return NULL;
 }

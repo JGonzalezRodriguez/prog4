@@ -11,10 +11,10 @@ class ClaseEstudiante {
         Estudiante* est;
         asistenciaVivo * avivo;
     public:
-        ClaseEstudiante(Clase c, Estudiante a);
+        ClaseEstudiante(Clase* c, Estudiante* a);
         void finalizarVisualizacionesVivo();
-        Estudiante getEstudiante();
-        Clase getClase();
+        Estudiante* getEstudiante();
+        Clase* getClase();
 }
 
 #endif 

@@ -1,17 +1,16 @@
 #include "handlerasignaturas.h"
 
-HandlerAsignaturas HandlerAsignaturas::getInstancia() {
+HandlerAsignaturas* HandlerAsignaturas::getInstancia() {
 
 }
-std::map<Asignatura> HandlerAsignaturas::get() {
-    std::map<Asignatura> x;
+std::map<string, Asignatura*> HandlerAsignaturas::get() {
+    std::map<string, Asignatura*> x;
     return x;
 }
-Asignatura HandlerAsignaturas::find(string codigo) {
-    Asignatura a;
-    return a;
+Asignatura* HandlerAsignaturas::find(string codigo) {
+    return NULL;
 }
 
-void HandlerAsignaturas::remove(Asignatura a) {
+void HandlerAsignaturas::remove(Asignatura* a) {
 
 }

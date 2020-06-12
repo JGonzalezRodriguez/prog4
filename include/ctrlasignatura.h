@@ -20,10 +20,10 @@ class CtrlAsignatura : public IAsignatura {
         Asignatura* asig;
         CtrlAsignatura();
     public:
-        static CtrlAsignatura getInstancia();
-        std::set<DtAsignatura> listarAsignaturas();
+        static CtrlAsignatura* getInstancia();
+        std::set<DtAsignatura*> listarAsignaturas();
         void elegirAsignaturaAdmin(string codigo);
-        std::set<DtDocente> listarDocentes();
+        std::set<DtDocente*> listarDocentes();
         void elegirdocente(modalidad modalidad, string emaildocente);
         void confirmarAsignacionDocenteAsignatura(bool confi);
         void confirmarEliminacionAsignatura(bool conf);   

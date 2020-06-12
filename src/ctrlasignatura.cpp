@@ -1,11 +1,11 @@
 #include "ctrlasignatura.cpp"
 
-CtrlAsignatura getInstancia() {
+CtrlAsignatura* getInstancia() {
 
 }
 
-std::set<DtAsignatura> CtrlAsignatura::listarAsignaturas() {
-    std::set<DtAsignatura> x;
+std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
+    std::set<DtAsignatura*> x;
     return x;
 }
 
@@ -13,8 +13,8 @@ void CtrlAsignatura::elegirAsignaturaAdmin(string codigo) {
 
 }
 
-std::set<DtDocente> CtrlAsignatura::listarDocentes() {
-    std::set<DtDocente> x;
+std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
+    std::set<DtDocente*> x;
     return x;
 }
 

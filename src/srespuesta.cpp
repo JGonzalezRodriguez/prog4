@@ -1,5 +1,5 @@
 #include "srespuesta.h"
 
-void SRespuesta::notificar(Usuario u, Mensaje m) {
+void SRespuesta::notificar(Usuario* u, Mensaje* m) {
 
 }

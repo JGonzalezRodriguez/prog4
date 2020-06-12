@@ -18,11 +18,11 @@ class Asignatura {
         std::set<Clase*> clases;
     public:
         Asignatura(string nombre, string codigo, bool tieneteo, bool tieneprac, bool tienemon);
-        void addDocente(Dicta dic);
-        void addEstudiante(Estudiante e);
+        void addDocente(Dicta* dic);
+        void addEstudiante(Estudiante* e);
         std::set<Estudiante*> getEstudiantes();
-        Estudiante getEstudiante(string CI);
-        void addClase(Clase c);
+        Estudiante* getEstudiante(string CI);
+        void addClase(Clase* c);
         std::set<Clase*> getClases();
 }
 

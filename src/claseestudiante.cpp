@@ -1,6 +1,6 @@
 #include "../src/claseestudiante.h"
 
-ClaseEstudiante::ClaseEstudiante(Clase c, Estudiante a) {
+ClaseEstudiante::ClaseEstudiante(Clase* c, Estudiante* a) {
 
 }
 
@@ -8,12 +8,12 @@ void ClaseEstudiante::finalizarVisualizacionesVivo() {
 
 }
 
-Estudiante ClaseEstudiante::getEstudiante() {
-    Estudiante x;
+Estudiante* ClaseEstudiante::getEstudiante() {
+    Estudiante* = NULL;
     return x;
 }
 
-Clase ClaseEstudiante::getClase() {
-    Clase x;
+Clase* ClaseEstudiante::getClase() {
+    Clase* x = NULL;
     return x;
 }

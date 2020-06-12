@@ -6,7 +6,7 @@
 
 class Subscripcion {
     public:
-        virtual void notificar(Usuario u, Mensaje m) = 0;
+        virtual void notificar(Usuario* u, Mensaje* m) = 0;
 }
 
 #endif
