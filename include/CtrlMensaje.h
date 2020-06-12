@@ -3,30 +3,30 @@
 
 #include <string>
 #include <set>
-#include "Usuario.h"
-#include "Clase.h"
-#include "DtClase.h"
-#include "Mensaje.h"
-#include "DtMensaje.h"
-#include "IMensaje.h"
+#include "usuario.h"
+#include "clase.h"
+#include "dt/dtclase.h"
+#include "mensaje.h"
+#include "dtmensaje.h"
+#include "imensaje.h"
 
 class CtrlMensaje: public IMensaje{
     private:
         static CtrlMensaje* instancia;
         Usuario* u;
-        Clase* c;
+        Clase* c; 
         Mensaje* m;
         std::string texto;
-    public:
         CtrlMensaje();
+    public:
         ~CtrlMensaje();
         static CtrlMensaje* getInstancia();
         Usuario* getUsuario();
         Clase* getClase();
         Mensaje* getMensaje();
-        setUsuario(Usuario* u);
-        setClase(Clase* c);
-        setMensaje(Mensaje* m);
+        void setUsuario(Usuario* u);
+        void setClase(Clase* c);
+        void setMensaje(Mensaje* m);
         void identificarse(std::string mail, std::string contrasenia);
         std::set<DtClase*> listarClases();
         void elegirClase(std::string id);

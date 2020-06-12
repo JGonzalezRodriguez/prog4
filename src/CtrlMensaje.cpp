@@ -11,10 +11,10 @@ CtrlMensaje::CtrlMensaje(){
 CtrlMensaje::~CtrlMensaje(){}
 
 CtrlMensaje* CtrlMensaje::getInstancia(){
-    if(CtrlMensaje::instancia == NULL){
-        CtrlMensaje::instancia = new CtrlMensaje();
+    if(instancia == NULL){
+        instancia = new CtrlMensaje();
     }
-    return CtrlMensaje::instancia;
+    return instancia;
 }
 
 Usuario* CtrlMensaje::getUsuario(){
@@ -47,6 +47,8 @@ void CtrlMensaje::identificarse(std::string mail, std::string contrasenia){
 
 std::set<DtClase*> CtrlMensaje::listarClases(){
     //TODO
+    std::set<DtClase*> x;
+    return x;
 }
 
 void CtrlMensaje::elegirClase(std::string id){
@@ -55,6 +57,8 @@ void CtrlMensaje::elegirClase(std::string id){
 
 std::set<DtMensaje*> CtrlMensaje::listarMensajes(){
     //TODO
+    std::set<DtMensaje*> x;
+    return x;
 }
 
 void CtrlMensaje::seleccionarMensaje(std::string idMensaje){
