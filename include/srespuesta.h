@@ -8,7 +8,7 @@ class SRespuesta {
         static SRespuesta* instancia;
         SRespuesta();
     public:
-        SRespuesta getInstancia();
+        static SRespuesta getInstancia();
         void notificar(Usuario u, Mensaje m);
 }
 

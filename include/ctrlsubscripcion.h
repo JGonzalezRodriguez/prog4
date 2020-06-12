@@ -14,7 +14,7 @@ class CtrlSubscripcion : public ISubscripcion {
         Usuario* u;
         CtrlSubscripcion();
     public:
-        CtrlSubscripcion getInstancia();
+        static CtrlSubscripcion getInstancia();
         void identificarse(string mail, string constrasenia);
         std::set<DtNotificacion> listarNotificaciones();
         void eliminarNotificaciones();

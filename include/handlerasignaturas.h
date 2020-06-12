@@ -11,7 +11,7 @@ class HandlerAsignaturas {
         HandlerAsignaturas();
         std::map<Asignatura> mapasignaturas;
     public:
-        HandlerAsignaturas getInstancia();
+        static HandlerAsignaturas getInstancia();
         std::map<Asignatura> get();
         Asignatura find(string codigo);
         void remove(Asignatura a);
