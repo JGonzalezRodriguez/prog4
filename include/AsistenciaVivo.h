@@ -20,3 +20,5 @@ class AsistenciaVivo{
         bool getEstaMirando();
         void finalizarVisualizacionVivo();
 };
+
+#endif
