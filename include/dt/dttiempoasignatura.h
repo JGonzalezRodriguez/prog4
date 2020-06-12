@@ -2,7 +2,7 @@
 #define DTTIEMPOASIGNATURA_H
 
 #include <string>
-#include "DtFecha"
+#include "dtfecha"
 
 class DtTiempoAsignatura{
     private:

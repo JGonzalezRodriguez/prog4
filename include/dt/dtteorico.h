@@ -1,7 +1,7 @@
 #ifndef DTTEORICO_H
 #define DTTEORICO_H
 
-#include "DtClase.h"
+#include "dtclase.h"
 
 class DtTeorico: public DtClase{
     private:

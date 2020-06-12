@@ -2,8 +2,8 @@
 #define DTCLASE_H
 
 #include <string>
-#include "DtFecha.h"
-#include "DtDocente.h"
+#include "dtfecha.h"
+#include "dtdocente.h"
 
 class DtClase{
     private:

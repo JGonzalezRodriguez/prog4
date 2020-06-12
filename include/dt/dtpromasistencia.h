@@ -9,7 +9,7 @@ class DtPromAsistencia{
         int tiempoprom;
     public:
         DtPromAsistencia(std::string clase, int tiempoprom);
-        ~DtPractico();
+        ~DtPromAsistencia();
         std::string getClase();
         int getTiempoProm();
 };

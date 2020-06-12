@@ -1,7 +1,8 @@
 #ifndef DTESTUDIANTE_H
 #define DTESTUDIANTE_H
 
-#include "DtUsuario.h"
+#include <string>
+#include "dtusuario.h"
 
 class DtEstudiante: public DtUsuario{
     private:

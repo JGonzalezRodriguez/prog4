@@ -2,8 +2,8 @@
 #define DTMONITOREO_H
 
 #include <set>
-#include "DtClase.h"
-#include "DtEstudiante.h"
+#include "dtclase.h"
+#include "dtestudiante.h"
 
 class DtMonitoreo: public DtClase{
     private:

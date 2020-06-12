@@ -3,8 +3,8 @@
 
 #include <string>
 #include <set>
-#include "DtFecha.h"
-#include "DtAsignatura.h"
+#include "dtfecha.h"
+#include "dtasignatura.h"
 
 class DtNotificacion{
     private:

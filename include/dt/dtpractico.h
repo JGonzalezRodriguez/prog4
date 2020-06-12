@@ -1,7 +1,7 @@
 #ifndef DTPRACTICO_H
 #define DTPRACTICO_H
 
-#include "DtClase.h"
+#include "dtclase.h"
 
 class DtPractico: public DtClase{
     private:

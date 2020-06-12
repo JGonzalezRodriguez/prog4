@@ -1,7 +1,7 @@
 #ifndef DTASIGNATURAEXT_H
 #define DTASIGNATURAEXT_H
 
-#include "DtAsignatura.h"
+#include "dtasignatura.h"
 
 class DtAsignaturaExt: public DtAsignatura{
     private:
