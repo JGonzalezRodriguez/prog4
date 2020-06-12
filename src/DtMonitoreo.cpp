@@ -11,7 +11,3 @@ DtMonitoreo::~DtMonitoreo(){}
 std::set<DtEstudiante*> DtMonitoreo::getEstudiantes(){
     return this->estudiantes;
 }
-
-void DtMonitoreo:: setEstudiantes(std::set<DtEstudiante*> estudiantes){
-    this->estudiantes = estudiantes;
-}

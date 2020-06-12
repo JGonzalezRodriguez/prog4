@@ -14,11 +14,3 @@ std::string DtAsignatura::getNombre(){
 std::string DtAsignatura::getCodigo(){
     return this->codigo;
 }
-
-void DtAsignatura::setNombre(std::string nombre){
-    this->nombre = nombre;
-}
-
-void DtAsignatura::setCodigo(std::string codigo){
-    this->codigo = codigo;
-}

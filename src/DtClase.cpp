@@ -33,27 +33,3 @@ DtFecha* DtClase::getFechaYHoraFinal(){
 DtDocente* DtClase::getDocente(){
     return this->docente;
 }
-
-void DtClase::setId(std::string id){
-    this->id = id;
-}
-
-void DtClase::setUrl(std::string url){
-    this->url = url;
-}
-
-void DtClase::setNombre(std::string nombre){
-    this->nombre = nombre;
-}
-
-void DtClase::setFechaYHoraComienzo(DtFecha* fecha){
-    this->fechayhoracomienzo = fecha;
-}
-
-void DtClase::setFechaYHoraFinal(DtFecha* fecha){
-    this->fechayhorafinal = fecha;
-}
-
-void DtClase::setDocente(DtDocente* docente){
-    this->docente = docente;
-}

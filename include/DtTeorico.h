@@ -10,6 +10,5 @@ class DtTeorico: public DtClase{
         DtTeorico(int cantasistentes);
         ~DtTeorico();
         int getCantAsistentes();
-        void setCantAsistentes(int cantasistentes);
 };
 #endif

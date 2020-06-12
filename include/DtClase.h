@@ -25,12 +25,6 @@ class DtClase{
         DtFecha* getFechaYHoraComienzo();
         DtFecha* getFechaYHoraFinal();
         DtDocente* getDocente();
-        void setId(std::string id);
-        void setUrl(std::string url);
-        void setNombre(std::string nombre);
-        void setFechaYHoraComienzo(DtFecha* fecha);
-        void setFechaYHoraFinal(DtFecha* fecha);
-        void setDocente(DtDocente* docente);
         //Notese que todas estas cosas estan definidas aca simplemente para no tener q definirlas tres veces en DtTeorico, DtPractico y DtMonitoreo. (se heredan)
 };
 #endif

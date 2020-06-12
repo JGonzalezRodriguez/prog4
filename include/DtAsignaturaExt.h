@@ -14,8 +14,5 @@ class DtAsignaturaExt: public DtAsignatura{
         bool tieneTeo();
         bool tienePrac();
         bool tieneMon();
-        void setTieneTeo(bool tieneteo);
-        void setTienePrac(bool tieneprac);
-        void setTieneMon(bool tienemon);
 };
 #endif

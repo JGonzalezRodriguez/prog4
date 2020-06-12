@@ -12,7 +12,5 @@ class DtAsignatura{
         ~DtAsignatura();
         std::string getNombre();
         std::string getCodigo();
-        void setNombre(std::string nombre);
-        void setCodigo(std::string codigo);
 };
 #endif

@@ -19,15 +19,3 @@ bool DtAsignaturaExp::tienePrac(){
 bool DtAsignaturaExp::tieneMon(){
     return this->tienemon;
 }
-
-void DtAsignaturaExp::setTieneTeo(bool tieneteo){
-    this->tieneteo = tieneteo;
-}
-
-void DtAsignaturaExp::setTienePrac(bool tieneprac){
-    this->tieneprac= tieneprac;
-}
-
-void DtAsignaturaExp::setTieneMon(bool tienemon){
-    this->tienemon = tienemon;
-}

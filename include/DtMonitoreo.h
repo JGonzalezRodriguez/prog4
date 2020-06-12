@@ -12,6 +12,5 @@ class DtMonitoreo: public DtClase{
         DtMonitoreo(std::set<DtEstudiante*> estudiantes);
         ~DtMonitoreo();
         std::set<DtEstudiante*> getEstudiantes();
-        void setEstudiantes(std::set<DtEstudiante*> estudiantes);
 };
 #endif

@@ -11,7 +11,3 @@ DtTeorico::~DtTeorico(){}
 int DtTeorico::getCantAsistentes(){
     return this->cantasistentes;
 }
-
-void DtTeorico::setCantAsistentes(int cantasistentes){
-    this->cantasistentes = cantasistentes;
-}
