@@ -1,7 +1,6 @@
-#include "../include/DtMonitoreo.h"
+#include "../include/dt/dtmonitoreo.h"
 
-DtMonitoreo::DtMonitoreo(std::set<DtEstudiante*> estudiantes, DtFecha fechayhoracomienzo, DtFecha fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url,
-    DtDocente* docente):DtClase(fechayhoracomienzo, fechayhorafinal, envivo, id, nombre, url, docente){
+DtMonitoreo::DtMonitoreo(std::set<DtEstudiante*> estudiantes, DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente):DtClase(fechayhoracomienzo, fechayhorafinal, envivo, id, nombre, url, docente){
         //primero ejecuta el constructor de DtClase
         this->estudiantes = estudiantes;
 }

@@ -1,4 +1,4 @@
-#include "../include/DtMensaje.h"
+#include "../include/dt/dtmensaje.h"
 
 DtMensaje::DtMensaje(std::string texto, DtFecha* fechayhora, std::set<DtMensaje*> respuestas){
     this->texto = texto;
@@ -12,10 +12,10 @@ std::string DtMensaje::getTexto(){
     return this->texto;
 }
 
-std::string DtMensaje::getFechaYHora(){
+DtFecha* DtMensaje::getFechaYHora(){
     return this->fechayhora;
 }
 
-std::string DtMensaje::getRespuestas(){
+std::set<DtMensaje*> DtMensaje::getRespuestas(){
     return this->respuestas;
 }

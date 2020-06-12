@@ -9,7 +9,7 @@ class DtMonitoreo: public DtClase{
     private:
         std::set<DtEstudiante*> estudiantes;
     public:
-        DtMonitoreo(std::set<DtEstudiante*> estudiantes, DtFecha fechayhoracomienzo, DtFecha fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente);
+        DtMonitoreo(std::set<DtEstudiante*> estudiantes, DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente);
         ~DtMonitoreo();
         std::set<DtEstudiante*> getEstudiantes();
 };

@@ -1,4 +1,4 @@
-#include "../include/DtNotificacion.h"
+#include "../include/dt/dtnotificacion.h"
 
 DtNotificacion::DtNotificacion(DtFecha* fechayhoraenviado, std::string nombreclase, std::string idclase, DtAsignatura* asignatura){
     this->fechayhoraenviado = fechayhoraenviado;

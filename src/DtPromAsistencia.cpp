@@ -1,11 +1,11 @@
-#include "../include/DtPromAsistencia.h"
+#include "../include/dt/dtpromasistencia.h"
 
 DtPromAsistencia::DtPromAsistencia(std::string clase, int tiempoprom){
     this->clase = clase; //codigo? TODO:cambiar nombre para que sea mas descriptivo?
     this->tiempoprom = tiempoprom;
 }
 
-DtPromAsistencia::~DtPractico(){}
+DtPromAsistencia::~DtPromAsistencia(){}
 
 std::string DtPromAsistencia::getClase(){
     return this->clase;

@@ -1,4 +1,5 @@
-#include "../include/DtTiempoAsignatura.h"
+#include "../include/dt/dttiempoasignatura.h"
+#include <string>
 
 DtTiempoAsignatura::DtTiempoAsignatura(std::string asignatura, DtFecha* tiempo){
     this->asignatura = asignatura;
@@ -7,10 +8,10 @@ DtTiempoAsignatura::DtTiempoAsignatura(std::string asignatura, DtFecha* tiempo){
 
 DtTiempoAsignatura::~DtTiempoAsignatura(){}
 
-DtTiempoAsignatura::getAsignatura(){
+std::string DtTiempoAsignatura::getAsignatura(){
     return this->asignatura;
 }
 
-DtTiempoAsignatura::getTiempo(){
+DtFecha* DtTiempoAsignatura::getTiempo(){
     return this->tiempo;
 }

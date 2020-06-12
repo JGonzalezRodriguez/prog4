@@ -1,4 +1,5 @@
-#include "../include/DtUsuario.h"
+#include "../include/dt/dtusuario.h"
+#include <string>
 
 DtUsuario::DtUsuario(std::string nombre, std::string email, std::string imagen, std::string contrasenia){
     this->nombre = nombre;
@@ -7,18 +8,18 @@ DtUsuario::DtUsuario(std::string nombre, std::string email, std::string imagen, 
     this->contrasenia = contrasenia;
 }
 
-void DtUsuario::getNombre(){
+std::string DtUsuario::getNombre(){
     return this->nombre;
 }
 
-void DtUsuario::getEmail(){
+std::string DtUsuario::getEmail(){
     return this->email;
 }
 
-void DtUsuario::getImagen(){
+std::string DtUsuario::getImagen(){
     return this->imagen;
 }
 
-void DtUsuario::getContrasenia(){
+std::string DtUsuario::getContrasenia(){
     return this->contrasenia;
 }

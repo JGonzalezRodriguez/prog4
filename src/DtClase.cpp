@@ -1,6 +1,7 @@
-#include "../include/DtClase.h"
+#include "../include/dt/dtclase.h"
+#include <string>
 
-DtClase::DtClase(DtFecha fechayhoracomienzo, DtFecha fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente){
+DtClase::DtClase(DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente){
     this->fechayhoracomienzo = fechayhoracomienzo;
     this->fechayhorafinal = fechayhorafinal;
     this->envivo = envivo;
@@ -10,15 +11,15 @@ DtClase::DtClase(DtFecha fechayhoracomienzo, DtFecha fechayhorafinal, bool enviv
     this->docente = docente;
 }
 
-void DtClase::getId(){
+std::string DtClase::getId(){
     return this->id;
 }
 
-void DtClase::getUrl(){
+std::string DtClase::getUrl(){
     return this->url;
 }
 
-void DtClase::getNombre(){
+std::string DtClase::getNombre(){
     return this->nombre;
 }
 
