@@ -1,0 +1,2 @@
+#ifndef CTRLMENSAJE_H
+#define CTRLMENSAJE_H
