@@ -12,7 +12,7 @@ void addEstudiante(Estudiante e) {
     
 }
 
-std::set<Estudiante> getEstudiantes() {
+std::set<Estudiante*> getEstudiantes() {
     std::set<Estudiante> x;
     return x;
 }
@@ -26,7 +26,7 @@ void addClase(Clase c) {
 
 }
 
-std::set<Clase> getClases() {
+std::set<Clase*> getClases() {
     std::set<Clase> x;
     return x;
 }

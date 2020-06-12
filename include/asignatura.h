@@ -10,15 +10,15 @@ class Asignatura {
         bool tieneteo;
         bool tieneprac;
         bool tienemon;
-        std::set<Dicta> dictas;
-        std::set<Estudiante> estudiantes;
-        std::set<Clase> clases;
+        std::set<Dicta*> dictas;
+        std::set<Estudiante*> estudiantes;
+        std::set<Clase*> clases;
     public:
         Asignatura(string nombre, string codigo, bool tieneteo, bool tieneprac, bool tienemon);
         void addDocente(Dicta dic);
         void addEstudiante(Estudiante e);
-        std::set<Estudiante> getEstudiantes();
+        std::set<Estudiante*> getEstudiantes();
         Estudiante getEstudiante(string CI);
         void addClase(Clase c);
-        std::set<Clase> getClases();
+        std::set<Clase*> getClases();
 }
