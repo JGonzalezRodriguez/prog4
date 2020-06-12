@@ -12,4 +12,5 @@ Mensaje* Notificacion::getMensaje(){
 
 bool Notificacion::esDeAsignatura(){
     //TODO
+    return false;
 }
