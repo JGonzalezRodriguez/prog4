@@ -7,7 +7,7 @@
 
 class CtrlSubscripcion : public ISubscripcion {
     private:
-        static CtrlSubscripcion instancia;
+        static CtrlSubscripcion* instancia;
         Usuario* u;
         CtrlSubscripcion();
     public:
