@@ -2,7 +2,11 @@
 
 CtrlMensaje* CtrlMensaje::instancia = NULL;
 
-CtrlMensaje::CtrlMensaje(){}
+CtrlMensaje::CtrlMensaje(){
+    this->u = NULL;
+    this->c = NULL;
+    this->m = NULL;
+}
 
 CtrlMensaje::~CtrlMensaje(){}
 
