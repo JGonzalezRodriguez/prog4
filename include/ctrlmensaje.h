@@ -29,12 +29,14 @@ class CtrlMensaje: public IMensaje{
         void setMensaje(Mensaje* m);
         void identificarse(std::string mail, std::string contrasenia);
         /**
-        lista las clases a las que asistio el usuario actual.
+        Genera una col(DtClase) a partir de una col(DtClase)
+        @return coleccion de DtClases a las que asistio el usuario
         */
         std::set<DtClase*> listarClases();
         void elegirClase(std::string id);
         /**
-        lista los mensajes de la clase seleccionada.
+        Crea una col(DtMensaje) a partir de la col(Mensaje) de la clase seleccionada.
+        @return col(DtMensaje)
         */
         std::set<DtMensaje*> listarMensajes();
         /**
@@ -42,7 +44,13 @@ class CtrlMensaje: public IMensaje{
         @param idMensaje id del mensaje a responder.
         */
         void seleccionarMensaje(std::string idMensaje);
+        /**
+        Guarda el texto a enviar en el mensaje.
+        */
         void textoEnviar(std::string texto);
+        /**
+        Guarda el mensaje en la clase mensaje. En caso de ser respuesta lo guarda en la col(Mensaje) de respuestas a un mensaje.
+        */
         void confirmarEnvioMensaje(bool conf);
 };
 
