@@ -1,75 +1,82 @@
-#include "ctrlclase.h"
+#include "../include/ctrlclase.h"
 
-Ctrlclase *Ctrlclase::instancia = NULL;
+CtrlClase *CtrlClase::instancia = NULL;
 
-Ctrlclase::Ctrlclase(){
-
+CtrlClase::CtrlClase(){
+    this->fecha = NULL;
+    this->asignatura = NULL;
+    this->docente = NULL;
 }
-Ctrlclase *Ctrlclase::getInstancia(){
+
+CtrlClase *CtrlClase::getInstancia(){
     if(instancia == NULL)
-        instancia = new Ctrlclase();
+        instancia = new CtrlClase();
     return instancia;
 }
 
-String Ctrlclase::getNombre(){
+std::string CtrlClase::getNombre(){
     return this->nombre;
 }
-void Ctrlclase::setNombre(string nombre){
+void CtrlClase::setNombre(std::string nombre){
     this->nombre = nombre;
 }
-DtFecha *Ctrlclase::getFecha(){
+DtFecha *CtrlClase::getFecha(){
     return this->fecha;
 }
-void Ctrlclase::setFecha(DtFecha *fecha){
+void CtrlClase::setFecha(DtFecha *fecha){
     this->fecha = fecha;
 }
-modalidad Ctrlclase::getMod(){
+modalidad CtrlClase::getMod(){
     return this->mod;
 }
-void Ctrlclase::setMod(modalidad mod){
+void CtrlClase::setMod(modalidad mod){
     this->mod = mod;
 }
 
 
-void Ctrlclase::identificarse(string email, string contrasenia){
+void CtrlClase::identificarse(std::string email, std::string contrasenia){
 
 }
-std::set<DtAsignatura*> Ctrlclase::listarAsignaturasDocente(){
-    return NULL;
+std::set<DtAsignatura*> CtrlClase::listarAsignaturasDocente(){
+    std::set<DtAsignatura*> x;
+    return x;
 }
-void Ctrlclase::inicioDeClase(string codigoasignatura, string nombre, DtFecha *fecha){
+void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha *fecha){
 
 }
-modalidad Ctrlclase::getModalidad(){
-    return NULL;
+modalidad CtrlClase::getModalidad(){
+    return this->mod;
 }
-std::set<DtEstudiante*> Ctrlclase::listarEstudiantesHabilatados(){
-    return NULL;
+std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilatados(){
+    std::set<DtEstudiante*> x;
+    return x;
 }
-void Ctrlclase::elegirEstudiante(string ci){
+void CtrlClase::elegirEstudiante(std::string ci){
 
 }
-DtClase *Ctrlclase::mostrarDatos(){
+DtClase *CtrlClase::mostrarDatos(){
     return NULL;
 }
-void Ctrlclase::confirmarInicioDeClase(bool conf){
+void CtrlClase::confirmarInicioDeClase(bool conf){
 
 }
-std::set<DtClase*> Ctrlclase::listarClasesEnVivo(){
+std::set<DtClase*> CtrlClase::listarClasesEnVivo(){
+    std::set<DtClase*> x;
+    return x;
+}
+void CtrlClase::elegirClase(std::string id){
+
+}
+DtClase *CtrlClase::mostrarClase(){
     return NULL;
 }
-void Ctrlclase::elegirClase(string id){
+void CtrlClase::confirmarFinalizacionDeClase(bool conf){
 
 }
-DtClase *Ctrlclase::mostrarClase(){
-    return NULL;
-}
-void Ctrlclase::confirmarFinalizacionDeClase(bool conf){
+void CtrlClase::elegirAsignaturaDoc(std::string codigo){
 
 }
-void Ctrlclase::elegirAsignaturaDoc(string codigo){
-
-}
-std::set<DtClase*> Ctrlclase::listarClasesDocente(){
-    return NULL;
+std::set<DtClase*> CtrlClase::listarClasesDocente(){
+    std::set<DtClase*> x;
+    return x;
 }

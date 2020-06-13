@@ -5,17 +5,18 @@
 #include <mensaje.h>
 #include <asignatura.h>
 #include <docente.h>
-#include "dtfecha.h"
+#include "dt/dtfecha.h"
 #include <set>
+#include <string>
 
 class Clase{
     private:
         DtFecha *fechayhoracomienzo;
-        string id;
+        std::string id;
         bool envivo;
         DtFecha *fechayhorafinal;
-        string url;
-        string nombre;
+        std::string url;
+        std::string nombre;
         Asignatura *asignatura;
         std::set<Claseestudiante*> claseestudiantes;
         std::set<Mensaje*> mensajes;
@@ -23,16 +24,14 @@ class Clase{
     public:
         DtFecha *getFechayhoracomienzo();
         void setFechayhoracomienzo(DtFecha*);
-        string getId();
-        void setId(string);
-        bool getEnvivo();
-        void setEnvivo(bool);
+        void setId(std::string);
+        void setEnVivo(bool);
         DtFecha *getFechayhorafinal();
         void setFechayhorafinal(DtFecha*);
-        string getUrl();
-        void setUrl(string);
-        string getNombre();
-        void setNombre(string);
+        std::string getUrl();
+        void setUrl(std::string);
+        std::string getNombre();
+        void setNombre(std::string);
 
         
         Asignatura *getAsignatura();
@@ -42,11 +41,11 @@ class Clase{
         Claseestudiante *crearClaseEst(Estudiante *est, Clase *c);
         Claseestudiante *getClaseEstExistente();
         std::set<Mensaje*> getMensajes();
-        Mensaje seleccionarMensaje(string idmensaje);
+        std::string getId();
+        Mensaje* seleccionarMensaje(std::string idmensaje);
         void agregarPadre(Mensaje *m);
 
-        //constructor
-        Clase(string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
+        Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
 };
 
 #endif

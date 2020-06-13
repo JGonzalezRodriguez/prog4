@@ -1,4 +1,4 @@
-#include"clase.h"
+#include "../include/clase.h"
 
 DtFecha *Clase::getFechayhoracomienzo(){
     return this->fechayhoracomienzo;
@@ -6,16 +6,16 @@ DtFecha *Clase::getFechayhoracomienzo(){
 void Clase::setFechayhoracomienzo(DtFecha *fecha){
     this->fechayhoracomienzo = fecha;
 }
-string Clase::getId(){
+std::string Clase::getId(){
     return this->id;
 }
-void Clase::setId(string id){
+void Clase::setId(std::string id){
     this->id = id;
 }
-bool Clase::getEnvivo(){
-    return false;
+bool Clase::getEnVivo(){
+    return this->envivo;
 }
-void Clase::setEnvivo(bool b){
+void Clase::setEnVivo(bool b){
     this->envivo = b;
 }
 DtFecha Clase::getFechayhorafinal(){
@@ -24,25 +24,24 @@ DtFecha Clase::getFechayhorafinal(){
 void Clase::setFechayhorafinal(DtFecha *fecha){
     this->fechayhoracomienzo = fecha;
 }
-string Clase::getUrl(){
+std::string Clase::getUrl(){
     return this->url;
 }
-void Clase::setUrl(string url){
+void Clase::setUrl(std::string url){
     this->url = url;
 }
-string Clase::getNombre(){
+std::string Clase::getNombre(){
     return this->nombre;
 }
-void Clase::setNombre(string nombre){
+void Clase::setNombre(std::string nombre){
     this->nombre = nombre;
 }
 
 //metodos de las operaciones de la clase
 Asignatura *Clase::getAsignatura(){
-    return NULL;
+    return asignatura;
 }
-bool Clase::getEnVivo(){
-    return false;
+
 }
 void Clase::finalizar(){
 
@@ -57,19 +56,21 @@ Claseestudiante *Clase::getClaseEstExistente(){
     return NULL;
 }
 std::set<Mensaje*> Clase::getMensajes(){
-    return NULL;
+    std::set<Mensaje*> x;
+    return x;
 }
 
-Mensaje Clase::seleccionarMensaje(string idmensaje){
+Mensaje* Clase::seleccionarMensaje(std::string idmensaje){
     return NULL;
 }
 void Clase::agregarPadre(Mensaje *m){
 
 }
 
-clase::Clase(string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){
+Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){
     this->nombre = nombre;
     this->fechayhoracomienzo = fecha;
     this->Asignatura = asignatura;
     this->Docente = doc;
+    this->envivo = true;
 }
