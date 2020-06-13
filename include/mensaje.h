@@ -25,6 +25,10 @@ class Mensaje{
         std::string getTexto();
         std::string getId();
         // std::set<Mensaje*> getHijos();
+        /**
+        Agrega una respuesta al mensaje
+        @param m Mensaje en respuesta al mensaje actual
+        */
         void agregarHijo(Mensaje* m);
 };
 
