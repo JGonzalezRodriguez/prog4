@@ -8,6 +8,7 @@
 
 class Estudiante;
 class Dicta;
+class Clase;
 
 class Asignatura {
     private:
