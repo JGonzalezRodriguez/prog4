@@ -26,7 +26,8 @@ void Asignatura::addClase(Clase* c) {
 }
 
 std::set<Clase*> Asignatura::getClases() {
-    return NULL;
+    std::set<Clase*> x;
+    return x;
 }
 
 std::string getNombre() {
@@ -37,13 +38,13 @@ std::string getCodigo() {
 }
 
 bool tieneTeo() {
-    return true
+    return true;
 }   
 
 bool tienePrac() {
-    return true
+    return true;
 }
 
 bool tieneMon() {
-    return true
+    return true;
 }
