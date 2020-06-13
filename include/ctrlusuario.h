@@ -2,7 +2,7 @@
 #define CTRLUSUARIO_H
 #include <string>
 #include "iusuario.h"
-#include "instituto.h"
+#include "dt/enums.h"
 #include <set>
 #include "handlerusuarios.h"//dependencia
 #include "estudiante.h"//dependencia
