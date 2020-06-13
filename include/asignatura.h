@@ -4,8 +4,10 @@
 #include <string>
 #include <set> 
 #include "dicta.h"
-#include "estudiante.h"
 #include "clase.h"
+
+class Estudiante;
+class Dicta;
 
 class Asignatura {
     private:

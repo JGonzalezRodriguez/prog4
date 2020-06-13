@@ -1,15 +1,16 @@
 #include "../include/estudiante.h"
 
-string Estudiante::getCi(){
+std::string Estudiante::getCi(){
     return this->ci;
 }
-void Estudiante::setCi(string ci){
+void Estudiante::setCi(std::string ci){
     this->ci = ci;
 }
 
 //operaciones que hereda de usuario
         std::set<Clase*> Estudiante::listarClases(){
-            return NULL;
+            std::set<Clase*> x;
+            return x;
         }
        bool Estudiante::tieneAsignatura(Asignatura *a){
             return false;
@@ -20,13 +21,14 @@ void Estudiante::setCi(string ci){
 
         }
         std::set<Asignatura*> Estudiante::getAsignaturas(){
-            return NULL;
+            std::set<Asignatura*> x;
+            return x;
         }
-        Asignatura *Estudiante::getAsignatura(string codigo){
+        Asignatura *Estudiante::getAsignatura(std::string codigo){
             return NULL;
         }
 
-        Estudiante::Estudiante(string nombre, string email, string contrasenia, string imagen, string ci):Usuario(nombre, email, imagen, contrasenia){
+        Estudiante::Estudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci):Usuario(nombre, email, imagen, contrasenia){
             this->ci = ci;
         }
 

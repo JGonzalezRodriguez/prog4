@@ -1,13 +1,18 @@
 #ifndef CLASE_H
 #define CLASE_H
-#include <estudiante.h>
+
 #include <claseestudiante.h>
 #include <mensaje.h>
 #include <asignatura.h>
-#include <docente.h>
 #include "dt/dtfecha.h"
 #include <set>
 #include <string>
+//#include <estudiante.h>
+
+class Docente;
+class Estudiante;
+class ClaseEstudiante;
+class Mensaje;
 
 class Clase {
     private:

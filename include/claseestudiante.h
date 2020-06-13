@@ -2,8 +2,11 @@
 #define CLASEESTUDIANTE_H
 
 #include "clase.h"
-#include "estudiante.h"
 #include "asistenciavivo.h"
+
+class Clase;
+class Estudiante;
+class AsistenciaVivo;
 
 class ClaseEstudiante {
     private:

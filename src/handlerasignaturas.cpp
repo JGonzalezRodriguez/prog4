@@ -1,9 +1,9 @@
 #include "../include/handlerasignaturas.h"
 
 HandlerAsignaturas* HandlerAsignaturas::getInstancia() {
-
+    return NULL;
 }
-std::map<string, Asignatura*> HandlerAsignaturas::get() {
+std::map<std::string, Asignatura*> HandlerAsignaturas::get() {
     std::map<std::string, Asignatura*> x;
     return x;
 }
@@ -15,6 +15,6 @@ void HandlerAsignaturas::remove(Asignatura* a) {
 
 }
 
-void add(std:string codigo, Asignatura* a) {
+void add(std::string codigo, Asignatura* a) {
 
 }

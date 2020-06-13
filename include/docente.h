@@ -6,6 +6,9 @@
 #include "clase.h"
 #include <set>
 
+class Asignatura;
+class Dicta;
+
 class Docente: public Usuario{
     private:
         instituto inst;

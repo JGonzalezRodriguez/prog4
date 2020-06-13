@@ -1,8 +1,5 @@
 #include "../include/ctrlasignatura.h"
 
-CtrlAsignatura* getInstancia() {
-
-}
 
 std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
     std::set<DtAsignatura*> x;

@@ -17,7 +17,7 @@ class Handlerusuarios{
         std::set<Usuario*> usuariosubs;
     public:
         static Handlerusuarios *getInstancia();
-        void add(Usuario *u)
+        void add(Usuario *u);
         std::set<Docente*> getDocentes();
         Docente *getDocente(std::string email); 
         bool identificarse(std::string email, std::string contrasenia);

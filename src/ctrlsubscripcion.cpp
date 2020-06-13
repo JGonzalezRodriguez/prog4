@@ -1,7 +1,9 @@
 #include "../include/ctrlsubscripcion.h"
 
-CtrlSubscripcion* CtrlSubscripcion::getInstancia() {
 
+
+CtrlSubscripcion* CtrlSubscripcion::getInstancia() {
+    return NULL;
 }
 
 void CtrlSubscripcion::identificarse(std::string mail, std::string constrasenia) {

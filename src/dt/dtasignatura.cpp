@@ -1,4 +1,4 @@
-#include "../include/DtAsignatura.h"
+#include "../include/dt/dtasignatura.h"
 
 DtAsignatura::DtAsignatura(std::string nombre, std::string codigo){
     this->nombre = nombre;

@@ -4,6 +4,9 @@
 #include "usuario.h"
 #include "mensaje.h"
 
+class Usuario;
+class Mensaje;
+
 class Subscripcion {
     public:
         /**

@@ -7,7 +7,7 @@
 #include "clase.h"
 #include "dt/dtclase.h"
 #include "mensaje.h"
-#include "dtmensaje.h"
+#include "dt/dtmensaje.h"
 #include "imensaje.h"
 
 class CtrlMensaje: public IMensaje{

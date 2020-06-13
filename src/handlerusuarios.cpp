@@ -16,7 +16,8 @@ void Handlerusuarios::add(Usuario *u){
 
 }
 std::set<Docente*> Handlerusuarios::getDocentes(){
-    return NULL;
+    std::set<Docente*> x;
+    return x;
 }
 Docente *Handlerusuarios::getDocente(std::string email){
     return NULL;

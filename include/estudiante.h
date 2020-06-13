@@ -2,15 +2,19 @@
 #define ESTUDIANTE_H
 #include <string> 
 #include "usuario.h"
+#include "asignatura.h"
 #include "claseestudiante.h"
+#include "clase.h"
 #include <set>
 
+class Asignatura;
+class Clase;
+class ClaseEstudiante;
 
-
-class Estudiante: public Usuario{
+class Estudiante : public Usuario {
     private:
         std::string ci;
-        std::set<Claseestudiante*> claseestudiantes;
+        std::set<ClaseEstudiante*> claseestudiantes;
         std::set<Asignatura*> asignaturas;
 
 

@@ -2,6 +2,7 @@
 #define IUSUARIO_H
 
 #include <string>
+#include "dt/enums.h"
 
 class IUsuario {
     public:

@@ -5,16 +5,22 @@
 #include "clase.h"
 #include "mensaje.h"
 #include "subscripcion.h"
+#include "notificacion.h"
+#include "subscripcion.h"
 #include <set>
 
-class Usuario{
+class Asignatura;
+class Clase;
+class Subscripcion;
+
+class Usuario {
     private:
         std::string nombre;
         std::string email;
         std::string imagen;
-        std::string contraseña;
+        std::string contrasenia;
         std::set<Notificacion*> notificaciones;
-        Subscripcion *subscripcion;
+        Subscripcion* subscripcion;
         //podrian haber mas links
     public:
     //posiblemente haya que poner punteros a los parametros de las operaciones que sean de tipo otra clase
@@ -31,7 +37,7 @@ class Usuario{
        std::set<Notificacion*> listarNotificaciones();
        void eliminarNotificaciones();
        void eliminarNotificacionAsign(Asignatura *a);
-       void elegirModo(subscripcion *subscripcion);
+       void elegirModo();
        void eliminarSubscripcion();
        virtual std::set<Clase*> listarClases() = 0;
        Clase *elegirClase(std::string id);

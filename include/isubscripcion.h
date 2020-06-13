@@ -4,11 +4,10 @@
 #include <string>
 #include <set>
 #include "dt/dtnotificacion.h"
-#include "enums.h"
-#include "isubscripcion.h"
+#include "dt/enums.h"
+#include "subscripcion.h"
 
-
-class ISubscripcion : ISubscripcion {
+class ISubscripcion {
     public:
         /**
         Identifica al usuario y lo recuerda como el usuario actual.
