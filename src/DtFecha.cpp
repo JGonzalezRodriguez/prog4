@@ -8,6 +8,14 @@ DtFecha::DtFecha(int dia, int mes, int anio, int hora, int min){
     this->min = min;
 }
 
+DtFecha::DtFecha(DtFecha* f) {
+    this->dia = f->dia;
+    this->mes = f->mes;
+    this->anio = f->anio;
+    this->hora = f->hora;
+    this->min = f->min;
+}
+
 DtFecha::~DtFecha(){}
 
 int DtFecha::getDia(){
