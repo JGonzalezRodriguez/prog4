@@ -1,5 +1,6 @@
 #ifndef DTUSUARIO_H
 #define DTUSUARIO_H
+#include <string>
 
 class DtUsuario{
     private:

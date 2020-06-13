@@ -11,6 +11,8 @@ DtClase::DtClase(DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool env
     this->docente = docente;
 }
 
+DtClase::~DtClase() {}
+
 std::string DtClase::getId(){
     return this->id;
 }

@@ -1,21 +1,21 @@
-#include "../include/DtAsignaturaExp.h"
+#include "../include/dt/dtasignaturaext.h"
 
-DtAsignaturaExp::DtAsignaturaExp(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) : DtAsignatura(nombre, codigo){
+DtAsignaturaExt::DtAsignaturaExt(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) : DtAsignatura(nombre, codigo){
     this->tieneteo = tieneteo;
     this->tieneprac = tieneprac;
     this->tienemon = tienemon;
 }
 
-DtAsignaturaExp::~DtAsignaturaExp(){}
+DtAsignaturaExt::~DtAsignaturaExt(){}
 
-bool DtAsignaturaExp::tieneTeo(){
+bool DtAsignaturaExt::tieneTeo(){
     return this->tieneteo;
 }
 
-bool DtAsignaturaExp::tienePrac(){
+bool DtAsignaturaExt::tienePrac(){
     return this->tieneprac;
 }
 
-bool DtAsignaturaExp::tieneMon(){
+bool DtAsignaturaExt::tieneMon(){
     return this->tienemon;
 }
