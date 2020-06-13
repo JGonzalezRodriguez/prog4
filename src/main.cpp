@@ -91,7 +91,9 @@ int main() {
                 printf("\n Elija el caso de uso a ejecutar como Estudiante:
                     \n1. Inscripcion a las asignaturas
                     \n2. Asistencia a clase en vivo
-                    \n3. Envio de mensaje");
+                    \n3. Envio de mensaje
+                    \n4. Suscribirse a notificacion
+                    \n5. Consulta de notificaciones");
                 int opcion2;
                 scanf("%d", &opcion2);
                 switch(opcion2){
@@ -102,6 +104,12 @@ int main() {
                         break;
                     }
                     case 3: {
+                        break;
+                    }
+                    case 4: {
+                        break;
+                    }
+                    case 5: {
                         break;
                     }
                     default: {
