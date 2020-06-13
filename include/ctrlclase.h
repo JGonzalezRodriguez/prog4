@@ -3,6 +3,8 @@
 #include "asignatura.h"
 #include "dt/dtfecha.h"
 #include "dt/enums.h"
+#include "dt/dtasignatura.h"
+#include "dt/dtclase.h"
 #include <string> 
 #include "iclase.h"
 #include <set>
@@ -35,11 +37,11 @@ class CtrlClase: public IClase{
         modalidad getModalidad();
         std::set<DtEstudiante*> listarEstudiantesHabilatados();
         void elegirEstudiante(std::string ci);
-        DtClase *mostrarDatos();
+        DtClase* mostrarDatos();
         void confirmarInicioDeClase(bool conf);
         std::set<DtClase*> listarClasesEnVivo();
         void elegirClase(std::string id);
-        DtClase *mostrarClase();
+        DtClase* mostrarClase();
         void confirmarFinalizacionDeClase(bool conf);
         void elegirAsignaturaDoc(std::string codigo);
         std::set<DtClase*> listarClasesDocente();
