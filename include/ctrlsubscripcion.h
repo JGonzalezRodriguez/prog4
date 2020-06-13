@@ -32,7 +32,7 @@ class CtrlSubscripcion : public ISubscripcion {
         Cambia el modo de subscripcion del usuario actual.
         @param modo El nuevo modo de subscripcion.
         */
-        void elegirModo(Subscripcion* modo);
+        void elegirModo();
         /**
         Elimina el puntero a subscripcion del usuario actual.
         */
