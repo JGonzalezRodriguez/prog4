@@ -47,7 +47,7 @@ void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre, 
 modalidad CtrlClase::getModalidad(){
     return this->mod;
 }
-std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilatados(){
+std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilitados(){
     std::set<DtEstudiante*> x;
     return x;
 }

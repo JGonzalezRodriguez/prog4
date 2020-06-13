@@ -13,7 +13,7 @@ class IClase {
     public:
         virtual void identificarse(std::string email, std::string contrasenia) = 0;
         virtual std::set<DtAsignatura*> listarAsignaturasDocente() = 0;
-        virtual void inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha fecha) = 0;
+        virtual void inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha* fecha) = 0;
         virtual modalidad getModalidad() = 0;
         virtual std::set<DtEstudiante*> listarEstudiantesHabilitados() = 0;
         virtual void elegirEstudiante(std::string ci) = 0;

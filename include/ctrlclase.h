@@ -35,7 +35,7 @@ class CtrlClase: public IClase{
         std::set<DtAsignatura*> listarAsignaturasDocente();
         void inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha *fecha);
         modalidad getModalidad();
-        std::set<DtEstudiante*> listarEstudiantesHabilatados();
+        std::set<DtEstudiante*> listarEstudiantesHabilitados();
         void elegirEstudiante(std::string ci);
         DtClase* mostrarDatos();
         void confirmarInicioDeClase(bool conf);
