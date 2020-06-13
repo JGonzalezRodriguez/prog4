@@ -7,7 +7,7 @@ Mensaje::Mensaje(std::string texto, Clase* clase){
     this->seed++;                           // cambiar a Mensaje::seed
     this->clase = clase;
     this->texto = texto;
-    this->fechayhoraenviado = reloj.getFecha()          // hay que hacer el reloj!
+    this->fechayhoraenviado = Reloj::getFecha()          // hay que hacer el reloj!
 }
 
 Mensaje::~Mensaje(){}
