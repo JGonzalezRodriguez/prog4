@@ -1,21 +1,20 @@
 #ifndef DICTA_H
 #define DICTA_H
 
-#include "modalidad.h"
+#include "dt/enums.h"
 #include "docente.h"
 #include "asignatura.h"
 
 class Dicta {
     private:
-        Dicta();
         modalidad modalidad;
         Docente* doc;
         Asignatura* asig;
     public:
         Dicta(modalidad modalidad,Docente* doc, Asignatura* asig);
-        Docente getDocente();
+        Docente* getDocente();
         void deslinkearDocente();
-        Asignatura getAsignatura();
+        Asignatura* getAsignatura();
         modalidad getModalidad();
 };
 

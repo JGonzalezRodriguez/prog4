@@ -1,32 +1,35 @@
 
 #include "../include/ctrlreproduccion.h"
-#include <set>
 
-    IReproduccion CtrlReproduccion::getInstancia() {
-        return instancia;
+CtrlReproduccion* CtrlReproduccion::instancia = NULL;
+
+CtrlReproduccion::CtrlReproduccion() {}
+
+    CtrlReproduccion* CtrlReproduccion::getInstancia() {
+        return NULL;
     }
     void CtrlReproduccion::identificarse(std::string email, std::string contrasenia){
         //todo
     }
     std::set<DtAsignatura*> CtrlReproduccion::listarAsignaturasEstudiante(){
-        //todo
-        return trash = new set<DtAsignatura*>;
+        std::set<DtAsignatura*> trash;
+        return trash;
     }
     void CtrlReproduccion::elegirAsignaturaEst(std::string codigo){
         //todo
     }
     std::set<DtClase*> CtrlReproduccion::listarClasesEstudiante(){
-        //todo
-        return trash = new set<DtClase*>;
+        std::set<DtClase*> trash;
+        return trash;
     }
     void CtrlReproduccion::elegirClase(std::string id){
         //todo
     }
-    DtClase CtrlReproduccion::mostrarDatosClase(){
-        return trash = new DtClase;
+    DtClase* CtrlReproduccion::mostrarDatosClase(){
+        return NULL;
     }
     // void confirmarReproduccionClaseEnDiferido(bool: confi);   #Esta no va si no hay reproduccion en diferido?
     std::set<DtMensaje*> CtrlReproduccion::ListarMensajes(){
-        //todo
-        return trash = new set<DtMensaje*>;
+        std::set<DtMensaje*> trash;
+        return trash;
     }

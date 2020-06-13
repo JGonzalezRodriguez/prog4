@@ -2,29 +2,23 @@
 
 
 Dicta::Dicta(modalidad modalidad, Docente* doc, Asignatura* asig){
-    Dicta dicta_nuevo = new Dicta;
-    dicta_nuevo.modalidad = modalidad;
-    dicta_nuevo.doc = doc;
-    dicta_nuevo.asig = asig;
-    return dicta_nuevo;
+    this->modalidad = modalidad;
+    this->doc = doc;
+    this->asig = asig;
 };
 
-Dicta::Docente Dicta::getDocente(){
+Docente* Dicta::getDocente(){
     return this->doc;
 };
 
 void Dicta::deslinkearDocente() {
+    //TODO
 };
 
-Asignatura Dicta::getAsignatura() {
+Asignatura* Dicta::getAsignatura() {
     return this->asig;
 };
 
 modalidad Dicta::getModalidad() {
     return this->modalidad;
 };
-
-Dicta::~Dicta() {
-    this->doc = NULL;
-    this->asig = NULL;
-}

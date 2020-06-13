@@ -3,30 +3,31 @@
 
 #include "ireproduccion.h"
 #include <set>
+#include <string>
 #include "clase.h"
 #include "estudiante.h"
 
 
-#include "dtclase.h"
-#include "dtasignatura.h"
-#include "dtmensaje.h"
+#include "dt/dtclase.h"
+#include "dt/dtasignatura.h"
+#include "dt/dtmensaje.h"
 
 class CtrlReproduccion : public IReproduccion {
     private:
-        Estudiante est;
-        static CtrlReproduccion instancia;
-        Clase c;
+        Estudiante* est;
+        static CtrlReproduccion* instancia;
+        Clase* c;
         std::set<Clase*> colclase;
-        Asignatura a;
+        Asignatura* a;
+        CtrlReproduccion();
     public:
-        ~CtrlReproduccion();
-        static CtrlReproduccion getInstancia(){};
+        static CtrlReproduccion* getInstancia();
         void identificarse(std::string email, std::string contrasenia);
         std::set<DtAsignatura*> listarAsignaturasEstudiante();
         void elegirAsignaturaEst(std::string codigo);
         std::set<DtClase*> listarClasesEstudiante();
         void elegirClase(std::string id);
-        DtClase mostrarDatosClase();
+        DtClase* mostrarDatosClase();
         std::set<DtMensaje*> ListarMensajes();
 };
 #endif

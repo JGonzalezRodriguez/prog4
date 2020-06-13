@@ -3,15 +3,13 @@
 
 #include <string>
 #include <set>
-#include "modalidad.h"
-#include "dtfecha.h"
-#include "dtestudiante.h"
-#include "dtclase.h"
+#include "dt/enums.h"
+#include "dt/dtfecha.h"
+#include "dt/dtestudiante.h"
+#include "dt/dtclase.h"
 
 
 class IClase {
-    private:
-    IClase();
     public:
         virtual void identificarse(std::string email, std::string contrasenia) = 0;
         virtual std::set<DtAsignatura*> listarAsignaturasDocente() = 0;
@@ -27,8 +25,7 @@ class IClase {
         virtual void confirmarFinalizacionDeClase(bool conf) = 0;
         virtual void elegirAsignaturaDoc(codigo: string) = 0;
         virtual std::set<DtClase*> listarClasesDocente() = 0;
+        virtual ~IClase() {};
 };
-
-IClase::~IClase() {};
 
 #endif
