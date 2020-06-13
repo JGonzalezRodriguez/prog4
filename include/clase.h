@@ -9,7 +9,7 @@
 #include <set>
 #include <string>
 
-class Clase{
+class Clase {
     private:
         DtFecha *fechayhoracomienzo;
         std::string id;
@@ -17,10 +17,10 @@ class Clase{
         DtFecha *fechayhorafinal;
         std::string url;
         std::string nombre;
-        Asignatura *asignatura;
-        std::set<Claseestudiante*> claseestudiantes;
+        Asignatura* asig;
+        std::set<ClaseEstudiante*> claseestudiantes;
         std::set<Mensaje*> mensajes;
-        Docente *docente;
+        Docente* doc;
     public:
         DtFecha *getFechayhoracomienzo();
         void setFechayhoracomienzo(DtFecha*);
@@ -38,8 +38,8 @@ class Clase{
         bool getEnVivo();
         void finalizar();
         bool tieneClaseEst(Estudiante *est);
-        Claseestudiante *crearClaseEst(Estudiante *est, Clase *c);
-        Claseestudiante *getClaseEstExistente();
+        ClaseEstudiante *crearClaseEst(Estudiante *est, Clase *c);
+        ClaseEstudiante *getClaseEstExistente();
         std::set<Mensaje*> getMensajes();
         std::string getId();
         Mensaje* seleccionarMensaje(std::string idmensaje);

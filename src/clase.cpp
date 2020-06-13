@@ -18,7 +18,7 @@ bool Clase::getEnVivo(){
 void Clase::setEnVivo(bool b){
     this->envivo = b;
 }
-DtFecha Clase::getFechayhorafinal(){
+DtFecha* Clase::getFechayhorafinal(){
     return this->fechayhorafinal;
 }
 void Clase::setFechayhorafinal(DtFecha *fecha){
@@ -39,20 +39,19 @@ void Clase::setNombre(std::string nombre){
 
 //metodos de las operaciones de la clase
 Asignatura *Clase::getAsignatura(){
-    return asignatura;
+    return asig;
 }
 
-}
 void Clase::finalizar(){
 
 }
 bool Clase::tieneClaseEst(Estudiante *est){
     return false;
 }
-Claseestudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
+ClaseEstudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
     return NULL;
 }
-Claseestudiante *Clase::getClaseEstExistente(){
+ClaseEstudiante *Clase::getClaseEstExistente(){
     return NULL;
 }
 std::set<Mensaje*> Clase::getMensajes(){
@@ -70,7 +69,7 @@ void Clase::agregarPadre(Mensaje *m){
 Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){
     this->nombre = nombre;
     this->fechayhoracomienzo = fecha;
-    this->Asignatura = asignatura;
-    this->Docente = doc;
+    this->asig = asignatura;
+    this->doc = doc;
     this->envivo = true;
 }
