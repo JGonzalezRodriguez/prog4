@@ -26,7 +26,8 @@ void Asignatura::addClase(Clase* c) {
 }
 
 std::set<Clase*> Asignatura::getClases() {
-    return NULL;
+    std::set<Clase*> x;
+    return x;
 }
 
 std::string getNombre() {
