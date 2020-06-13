@@ -38,13 +38,13 @@ std::string getCodigo() {
 }
 
 bool tieneTeo() {
-    return true
+    return true;
 }   
 
 bool tienePrac() {
-    return true
+    return true;
 }
 
 bool tieneMon() {
-    return true
+    return true;
 }

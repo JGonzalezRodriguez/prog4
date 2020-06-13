@@ -9,7 +9,7 @@ void ClaseEstudiante::finalizarVisualizacionesVivo() {
 }
 
 Estudiante* ClaseEstudiante::getEstudiante() {
-    Estudiante* = NULL;
+    Estudiante* x = NULL;
     return x;
 }
 
