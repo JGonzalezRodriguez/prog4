@@ -9,9 +9,12 @@ class ClaseEstudiante {
     private:
         Clase* c;
         Estudiante* est;
-        asistenciaVivo * avivo;
+        AsistenciaVivo * avivo;
     public:
         ClaseEstudiante(Clase* c, Estudiante* a);
+        /**
+        Guarda la fecha actual como DtFecha en avivo->ultimasalidavivo
+        */
         void finalizarVisualizacionesVivo();
         Estudiante* getEstudiante();
         Clase* getClase();
