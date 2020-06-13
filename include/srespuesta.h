@@ -3,13 +3,13 @@
 
 #include "subscripcion.h"
 
-class SRespuesta {
+class SRespuesta : public Subscripcion {
     private:
         static SRespuesta* instancia;
         SRespuesta();
     public:
         static SRespuesta* getInstancia();
-        void notificar(Usuario* u, Mensaje* m);
-}
+        void notificar(Usuario* u, Mensaje* m); // si tira error poner virtual aca
+};
 
 #endif

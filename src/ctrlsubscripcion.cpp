@@ -1,10 +1,10 @@
-#include "ctrlsubscripcion.h"
+#include "../include/ctrlsubscripcion.h"
 
 CtrlSubscripcion* CtrlSubscripcion::getInstancia() {
 
 }
 
-void CtrlSubscripcion::identificarse(string mail, string constrasenia) {
+void CtrlSubscripcion::identificarse(std::string mail, std::string constrasenia) {
 
 }
 
@@ -16,7 +16,7 @@ void CtrlSubscripcion::eliminarNotificaciones() {
 
 }
 
-void CtrlSubscripcion::elegirModo(modosubscripcion : modo) {
+void CtrlSubscripcion::elegirModo() {
 
 }
  

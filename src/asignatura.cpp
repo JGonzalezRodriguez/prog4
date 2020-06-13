@@ -1,6 +1,6 @@
 #include "../include/asignatura.h"
 
-Asignatura::Asignatura(string nombre, string codigo, bool tieneteo, bool tieneprac, bool tienemon) {
+Asignatura::Asignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) {
 
 }
 
@@ -17,7 +17,7 @@ std::set<Estudiante*> Asignatura::getEstudiantes() {
     return x;
 }
 
-Estudiante* Asignatura::getEstudiante(string CI) {
+Estudiante* Asignatura::getEstudiante(std::string CI) {
     return NULL;
 }
 
@@ -27,4 +27,23 @@ void Asignatura::addClase(Clase* c) {
 
 std::set<Clase*> Asignatura::getClases() {
     return NULL;
+}
+
+std::string getNombre() {
+    return NULL;
+}
+std::string getCodigo() {
+    return NULL;
+}
+
+bool tieneTeo() {
+    return true
+}   
+
+bool tienePrac() {
+    return true
+}
+
+bool tieneMon() {
+    return true
 }

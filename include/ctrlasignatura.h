@@ -4,6 +4,9 @@
 #include "iasignatura.h"
 // IMPORTAR ARCHIVO CON MODALIDAD ENUM.H ??
 // OTRO CON DATATYPES
+#include "dt/enums.h"
+#include "dt/dtasignatura.h"
+#include "dt/dtdocente.h"
 #include "docente.h"
 #include "estudiante.h"
 #include "asignatura.h"
@@ -22,11 +25,11 @@ class CtrlAsignatura : public IAsignatura {
     public:
         static CtrlAsignatura* getInstancia();
         std::set<DtAsignatura*> listarAsignaturas();
-        void elegirAsignaturaAdmin(string codigo);
+        void elegirAsignaturaAdmin(std::string codigo);
         std::set<DtDocente*> listarDocentes();
-        void elegirdocente(modalidad modalidad, string emaildocente);
+        void elegirdocente(modalidad modalidad, std::string emaildocente);
         void confirmarAsignacionDocenteAsignatura(bool confi);
         void confirmarEliminacionAsignatura(bool conf);   
-} 
+};
 
 #endif

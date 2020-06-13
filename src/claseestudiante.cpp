@@ -1,4 +1,4 @@
-#include "../src/claseestudiante.h"
+#include "../include/claseestudiante.h"
 
 ClaseEstudiante::ClaseEstudiante(Clase* c, Estudiante* a) {
 

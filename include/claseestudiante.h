@@ -3,7 +3,7 @@
 
 #include "clase.h"
 #include "estudiante.h"
-#include "asistenciaVivo.h"
+#include "asistenciavivo.h"
 
 class ClaseEstudiante {
     private:
@@ -15,6 +15,6 @@ class ClaseEstudiante {
         void finalizarVisualizacionesVivo();
         Estudiante* getEstudiante();
         Clase* getClase();
-}
+};
 
 #endif 

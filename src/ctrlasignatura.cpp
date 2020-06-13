@@ -1,4 +1,4 @@
-#include "ctrlasignatura.cpp"
+#include "../include/ctrlasignatura.h"
 
 CtrlAsignatura* getInstancia() {
 
@@ -9,7 +9,7 @@ std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
     return x;
 }
 
-void CtrlAsignatura::elegirAsignaturaAdmin(string codigo) {
+void CtrlAsignatura::elegirAsignaturaAdmin(std::string codigo) {
 
 }
 
@@ -18,7 +18,7 @@ std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
     return x;
 }
 
-void CtrlAsignatura::elegirdocente(modalidad modalidad, string emaildocente) {
+void CtrlAsignatura::elegirdocente(modalidad modalidad, std::string emaildocente) {
 
 }
 

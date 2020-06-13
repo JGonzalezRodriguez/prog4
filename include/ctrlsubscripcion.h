@@ -7,6 +7,7 @@
 #include "usuario.h"
 #include <set>
 // IMPORTAR DTS Y ENUMS
+#include "dt/dtnotificacion.h"
 
 class CtrlSubscripcion : public ISubscripcion {
     private:
@@ -15,11 +16,11 @@ class CtrlSubscripcion : public ISubscripcion {
         CtrlSubscripcion();
     public:
         static CtrlSubscripcion* getInstancia();
-        void identificarse(string mail, string constrasenia);
+        void identificarse(std::string mail, std::string constrasenia);
         std::set<DtNotificacion*> listarNotificaciones();
         void eliminarNotificaciones();
-        void elegirModo(modosubscripcion : modo);
+        void elegirModo();
         void eliminarSubscripcion();
-}
+};
 
 #endif

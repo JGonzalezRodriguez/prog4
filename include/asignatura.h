@@ -5,11 +5,12 @@
 #include <set> 
 #include "dicta.h"
 #include "estudiante.h"
+#include "clase.h"
 
 class Asignatura {
     private:
-        string nombre;
-        string codigo;
+        std::string nombre;
+        std::string codigo;
         bool tieneteo;
         bool tieneprac;
         bool tienemon;
@@ -17,13 +18,18 @@ class Asignatura {
         std::set<Estudiante*> estudiantes;
         std::set<Clase*> clases;
     public:
-        Asignatura(string nombre, string codigo, bool tieneteo, bool tieneprac, bool tienemon);
+        Asignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon);
         void addDocente(Dicta* dic);
         void addEstudiante(Estudiante* e);
         std::set<Estudiante*> getEstudiantes();
-        Estudiante* getEstudiante(string CI);
+        Estudiante* getEstudiante(std::string CI);
         void addClase(Clase* c);
         std::set<Clase*> getClases();
-}
+        std::string getNombre();
+        std::string getCodigo();
+        bool tieneTeo();
+        bool tienePrac();
+        bool tieneMon();
+};
 
 #endif 
