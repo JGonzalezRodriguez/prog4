@@ -10,6 +10,7 @@ class DtFecha{
         int min;
     public:
         DtFecha(int dia, int mes, int anio, int hora, int min);
+        DtFecha(DtFecha* f);
         ~DtFecha();
         int getDia();
         int getMes();

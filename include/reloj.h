@@ -1,12 +1,14 @@
 #include "dt/dtfecha.h"
 
+// auspiciado por rolex prri
 class Reloj {
     private:
         Reloj(DtFecha* fecha);
-        static DtFecha* fecha;
+        DtFecha* fecha;
         static Reloj* instancia;
     public:
 
+        static Reloj* getInstancia();
         /**
         @return puntero a DtFecha con la fecha actual.
         */

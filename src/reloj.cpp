@@ -1,7 +1,7 @@
 #include "../include/reloj.h"
 #include "../include/dt/dtfecha.h"
 
-Reloj * Reloj::instancia = nullptr;
+Reloj * Reloj::instancia = NULL;
 
 
 Reloj::Reloj(DtFecha* fecha) {
@@ -9,9 +9,9 @@ Reloj::Reloj(DtFecha* fecha) {
 }
 
 Reloj * Reloj::getInstancia() {
-    if (instancia == nullptr) {
-        DtFecha f = DtFecha(1,1,1,1,1,1);
-        instancia = Reloj(f);
+    if (instancia == NULL) {
+        DtFecha* f = new DtFecha(1,1,1,1,1);
+        instancia = new Reloj(f);
     }
     return instancia;
 }
