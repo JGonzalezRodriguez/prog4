@@ -1,69 +1,69 @@
-#include "ctrlusuario.h"
+#include "../include/ctrlusuario.h"
 
-Ctrlusuario *Ctrlusuario::instancia = NULL;
+CtrlUsuario *CtrlUsuario::instancia = NULL;
 
-Ctrlusuario::Ctrlusuario(){
+CtrlUsuario::CtrlUsuario(){
 
 }
 
-Ctrlusuario *Ctrlusuario::getInstancia(){
+CtrlUsuario *CtrlUsuario::getInstancia(){
     if(instancia == NULL)
-        instancia = new Ctrlusuario();
+        instancia = new CtrlUsuario();
     return instancia;
 }
 
-string Ctrlusuario::getNombre(){
+std::string CtrlUsuario::getNombre(){
         return this->nombre;
     }
-void Ctrlusuario::setNombre(string nombre){
+void CtrlUsuario::setNombre(std::string nombre){
         this->nombre = nombre;
     }
-string Ctrlusuario::getEmail(){
+std::string CtrlUsuario::getEmail(){
         return this->email;
     }
-void Ctrlusuario::setEmail(string email){
+void CtrlUsuario::setEmail(std::string email){
         this->email = email;
     }
-string Ctrlusuario::getImagen(){
+std::string CtrlUsuario::getImagen(){
         return this->imagen;
     }
-void Ctrlusuario::setImagen(string imagen){
+void CtrlUsuario::setImagen(std::string imagen){
         this->imagen = imagen;
     }
     
-string Ctrlusuario::getContrasenia(){
+std::string CtrlUsuario::getContrasenia(){
         return this->contrasenia;
     }
-void Ctrlusuario::setContrasenia(string contrasenia){
+void CtrlUsuario::setContrasenia(std::string contrasenia){
         this->contrasenia = contrasenia;
     }
 
-string Ctrlusuario::getCi(){
+std::string CtrlUsuario::getCi(){
     return this->ci;
 }
-void Ctrlusuario::setCi(string ci){
+void CtrlUsuario::setCi(std::string ci){
     this->ci = ci;
 }
-instituto Ctrlusuario::getInstituto(){
+instituto CtrlUsuario::getInstituto(){
     return NULL;
 }
-void Ctrlusuario::setInstituto(instituto instituto){
+void CtrlUsuario::setInstituto(instituto instituto){
     this->instituto = instituto;
 }
 
-bool Ctrlusuario::getEsdocente(){
+bool CtrlUsuario::getEsdocente(){
     return false;
 }
-void Ctrlusuario::setEsdocente(bool b){
+void CtrlUsuario::setEsdocente(bool b){
     this->esdocente = b;
 }
 
-void Ctrlusuario::altaDocente(string nombre, string email, string contrasenia, string imagen, instituto instituto){
+void CtrlUsuario::altaDocente(std::string nombre, std::string email, std::string contrasenia, std::string imagen, instituto instituto){
 
 }
-void Ctrlusuario::altaEstudiante(string nombre, string email, string contrasenia, string imagen, string ci){
+void CtrlUsuario::altaEstudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci){
 
 }
-void Ctrlusuario::confirmarAltaUsuario(bool conf){
+void CtrlUsuario::confirmarAltaUsuario(bool conf){
     
 }

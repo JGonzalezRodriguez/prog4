@@ -19,10 +19,10 @@ class Handlerusuarios{
         static Handlerusuarios *getInstancia();
         void add(Usuario *u)
         std::set<Docente*> getDocentes();
-        Docente *getDocente(string email); 
-        bool identificarse(string email, string contrasenia);
-        Estudiante *getEstudiante(string email);
-        Usuario *getUsuario(string email);
+        Docente *getDocente(std::string email); 
+        bool identificarse(std::string email, std::string contrasenia);
+        Estudiante *getEstudiante(std::string email);
+        Usuario *getUsuario(std::string email);
         void notificar(Asignatura *a, Mensaje *m);
         void addSubscripto(Usuario *u);
         void removerSubscripto(Usuario *u);

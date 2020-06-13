@@ -1,31 +1,31 @@
-#include "usuario.h"
+#include "../include/usuario.h"
 
-    string Usuario::getNombre(){
+    std::string Usuario::getNombre(){
         return this->nombre;
     }
-    void Usuario::setNombre(string nombre){
+    void Usuario::setNombre(std::string nombre){
         this->nombre = nombre;
     }
-    string Usuario::getEmail(){
+    std::string Usuario::getEmail(){
         return this->email;
     }
-    void Usuario::setEmail(string email){
+    void Usuario::setEmail(std::string email){
         this->email = email;
     }
-    string Usuario::getImagen(){
+    std::string Usuario::getImagen(){
         return this->imagen;
     }
-    void Usuario::setImagen(string imagen){
+    void Usuario::setImagen(std::string imagen){
         this->imagen = imagen;
     }
     
-    string Usuario::getContrasenia(){
+    std::string Usuario::getContrasenia(){
         return this->contrasenia;
     }
-    void Usuario::setContrasenia(string contrasenia){
+    void Usuario::setContrasenia(std::string contrasenia){
         this->contrasenia = contrasenia;
     }
-    Usuario::Usuario(string nombre, string email, string imagen, string contrasenia){
+    Usuario::Usuario(std::string nombre, std::string email, std::string imagen, std::string contrasenia){
         this->nombre = nombre;
         this->email = email;
         this->imagen = imagen;
@@ -50,7 +50,7 @@
 
         }
        
-        Clase *Usuario::elegirClase(string id){
+        Clase *Usuario::elegirClase(std::string id){
             return NULL;
         }
        

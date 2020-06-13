@@ -1,10 +1,10 @@
-#include "docente.h"
+#include "../include/docente.h"
 
 instituto Docente::getInstituto(){
-    return this->instituto;
+    return this->inst;
 }
-void Docente::setInstituto(instituto instituto){
-    this->instituto = instituto;
+void Docente::setInstituto(instituto inst){
+    this->inst = inst;
 }
 
 //operaciones que hereda de usuario
@@ -34,14 +34,14 @@ void Docente::addClase(Clase *c){
 std::set<Clase*> Docente::getClasesEnVivo(){
     return NULL;
 }
-Clase *Docente::getClase(string id){
+Clase *Docente::getClase(std::string id){
     return NULL;
 }
-Asignatura *Docente::getAsignatura(string codigo){
+Asignatura *Docente::getAsignatura(std::string codigo){
     return NULL;
 }
 
-Docente::Docente(string nombre, string email, string contrasenia, string imagen, instituto instituto):Usuario(nombre, email, imagen, contrasenia){
+Docente::Docente(std::string nombre, std::string email, std::string contrasenia, std::string imagen, instituto instituto):Usuario(nombre, email, imagen, contrasenia){
     this->instituto = instituto;
 }
 

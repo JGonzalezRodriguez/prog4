@@ -9,24 +9,24 @@
 
 class Usuario{
     private:
-        string nombre;
-        string email;
-        string imagen;
-        string contraseña;
+        std::string nombre;
+        std::string email;
+        std::string imagen;
+        std::string contraseña;
         std::set<Notificacion*> notificaciones;
         Subscripcion *subscripcion;
         //podrian haber mas links
     public:
     //posiblemente haya que poner punteros a los parametros de las operaciones que sean de tipo otra clase
 
-       string getNombre();
-       void setNombre(string);
-       string getEmail();
-       void setEmail(string);
-       string getImagen();
-       void setImagen(string);
-       string getContrasenia();
-       void setContrasenia(string);
+       std::string getNombre();
+       void setNombre(std::string);
+       std::string getEmail();
+       void setEmail(std::string);
+       std::string getImagen();
+       void setImagen(std::string);
+       std::string getContrasenia();
+       void setContrasenia(std::string);
 
        std::set<Notificacion*> listarNotificaciones();
        void eliminarNotificaciones();
@@ -34,10 +34,10 @@ class Usuario{
        void elegirModo(subscripcion *subscripcion);
        void eliminarSubscripcion();
        virtual std::set<Clase*> listarClases() = 0;
-       Clase *elegirClase(string id);
+       Clase *elegirClase(std::string id);
        virtual bool tieneAsignatura(Asignatura *a) = 0;
        void notificarUsuario(Mensaje *m);
        virtual ~Usuario(); //no estoy seguro del destructor
-       Usuario(string nombre, string email, string imagen, string contrasenia);
+       Usuario(std::string nombre, std::string email, std::string imagen, std::string contrasenia);
 };
 #endif

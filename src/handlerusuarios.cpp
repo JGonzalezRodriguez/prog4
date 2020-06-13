@@ -1,4 +1,4 @@
-#include "handlerusuarios.h"
+#include "../include/handlerusuarios.h"
 
 Handlerusuarios *Handlerusuarios::instancia = NULL;
 
@@ -18,16 +18,16 @@ void Handlerusuarios::add(Usuario *u){
 std::set<Docente*> Handlerusuarios::getDocentes(){
     return NULL;
 }
-Docente *Handlerusuarios::getDocente(string email){
+Docente *Handlerusuarios::getDocente(std::string email){
     return NULL;
 }
-bool Handlerusuarios::identificarse(string email, string contrasenia){
+bool Handlerusuarios::identificarse(std::string email, std::string contrasenia){
     return false;
 }
-Estudiante *Handlerusuarios::getEstudiante(string email){
+Estudiante *Handlerusuarios::getEstudiante(std::string email){
     return NULL;
 }
-Usuario *Handlerusuarios::getUsuario(string email){
+Usuario *Handlerusuarios::getUsuario(std::string email){
     return NULL;
 }
 void Handlerusuarios::notificar(Asignatura *a, Mensaje *m){

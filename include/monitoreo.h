@@ -11,8 +11,7 @@ class Monitoreo: public Clase{
         std::set<Estudiante*> habilitados;//recordar que el maximo del set es 15, chequearlo con un if al momento de implementar
     public:
         void setEstudiantes(std::set<Estudiante*> ColMonitoreo);
-        Monitoreo(string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
-
+        Monitoreo(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
 };
 
 #endif

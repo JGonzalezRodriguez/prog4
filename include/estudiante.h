@@ -9,14 +9,14 @@
 
 class Estudiante: public Usuario{
     private:
-        string ci;
+        std::string ci;
         std::set<Claseestudiante*> claseestudiantes;
         std::set<Asignatura*> asignaturas;
 
 
     public:
-        string getCi();
-        void setCi(string);
+        std::string getCi();
+        void setCi(std::string);
     //posiblemente haya que poner punteros a los parametros de las operaciones que sean de tipo otra clase
 
     //operaciones que hereda de usuario
@@ -25,8 +25,8 @@ class Estudiante: public Usuario{
     //operaciones mismas de estudiante
         void eliminarAsignatura(Asignatura *a);
         std::set<Asignatura*> getAsignaturas();
-        Asignatura *getAsignatura(string codigo);
-        Estudiante(string nombre, string email, string contrasenia, string imagen, string ci);//constructor
+        Asignatura *getAsignatura(std::string codigo);
+        Estudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci);//constructor
 };
 
 

@@ -1,4 +1,4 @@
-#include "estudiante.h"
+#include "../include/estudiante.h"
 
 string Estudiante::getCi(){
     return this->ci;

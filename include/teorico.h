@@ -5,7 +5,7 @@
 
 class Teorico: public Clase{
     public:
-        Teorico(string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
+        Teorico(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
 };
 
 

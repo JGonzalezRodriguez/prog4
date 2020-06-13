@@ -6,11 +6,9 @@
 #include "clase.h"
 #include <set>
 
-
-
 class Docente: public Usuario{
     private:
-        instituto instituto;
+        instituto inst;
         std::set<Dicta*> dictas;
         std::set<Clase*> clases;
     
@@ -31,9 +29,9 @@ class Docente: public Usuario{
         modalidad getModalidad(Asignatura *a);
         void addClase(Clase *c);
         std::set<Clase*> getClasesEnVivo();
-        Clase *getClase(string id);
-        Asignatura *getAsignatura(string codigo);
-        Docente(string nombre, string email, string contrasenia, string imagen, instituto instituto);
+        Clase *getClase(std::string id);
+        Asignatura *getAsignatura(std::string codigo);
+        Docente(std::string nombre, std::string email, std::string contrasenia, std::string imagen, instituto instituto);
         
        
 };

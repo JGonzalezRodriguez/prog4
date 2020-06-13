@@ -10,36 +10,36 @@
 
 
 //es singleton
-class Ctrlusuario: public IUsuario{
+class CtrlUsuario: public IUsuario{
     private:
-        static Ctrlusuario *instancia;
-        Ctrlusuario();
-        string nombre;
-        string email;
-        string contrasenia;
-        string imagen; //en el dcd esta como url pero le puse imagen para que sea consistente con usuario
-        instituto instituto;
-        string ci;
+        static CtrlUsuario *instancia;
+        CtrlUsuario();
+        std::string nombre;
+        std::string email;
+        std::string contrasenia;
+        std::string imagen; //en el dcd esta como url pero le puse imagen para que sea consistente con usuario
+        instituto inst;
+        std::string ci;
         bool esdocente;
     public:
-        string getNombre();
-        void setNombre(string);
-        string getEmail();
-        void setEmail(string);
-        string getImagen();
-        void setImagen(string);
-        string getContrasenia();
-        void setContrasenia(string);
+        std::string getNombre();
+        void setNombre(std::string);
+        std::string getEmail();
+        void setEmail(std::string);
+        std::string getImagen();
+        void setImagen(std::string);
+        std::string getContrasenia();
+        void setContrasenia(std::string);
         instituto getInstituto();
         void setInstituto(instituto);
-        string getCi();
-        void setCi(string);
+        std::string getCi();
+        void setCi(std::string);
         bool getEsdocente();
         void setEsdocente(bool);
         
-        static Ctrlusuario *getInstancia();
-        void altaDocente(string nombre, string email, string contrasenia, string imagen, instituto instituto);
-        void altaEstudiante(string nombre, string email, string contrasenia, string imagen, string ci);
+        static CtrlUsuario *getInstancia();
+        void altaDocente(std::string nombre, std::string email, std::string contrasenia, std::string imagen, instituto inst);
+        void altaEstudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci);
         void confirmarAltaUsuario(bool conf);
 };
 
