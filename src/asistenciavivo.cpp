@@ -1,4 +1,4 @@
-#include "../include/AsistenciaVivo.h"
+#include "../include/asistenciavivo.h"
 
 AsistenciaVivo::AsistenciaVivo(DtFecha* primeringresovivo){
     this->primeringresovivo = primeringresovivo;
@@ -7,11 +7,11 @@ AsistenciaVivo::AsistenciaVivo(DtFecha* primeringresovivo){
 
 AsistenciaVivo::~AsistenciaVivo(){}
 
-AsistenciaVivo::setEstaMirando(bool estamirando){
+void AsistenciaVivo::setEstaMirando(bool estamirando){
     this->estamirando = estamirando;
 }
 
-AsistenciaVivo::setUltimaSalidaVivo(DtFecha* fecha){
+void AsistenciaVivo::setUltimaSalidaVivo(DtFecha* fecha){
     this->ultimasalidavivo = fecha;
 }
 
