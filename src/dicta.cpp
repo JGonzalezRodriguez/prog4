@@ -2,7 +2,7 @@
 
 
 Dicta::Dicta(modalidad modalidad, Docente* doc, Asignatura* asig){
-    this->modalidad = modalidad;
+    this->mod = modalidad;
     this->doc = doc;
     this->asig = asig;
 };
@@ -20,5 +20,5 @@ Asignatura* Dicta::getAsignatura() {
 };
 
 modalidad Dicta::getModalidad() {
-    return this->modalidad;
+    return this->mod;
 };
