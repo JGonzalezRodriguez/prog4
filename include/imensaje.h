@@ -8,6 +8,9 @@
 
 class IMensaje{
     public:
+        /**
+        Identifica al usuario actual
+        */
         virtual void identificarse(std::string email, std::string contrasenia) = 0;
         virtual std::set<DtClase*> listarClases() = 0;
         virtual void elegirClase(std::string id) = 0;

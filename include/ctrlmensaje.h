@@ -28,9 +28,19 @@ class CtrlMensaje: public IMensaje{
         void setClase(Clase* c);
         void setMensaje(Mensaje* m);
         void identificarse(std::string mail, std::string contrasenia);
+        /**
+        lista las clases a las que asistio el usuario actual.
+        */
         std::set<DtClase*> listarClases();
         void elegirClase(std::string id);
+        /**
+        lista los mensajes de la clase seleccionada.
+        */
         std::set<DtMensaje*> listarMensajes();
+        /**
+        Selecciona el mensaje a responder. Dejar en blanco si no es respuesta a nadie?
+        @param idMensaje id del mensaje a responder.
+        */
         void seleccionarMensaje(std::string idMensaje);
         void textoEnviar(std::string texto);
         void confirmarEnvioMensaje(bool conf);

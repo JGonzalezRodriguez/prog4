@@ -16,10 +16,26 @@ class CtrlSubscripcion : public ISubscripcion {
         CtrlSubscripcion();
     public:
         static CtrlSubscripcion* getInstancia();
+        /**
+        Identifica al usuario y lo recuerda como el usuario actual.
+        */
         void identificarse(std::string mail, std::string constrasenia);
+        /**
+        @return Coleccion de notificaciones del usuario actual.
+        */
         std::set<DtNotificacion*> listarNotificaciones();
+        /**
+        Elimina las notificacion del usuario actual.
+        */
         void eliminarNotificaciones();
-        void elegirModo();
+        /**
+        Cambia el modo de subscripcion del usuario actual.
+        @param modo El nuevo modo de subscripcion.
+        */
+        void elegirModo(Subscripcion* modo);
+        /**
+        Elimina el puntero a subscripcion del usuario actual.
+        */
         void eliminarSubscripcion();
 };
 

@@ -26,10 +26,23 @@ class CtrlAsignatura : public IAsignatura {
         static CtrlAsignatura* getInstancia();
         std::set<DtAsignatura*> listarAsignaturas();
         void elegirAsignaturaAdmin(std::string codigo);
+        /**
+        @return Coleccion de docentes que pueden dictar la asignatura
+        Debe crear los DtDocente a partir de una coleccion de docentes.
+        Filtra los docentes que ya dictan la asignatura?
+        */
         std::set<DtDocente*> listarDocentes();
-        void elegirdocente(modalidad modalidad, std::string emaildocente);
+        /**
+        Elige el docente para dictar la asignatura.
+        @param mod la modalidad que dictara el docente.
+        @param emaildocente el email del docente.
+        */
+        void elegirdocente(modalidad mod, std::string emaildocente);
         void confirmarAsignacionDocenteAsignatura(bool confi);
-        void confirmarEliminacionAsignatura(bool conf);   
+        /**
+        Debe destruir la asignatura actual y liberar toda la memoria asociada, ver Diagrama de Comunicacion. 
+        */
+        void confirmarEliminacionAsignatura(bool conf); 
 };
 
 #endif
