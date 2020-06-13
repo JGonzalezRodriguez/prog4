@@ -1,4 +1,4 @@
-#include "../include/CtrlMensaje.h"
+#include "../include/ctrlmensaje.h"
 
 CtrlMensaje* CtrlMensaje::instancia = NULL;
 

@@ -16,7 +16,7 @@ class IMensaje{
         virtual void elegirClase(std::string id) = 0;
         virtual std::set<DtMensaje*> listarMensajes() = 0;
         virtual void seleccionarMensaje(std::string idMensaje) = 0;
-        virtual void textoenviar(std::string texto) = 0;
+        virtual void textoEnviar(std::string texto) = 0;
         virtual void confirmarEnvioMensaje(bool conf) = 0;
 };
 
