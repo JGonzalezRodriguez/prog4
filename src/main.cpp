@@ -4,8 +4,9 @@
 #include <string>
 #include <cstdio>
 #include <sstream>
+#include "../include/fabrica.h"
 
-
+using namespace std;
 int main() {
     printf("\n Bienvenide, elija una opcion:");
     int opcion;
@@ -33,6 +34,15 @@ int main() {
                 scanf("%d", &opcion2);
                 switch(opcion2){
                     case 1: {
+                        cin.ignore();
+                        std::string nombre, contrasenia, email, imagen, ci;
+                        //int inst;
+                        printf("\n Introduzca nombre: ");
+                        getline(std::cin, nombre);
+                        printf("\n Introduzca nombre: ");
+                        printf("\n Introduzca nombre: ");
+                        //no esta terminado
+
                         break;
                     }
                     case 2: {

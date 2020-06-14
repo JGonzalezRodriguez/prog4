@@ -13,13 +13,11 @@
 
 class Fabrica {
     private:
-        static IAsignatura* instasignatura;
-        static IClase* instclase;
-        static IMensaje* instmensaje;
-        static IReproduccion* instreproduccion;
-        static ISubscripcion* instsubscripcion;
-        static IUsuario* instusuario;
+        static Fabrica *instancia;
+        Fabrica();
+        
     public:
+        static Fabrica *getInstancia();
         static IAsignatura* getIAsignatura();
         static IClase* getIClase();
         static IMensaje* getIMensaje();
