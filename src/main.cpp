@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <sstream>
 
+
 int main() {
     printf("\n Bienvenido, elija una opcion:");
     int opcion;

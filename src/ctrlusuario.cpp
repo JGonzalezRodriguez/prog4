@@ -59,11 +59,34 @@ void CtrlUsuario::setEsdocente(bool b){
 }
 
 void CtrlUsuario::altaDocente(std::string nombre, std::string email, std::string contrasenia, std::string imagen, instituto instituto){
+    this->nombre = nombre;
+    this->email = email;
+    this->contrasenia = contrasenia;
+    this->imagen = imagen;
+    this->inst = inst;
+    this->esdocente = true;
 
 }
 void CtrlUsuario::altaEstudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci){
+    this->nombre = nombre;
+    this->email = email;
+    this->contrasenia = contrasenia;
+    this->imagen = imagen;
+    this->ci = ci;
+    this->esdocente = false;
 
 }
 void CtrlUsuario::confirmarAltaUsuario(bool conf){
+    if(conf){
+        if(esdocente){
+            Docente *doc = new Docente(this->getNombre(), this->getEmail(), this->getContrasenia(), this->getImagen(), this->getInstituto());
+            Handlerusuarios *u = Handlerusuarios::getInstancia();
+            u->add(doc);
+        }else{
+            Estudiante *est =  new Estudiante(this->getNombre(), this->getEmail(), this->getContrasenia(), this->getImagen(), this->getCi());
+            Handlerusuarios *u = Handlerusuarios::getInstancia();
+            u->add(est);
+        }
+    }
     
 }
