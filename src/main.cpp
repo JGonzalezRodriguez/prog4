@@ -7,7 +7,7 @@
 
 
 int main() {
-    printf("\n Bienvenido, elija una opcion:");
+    printf("\n Bienvenide, elija una opcion:");
     int opcion;
     while(opcion != 5){
         printf("\n1. Administrador");
@@ -15,6 +15,7 @@ int main() {
         printf("\n3. Estudiante");
         printf("\n4. Cargar datos de prueba");
         printf("\n5. Salir");
+        printf("\n");
             
         scanf("%d", &opcion);
         switch(opcion){
@@ -26,6 +27,7 @@ int main() {
                 printf("\n4. Asignacion de docentes a una asignatura");
                 printf("\n5. Modificar fecha del sistema");
                 printf("\n6. Consultar fecha del sistema");
+                printf("\n");
                     
                 int opcion2;
                 scanf("%d", &opcion2);
@@ -64,6 +66,7 @@ int main() {
                 printf("\n5. Tiempo de dictado de clase");
                 printf("\n6. Tiempo de asistencia a clase");
                 printf("\n7. Envio de mensaje");
+                printf("\n");
                     
                 
                 int opcion2;
@@ -104,6 +107,7 @@ int main() {
                 printf("\n3. Envio de mensaje");
                 printf("\n4. Suscribirse a notificacion");
                 printf("\n5. Consulta de notificaciones");
+                printf("\n");
 
                 int opcion2;
                 scanf("%d", &opcion2);
@@ -135,7 +139,7 @@ int main() {
                 break;
             }
             case 5: {
-                printf("Gracias por usar FingClass, hasta la proxima!");
+                printf("Gracias por usar FingClass, hasta la proxima!\n");
                 break;
             }
             default: {
