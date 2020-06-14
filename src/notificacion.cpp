@@ -1,4 +1,4 @@
-#include "../include/Notificacion.h"
+#include "../include/notificacion.h"
 
 Notificacion::Notificacion(Mensaje* mensaje){
     this->mensaje = mensaje;
@@ -10,7 +10,7 @@ Mensaje* Notificacion::getMensaje(){
     return this->mensaje;
 }
 
-bool Notificacion::esDeAsignatura(){
+bool Notificacion::esDeAsignatura(Asignatura* a){
     //TODO
     return false;
 }

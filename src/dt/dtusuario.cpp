@@ -8,6 +8,8 @@ DtUsuario::DtUsuario(std::string nombre, std::string email, std::string imagen, 
     this->contrasenia = contrasenia;
 }
 
+DtUsuario::~DtUsuario() {}
+
 std::string DtUsuario::getNombre(){
     return this->nombre;
 }

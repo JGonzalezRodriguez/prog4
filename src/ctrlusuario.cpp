@@ -45,10 +45,10 @@ void CtrlUsuario::setCi(std::string ci){
     this->ci = ci;
 }
 instituto CtrlUsuario::getInstituto(){
-    return NULL;
+    return instituto(1);
 }
 void CtrlUsuario::setInstituto(instituto instituto){
-    this->instituto = instituto;
+    this->inst = instituto;
 }
 
 bool CtrlUsuario::getEsdocente(){

@@ -1,7 +1,9 @@
 #ifndef NOTIFICACION_H
 #define NOTIFICACION_H
 
-#include "Mensaje.h"
+#include "mensaje.h"
+
+class Asignatura;
 
 class Notificacion{
     private:

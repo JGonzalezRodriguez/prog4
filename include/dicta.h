@@ -2,8 +2,10 @@
 #define DICTA_H
 
 #include "dt/enums.h"
-#include "docente.h"
 #include "asignatura.h"
+
+class Asignatura;
+class Docente;
 
 class Dicta {
     private:

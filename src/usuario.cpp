@@ -35,7 +35,8 @@
     Usuario::~Usuario(){}
 
         std::set<Notificacion*> Usuario::listarNotificaciones(){
-            return NULL;
+            std::set<Notificacion*> x;
+            return x;
         }
         void Usuario::eliminarNotificaciones(){
 
@@ -43,7 +44,7 @@
         void Usuario::eliminarNotificacionAsign(Asignatura *a){
 
         }
-        void Usuario::elegirModo(subscripcion *subscripcion){
+        void Usuario::elegirModo(){
 
         }
         void Usuario::eliminarSubscripcion(){

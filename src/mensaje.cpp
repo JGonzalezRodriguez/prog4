@@ -1,4 +1,4 @@
-#include "../include/Mensaje.h"
+#include "../include/mensaje.h"
 
 int Mensaje::seed = 1; //compile time B)
 

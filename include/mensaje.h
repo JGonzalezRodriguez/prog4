@@ -8,6 +8,9 @@
 #include "dt/dtfecha.h"
 #include "reloj.h"
 
+class Clase;
+class Asignatura;
+
 class Mensaje{
     private:
         static int seed;
