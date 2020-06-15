@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/handlerasignaturas.h"
 
 HandlerAsignaturas* HandlerAsignaturas::instancia = NULL;
@@ -29,5 +30,10 @@ void HandlerAsignaturas::remove(Asignatura* a) {
 }
 
 void HandlerAsignaturas::add(std::string codigo, Asignatura* a) {
+    //confirmando unicidad del codigo
+    if (this->find(codigo) != NULL){
+        throw std::invalid_argument("\nYa existe una asignatura con ese codigo");
+    }
+    //agregando
     this->mapasignaturas.insert(std::pair<std::string, Asignatura*>(a->getCodigo(), a));
 }

@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/handlerusuarios.h"
 //deberiamos cambiar Handlerusuarios a HandlerUsuarios, o ya fue?
 
@@ -14,6 +15,11 @@ Handlerusuarios* Handlerusuarios::getInstancia(){
 }
 
 void Handlerusuarios::add(Usuario* u){
+    //confirmando unicidad del email
+    if (this->getUsuario(u->getEmail()) != NULL){
+        throw std::invalid_argument("\nYa existe un usuario con ese email");
+    }
+    //agregando
     Estudiante* est = dynamic_cast<Estudiante*>(u);
     if (est != NULL){ // es estudiante
         this->estudiantes.insert(est);
