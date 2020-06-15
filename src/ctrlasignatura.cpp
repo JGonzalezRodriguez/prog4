@@ -30,3 +30,25 @@ void CtrlAsignatura::confirmarAsignacionDocenteAsignatura(bool confi) {
 void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
 
 }
+
+void CtrlAsignatura::identificarse(std::string email, std::string contrasenia){
+    Handlerusuarios *u = Handlerusuarios::getInstancia();
+    if(u->identificarse(email, contrasenia)){
+        //si esta identificado el ctrl recuerda el email y la contrasenia
+        this->email = email;
+        this->contrasenia = contrasenia;
+    }
+
+}
+std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturasEstudiante(){
+    //debe listar las asignaturas a las cuales el estudiante identificado no esta inscripto
+    HandlerAsignaturas *a = HandlerAsignaturas::getInstancia();
+    std::map<std::string, Asignatura*> asignaturas = a->get();
+    
+}
+void CtrlAsignatura::elegirAsignaturaEst(std::string codigo){
+
+}
+void CtrlAsignatura::confirmarInscripcionAsignatura(bool confi){
+
+}

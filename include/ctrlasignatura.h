@@ -22,6 +22,9 @@ class CtrlAsignatura : public IAsignatura {
         Docente* doc;
         Asignatura* asig;
         CtrlAsignatura();
+        //agrego dos nuevos atributos para el CU inscripcion asignatura
+        std::string email;
+        std::string contrasenia;
     public:
         static CtrlAsignatura* getInstancia();
         std::set<DtAsignatura*> listarAsignaturas();
@@ -52,6 +55,12 @@ class CtrlAsignatura : public IAsignatura {
         @param conf
         */
         void confirmarEliminacionAsignatura(bool conf); 
+
+        //Agrego las operaciones correspondientes al caso de uso inscripcion a asignatura
+        void identificarse(std::string email, std::string contrasenia);
+        std::set<DtAsignatura*> listarAsignaturasEstudiante();
+        void elegirAsignaturaEst(std::string codigo);
+        void confirmarInscripcionAsignatura(bool confi);
 };
 
 #endif
