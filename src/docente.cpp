@@ -25,8 +25,11 @@ void Docente::deslinkear(Dicta *dicta){
 }
 std::set<Asignatura*> Docente::getAsignaturas(){
     std::set<Asignatura*> x;
+    for (std::set<Dicta*>::iterator it=this->dictas.begin(); it!=this->dictas.end(); ++it) {
+        Dicta* dic = *it; 
+        x.insert(dic->getAsignatura());
+    }
     return x;
-
 }
 modalidad Docente::getModalidad(Asignatura *a){
     return modalidad(1);
