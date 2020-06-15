@@ -42,7 +42,7 @@ modalidad Docente::getModalidad(Asignatura *a){
     return mod;
 }
 void Docente::addClase(Clase *c){
-
+    clases.insert(c);
 }
 std::set<Clase*> Docente::getClasesEnVivo(){
     std::set<Clase*> x;

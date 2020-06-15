@@ -4,6 +4,9 @@
 #include "../include/dt/dtpractico.h"
 #include "../include/dt/dtteorico.h"
 #include "../include/dt/dtmonitoreo.h"
+#include "../include/practico.h"
+#include "../include/teorico.h"
+#include "../include/monitoreo.h"
 
 CtrlClase *CtrlClase::instancia = NULL;
 
@@ -115,7 +118,23 @@ DtClase *CtrlClase::mostrarDatos(){
 }
 
 void CtrlClase::confirmarInicioDeClase(bool conf){
-    
+    if (conf) {
+        Reloj* r = Reloj::getInstancia();
+        if (mod == practico) {
+            Practico* c = new Practico(nombre, r->getFecha(), asignatura, docente);
+            docente->addClase(c);
+            asignatura->addClase(c);
+        } else if (mod == teorico) {
+            Teorico* c = new Teorico(nombre, r->getFecha(), asignatura, docente);
+            docente->addClase(c);
+            asignatura->addClase(c);
+        } else if (mod == monitoreo) {
+            Monitoreo* c = new Monitoreo(nombre, r->getFecha(), asignatura, docente);
+            c->setEstudiantes(estudiantes);
+            docente->addClase(c);
+            asignatura->addClase(c);
+        }
+    }
 }
 std::set<DtClase*> CtrlClase::listarClasesEnVivo(){
     std::set<DtClase*> x;

@@ -29,7 +29,7 @@ Estudiante* Asignatura::getEstudiante(std::string CI) {
 }
 
 void Asignatura::addClase(Clase* c) {
-
+    clases.insert(c);
 }
 
 std::set<Clase*> Asignatura::getClases() {
