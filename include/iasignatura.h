@@ -16,6 +16,7 @@ class IAsignatura {
         virtual void elegirdocente(modalidad modalidad, std::string emaildocente) = 0;
         virtual void confirmarAsignacionDocenteAsignatura(bool confi) = 0;
         virtual void confirmarEliminacionAsignatura(bool conf) = 0;
+        virtual bool getConfi() = 0;
         virtual ~IAsignatura() {};
 };
 

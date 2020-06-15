@@ -1,9 +1,12 @@
 //TODO: incluir coso para imprimir, para excepciones, etc
-#include<stdio.h>
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <cstdio>
 #include <sstream>
+#include <map>
+#include <iterator>
+#include "fabrica.h"
 
 int main() {
     printf("\n Bienvenide, elija una opcion:");
@@ -41,7 +44,36 @@ int main() {
                         break;
                     }
                     case 4: {
-                        break;
+                        IAsignatura* ctrl = Fabrica::getIAsignatura();
+                        std::map<std::string, DtAsignatura*> x = ctrl->listarAsignaturas();
+                        if (x.empty()) break;
+                        std::map<std::string, DtAsignatura*>::iterator it;
+                        for (it = x.begin(); it != x.end(); it++){
+                            std::cout << "(%s, %s)" << it->first, it->second->getNombre();
+                        };
+                        std::string codigo;
+                        std::cin >> codigo;
+                        delete[] &x;
+                        ctrl->elegirAsignaturaAdmin(codigo);
+                        std::set<DtDocente*> z = ctrl->listarDocentes();
+                        if (z.empty()) break;
+                        std::set<DtDocente*>::iterator it2;
+                        for (it2 = z.begin(); it2 != z.end(); it2++){
+                            std::cout << "(%s, %s)" << (*it2)->getNombre(), (*it2)->getEmail();
+                        }
+                        std::string email;
+                        int mod;
+                        std::cin >> email;
+                        printf("\n Elija la modalidad del docente:");
+                        printf("\n 1. Teorico");
+                        printf("\n 2. Practico");
+                        printf("\n 3. Monitoreo");
+                        printf("\n");
+                        std::cin >> mod;
+                        ctrl->elegirdocente(modalidad(mod),email);
+                        delete[] &z;
+                        bool confi = ctrl->getConfi();
+                        ctrl->confirmarAsignacionDocenteAsignatura(confi);
                     }
                     case 5: {
                         break;
@@ -135,6 +167,7 @@ int main() {
             }
             case 4: {
                 //TODO: cargar casos prueba (todo hardcodeado)
+                
                 break;
             }
             case 5: {

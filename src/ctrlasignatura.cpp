@@ -18,7 +18,7 @@ std::map<std::string, DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
     std::map<std::string, Asignatura*>::iterator it;
     std::map<std::string, DtAsignatura*> y;
     if (x.empty()) {
-        std::cout << "\n No hay ninguna asignatura en el sistema. Por favor agregue asignaturas e intente nuevamente.\n";
+        std::cout << "\n\033[1;31mNo hay ninguna asignatura en el sistema. Por favor agregue asignaturas e intente nuevamente.\033[0m\n";
         return y;
     }
     for ( it = x.begin(); it != x.end(); it++ )
@@ -39,7 +39,7 @@ std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
     std::set<Docente*>::iterator it;
     std::set<DtDocente*> y;
     if (x.empty()) {
-        std::cout << "\n No hay ningun docente en el sistema. Por favor agregue docentes e intente nuevamente.\n";
+        std::cout << "\n\033[1;31mNo hay ningun docente en el sistema. Por favor agregue docentes e intente nuevamente.\033[0m\n";
         return y;
     }
     for ( it = x.begin(); it != x.end(); it++ )
