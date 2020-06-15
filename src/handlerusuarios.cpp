@@ -1,4 +1,5 @@
 #include "../include/handlerusuarios.h"
+//deberiamos cambiar Handlerusuarios a HandlerUsuarios, o ya fue?
 
 Handlerusuarios* Handlerusuarios::instancia = NULL;
 
@@ -6,7 +7,7 @@ Handlerusuarios::Handlerusuarios(){
 
 }
 
-Handlerusuarios *Handlerusuarios::getInstancia(){
+Handlerusuarios* Handlerusuarios::getInstancia(){
     if(instancia == NULL)
         instancia = new Handlerusuarios();
     return instancia;
