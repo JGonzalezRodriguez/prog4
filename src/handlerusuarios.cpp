@@ -1,6 +1,6 @@
 #include "../include/handlerusuarios.h"
 
-Handlerusuarios *Handlerusuarios::instancia = NULL;
+Handlerusuarios* Handlerusuarios::instancia = NULL;
 
 Handlerusuarios::Handlerusuarios(){
 
@@ -12,31 +12,66 @@ Handlerusuarios *Handlerusuarios::getInstancia(){
     return instancia;
 }
 
-void Handlerusuarios::add(Usuario *u){
-
+void Handlerusuarios::add(Usuario* u){
+    Estudiante* est = dynamic_cast<Estudiante*>(u);
+    if (est != NULL){ // es estudiante
+        this->estudiantes.insert(est);
+    }
+    Docente* doc = dynamic_cast<Docente*>(u);
+    if (doc != NULL){ // es docente 
+        this->docentes.insert(doc);
+    }
 }
+
 std::set<Docente*> Handlerusuarios::getDocentes(){
-    std::set<Docente*> x;
-    return x;
+    return this->docentes;
 }
-Docente *Handlerusuarios::getDocente(std::string email){
+
+Docente* Handlerusuarios::getDocente(std::string email){
+    for (std::set<Docente*>::iterator it=this->docentes.begin(); it!=this->docentes.end(); ++it){
+        Docente* doc = *it;
+        if (doc->getEmail() == email){
+            return doc;
+        } 
+    }
     return NULL;
 }
+
 bool Handlerusuarios::identificarse(std::string email, std::string contrasenia){
-    return false;
+    Usuario* u = this->getUsuario(email);
+    if (u == NULL || u->getContrasenia() != contrasenia){
+        return false;
+    }
+    return true;
 }
-Estudiante *Handlerusuarios::getEstudiante(std::string email){
+
+Estudiante* Handlerusuarios::getEstudiante(std::string email){
+    for (std::set<Estudiante*>::iterator it=this->estudiantes.begin(); it!=this->estudiantes.end(); ++it){
+        Estudiante* est = *it;
+        if (est->getEmail() == email){
+            return est;
+        } 
+    }
     return NULL;
 }
-Usuario *Handlerusuarios::getUsuario(std::string email){
+
+Usuario* Handlerusuarios::getUsuario(std::string email){
+    Estudiante* est = this->getEstudiante(email);
+    if (est != NULL){
+        return est;
+    }
+    Docente* doc = this->getDocente(email);
+    if (doc != NULL){
+        return doc;
+    }
     return NULL;
 }
-void Handlerusuarios::notificar(Asignatura *a, Mensaje *m){
 
+void Handlerusuarios::notificar(Asignatura* a, Mensaje* m){
 }
-void Handlerusuarios::addSubscripto(Usuario *u){
 
+void Handlerusuarios::addSubscripto(Usuario* u){
 }
-void Handlerusuarios::removerSubscripto(Usuario *u){
 
+void Handlerusuarios::removerSubscripto(Usuario* u){
 }
