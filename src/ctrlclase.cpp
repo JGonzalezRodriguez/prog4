@@ -74,11 +74,20 @@ modalidad CtrlClase::getModalidad(){
     return docente->getModalidad(asignatura);
 }
 std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilitados(){
-    std::set<DtEstudiante*> x;
-    return x;
+    std::set<Estudiante*> colest = asignatura->getEstudiantes();
+    std::set<DtEstudiante*> coldtest;
+    for (std::set<Estudiante*>::iterator it=colest.begin(); it!=colest.end(); ++it) {
+        Estudiante* est = *it;
+        DtEstudiante* nuevodt = new DtEstudiante(est->getCi(),est->getNombre(),est->getEmail(),est->getImagen(),est->getContrasenia());
+        coldtest.insert(nuevodt);
+    }
+    return coldtest;
 }
 void CtrlClase::elegirEstudiante(std::string ci){
-
+    Estudiante* e = asignatura->getEstudiante(ci);
+    if (e == NULL)
+        throw std::invalid_argument("No hay un estudiante habilitado con esa CI");
+    estudiantes.insert(e);
 }
 DtClase *CtrlClase::mostrarDatos(){
     return NULL;
