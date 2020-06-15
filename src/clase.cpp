@@ -1,5 +1,11 @@
 #include "../include/clase.h"
 
+int Clase::seed = 0;
+
+int Clase::getSeed() { 
+    return seed;
+}
+
 DtFecha *Clase::getFechayhoracomienzo(){
     return this->fechayhoracomienzo;
 }
