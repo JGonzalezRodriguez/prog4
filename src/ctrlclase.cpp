@@ -1,4 +1,5 @@
 #include "../include/ctrlclase.h"
+#include <iostream>
 
 CtrlClase *CtrlClase::instancia = NULL;
 
@@ -35,8 +36,15 @@ void CtrlClase::setMod(modalidad mod){
 
 
 void CtrlClase::identificarse(std::string email, std::string contrasenia){
-
+    Handlerusuarios* handu = Handlerusuarios::getInstancia();
+    bool identi = handu->identificarse(email, contrasenia);
+    if (!identi) 
+        throw std::invalid_argument("Email o contraseña incorrectos");
+    this->docente = handu->getDocente(email);
+    if (this->docente == NULL)
+        throw std::invalid_argument("Usted no es un docente")
 }
+
 std::set<DtAsignatura*> CtrlClase::listarAsignaturasDocente(){
     std::set<DtAsignatura*> x;
     return x;
