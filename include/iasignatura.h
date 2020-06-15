@@ -16,6 +16,9 @@ class IAsignatura {
         virtual void confirmarAsignacionDocenteAsignatura(bool confi) = 0;
         virtual void confirmarEliminacionAsignatura(bool conf) = 0;
         virtual ~IAsignatura() {};
+        virtual void altaAsignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon);
+        virtual DtAsignatura* mostrarDatosAsignatura();
+        virtual void confirmarAltaAsignatura(bool conf);
 };
 
 #endif

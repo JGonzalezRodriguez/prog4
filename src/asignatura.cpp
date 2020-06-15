@@ -1,7 +1,11 @@
 #include "../include/asignatura.h"
 
 Asignatura::Asignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) {
-
+    this->nombre = nombre;
+    this->codigo = codigo;
+    this->tieneteo = tieneteo;
+    this->tieneprac = tieneprac;
+    this->tienemon = tienemon;
 }
 
 void Asignatura::addDocente(Dicta* dic) {

@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdio>
 #include <sstream>
+#include "../include/fabrica.h"
 
 int main() {
     printf("\n Bienvenide, elija una opcion:");
@@ -35,6 +36,68 @@ int main() {
                         break;
                     }
                     case 2: {
+                        ///////////////// ALTA ASIGNATURA //////////////////////////
+                        //obteniendo datos
+                        std::string nombre, codigo, teo, prac, mon;
+                        bool tieneteo, tieneprac, tienemon;
+                        printf("\nPorfavor ingrese el nombre de la asignatura que desea dar de alto\n");
+                        std::cin.ignore(1); // ignora el "2" ingresado previamente?
+                        getline(std::cin, nombre);
+                        printf("\nIngrese el codigo de la asignatura. Debe ser unico\n");
+                        std::cin.clear();
+                        getline(std::cin, codigo);
+                        printf("\nLa asignatura tendra modalidad de teorico? s/n\n");
+                        getline(std::cin, teo);
+                        if (teo == "s"){
+                            tieneteo = true;
+                        }else if (teo == "n"){
+                            tieneteo = false;
+                        }else {
+                            throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
+                        }
+                        printf("\nLa asignatura tendra modalidad de practico? s/n\n");
+                        getline(std::cin, prac);
+                        if (prac == "s"){
+                            tieneprac = true;
+                        }else if (prac == "n"){
+                            tieneprac = false;
+                        }else{
+                            throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
+                        }
+                        printf("\nLa asignatura tendra modalidad de monitoreo? s/n\n");
+                        printf("eureka");
+                        getline(std::cin, mon);
+                        if (mon == "s"){
+                            tienemon = true;
+                        }else if (mon == "n"){
+                            tienemon = false;
+                        }else{
+                            throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
+                        }
+                        //creando asignatura
+                        IAsignatura* interface = Fabrica::getIAsignatura(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
+                        interface->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
+                        DtAsignatura* asignatura = interface->mostrarDatosAsignatura();
+                        //TODO: sobrecargar '<<' para poder imprimir DtAsignatura (no quiero pisarme con nadie)
+                        //mostrando datos a lo rustico de maneria provisoria:
+                        std::cout << asignatura->getNombre();
+                        std::cout << asignatura->getCodigo();
+                        //confirmando
+                        printf("\nConfirmar alta de asignatura? s/n\n");
+                        std::string cConf;
+                        std::cin.ignore();
+                        getline(std::cin, cConf);
+                        bool bConf;
+                        if (cConf == "s"){
+                            bConf = true;
+                        }else if (cConf == "n"){
+                            bConf = false;
+                        }else{
+                            throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
+                        }
+                        interface->confirmarAltaAsignatura(bConf);
+                        delete asignatura;
+                        delete interface;
                         break;
                     }
                     case 3: {

@@ -22,6 +22,8 @@ class CtrlAsignatura : public IAsignatura {
         Docente* doc;
         Asignatura* asig;
         CtrlAsignatura();
+        ~CtrlAsignatura();
+
     public:
         static CtrlAsignatura* getInstancia();
         std::set<DtAsignatura*> listarAsignaturas();
@@ -52,6 +54,10 @@ class CtrlAsignatura : public IAsignatura {
         @param conf
         */
         void confirmarEliminacionAsignatura(bool conf); 
+        void altaAsignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon);
+        DtAsignatura* mostrarDatosAsignatura();
+        void confirmarAltaAsignatura(bool conf);
+
 };
 
 #endif
