@@ -71,7 +71,7 @@ void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre, 
         throw std::invalid_argument("El docente no tiene una asignatura con ese codigo");
 }
 modalidad CtrlClase::getModalidad(){
-    return this->mod;
+    return docente->getModalidad(asignatura);
 }
 std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilitados(){
     std::set<DtEstudiante*> x;
