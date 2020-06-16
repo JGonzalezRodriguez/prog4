@@ -12,6 +12,8 @@ class DtEstudiante: public DtUsuario{
         DtEstudiante(std::string ci, std::string nombre, std::string email, std::string imagen, std::string contrasenia);
         ~DtEstudiante();
         std::string getCi();
-        std::ostream& operator<< (std::ostream& os, DtEstudiante &b);
 };
+
+std::ostream& operator<< (std::ostream& os, DtEstudiante &b);
+
 #endif

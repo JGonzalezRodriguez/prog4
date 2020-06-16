@@ -97,7 +97,7 @@ int main() {
                             char letraselec;
                             printf("\n Desea agregar un nuevo estudiante al monitoreo? s/n: ");
                             scanf("%s", &letraselec);
-                            while (cant < 15 && &letraselec == "s") {
+                            while (cant < 15 && letraselec == 's') {
                                 std::set<DtEstudiante*> coldtest= ctrl->listarEstudiantesHabilitados();
 
                                 for (std::set<DtEstudiante*>::iterator it=coldtest.begin(); it!=coldtest.end(); ++it) {
