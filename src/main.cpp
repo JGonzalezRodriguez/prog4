@@ -313,6 +313,8 @@ int main() {
                             }
                             
                         }
+                        delete asignatura;
+
                         break;
                     }
                     case 2: {
