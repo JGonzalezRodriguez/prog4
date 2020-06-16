@@ -336,9 +336,12 @@ int main() {
             }
             case 4: {
                 //Cargar Controladores
-                IAsignatura* ctrlA = Fabrica::getIAsignatura();
-                IUsuario* ctrlU = Fabrica::getIUsuario();
-                IClase* ctrlC = Fabrica::getIClase();
+                Fabrica* f = Fabrica::getInstancia();
+                IAsignatura* ctrlA = f->getIAsignatura();
+                IUsuario* ctrlU = f->getIUsuario();
+                //IAsignatura* ctrlA = Fabrica::getIAsignatura();
+                //IUsuario* ctrlU = Fabrica::getIUsuario();
+                //IClase* ctrlC = Fabrica::getIClase();
                 //Cargar Docentes
                 ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(6));
                 ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(6));
