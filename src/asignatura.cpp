@@ -55,3 +55,8 @@ bool Asignatura::tienePrac() {
 bool Asignatura::tieneMon() {
     return true;
 }
+
+DtAsignatura* Asignatura::getDt() {
+    DtAsignatura* x = new DtAsignatura(this->nombre, this->codigo);
+    return x;
+}
