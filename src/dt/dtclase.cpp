@@ -1,6 +1,5 @@
 #include "../include/dt/dtclase.h"
 #include <string>
-#include <ostream>
 
 DtClase::DtClase(DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente){
     this->fechayhoracomienzo = fechayhoracomienzo;
@@ -36,9 +35,4 @@ DtFecha* DtClase::getFechaYHoraFinal(){
 
 DtDocente* DtClase::getDocente(){
     return this->docente;
-}
-
-std::ostream& operator<< (std::ostream& os, DtClase &b) {
-    os << "Fecha comiezo: " << b.getFechaYHoraComienzo() << std::endl << "Fecha final: " << b.getFechaYHoraFinal() << std::endl << "Id: " << b.getId() << std::endl << "Url: " << b.getUrl() << std::endl << "Docente: " << b.getDocente() << std::endl << "Nombre: " << b.getNombre() << std::endl;
-    return os;
 }

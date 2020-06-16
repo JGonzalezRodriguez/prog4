@@ -16,7 +16,6 @@ class Mensaje;
 
 class Clase {
     private:
-        static int seed;
         DtFecha *fechayhoracomienzo;
         std::string id;
         bool envivo;
@@ -28,7 +27,6 @@ class Clase {
         std::set<Mensaje*> mensajes;
         Docente* doc;
     public:
-        static int getSeed();
         DtFecha *getFechayhoracomienzo();
         void setFechayhoracomienzo(DtFecha*);
         void setId(std::string);
