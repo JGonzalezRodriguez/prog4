@@ -38,38 +38,38 @@ int main() {
                     case 2: {
                         ///////////////// ALTA ASIGNATURA //////////////////////////
                         //obteniendo datos
-                        std::string nombre, codigo, teo, prac, mon;
+                        std::string nombre, codigo;
+                        char teo, prac, mon;
                         bool tieneteo, tieneprac, tienemon;
                         printf("\nPorfavor ingrese el nombre de la asignatura que desea dar de alto\n");
                         std::cin.ignore(1); // ignora el "2" ingresado previamente?
                         getline(std::cin, nombre);
                         printf("\nIngrese el codigo de la asignatura. Debe ser unico\n");
-                        std::cin.clear();
                         getline(std::cin, codigo);
                         printf("\nLa asignatura tendra modalidad de teorico? s/n\n");
-                        getline(std::cin, teo);
-                        if (teo == "s"){
+                        std::cin >> teo;
+                        if (teo == 's'){
                             tieneteo = true;
-                        }else if (teo == "n"){
+                        }else if (teo == 'n'){
                             tieneteo = false;
                         }else {
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
                         printf("\nLa asignatura tendra modalidad de practico? s/n\n");
-                        getline(std::cin, prac);
-                        if (prac == "s"){
+                        std::cin >> prac;
+                        if (prac == 's'){
                             tieneprac = true;
-                        }else if (prac == "n"){
+                        }else if (prac == 'n'){
                             tieneprac = false;
                         }else{
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
                         printf("\nLa asignatura tendra modalidad de monitoreo? s/n\n");
+                        std::cin >> mon;
                         printf("eureka");
-                        getline(std::cin, mon);
-                        if (mon == "s"){
+                        if (mon == 's'){
                             tienemon = true;
-                        }else if (mon == "n"){
+                        }else if (mon == 'n'){
                             tienemon = false;
                         }else{
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
@@ -84,13 +84,12 @@ int main() {
                         std::cout << asignatura->getCodigo();
                         //confirmando
                         printf("\nConfirmar alta de asignatura? s/n\n");
-                        std::string cConf;
-                        std::cin.ignore();
-                        getline(std::cin, cConf);
+                        char cConf;
+                        std::cin >> cConf;
                         bool bConf;
-                        if (cConf == "s"){
+                        if (cConf == 's'){
                             bConf = true;
-                        }else if (cConf == "n"){
+                        }else if (cConf == 'n'){
                             bConf = false;
                         }else{
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
