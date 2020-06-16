@@ -11,13 +11,14 @@
 #include "ctrlsubscripcion.h"
 #include "ctrlusuario.h"
 
+//TODO: singleton o no instanciable? si es singleton xq los metodos son static?
 class Fabrica {
     private:
         static Fabrica *instancia;
         Fabrica();
         
     public:
-        static Fabrica *getInstancia();
+        static Fabrica* getInstancia();
         static IAsignatura* getIAsignatura();
         static IClase* getIClase();
         static IMensaje* getIMensaje();
