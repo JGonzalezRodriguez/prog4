@@ -5,16 +5,12 @@ CtrlAsignatura *CtrlAsignatura::instancia = NULL;
 
 CtrlAsignatura::CtrlAsignatura(){}
 
-CtrlAsignatura* CtrlAsignatura::instancia = NULL;
-
 CtrlAsignatura* CtrlAsignatura::getInstancia() {
     if (instancia == NULL){
         instancia = new CtrlAsignatura;
     }
    return instancia; 
 }
-
-CtrlAsignatura::CtrlAsignatura() {};
 
 std::map<std::string, DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
     HandlerAsignaturas* h = HandlerAsignaturas::getInstancia();
