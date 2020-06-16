@@ -67,7 +67,6 @@ int main() {
                         }
                         printf("\nLa asignatura tendra modalidad de monitoreo? s/n\n");
                         std::cin >> mon;
-                        printf("eureka");
                         if (mon == 's'){
                             tienemon = true;
                         }else if (mon == 'n'){
