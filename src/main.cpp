@@ -180,8 +180,7 @@ int main() {
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
                         interface->getIAsignatura()->confirmarAltaAsignatura(bConf);
-                        delete asignatura;
-                        delete interface;
+                        
                         break;
                     }
                     case 3: {
