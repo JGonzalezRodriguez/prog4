@@ -1,9 +1,16 @@
 #include "../include/ctrlasignatura.h"
 #include "../include/handlerasignaturas.h"
 
+CtrlAsignatura *CtrlAsignatura::instancia = NULL;
 
-CtrlAsignatura* CtrlAsignatura::getInstancia() {
-   return NULL; 
+CtrlAsignatura::CtrlAsignatura(){
+    
+}
+
+CtrlAsignatura *CtrlAsignatura::getInstancia() {
+    if(instancia == NULL)
+        instancia = new CtrlAsignatura();
+   return instancia; 
 }
 
 std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {

@@ -6,6 +6,7 @@
 #include <sstream>
 #include "../include/fabrica.h"
 
+using namespace std;
 int main() {
     printf("\n Bienvenide, elija una opcion:");
     int opcion;
@@ -75,9 +76,9 @@ int main() {
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
                         //creando asignatura
-                        IAsignatura* interface = Fabrica::getIAsignatura(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
-                        interface->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
-                        DtAsignatura* asignatura = interface->mostrarDatosAsignatura();
+                        Fabrica *interface = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
+                        interface->getIAsignatura()->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
+                        DtAsignatura* asignatura = interface->getIAsignatura()->mostrarDatosAsignatura();
                         //TODO: sobrecargar '<<' para poder imprimir DtAsignatura (no quiero pisarme con nadie)
                         //mostrando datos a lo rustico de maneria provisoria:
                         std::cout << asignatura->getNombre();
@@ -94,7 +95,7 @@ int main() {
                         }else{
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
-                        interface->confirmarAltaAsignatura(bConf);
+                        interface->getIAsignatura()->confirmarAltaAsignatura(bConf);
                         delete asignatura;
                         delete interface;
                         break;

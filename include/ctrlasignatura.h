@@ -22,7 +22,7 @@ class CtrlAsignatura : public IAsignatura {
         Docente* doc;
         Asignatura* asig;
         CtrlAsignatura();
-        ~CtrlAsignatura();
+        //~CtrlAsignatura();
 
     public:
         static CtrlAsignatura* getInstancia();
