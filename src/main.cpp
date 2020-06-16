@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <sstream>
 #include "../include/fabrica.h"
+#include "../include/reloj.h"
 #include <map>
 #include <iterator>
 
@@ -224,9 +225,31 @@ int main() {
                         ctrl->confirmarAsignacionDocenteAsignatura(confi);
                     }
                     case 5: {
+                        //////////MODIFICAR FECHA DEL SISTEMA////////////
+                        int anio, mes, dia, min, hora;
+                        printf("\nIngrese el año deseado\n");
+                        scanf("%d", &anio);
+                        printf("\nIngrese el mes deseado\n");
+                        scanf("%d", &mes);
+                        printf("\nIngrese el dia deseado\n");
+                        scanf("%d", &dia);
+                        printf("\nIngrese la hora deseada\n");
+                        scanf("%d", &hora);
+                        printf("\nIngrese el minuto deseado\n");
+                        scanf("%d", &min);
+                        Reloj* reloj = Reloj::getInstancia();
+                        DtFecha* fecha = new DtFecha(dia, mes, anio, hora, min);
+                        reloj->setFecha(fecha);
+                        printf("\nFecha ingresada con exito. El tiempo de sistema es el siguiente:\n");
+                        std::cout << *fecha;
                         break;
                     }
                     case 6: {
+                        //////////CONSULTAR FECHA DEL SISTEMA////////////
+                        Reloj* reloj = Reloj::getInstancia();
+                        DtFecha* fecha = reloj->getFecha();
+                        printf("\nEl tiempo de sistema es el siguiente:\n");
+                        std::cout << *fecha;
                         break;
                     }
                     default: {
