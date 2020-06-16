@@ -24,3 +24,20 @@ http://www.cplusplus.com/reference/stl/
 https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implementacion%20-%20colecciones.pdf
 
 **Solo usar set y map**
+
+## Status casos de uso:
+- Alta de usuario
+- Alta de asignatura
+- Asignación de docentes a una asignatura
+- Inscripción a las asignaturas
+- Inicio de clase
+- Finalización de clase
+- Envío de mensaje
+- Asistencia a clase en vivo
+- Finalización de asistencia a clase en vivo
+- Tiempo de dictado de clases
+- Tiempo de asistencia a clase
+- Eliminación de asignatura
+- Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario)
+- Consulta de notificaciones
+
