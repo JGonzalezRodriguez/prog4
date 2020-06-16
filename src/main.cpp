@@ -4,6 +4,7 @@
 #include <string>
 #include <cstdio>
 #include <sstream>
+#include "../include/fabrica.h"
 
 int main() {
     printf("\n Bienvenide, elija una opcion:");
@@ -72,6 +73,12 @@ int main() {
                 scanf("%d", &opcion2);
                 switch(opcion2){
                     case 1: {
+                        // inicio de clase
+                        IClase* ctrl = Fabrica::getIClase();
+                        std::string email, contrasenia;
+                        
+                        ctrl->identificarse(email, contrasenia);
+
                         break;
                     }
                     case 2: {
