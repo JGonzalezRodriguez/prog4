@@ -26,10 +26,8 @@ DtFecha *CtrlClase::getFecha(){
 void CtrlClase::setFecha(DtFecha *fecha){
     this->fecha = fecha;
 }
-modalidad CtrlClase::getMod(){
-    return this->mod;
-}
-void CtrlClase::setMod(modalidad mod){
+
+void CtrlClase::setModalidad(modalidad mod){
     this->mod = mod;
 }
 

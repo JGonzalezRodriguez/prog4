@@ -11,6 +11,7 @@
 #include "estudiante.h"
 #include "asignatura.h"
 #include <set>
+#include <map>
 #include "handlerasignaturas.h"
 #include "handlerusuarios.h"
 #include "dicta.h"
@@ -23,7 +24,11 @@ class CtrlAsignatura : public IAsignatura {
         Asignatura* asig;
         CtrlAsignatura();
         //~CtrlAsignatura();
-
+        //agrego dos nuevos atributos para el CU inscripcion asignatura
+        std::string email;
+        std::string contrasenia;
+        bool identificado;
+        bool codigovalido;
     public:
         static CtrlAsignatura* getInstancia();
         std::set<DtAsignatura*> listarAsignaturas();
@@ -58,6 +63,13 @@ class CtrlAsignatura : public IAsignatura {
         DtAsignatura* mostrarDatosAsignatura();
         void confirmarAltaAsignatura(bool conf);
 
+        //Agrego las operaciones correspondientes al caso de uso inscripcion a asignatura
+        void identificarse(std::string email, std::string contrasenia);
+        std::set<DtAsignatura*> listarAsignaturasEstudiante();
+        void elegirAsignaturaEst(std::string codigo);
+        void confirmarInscripcionAsignatura(bool confi);
+        bool getIdentificado();
+        bool getCodigovalido();
 };
 
 #endif

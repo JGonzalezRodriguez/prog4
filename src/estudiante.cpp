@@ -32,4 +32,6 @@ void Estudiante::setCi(std::string ci){
             this->ci = ci;
         }
 
-
+        void Estudiante::addAsignatura(Asignatura *a){
+            this->asignaturas.insert(a);
+        }

@@ -2,6 +2,7 @@
 #define DTASIGNATURA_H
 
 #include <string>
+#include <iostream>
 
 class DtAsignatura{
     private:
@@ -13,4 +14,6 @@ class DtAsignatura{
         std::string getNombre();
         std::string getCodigo();
 };
+
+std::ostream& operator<< (std::ostream& os, DtAsignatura &b);
 #endif
