@@ -91,6 +91,7 @@ std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturasEstudiante(){
     
     HandlerAsignaturas *a = HandlerAsignaturas::getInstancia();
     std::map<std::string, Asignatura*> asignaturas = a->get();
+    
     Handlerusuarios *u = Handlerusuarios::getInstancia();
     Estudiante *est = u->getEstudiante(this->email);
     

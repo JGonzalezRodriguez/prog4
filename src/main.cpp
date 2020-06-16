@@ -166,8 +166,9 @@ int main() {
                         DtAsignatura* asignatura = interface->getIAsignatura()->mostrarDatosAsignatura();
                         //TODO: sobrecargar '<<' para poder imprimir DtAsignatura (no quiero pisarme con nadie)
                         //mostrando datos a lo rustico de maneria provisoria:
-                        std::cout << asignatura->getNombre();
-                        std::cout << asignatura->getCodigo();
+                        //std::cout << asignatura->getNombre();
+                        //std::cout << asignatura->getCodigo();
+                        cout << *asignatura;
                         //confirmando
                         printf("\nConfirmar alta de asignatura? s/n\n");
                         char cConf;
@@ -285,7 +286,7 @@ int main() {
                                 std::set<DtAsignatura*> lista = asignatura->getIAsignatura()->listarAsignaturasEstudiante();
                                 std::set<DtAsignatura*>::iterator it;
                                 for(it = lista.begin(); it != lista.end(); ++it){
-                                    cout << endl << *it;
+                                    cout << endl << **it;
                                 }
                                 std::string codigo;
                                 cin.ignore();

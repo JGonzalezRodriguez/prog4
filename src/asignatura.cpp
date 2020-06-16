@@ -13,12 +13,11 @@ void Asignatura::addDocente(Dicta* dic) {
 }
 
 void Asignatura::addEstudiante(Estudiante* e) {
-    
+    this->estudiantes.insert(e);
 }
 
 std::set<Estudiante*> Asignatura::getEstudiantes() {
-    std::set<Estudiante*> x;
-    return x;
+    return this->estudiantes;
 }
 
 Estudiante* Asignatura::getEstudiante(std::string CI) {
