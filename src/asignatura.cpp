@@ -30,26 +30,21 @@ std::set<Clase*> Asignatura::getClases() {
     return x;
 }
 
-std::string Asignatura::getNombre() {
-    return this->nombre;
+std::string getNombre() {
+    return NULL;
 }
-std::string Asignatura::getCodigo() {
-    return this->codigo;
+std::string getCodigo() {
+    return NULL;
 }
 
-bool Asignatura::tieneTeo() {
+bool tieneTeo() {
     return true;
 }   
 
-bool Asignatura::tienePrac() {
+bool tienePrac() {
     return true;
 }
 
-bool Asignatura::tieneMon() {
+bool tieneMon() {
     return true;
-}
-
-DtAsignatura* Asignatura::getDt() {
-    DtAsignatura* x = new DtAsignatura(this->nombre, this->codigo);
-    return x;
 }
