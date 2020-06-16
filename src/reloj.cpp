@@ -10,7 +10,7 @@ Reloj::Reloj(DtFecha* fecha) {
 
 Reloj * Reloj::getInstancia() {
     if (instancia == nullptr) {
-        DtFecha* f = new DtFecha(1,1,1,1,1);
+        DtFecha* f = new DtFecha(22, 6, 2020, 23, 0); //hora por defecto fecha de entrega
         instancia = new Reloj(f);
     }
     return instancia;
