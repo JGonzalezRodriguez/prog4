@@ -35,7 +35,7 @@ int main() {
                 switch(opcion2){
                     case 1: {
                         bool agregarusuario = true;
-                        Fabrica *usuario = Fabrica::getInstancia();
+                        Fabrica *f = Fabrica::getInstancia();
                         while(agregarusuario){
                             char letraselec;
                             printf("\n Desea agregar un nuevo usuario al sistema? s/n: ");
@@ -92,14 +92,14 @@ int main() {
                                             break;
                                         }
                                     }
-                                    usuario->getIUsuario()->altaDocente(nombre, email, contrasenia, imagen, elegido);
+                                    f->getIUsuario()->altaDocente(nombre, email, contrasenia, imagen, elegido);
                             
                                 }else{
                                     std::string ci;
                                     cin.ignore();
                                     printf("\n Introduzca su CI: ");
                                     getline(std::cin, ci);
-                                    usuario->getIUsuario()->altaEstudiante(nombre, email, contrasenia, imagen, ci);
+                                    f->getIUsuario()->altaEstudiante(nombre, email, contrasenia, imagen, ci);
                                 
                                 }
                                 char letraconf;
@@ -108,17 +108,13 @@ int main() {
                                 scanf("%s", &letraconf);
                                 if(letraconf == 's'){
                                     confirmacion = true;
-                                    usuario->getIUsuario()->confirmarAltaUsuario(confirmacion);
+                                    f->getIUsuario()->confirmarAltaUsuario(confirmacion);
                                 }
                             agregarusuario = true;
                             }else
                                 agregarusuario = false;
                                 
-                            
-                            
                         }
-                    delete usuario;
-
                     break;
 
                 }
@@ -314,7 +310,6 @@ int main() {
                             }
                             
                         }
-                        delete asignatura;
 
                         break;
                     }
