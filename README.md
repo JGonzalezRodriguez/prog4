@@ -26,8 +26,8 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 **Solo usar set y map**
 
 ## Estatus casos de uso:
-- Alta de usuario
-- Alta de asignatura
+- Alta de usuario: OK
+- Alta de asignatura: OK
 - Asignación de docentes a una asignatura
 - Inscripción a las asignaturas
 - Inicio de clase
