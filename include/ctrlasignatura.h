@@ -11,9 +11,6 @@
 #include "estudiante.h"
 #include "asignatura.h"
 #include <set>
-#include <iostream>
-#include <map>
-#include <iterator>
 #include "handlerasignaturas.h"
 #include "handlerusuarios.h"
 #include "dicta.h"
@@ -27,11 +24,7 @@ class CtrlAsignatura : public IAsignatura {
         CtrlAsignatura();
     public:
         static CtrlAsignatura* getInstancia();
-        /**
-        Crea un set de DtAsignautra a partir de la col(DtAsignatura).
-        @return col(DtAsignatura)
-        */
-        std::map<std::string, DtAsignatura*> listarAsignaturas();
+        std::set<DtAsignatura*> listarAsignaturas();
         /**
         Ejecuta un find en el set de asignaturas del sistema. Guarda la asignatura resultante.
         @param codigo el valor para el cual se ejecuta el find.
@@ -59,11 +52,6 @@ class CtrlAsignatura : public IAsignatura {
         @param conf
         */
         void confirmarEliminacionAsignatura(bool conf); 
-        /**
-        Presenta los datos a la capa de presentacion
-        @return booleano de confirmacion.
-        */
-        bool getConfi();
 };
 
 #endif

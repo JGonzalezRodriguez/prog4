@@ -4,7 +4,6 @@
 #include "usuario.h"
 #include "dicta.h"
 #include "clase.h"
-#include "dt/dtdocente.h"
 #include <set>
 
 class Asignatura;
@@ -27,11 +26,6 @@ class Docente: public Usuario{
         virtual bool tieneAsignatura(Asignatura *a);
        
         //operaciones mismas de docente
-        /**
-        Genera un DtDocente de la instancia del objeto.
-        @return Dt de la instancia
-        */
-        DtDocente* getDt();
         void addAsignatura(Dicta *dicta);
         void deslinkear(Dicta *dicta);
         std::set<Asignatura*> getAsignaturas();
