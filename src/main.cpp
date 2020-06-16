@@ -13,6 +13,7 @@ int main() {
     printf("\n Bienvenide, elija una opcion:");
     int opcion;
     while(opcion != 5){
+    try {
         printf("\n1. Administrador");
         printf("\n2. Docente");
         printf("\n3. Estudiante");
@@ -463,6 +464,10 @@ int main() {
                 break;
             }
         }
+    } catch (const std::invalid_argument& ia) {
+        std::cerr << "Invalid argument: " << ia.what() << '\n';
+        //atrapa el invalid argument y lo imprime, evitando que termine el programa.
+    }
     }
     return 0;
 }
