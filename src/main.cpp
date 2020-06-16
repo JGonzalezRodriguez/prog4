@@ -76,6 +76,7 @@ int main() {
                         // inicio de clase
                         IClase* ctrl = Fabrica::getIClase();
                         std::string email, contrasenia;
+                        std::cin.ignore();
                         printf("\n Introduzca su email: ");
                         getline(std::cin, email);
                         printf("\n Introduzca su contrasenia: ");
