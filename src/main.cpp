@@ -10,7 +10,8 @@
 
 using namespace std;
 int main() {
-    printf("\n Bienvenide, elija una opcion:");
+    printf("\nBienvenide a FingClass, elija una opcion:");
+    printf("\n");
     int opcion;
     while(opcion != 5){
     try {
@@ -19,7 +20,7 @@ int main() {
         printf("\n3. Estudiante");
         printf("\n4. Cargar datos de prueba");
         printf("\n5. Salir");
-        printf("\n");
+        printf("\n\n");
             
         scanf("%d", &opcion);
         switch(opcion){
