@@ -3,6 +3,7 @@
 
 #include <string>
 #include "dtusuario.h"
+#include <iostream>
 
 class DtEstudiante: public DtUsuario{
     private:
@@ -11,5 +12,6 @@ class DtEstudiante: public DtUsuario{
         DtEstudiante(std::string ci, std::string nombre, std::string email, std::string imagen, std::string contrasenia);
         ~DtEstudiante();
         std::string getCi();
+        std::ostream& operator<< (std::ostream& os, DtEstudiante &b);
 };
 #endif

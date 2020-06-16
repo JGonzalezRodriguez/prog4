@@ -76,9 +76,51 @@ int main() {
                         // inicio de clase
                         IClase* ctrl = Fabrica::getIClase();
                         std::string email, contrasenia;
-                        
+                        printf("\n Introduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\n Introduzca su contrasenia: ");
+                        getline(std::cin, contrasenia);
                         ctrl->identificarse(email, contrasenia);
+                        std::set<DtAsignatura*> coldtasig = ctrl->listarAsignaturasDocente();
+                        for (std::set<DtAsignatura*>::iterator it=coldtasig.begin(); it!=coldtasig.end(); ++it) {
+                            std::cout << std::endl << *it;
+                        }
+                        std::string codigo, nombre;
+                        printf("\n Introduzca el codigo de la asignatura de la cual desea iniciar una clase: ");
+                        getline(std::cin, codigo);
+                        printf("\n Introduzca el nombre que tendra la clase que va a iniciar: ");
+                        getline(std::cin, nombre);
+                        ctrl->inicioDeClase(codigo, nombre);
+                        modalidad mod = ctrl->getModalidad();
+                        if (mod == monitoreo) {
+                            int cant = 0;
+                            char letraselec;
+                            printf("\n Desea agregar un nuevo estudiante al monitoreo? s/n: ");
+                            scanf("%s", &letraselec);
+                            while (cant < 15 && &letraselec == "s") {
+                                std::set<DtEstudiante*> coldtest= ctrl->listarEstudiantesHabilitados();
 
+                                for (std::set<DtEstudiante*>::iterator it=coldtest.begin(); it!=coldtest.end(); ++it) {
+                                    std::cout << std::endl << *it;
+                                }
+
+                                printf("\n Introduzca la CI del estudiante al que desea agregar: ");
+                                std::string CI;
+                                getline(std::cin, CI);
+                                ctrl->elegirEstudiante(CI);
+                                printf("\n Desea agregar un nuevo estudiante al monitoreo? s/n: ");
+                                scanf("%s", &letraselec);
+                                cant++;
+                            }    
+                        }
+                        DtClase* preview = ctrl->mostrarDatos();
+                        std::cout << std::endl << *preview;
+
+                        printf("\n Desea confirmar s/n: ");
+                        char letraconf;
+                        scanf("%s", &letraconf);
+                        bool confirmacion = letraconf == 's';
+                        ctrl->confirmarInicioDeClase(confirmacion);
                         break;
                     }
                     case 2: {

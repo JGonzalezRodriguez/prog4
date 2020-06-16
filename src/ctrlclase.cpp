@@ -7,6 +7,7 @@
 #include "../include/practico.h"
 #include "../include/teorico.h"
 #include "../include/monitoreo.h"
+#include "../include/reloj.h"
 
 CtrlClase *CtrlClase::instancia = NULL;
 
@@ -61,9 +62,10 @@ std::set<DtAsignatura*> CtrlClase::listarAsignaturasDocente(){
     }
     return coldtasig;
 }
-void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha *fecha){
+void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre){
     this->nombre = nombre;
-    this->fecha = fecha;
+    Reloj* r = Reloj::getInstancia();
+    this->fecha = r->getFecha();
     std::set<Asignatura*> colasig = docente->getAsignaturas();
     bool encontro = false;
     for (std::set<Asignatura*>::iterator it=colasig.begin(); it!=colasig.end(); ++it) {
