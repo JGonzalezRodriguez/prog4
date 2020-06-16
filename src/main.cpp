@@ -44,13 +44,15 @@ int main() {
                         break;
                     }
                     case 4: {
+                        std::cin.ignore();
                         IAsignatura* ctrl = Fabrica::getIAsignatura();
                         std::map<std::string, DtAsignatura*> x = ctrl->listarAsignaturas();
                         if (x.empty()) break;
                         std::map<std::string, DtAsignatura*>::iterator it;
                         for (it = x.begin(); it != x.end(); it++){
-                            std::cout << "(%s, %s)" << it->first, it->second->getNombre();
+                            std::cout << "%s. %s" << it->first, it->second->getNombre();
                         };
+                        std::cout << "\nIngrese el Codigo de la asignatura\n";
                         std::string codigo;
                         std::cin >> codigo;
                         delete[] &x;
@@ -59,18 +61,22 @@ int main() {
                         if (z.empty()) break;
                         std::set<DtDocente*>::iterator it2;
                         for (it2 = z.begin(); it2 != z.end(); it2++){
-                            std::cout << "(%s, %s)" << (*it2)->getNombre(), (*it2)->getEmail();
+                            std::cout << "%d. (%s, %s)" <<(*it2), (*it2)->getNombre(), (*it2)->getEmail();
                         }
-                        std::string email;
+                        int id = 0;
                         int mod;
-                        std::cin >> email;
+                        while (id > std::distance(it2, z.begin()) || id <= 0){
+                            std::cout << "\nIngrese el numero del docente deseado.\n";
+                            std::cin >> id;
+                        }
+                        for(int i=1;i<=id;it2++);
                         printf("\n Elija la modalidad del docente:");
                         printf("\n 1. Teorico");
                         printf("\n 2. Practico");
                         printf("\n 3. Monitoreo");
                         printf("\n");
                         std::cin >> mod;
-                        ctrl->elegirdocente(modalidad(mod),email);
+                        ctrl->elegirdocente(modalidad(mod),(*it2)->getEmail());
                         delete[] &z;
                         bool confi = ctrl->getConfi();
                         ctrl->confirmarAsignacionDocenteAsignatura(confi);
