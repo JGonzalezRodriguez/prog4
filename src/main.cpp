@@ -4,8 +4,9 @@
 #include <string>
 #include <cstdio>
 #include <sstream>
-#include "fabrica.h"
+#include "../include/fabrica.h"
 
+using namespace std;
 int main() {
     printf("\n Bienvenide, elija una opcion:");
     int opcion;
@@ -33,8 +34,94 @@ int main() {
                 scanf("%d", &opcion2);
                 switch(opcion2){
                     case 1: {
-                        break;
-                    }
+                        bool agregarusuario = true;
+                        Fabrica *usuario = Fabrica::getInstancia();
+                        while(agregarusuario){
+                            char letraselec;
+                            printf("\n Desea agregar un nuevo usuario al sistema? s/n: ");
+                            scanf("%s", &letraselec);
+                            if(letraselec == 's'){
+                                cin.ignore();
+                                std::string nombre, contrasenia, email, imagen;
+                                bool docente;
+                                char letra;
+                                printf("\n Introduzca su nombre: ");
+                                getline(std::cin, nombre);
+                                printf("\n Introduzca su contraseña: ");
+                                getline(std::cin, contrasenia);
+                                printf("\n Introduzca su email: ");
+                                getline(std::cin, email);
+                                printf("\n Introduzca el URL de su imagen: ");
+                                getline(std::cin, imagen);
+                                printf("\n Si el usuario a ingresar es docente presione la letra 'd', si es estudiante presione la letra 'e': ");
+                                scanf("%s", &letra);
+                                if(letra == 'd')
+                                    docente = true;
+                                else
+                                    docente = false;
+                                
+                            
+                                if(docente){//pregunto si es docnete para saber si muestro los institutos 
+                                
+                                    printf("\n Seleccione un instituto: ");
+                                    printf("\n 1. IMERL");
+                                    printf("\n 2. IIE");
+                                    printf("\n 3. IA");
+                                    printf("\n 4. DISI");
+                                    printf("\n 5. IF");
+                                    printf("\n 6. INCO");
+                                    printf("\n Elija una opcion: ");
+                                    char inst;
+                                    scanf("%s", &inst);
+                                    instituto elegido;
+                                    switch(inst) {
+                                        case '1': elegido = IMERL;
+                                            break;
+                                        case '2': elegido = IIE;
+                                            break;
+                                        case '3': elegido = IA;
+                                            break; 
+                                        case '4': elegido = DISI;
+                                            break;
+                                        case '5': elegido = IF;
+                                            break;
+                                        case '6': elegido = INCO;
+                                            break;
+                                        default: {
+                                            throw std::invalid_argument("Número no válido");
+                                            break;
+                                        }
+                                    }
+                                    usuario->getIUsuario()->altaDocente(nombre, email, contrasenia, imagen, elegido);
+                            
+                                }else{
+                                    std::string ci;
+                                    cin.ignore();
+                                    printf("\n Introduzca su CI: ");
+                                    getline(std::cin, ci);
+                                    usuario->getIUsuario()->altaEstudiante(nombre, email, contrasenia, imagen, ci);
+                                
+                                }
+                                char letraconf;
+                                bool confirmacion = false;
+                                printf("\n Desea confirmar s/n: ");
+                                scanf("%s", &letraconf);
+                                if(letraconf == 's'){
+                                    confirmacion = true;
+                                    usuario->getIUsuario()->confirmarAltaUsuario(confirmacion);
+                                }
+                            agregarusuario = true;
+                            }else
+                                agregarusuario = false;
+                                
+                            
+                            
+                        }
+                    delete usuario;
+
+                    break;
+
+                }
                     case 2: {
                         break;
                     }
@@ -113,6 +200,59 @@ int main() {
                 scanf("%d", &opcion2);
                 switch(opcion2){
                     case 1: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *asignatura = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        asignatura->getIAsignatura()->identificarse(email, contrasenia);
+                        bool inscribirse = false;
+                        if(asignatura->getIAsignatura()->getIdentificado())
+                            inscribirse = true;
+                        else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+                        while(inscribirse){
+                            char letraselec;
+                            printf("\nDesea inscribirse a una nueva asignatura? s/n: ");
+                            scanf("%s", &letraselec);
+                            if(letraselec == 's'){
+                                std::set<DtAsignatura*> lista = asignatura->getIAsignatura()->listarAsignaturasEstudiante();
+                                std::set<DtAsignatura*>::iterator it;
+                                for(it = lista.begin(); it != lista.end(); ++it){
+                                    cout << endl << *it;
+                                }
+                                std::string codigo;
+                                cin.ignore();
+                                printf("\nIntroduzca el código de la asignatura que desee inscribirse: ");
+                                getline(std::cin, codigo);
+                                asignatura->getIAsignatura()->elegirAsignaturaEst(codigo);
+                                if(!asignatura->getIAsignatura()->getCodigovalido()){
+                                    printf("\nLo sentimos el código introducido no es válido");
+                                    printf("\n");
+                                    break;
+                                }
+                                
+                                
+                                char letraconf;
+                                bool confirmacion = false;
+                                printf("\nDesea confirmar s/n: ");
+                                scanf("%s", &letraconf);
+                                if(letraconf == 's'){
+                                    confirmacion = true;
+                                    asignatura->getIAsignatura()->confirmarInscripcionAsignatura(confirmacion);
+                                }
+                            }else
+                            {
+                                inscribirse = false;
+                            }
+                            
+                        }
                         break;
                     }
                     case 2: {
