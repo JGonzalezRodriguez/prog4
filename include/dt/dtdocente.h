@@ -12,4 +12,7 @@ class DtDocente: public DtUsuario{
         ~DtDocente();
         instituto getInstituto();
 };
+
+std::ostream& operator<< (std::ostream& os, DtDocente &b);
+
 #endif
