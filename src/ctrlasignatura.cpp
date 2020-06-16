@@ -44,7 +44,7 @@ void CtrlAsignatura::altaAsignatura(std::string nombre, std::string codigo, bool
 
 DtAsignatura* CtrlAsignatura::mostrarDatosAsignatura(){
     // return this->asig.getDt(); 
-    DtAsignatura* dummy = new DtAsignatura("dummy", "dummy");
+    DtAsignatura* dummy = new DtAsignatura(this->asig->getNombre(), this->asig->getCodigo());
     return dummy;
     //TODO: borrar y descomentar
 }
@@ -57,6 +57,7 @@ void CtrlAsignatura::confirmarAltaAsignatura(bool conf){
     }else{
         printf("\nCancelando. La asignatura no fue dada de alta.\n");
     }
+}
 
 bool CtrlAsignatura::getIdentificado(){
     return this->identificado;
