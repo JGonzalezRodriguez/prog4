@@ -21,6 +21,9 @@ class IAsignatura {
         virtual std::set<DtAsignatura*> listarAsignaturasEstudiante() = 0;
         virtual void elegirAsignaturaEst(std::string codigo) = 0;
         virtual void confirmarInscripcionAsignatura(bool confi) = 0;
+        virtual bool getIdentificado() = 0;
+        virtual bool getCodigovalido() = 0;
+        
 };
 
 #endif

@@ -14,3 +14,8 @@ std::string DtAsignatura::getNombre(){
 std::string DtAsignatura::getCodigo(){
     return this->codigo;
 }
+
+std::ostream& operator<< (std::ostream& os, DtAsignatura &b) {
+    os << "Nombre: " << b.getNombre() << std::endl << "Código: " << b.getCodigo() << std::endl;
+    return os;
+}

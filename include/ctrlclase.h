@@ -28,8 +28,7 @@ class CtrlClase: public IClase{
         void setNombre(std::string);
         DtFecha *getFecha();
         void setFecha(DtFecha*);
-        modalidad getMod();
-        void setMod(modalidad);
+        void setModalidad(modalidad);
         
         void identificarse(std::string email, std::string contrasenia);
         std::set<DtAsignatura*> listarAsignaturasDocente();
