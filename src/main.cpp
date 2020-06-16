@@ -275,8 +275,35 @@ int main() {
                 break;
             }
             case 4: {
-                //TODO: cargar casos prueba (todo hardcodeado)
-                break;
+                //Cargar Controladores
+                IAsignatura* ctrlA = Fabrica::getIAsignatura();
+                IUsuario* ctrlU = Fabrica::getIUsuario();
+                IClase* ctrlC = Fabrica::getIClase();
+                //Cargar Docentes
+                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(6));
+                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(6));
+                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(6));
+                //Cargar Estudiantes
+                ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");
+                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "p4ss", "fotito.com/4", "23456789");
+                ctrlU->altaEstudiante("Ramon Valdez", "ramon@mail.com", "pass", "fotito.com/5", "34567890");
+                /*Cargar Asignaturas
+                Donde esta altaAsignatura?
+                */
+
+                //Asignacion Docente Asignatura
+                ctrlA->elegirdocente(modalidad(1), "juan@mail.com");
+                ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->confirmarAsignacionDocenteAsignatura(true);
+
+                ctrlA->elegirdocente(modalidad(2), "maria@mail.com");
+                ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->confirmarAsignacionDocenteAsignatura(true);
+
+                ctrlA->elegirdocente(modalidad(3), "jorge@mail.com");
+                ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->confirmarAsignacionDocenteAsignatura(true);
+
             }
             case 5: {
                 printf("Gracias por usar FingClass, hasta la proxima!\n");
