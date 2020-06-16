@@ -159,13 +159,10 @@ int main() {
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
                         //creando asignatura
-                        Fabrica *interface = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
-                        interface->getIAsignatura()->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
-                        DtAsignatura* asignatura = interface->getIAsignatura()->mostrarDatosAsignatura();
-                        //TODO: sobrecargar '<<' para poder imprimir DtAsignatura (no quiero pisarme con nadie)
-                        //mostrando datos a lo rustico de maneria provisoria:
-                        //std::cout << asignatura->getNombre();
-                        //std::cout << asignatura->getCodigo();
+                        Fabrica* fabrica = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
+                        IAsignatura* interface = fabrica->getIAsignatura();
+                        interface->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
+                        DtAsignatura* asignatura = interface->mostrarDatosAsignatura();
                         cout << *asignatura;
                         //confirmando
                         printf("\nConfirmar alta de asignatura? s/n\n");
@@ -179,9 +176,8 @@ int main() {
                         }else{
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
-                        interface->getIAsignatura()->confirmarAltaAsignatura(bConf);
+                        interface->confirmarAltaAsignatura(bConf);
                         delete asignatura;
-                        delete interface;
                         break;
                     }
                     case 3: {
