@@ -49,3 +49,7 @@ Docente::Docente(std::string nombre, std::string email, std::string contrasenia,
     this->inst = instituto;
 }
 
+DtDocente* Docente::getDt(){
+    DtDocente* x = new DtDocente(this->getInstituto(), this->getNombre(), this->getEmail(), this->getImagen(), this->getContrasenia());
+    return x;
+}

@@ -1,9 +1,11 @@
 //TODO: incluir coso para imprimir, para excepciones, etc
-#include<stdio.h>
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include <cstdio>
 #include <sstream>
+#include <map>
+#include <iterator>
 #include "../include/fabrica.h"
 
 using namespace std;
@@ -186,7 +188,42 @@ int main() {
                         break;
                     }
                     case 4: {
-                        break;
+                        std::cin.ignore();
+                        IAsignatura* ctrl = Fabrica::getIAsignatura();
+                        std::map<std::string, DtAsignatura*> x = ctrl->listarAsignaturas();
+                        if (x.empty()) break;
+                        std::map<std::string, DtAsignatura*>::iterator it;
+                        for (it = x.begin(); it != x.end(); it++){
+                            std::cout << "%s. %s" << it->first, it->second->getNombre();
+                        };
+                        std::cout << "\nIngrese el Codigo de la asignatura\n";
+                        std::string codigo;
+                        std::cin >> codigo;
+                        delete[] &x;
+                        ctrl->elegirAsignaturaAdmin(codigo);
+                        std::set<DtDocente*> z = ctrl->listarDocentes();
+                        if (z.empty()) break;
+                        std::set<DtDocente*>::iterator it2;
+                        for (it2 = z.begin(); it2 != z.end(); it2++){
+                            std::cout << "%d. (%s, %s)" <<(*it2), (*it2)->getNombre(), (*it2)->getEmail();
+                        }
+                        int id = 0;
+                        int mod;
+                        while (id > std::distance(it2, z.begin()) || id <= 0){
+                            std::cout << "\nIngrese el numero del docente deseado.\n";
+                            std::cin >> id;
+                        }
+                        for(int i=1;i<=id;it2++);
+                        printf("\n Elija la modalidad del docente:");
+                        printf("\n 1. Teorico");
+                        printf("\n 2. Practico");
+                        printf("\n 3. Monitoreo");
+                        printf("\n");
+                        std::cin >> mod;
+                        ctrl->elegirdocente(modalidad(mod),(*it2)->getEmail());
+                        delete[] &z;
+                        bool confi = ctrl->getConfi();
+                        ctrl->confirmarAsignacionDocenteAsignatura(confi);
                     }
                     case 5: {
                         break;
@@ -333,6 +370,7 @@ int main() {
                 break;
             }
             case 4: {
+             
                 //Cargar Controladores
                 Fabrica* f = Fabrica::getInstancia();
                 IAsignatura* ctrlA = f->getIAsignatura();
@@ -364,7 +402,8 @@ int main() {
                 ctrlA->elegirdocente(modalidad(3), "jorge@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
-
+                
+                break;
             }
             case 5: {
                 printf("Gracias por usar FingClass, hasta la proxima!\n");
