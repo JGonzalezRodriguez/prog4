@@ -2,7 +2,11 @@
 #include "../include/estudiante.h"
 
 Asignatura::Asignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) {
-
+    this->nombre = nombre;
+    this->codigo = codigo;
+    this->tieneteo = tieneteo;
+    this->tieneprac = tieneprac;
+    this->tienemon = tienemon;
 }
 
 void Asignatura::addDocente(Dicta* dic) {
@@ -10,12 +14,11 @@ void Asignatura::addDocente(Dicta* dic) {
 }
 
 void Asignatura::addEstudiante(Estudiante* e) {
-    
+    this->estudiantes.insert(e);
 }
 
 std::set<Estudiante*> Asignatura::getEstudiantes() {
-    std::set<Estudiante*> x;
-    return x;
+    return this->estudiantes;
 }
 
 Estudiante* Asignatura::getEstudiante(std::string CI) {

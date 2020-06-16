@@ -25,6 +25,12 @@ class CtrlAsignatura : public IAsignatura {
         Docente* doc;
         Asignatura* asig;
         CtrlAsignatura();
+        //~CtrlAsignatura();
+        //agrego dos nuevos atributos para el CU inscripcion asignatura
+        std::string email;
+        std::string contrasenia;
+        bool identificado;
+        bool codigovalido;
     public:
         static CtrlAsignatura* getInstancia();
         /**
@@ -59,11 +65,23 @@ class CtrlAsignatura : public IAsignatura {
         @param conf
         */
         void confirmarEliminacionAsignatura(bool conf); 
+
         /**
         Presenta los datos a la capa de presentacion
         @return booleano de confirmacion.
         */
         bool getConfi();
+        void altaAsignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon);
+        DtAsignatura* mostrarDatosAsignatura();
+        void confirmarAltaAsignatura(bool conf);
+
+        //Agrego las operaciones correspondientes al caso de uso inscripcion a asignatura
+        void identificarse(std::string email, std::string contrasenia);
+        std::set<DtAsignatura*> listarAsignaturasEstudiante();
+        void elegirAsignaturaEst(std::string codigo);
+        void confirmarInscripcionAsignatura(bool confi);
+        bool getIdentificado();
+        bool getCodigovalido();
 };
 
 #endif

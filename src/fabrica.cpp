@@ -2,6 +2,16 @@
 
 class IAsignatura;
 
+Fabrica *Fabrica::instancia = NULL;
+
+Fabrica::Fabrica(){}
+
+Fabrica *Fabrica::getInstancia(){
+    if(instancia == NULL)
+        instancia = new Fabrica();
+    return instancia;
+}
+
 IAsignatura* Fabrica::getIAsignatura() {
     return CtrlAsignatura::getInstancia();
 }
