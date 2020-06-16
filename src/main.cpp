@@ -7,7 +7,6 @@
 #include "../include/fabrica.h"
 #include <map>
 #include <iterator>
-#include "fabrica.h"
 
 int main() {
     printf("\n Bienvenide, elija una opcion:");
