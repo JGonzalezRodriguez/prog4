@@ -1,5 +1,6 @@
 #ifndef DTFECHA_H
 #define DTFECHA_H
+#include <iostream>
 
 class DtFecha{
     private:
@@ -18,5 +19,7 @@ class DtFecha{
         int getHora();
         int getMin();
 };
+
+std::ostream& operator<< (std::ostream& os, DtFecha &b);
 #endif
 

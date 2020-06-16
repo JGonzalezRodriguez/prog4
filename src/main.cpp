@@ -117,7 +117,7 @@ int main() {
                             
                             
                         }
-                    usuario->getIUsuario()->~IUsuario();
+                    delete usuario;
 
                     break;
 

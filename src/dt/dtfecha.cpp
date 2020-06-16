@@ -38,3 +38,8 @@ int DtFecha::getMin(){
     return this->min;
 }
 
+std::ostream& operator<< (std::ostream& os, DtFecha &b) {
+    os << b.getDia() << '/' << b.getMes() << '/' << b.getAnio() << std::endl << "Hora: " << b.getHora() << ':' << b.getMin() << std::endl;
+
+    return os;
+}
