@@ -31,6 +31,7 @@ class Estudiante : public Usuario {
         std::set<Asignatura*> getAsignaturas();
         Asignatura *getAsignatura(std::string codigo);
         Estudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci);//constructor
+        void addAsignatura(Asignatura *a);//se agrega para poder asignarle una asignatura al estudiante
 };
 
 

@@ -18,7 +18,7 @@ class HandlerAsignaturas {
         std::map<std::string, Asignatura*> get();
         Asignatura* find(std::string codigo);
         void remove(Asignatura* a);
-        void add(std::string codigo, Asignatura* a);
+        void add(Asignatura* a);
 };
 
 #endif
