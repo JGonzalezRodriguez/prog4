@@ -310,7 +310,6 @@ int main() {
                             }
                             
                         }
-                        delete asignatura;
 
                         break;
                     }
