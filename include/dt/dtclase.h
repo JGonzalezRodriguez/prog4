@@ -27,7 +27,4 @@ class DtClase{
         DtDocente* getDocente();
         //Notese que todas estas cosas estan definidas aca simplemente para no tener q definirlas tres veces en DtTeorico, DtPractico y DtMonitoreo. (se heredan)
 };
-
-std::ostream& operator<< (std::ostream& os, DtClase &b);
-
 #endif

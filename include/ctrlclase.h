@@ -33,7 +33,7 @@ class CtrlClase: public IClase{
         
         void identificarse(std::string email, std::string contrasenia);
         std::set<DtAsignatura*> listarAsignaturasDocente();
-        void inicioDeClase(std::string codigoasignatura, std::string nombre);
+        void inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha *fecha);
         modalidad getModalidad();
         std::set<DtEstudiante*> listarEstudiantesHabilitados();
         void elegirEstudiante(std::string ci);
