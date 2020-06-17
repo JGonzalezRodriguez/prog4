@@ -96,6 +96,7 @@ void CtrlClase::elegirEstudiante(std::string ci){
     estudiantes.insert(e);
 }
 DtPreview* CtrlClase::mostrarDatos(){
+    mod = docente->getModalidad(asignatura);
     Reloj* r = Reloj::getInstancia();
     DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
     std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
