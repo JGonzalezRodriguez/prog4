@@ -5,7 +5,6 @@
 #include "dtfecha.h"
 #include "dtdocente.h"
 #include "dtestudiante.h"
-#include "dtpreview.h"
 #include "enums.h"
 #include <set>
 
@@ -29,6 +28,7 @@ class DtPreview{
         DtFecha* getFechaYHoraComienzo();
         DtDocente* getDocente();
         modalidad getMod();
+        std::set<DtEstudiante*> getEstudiantes();
         //Notese que todas estas cosas estan definidas aca simplemente para no tener q definirlas tres veces en DtTeorico, DtPractico y DtMonitoreo. (se heredan)
 };
 

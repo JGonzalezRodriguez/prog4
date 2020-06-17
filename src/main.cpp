@@ -348,8 +348,12 @@ int main() {
                             }    
                         }
                         DtPreview* preview = ctrl->mostrarDatos();
-                        std::cout << std::endl << *preview;
+                        std::cout << std::endl << *preview << std::endl;
                         // LUEGO DEL PREVIEW SE DEBERIA LISTAR LOS ESTUDIANTES ELEGIDOS
+                        std::cout  << "Estudiantes elegidos: " << std::endl;
+                        for (std::set<DtEstudiante*>::iterator it=((*preview).getEstudiantes()).begin(); it!=((*preview).getEstudiantes()).end(); ++it) {
+                            std::cout << std::endl << **it << std::endl;
+                        }
 
                         printf("\n Desea confirmar s/n: ");
                         char letraconf;
