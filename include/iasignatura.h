@@ -2,7 +2,6 @@
 #define IASIGNATURA_H
 
 #include <set>
-#include <map>
 #include <string>
 #include "dt/dtasignatura.h"
 #include "dt/dtdocente.h"
@@ -16,7 +15,6 @@ class IAsignatura {
         virtual void elegirdocente(modalidad modalidad, std::string emaildocente) = 0;
         virtual void confirmarAsignacionDocenteAsignatura(bool confi) = 0;
         virtual void confirmarEliminacionAsignatura(bool conf) = 0;
-        virtual bool getConfi() = 0;
         virtual ~IAsignatura() {};
         //virtual ~IAsignatura() = 0;
         virtual void altaAsignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) = 0;

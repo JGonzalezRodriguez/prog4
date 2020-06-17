@@ -5,7 +5,6 @@
 #include <set> 
 #include "dicta.h"
 #include "clase.h"
-#include "dt/dtasignatura.h"
 
 class Estudiante;
 class Dicta;
@@ -53,11 +52,6 @@ class Asignatura {
          @return El codigo de la Asignatura
         */
         std::string getCodigo();
-        /**
-        @return DtAsignatura del objeto
-        */
-        DtAsignatura* getDt();
-        
         bool tieneTeo();
         bool tienePrac();
         bool tieneMon();

@@ -11,9 +11,6 @@
 #include "estudiante.h"
 #include "asignatura.h"
 #include <set>
-#include <iostream>
-#include <map>
-#include <iterator>
 #include "handlerasignaturas.h"
 #include "handlerusuarios.h"
 #include "dicta.h"

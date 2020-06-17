@@ -12,9 +12,6 @@ class HandlerAsignaturas {
         std::map<std::string, Asignatura*> mapasignaturas;
     public:
         static HandlerAsignaturas* getInstancia();
-        /**
-        @return un map de Asignaturas del sistema
-        */
         std::map<std::string, Asignatura*> get();
         Asignatura* find(std::string codigo);
         void remove(Asignatura* a);

@@ -6,13 +6,11 @@ CtrlAsignatura *CtrlAsignatura::instancia = NULL;
 CtrlAsignatura::CtrlAsignatura(){}
 
 CtrlAsignatura* CtrlAsignatura::getInstancia() {
-    if (instancia == NULL){
-        instancia = new CtrlAsignatura;
-    }
-   return instancia; 
+   return NULL; 
 }
 
 std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
+
     HandlerAsignaturas* h = HandlerAsignaturas::getInstancia();
     std::map<std::string, Asignatura*> x = h->get();
     std::map<std::string, Asignatura*>::iterator it;
@@ -31,8 +29,7 @@ std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
 }
 
 void CtrlAsignatura::elegirAsignaturaAdmin(std::string codigo) {
-    HandlerAsignaturas* h = HandlerAsignaturas::getInstancia();
-    this->asig = h->find(codigo);
+
 }
 
 std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
@@ -107,11 +104,7 @@ bool CtrlAsignatura::getConfi(){
 }
 
 void CtrlAsignatura::confirmarAsignacionDocenteAsignatura(bool confi) {
-    if (confi == true){
-        Dicta* d = new Dicta(this->mod, this->doc, this->asig);
-        this->doc->addAsignatura(d);
-        this->asig->addDocente(d);
-    }
+
 }
 
 void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {

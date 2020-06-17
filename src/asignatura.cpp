@@ -1,5 +1,4 @@
 #include "../include/asignatura.h"
-#include "../include/estudiante.h"
 
 Asignatura::Asignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) {
     this->nombre = nombre;
@@ -22,17 +21,11 @@ std::set<Estudiante*> Asignatura::getEstudiantes() {
 }
 
 Estudiante* Asignatura::getEstudiante(std::string CI) {
-    for (std::set<Estudiante*>::iterator it=this->estudiantes.begin(); it!=this->estudiantes.end(); ++it){
-        Estudiante* est = *it;
-        if (est->getCi() == CI){
-            return est;
-        } 
-    }
     return NULL;
 }
 
 void Asignatura::addClase(Clase* c) {
-    clases.insert(c);
+
 }
 
 std::set<Clase*> Asignatura::getClases() {
@@ -40,11 +33,11 @@ std::set<Clase*> Asignatura::getClases() {
     return x;
 }
 
-std::string Asignatura::getNombre() {
-    return this->nombre;
+std::string getNombre() {
+    return NULL;
 }
-std::string Asignatura::getCodigo() {
-    return this->codigo;
+std::string getCodigo() {
+    return NULL;
 }
 
 bool Asignatura::tieneTeo() {

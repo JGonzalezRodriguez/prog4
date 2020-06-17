@@ -1,6 +1,5 @@
 #include "../include/dt/dtclase.h"
 #include <string>
-#include <ostream>
 
 DtClase::DtClase(modalidad mod, DtFecha* fechayhoracomienzo, DtFecha* fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente* docente){
     this->fechayhoracomienzo = fechayhoracomienzo;

@@ -1,5 +1,5 @@
 //TODO: incluir coso para imprimir, para excepciones, etc
-#include <stdio.h>
+#include<stdio.h>
 #include <iostream>
 #include <string>
 #include <cstdio>
@@ -260,6 +260,7 @@ int main() {
                             }
                             
                         }
+
                         break;
                     }
                     case 5: {
@@ -371,6 +372,7 @@ int main() {
                         scanf("%s", &letraconf);
                         bool confirmacion = letraconf == 's';
                         ctrl->confirmarInicioDeClase(confirmacion);
+
                         break;
                     }
                     case 2: {

@@ -10,8 +10,3 @@ DtEstudiante::~DtEstudiante(){}
 std::string DtEstudiante::getCi(){
     return this->ci;
 }
-
-std::ostream& operator<< (std::ostream& os, DtEstudiante &b) {
-    os << "Nombre: " << b.getNombre() << std::endl << "Email: " << b.getEmail() << std::endl << "Imagen: " << b.getImagen() << std::endl << "Contrasenia: " << b.getContrasenia() << std::endl << "CI: " << b.getCi() << std::endl;
-    return os;
-}
