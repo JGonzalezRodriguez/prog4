@@ -18,7 +18,7 @@ bool Docente::tieneAsignatura(Asignatura *a){
        
 //operaciones mismas de docente
 void Docente::addAsignatura(Dicta *dicta){
-
+    this->dictas.insert(dicta);
 }
 void Docente::deslinkear(Dicta *dicta){
 

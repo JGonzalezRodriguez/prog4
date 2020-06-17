@@ -12,18 +12,20 @@ CtrlAsignatura* CtrlAsignatura::getInstancia() {
    return instancia; 
 }
 
-std::map<std::string, DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
+std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
     HandlerAsignaturas* h = HandlerAsignaturas::getInstancia();
     std::map<std::string, Asignatura*> x = h->get();
     std::map<std::string, Asignatura*>::iterator it;
-    std::map<std::string, DtAsignatura*> y;
+    std::set<DtAsignatura*> y;
     if (x.empty()) {
         std::cout << "\n\033[1;31mNo hay ninguna asignatura en el sistema. Por favor agregue asignaturas e intente nuevamente.\033[0m\n";
         return y;
     }
     for ( it = x.begin(); it != x.end(); it++ )
     {
-        y.insert(std::pair<std::string, DtAsignatura*>(it->first,it->second->getDt()));
+        y.insert(it->second->getDt());
+
+
     }
     return y;
 }
@@ -44,7 +46,11 @@ std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
     }
     for ( it = x.begin(); it != x.end(); it++ )
     {
-        y.insert((*it)->getDt());
+        std::set<Asignatura*> colec = (*it)->getAsignaturas();
+        std::set<Asignatura*>::iterator itasign = colec.find(this->asig);
+        if(itasign == colec.end()){
+            y.insert((*it)->getDt());//crea el DtType y lo retorna;
+        }
     }
     return y;
 }
@@ -56,12 +62,18 @@ void CtrlAsignatura::elegirdocente(modalidad mod, std::string emaildocente) {
 }
 
 bool CtrlAsignatura::getConfi(){
-    std::cout << "Desea asignar al docente %s a la asignatura %s con modalidad %s?" , this->doc->getNombre(), this->asig->getNombre(), std::to_string(this->mod);
+    std::cout << "\nDesea asignar al docente "<<this->doc->getNombre()<< " a la asignatura " << this->asig->getNombre() << " con la modalidad seleccionada?" << std::endl;
     printf("\n 1. Si");
     printf("\n 2. No");
-    int yn;
-    scanf("%d", &yn);
-    return (yn-1);
+    printf("\n");
+    bool confi = false;
+    char inst;
+    scanf("%s", &inst);
+    if(inst == '1'){
+        confi = true;
+    }
+    return confi;
+
 }
 
 void CtrlAsignatura::confirmarAsignacionDocenteAsignatura(bool confi) {

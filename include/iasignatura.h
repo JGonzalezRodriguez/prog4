@@ -10,7 +10,7 @@
 
 class IAsignatura {
     public:
-        virtual std::map<std::string, DtAsignatura*> listarAsignaturas() = 0;
+        virtual std::set<DtAsignatura*> listarAsignaturas() = 0;
         virtual void elegirAsignaturaAdmin(std::string codigo) = 0;
         virtual std::set<DtDocente*> listarDocentes() = 0;
         virtual void elegirdocente(modalidad modalidad, std::string emaildocente) = 0;
