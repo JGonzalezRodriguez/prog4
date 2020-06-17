@@ -188,19 +188,19 @@ int main() {
                     }
                     case 4: {
                         std::cin.ignore();
-                        IAsignatura* ctrl = Fabrica::getIAsignatura();
-                        std::map<std::string, DtAsignatura*> x = ctrl->listarAsignaturas();
+                        Fabrica* ctrl = Fabrica::getInstancia();
+                        std::set<DtAsignatura*> x = ctrl->getIAsignatura()->listarAsignaturas();
                         if (x.empty()) break;
-                        std::map<std::string, DtAsignatura*>::iterator it;
+                        std::set<DtAsignatura*>::iterator it;
                         for (it = x.begin(); it != x.end(); it++){
-                            std::cout << "%s. %s" << it->first, it->second->getNombre();
+                            std::cout << **it;
                         };
                         std::cout << "\nIngrese el Codigo de la asignatura\n";
                         std::string codigo;
                         std::cin >> codigo;
-                        delete[] &x;
-                        ctrl->elegirAsignaturaAdmin(codigo);
-                        std::set<DtDocente*> z = ctrl->listarDocentes();
+                        //delete[] &x;
+                        ctrl->getIAsignatura()->elegirAsignaturaAdmin(codigo);
+                        std::set<DtDocente*> z = ctrl->getIAsignatura()->listarDocentes();
                         if (z.empty()) break;
                         std::set<DtDocente*>::iterator it2;
                         for (it2 = z.begin(); it2 != z.end(); it2++){
@@ -219,10 +219,10 @@ int main() {
                         printf("\n 3. Monitoreo");
                         printf("\n");
                         std::cin >> mod;
-                        ctrl->elegirdocente(modalidad(mod),(*it2)->getEmail());
+                        ctrl->getIAsignatura()->elegirdocente(modalidad(mod),(*it2)->getEmail());
                         delete[] &z;
-                        bool confi = ctrl->getConfi();
-                        ctrl->confirmarAsignacionDocenteAsignatura(confi);
+                        bool confi = ctrl->getIAsignatura()->getConfi();
+                        ctrl->getIAsignatura()->confirmarAsignacionDocenteAsignatura(confi);
                     }
                     case 5: {
                         break;

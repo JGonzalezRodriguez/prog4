@@ -21,8 +21,7 @@ void Estudiante::setCi(std::string ci){
 
         }
         std::set<Asignatura*> Estudiante::getAsignaturas(){
-            std::set<Asignatura*> x;
-            return x;
+            return this->asignaturas;
         }
         Asignatura *Estudiante::getAsignatura(std::string codigo){
             return NULL;

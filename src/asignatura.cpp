@@ -10,7 +10,7 @@ Asignatura::Asignatura(std::string nombre, std::string codigo, bool tieneteo, bo
 }
 
 void Asignatura::addDocente(Dicta* dic) {
-
+    this->dictas.insert(dic);
 }
 
 void Asignatura::addEstudiante(Estudiante* e) {

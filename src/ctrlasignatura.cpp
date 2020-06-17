@@ -12,18 +12,20 @@ CtrlAsignatura* CtrlAsignatura::getInstancia() {
    return instancia; 
 }
 
-std::map<std::string, DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
+std::set<DtAsignatura*> CtrlAsignatura::listarAsignaturas() {
     HandlerAsignaturas* h = HandlerAsignaturas::getInstancia();
     std::map<std::string, Asignatura*> x = h->get();
     std::map<std::string, Asignatura*>::iterator it;
-    std::map<std::string, DtAsignatura*> y;
+    std::set<DtAsignatura*> y;
     if (x.empty()) {
         std::cout << "\n\033[1;31mNo hay ninguna asignatura en el sistema. Por favor agregue asignaturas e intente nuevamente.\033[0m\n";
         return y;
     }
     for ( it = x.begin(); it != x.end(); it++ )
     {
-        y.insert(std::pair<std::string, DtAsignatura*>(it->first,it->second->getDt()));
+        y.insert(it->second->getDt());
+
+
     }
     return y;
 }
@@ -44,7 +46,11 @@ std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
     }
     for ( it = x.begin(); it != x.end(); it++ )
     {
-        y.insert((*it)->getDt());
+        std::set<Asignatura*> colec = (*it)->getAsignaturas();
+        std::set<Asignatura*>::iterator itasign = colec.find(this->asig);
+        if(itasign == colec.end()){
+            y.insert((*it)->getDt());//crea el DtType y lo retorna;
+        }
     }
     return y;
 }

@@ -37,7 +37,7 @@ class CtrlAsignatura : public IAsignatura {
         Crea un set de DtAsignautra a partir de la col(DtAsignatura).
         @return col(DtAsignatura)
         */
-        std::map<std::string, DtAsignatura*> listarAsignaturas();
+        std::set<DtAsignatura*> listarAsignaturas();
         /**
         Ejecuta un find en el set de asignaturas del sistema. Guarda la asignatura resultante.
         @param codigo el valor para el cual se ejecuta el find.
