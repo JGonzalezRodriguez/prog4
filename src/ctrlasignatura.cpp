@@ -151,7 +151,8 @@ bool CtrlAsignatura::getCodigovalido(){
 
 void CtrlAsignatura::identificarse(std::string email, std::string contrasenia){
     Handlerusuarios *u = Handlerusuarios::getInstancia();
-    if(u->identificarse(email, contrasenia)){
+    if(u->identificarse(email, contrasenia) && u->getDocente(email) == NULL){
+        
         //si esta identificado el ctrl recuerda el email y la contrasenia
         this->email = email;
         this->contrasenia = contrasenia;
