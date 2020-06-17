@@ -30,6 +30,8 @@ class IAsignatura {
         virtual void confirmarInscripcionAsignatura(bool confi) = 0;
         virtual bool getIdentificado() = 0;
         virtual bool getCodigovalido() = 0;
+        virtual bool tieneAsignaturaMod(modalidad mod) = 0;
+        virtual void imprimirModalidad() = 0;
 };
 
 #endif
