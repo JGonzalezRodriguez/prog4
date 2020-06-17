@@ -28,13 +28,13 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 ## Estatus casos de uso:
 - Alta de usuario: **OK**
 - Alta de asignatura: **OK**
-- Asignación de docentes a una asignatura
+- Asignación de docentes a una asignatura SANTI ESTA DEBUGEANDO
 - Inscripción a las asignaturas **OK**
-- Inicio de clase
-- Finalización de clase
-- Envío de mensaje
-- Asistencia a clase en vivo
-- Finalización de asistencia a clase en vivo
+- Inicio de clase HECHA FALTA TESTEAR
+- Finalización de clase HACIENDO ACQUA
+- Envío de mensaje HACIENDO NICO
+- Asistencia a clase en vivo HACIENDO JOACO
+- Finalización de asistencia a clase en vivo (QUIZAS LA HAGA JOACO)
 - Tiempo de dictado de clases
 - Tiempo de asistencia a clase
 - Eliminación de asignatura
