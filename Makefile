@@ -16,8 +16,8 @@ MODULOS = asignatura asistenciavivo clase claseestudiante ctrlasignatura ctrlcla
 MODULOS += ctrlreproduccion ctrlsubscripcion ctrlusuario dicta docente estudiante handlerasignaturas 
 MODULOS += handlerusuarios mensaje monitoreo notificacion practico reloj srespuesta teorico usuario
 MODULOS += dt/dtasignatura dt/dtasignaturaext dt/dtclase dt/dtdocente dt/dtestudiante dt/dtfecha 
-MODULOS += dt/dtmensaje dt/dtmonitoreo dt/dtnotificacion dt/dtpractico dt/dtpromasistencia dt/dtteorico
-MODULOS += dt/dttiempoasignatura dt/dtusuario fabrica
+MODULOS += dt/dtmensaje dt/dtnotificacion dt/dtpromasistencia
+MODULOS += dt/dttiempoasignatura dt/dtusuario fabrica dt/dtpreview 
 
 # IMPORTANTE hay que poner como "modulos" todos los archivos de src a compilar
 

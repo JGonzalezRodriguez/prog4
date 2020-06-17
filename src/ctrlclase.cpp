@@ -1,9 +1,8 @@
 #include "../include/ctrlclase.h"
 #include <iostream>
 #include "../include/handlerasignaturas.h"
-#include "../include/dt/dtpractico.h"
-#include "../include/dt/dtteorico.h"
-#include "../include/dt/dtmonitoreo.h"
+#include "../include/dt/dtclase.h"
+#include "../include/dt/dtpreview.h"
 #include "../include/practico.h"
 #include "../include/teorico.h"
 #include "../include/monitoreo.h"
@@ -95,25 +94,26 @@ void CtrlClase::elegirEstudiante(std::string ci){
         throw std::invalid_argument("No hay un estudiante habilitado con esa CI");
     estudiantes.insert(e);
 }
-DtClase *CtrlClase::mostrarDatos(){
+DtPreview* CtrlClase::mostrarDatos(){
     Reloj* r = Reloj::getInstancia();
     DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
-    if (mod == practico) { //DtPractico(DtFecha *fechayhoracomienzo, DtFecha *fechayhorafinal, bool envivo, std::string id, std::string nombre, std::string url, DtDocente *docente)
-        DtPractico* dtclase = new DtPractico(r->getFecha(), NULL, true,  std::to_string(Clase::getSeed()), nombre, "https://fingclass.edu.uy/" + std::to_string(Clase::getSeed()), dtdoc);
-         return dtclase;
-    } else if (mod == teorico) {
-        DtTeorico* dtclase = new DtTeorico(0 ,r->getFecha(), NULL, true,  std::to_string(Clase::getSeed()), nombre, "https://fingclass.edu.uy/" + std::to_string(Clase::getSeed()), dtdoc);
-         return dtclase;
-    } else if (mod == monitoreo) {
+    std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
+
+    if (mod == monitoreo) {
         std::set<DtEstudiante*> setdtest;
         for (std::set<Estudiante*>::iterator it=estudiantes.begin(); it!=estudiantes.end(); ++it) {
             Estudiante* est = *it;
             DtEstudiante* nuevodt = new DtEstudiante(est->getCi(),est->getNombre(),est->getEmail(),est->getImagen(),est->getContrasenia());
             setdtest.insert(nuevodt);
         }
-        DtMonitoreo* dtclase = new DtMonitoreo(setdtest,r->getFecha(), NULL, true,  std::to_string(Clase::getSeed()), nombre, "https://fingclass.edu.uy/" + std::to_string(Clase::getSeed()), dtdoc);
-         return dtclase;
+        DtPreview* dtpreview = new DtPreview(mod, setdtest, r->getFecha(), std::to_string(Clase::getSeed()), nombre, url, dtdoc);
+        // podria haber un problema en la string del url
+        return dtpreview;
+    } else {
+        DtPreview* dtpreview = new DtPreview(mod, r->getFecha(), std::to_string(Clase::getSeed()), nombre, url, dtdoc);
+        return dtpreview;
     }
+    
     return NULL; // sin esto no compila, pero este caso nunca deberia suceder
 }
 

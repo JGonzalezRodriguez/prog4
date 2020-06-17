@@ -5,6 +5,7 @@
 #include "dt/enums.h"
 #include "dt/dtasignatura.h"
 #include "dt/dtclase.h"
+#include "dt/dtpreview.h"
 #include <string> 
 #include "iclase.h"
 #include <set>
@@ -36,7 +37,7 @@ class CtrlClase: public IClase{
         modalidad getModalidad();
         std::set<DtEstudiante*> listarEstudiantesHabilitados();
         void elegirEstudiante(std::string ci);
-        DtClase* mostrarDatos();
+        DtPreview* mostrarDatos();
         void confirmarInicioDeClase(bool conf);
         std::set<DtClase*> listarClasesEnVivo();
         void elegirClase(std::string id);

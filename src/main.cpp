@@ -346,7 +346,7 @@ int main() {
                                 cant++;
                             }    
                         }
-                        DtClase* preview = ctrl->mostrarDatos();
+                        DtPreview* preview = ctrl->mostrarDatos();
                         std::cout << std::endl << *preview;
 
                         printf("\n Desea confirmar s/n: ");
