@@ -28,7 +28,7 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 ## Estatus casos de uso:
 - Alta de usuario: **OK**
 - Alta de asignatura: **OK**
-- Asignación de docentes a una asignatura SANTI ESTA DEBUGEANDO
+- Asignación de docentes a una asignatura **OK**
 - Inscripción a las asignaturas **OK**
 - Inicio de clase **OK**
 - Finalización de clase HACIENDO ACQUA
