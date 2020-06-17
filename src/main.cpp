@@ -496,30 +496,55 @@ int main() {
                 //IUsuario* ctrlU = Fabrica::getIUsuario();
                 //IClase* ctrlC = Fabrica::getIClase();
                 //Cargar Docentes
+
                 ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(6));
+                ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(6));
+                ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(6));
+                ctrlU->confirmarAltaUsuario(true);
                 //Cargar Estudiantes
                 ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");
+                ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "p4ss", "fotito.com/4", "23456789");
+                ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaEstudiante("Ramon Valdez", "ramon@mail.com", "pass", "fotito.com/5", "34567890");
-                /*Cargar Asignaturas
-                Donde esta altaAsignatura?
-                */
-
+                ctrlU->confirmarAltaUsuario(true);
+                //Cargar Asignaturas
+                ctrlA->altaAsignatura("Programacion 1", "P1", true, true, true);
+                ctrlA->confirmarAltaAsignatura(true);
+                ctrlA->altaAsignatura("Programacion 2", "P2", true, true, true);
+                ctrlA->confirmarAltaAsignatura(true);
+                ctrlA->altaAsignatura("Programacion 3", "P3", true, true, false);
+                ctrlA->confirmarAltaAsignatura(true);
                 //Asignacion Docente Asignatura
-                ctrlA->elegirdocente(modalidad(1), "juan@mail.com");
+                ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->elegirdocente(teorico, "juan@mail.com");
+                ctrlA->confirmarAsignacionDocenteAsignatura(true);
+
+                ctrlA->elegirdocente(practico, "maria@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
-                ctrlA->elegirdocente(modalidad(2), "maria@mail.com");
+                ctrlA->elegirdocente(monitoreo, "jorge@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
-                ctrlA->elegirdocente(modalidad(3), "jorge@mail.com");
-                ctrlA->elegirAsignaturaAdmin("P1");
-                ctrlA->confirmarAsignacionDocenteAsignatura(true);
-                
+                ctrlA->identificarse("roberto@mail.com","pass");
+                ctrlA->elegirAsignaturaEst("P1");
+                ctrlA->confirmarInscripcionAsignatura(true);
+
+                ctrlA->identificarse("ana@mail.com","pass");
+                ctrlA->elegirAsignaturaEst("P1");
+                ctrlA->confirmarInscripcionAsignatura(true);
+                ctrlA->elegirAsignaturaEst("P2");
+                ctrlA->confirmarInscripcionAsignatura(true);
+
+                ctrlA->identificarse("ramon@mail.com","pass");
+                ctrlA->elegirAsignaturaEst("P1");
+                ctrlA->confirmarInscripcionAsignatura(true);
+
+                printf("\nDatos de Prueba Cargados\n");
                 break;
             }
             case 5: {
