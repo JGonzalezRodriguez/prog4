@@ -155,6 +155,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             asignatura->addClase(c);
         }
     }
+    this->estudiantes.clear();
 }
 std::set<DtClase*> CtrlClase::listarClasesEnVivo(){
     std::set<DtClase*> x;
