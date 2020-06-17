@@ -187,71 +187,79 @@ int main() {
                         break;
                     }
                     case 4: {
-                        std::cin.ignore();
-                        Fabrica* ctrl = Fabrica::getInstancia();
-                        std::set<DtAsignatura*> x = ctrl->getIAsignatura()->listarAsignaturas();
-                        if (x.empty()) break;
-                        std::set<DtAsignatura*>::iterator it;
-                        for (it = x.begin(); it != x.end(); it++){
-                            std::cout << **it;
-                        };
-                        std::cout << "\nIngrese el Codigo de la asignatura\n";
-                        std::string codigo;
-                        std::cin >> codigo;
-                        //delete[] &x;
-                        ctrl->getIAsignatura()->elegirAsignaturaAdmin(codigo);
-                        std::set<DtDocente*> z = ctrl->getIAsignatura()->listarDocentes();
-                        if (z.empty()) break;
-                        std::set<DtDocente*>::iterator it2;
-                        for (it2 = z.begin(); it2 != z.end(); it2++){
-                            //std::cout << "%d. (%s, %s)" <<(*it2), (*it2)->getNombre(), (*it2)->getEmail();
-                            cout << **it2;
-                        }
-                        /*int id = 0;
-                        int mod;
-                        //que se quiere hacer???
-                        while (id > std::distance(it2, z.begin()) || id <= 0){
-                            std::cout << "\nIngrese el numero del docente deseado.\n";
-                            std::cin >> id;
-                        }
-                        for(int i=1;i<=id;it2++);
-                        printf("\n Elija la modalidad del docente:");
-                        printf("\n 1. Teorico");
-                        printf("\n 2. Practico");
-                        printf("\n 3. Monitoreo");
-                        printf("\n");
-                        std::cin >> mod;*/
-                        std::string email;
-                        std::cout << "\nIngrese el email del docente deseado.\n";
-                        cin.ignore();
-                        getline(std::cin, email);
-                        printf("\n Elija la modalidad del docente:");
-                        printf("\n 1. Teórico");
-                        printf("\n 2. Práctico");
-                        printf("\n 3. Monitoreo");
-                        printf("\n Elija una opcion: ");
-                        char inst;
-                        scanf("%s", &inst);
-                        modalidad mod;
-                        
-                        switch(inst) {
-                            case '1': mod = teorico;
-                                break;
-                            case '2': mod = practico;
-                                break;
-                            case '3': mod = monitoreo;
-                                break; 
-            
-                            default: {
-                                throw std::invalid_argument("Número no válido");
-                                break;    
-                            }
-                        }   
+                        bool asignar = true;
+                        while(asignar){
+                            char letraselec;
+                            printf("\n Desea asignar un docente a una asignatura? s/n: ");
+                            scanf("%s", &letraselec);
+                            if(letraselec == 's'){
+                                std::cin.ignore();
+                                Fabrica* ctrl = Fabrica::getInstancia();
+                                std::set<DtAsignatura*> x = ctrl->getIAsignatura()->listarAsignaturas();
+                                if (x.empty()) break;
+                                std::set<DtAsignatura*>::iterator it;
+                                for (it = x.begin(); it != x.end(); it++){
+                                    std::cout << **it;
+                                };
+                                std::cout << "\nIngrese el Codigo de la asignatura\n";
+                                std::string codigo;
+                                std::cin >> codigo;
+                                //delete[] &x;
+                                ctrl->getIAsignatura()->elegirAsignaturaAdmin(codigo);
+                                ctrl->getIAsignatura()->imprimirModalidad();
+                                printf("\nDocentes no asignados: ");
+                                printf("\n");
 
-                        ctrl->getIAsignatura()->elegirdocente(mod,email);
-                        //delete[] &z;
-                        bool confi = ctrl->getIAsignatura()->getConfi();
-                        ctrl->getIAsignatura()->confirmarAsignacionDocenteAsignatura(confi);
+                                std::set<DtDocente*> z = ctrl->getIAsignatura()->listarDocentes();
+                                if (z.empty()) break;
+                                std::set<DtDocente*>::iterator it2;
+                                for (it2 = z.begin(); it2 != z.end(); it2++){
+                                    //std::cout << "%d. (%s, %s)" <<(*it2), (*it2)->getNombre(), (*it2)->getEmail();
+                                    cout << **it2;
+                                }
+                                
+                                std::string email;
+                                std::cout << "\nIngrese el email del docente deseado.\n";
+                                cin.ignore();
+                                getline(std::cin, email);
+                                printf("\n Elija la modalidad del docente:");
+                                printf("\n 1. Teórico");
+                                printf("\n 2. Práctico");
+                                printf("\n 3. Monitoreo");
+                                printf("\n Elija una opcion: ");
+                                char inst;
+                                scanf("%s", &inst);
+                                modalidad mod;
+                                
+                                switch(inst) {
+                                    case '1': mod = teorico;
+                                        break;
+                                    case '2': mod = practico;
+                                        break;
+                                    case '3': mod = monitoreo;
+                                        break; 
+                    
+                                    default: {
+                                        throw std::invalid_argument("Número no válido");
+                                        break;    
+                                    }
+                                }
+                                if(ctrl->getIAsignatura()->tieneAsignaturaMod(mod)){
+                                ctrl->getIAsignatura()->elegirdocente(mod,email);
+                                //delete[] &z;
+                                bool confi = ctrl->getIAsignatura()->getConfi();
+                                ctrl->getIAsignatura()->confirmarAsignacionDocenteAsignatura(confi);
+                                }else{
+                                    printf("\nLo sentimos, la asignatura seleccionada no posee tal modalidad");
+                                    printf("\n");
+
+                                }
+                            }else
+                            {
+                                asignar = false;
+                            }
+                            
+                        }
                         break;
                     }
                     case 5: {

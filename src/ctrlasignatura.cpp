@@ -55,6 +55,36 @@ std::set<DtDocente*> CtrlAsignatura::listarDocentes() {
     return y;
 }
 
+bool CtrlAsignatura::tieneAsignaturaMod(modalidad mod){
+    bool tienemod = false;
+    if(mod == teorico && this->asig->tieneTeo())
+        tienemod = true;
+    
+    else{ if(mod == practico && this->asig->tienePrac())
+            tienemod = true;
+    
+            else{if(mod == monitoreo && this->asig->tieneMon())
+                tienemod = true;
+            }
+    }
+
+    return tienemod;
+}
+
+void CtrlAsignatura::imprimirModalidad(){
+    printf("\n Modalidades de la Asignatura");
+    if(this->asig->tieneTeo())
+        printf("\n* Teórico");
+    
+    if(this->asig->tienePrac())
+        printf("\n* Práctico");
+    
+    if(this->asig->tieneMon())
+        printf("\n* Monitoreo");
+    printf("\n");
+
+}
+
 void CtrlAsignatura::elegirdocente(modalidad mod, std::string emaildocente) {
     this->mod = mod;
     Handlerusuarios* h = Handlerusuarios::getInstancia();

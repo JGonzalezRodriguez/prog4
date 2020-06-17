@@ -82,6 +82,8 @@ class CtrlAsignatura : public IAsignatura {
         void confirmarInscripcionAsignatura(bool confi);
         bool getIdentificado();
         bool getCodigovalido();
+        bool tieneAsignaturaMod(modalidad mod);
+        void imprimirModalidad();
 };
 
 #endif
