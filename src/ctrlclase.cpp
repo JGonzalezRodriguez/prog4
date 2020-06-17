@@ -9,7 +9,6 @@
 #include "../include/monitoreo.h"
 #include "../include/reloj.h"
 
-
 CtrlClase *CtrlClase::instancia = NULL;
 
 CtrlClase::CtrlClase(){
@@ -43,24 +42,58 @@ void CtrlClase::setModalidad(modalidad mod){
 
 
 void CtrlClase::identificarse(std::string email, std::string contrasenia){
-
+    Handlerusuarios* handu = Handlerusuarios::getInstancia();
+    bool identi = handu->identificarse(email, contrasenia);
+    if (!identi) 
+        throw std::invalid_argument("Email o contraseña incorrectos");
+    this->docente = handu->getDocente(email);
+    if (this->docente == NULL)
+        throw std::invalid_argument("Usted no es un docente");
 }
+
 std::set<DtAsignatura*> CtrlClase::listarAsignaturasDocente(){
-    std::set<DtAsignatura*> x;
-    return x;
+    std::set<Asignatura*> colasig = docente->getAsignaturas();
+    std::set<DtAsignatura*> coldtasig;
+    for (std::set<Asignatura*>::iterator it=colasig.begin(); it!=colasig.end(); ++it) {
+        DtAsignatura* nuevodt = new DtAsignatura((*it)->getNombre(), (*it)->getCodigo());
+        coldtasig.insert(nuevodt);
+    }
+    return coldtasig;
 }
-void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre, DtFecha *fecha){
-
+void CtrlClase::inicioDeClase(std::string codigoasignatura, std::string nombre){
+    this->nombre = nombre;
+    Reloj* r = Reloj::getInstancia();
+    this->fecha = r->getFecha();
+    std::set<Asignatura*> colasig = docente->getAsignaturas();
+    bool encontro = false;
+    for (std::set<Asignatura*>::iterator it=colasig.begin(); it!=colasig.end(); ++it) {
+        Asignatura* a = *it;
+        if (a->getCodigo() == codigoasignatura) {
+            this->asignatura = a;
+            encontro = true;
+        }     
+    }
+    if (!encontro) 
+        throw std::invalid_argument("El docente no tiene una asignatura con ese codigo");
 }
 modalidad CtrlClase::getModalidad(){
-    return this->mod;
+    return docente->getModalidad(asignatura);
 }
 std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilitados(){
-    std::set<DtEstudiante*> x;
-    return x;
+    std::set<Estudiante*> colest = asignatura->getEstudiantes();
+    std::set<DtEstudiante*> coldtest;
+    for (std::set<Estudiante*>::iterator it=colest.begin(); it!=colest.end(); ++it) {
+        Estudiante* est = *it;
+        DtEstudiante* nuevodt = new DtEstudiante(est->getCi(),est->getNombre(),est->getEmail(),est->getImagen(),est->getContrasenia());
+        coldtest.insert(nuevodt);
+    }
+    return coldtest;
 }
 void CtrlClase::elegirEstudiante(std::string ci){
-
+    Estudiante* e = asignatura->getEstudiante(ci);
+    if (e == NULL)
+        throw std::invalid_argument("No hay un estudiante habilitado con esa CI");
+    estudiantes.insert(e);
 }
 DtPreview* CtrlClase::mostrarDatos(){
     mod = docente->getModalidad(asignatura);
@@ -85,6 +118,7 @@ DtPreview* CtrlClase::mostrarDatos(){
     
     return NULL; // sin esto no compila, pero este caso nunca deberia suceder
 }
+
 void CtrlClase::confirmarInicioDeClase(bool conf){
     if (conf) {
         Reloj* r = Reloj::getInstancia();

@@ -16,6 +16,7 @@ class Mensaje;
 
 class Clase {
     private:
+        static int seed;
         DtFecha *fechayhoracomienzo;
         std::string id;
         bool envivo;

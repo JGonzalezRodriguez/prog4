@@ -1,3 +1,6 @@
+#ifndef RELOJ_H
+#define RELOJ_H 
+
 #include "dt/dtfecha.h"
 
 // auspiciado por rolex prri
@@ -20,3 +23,5 @@ class Reloj {
         */
         void setFecha(DtFecha* fecha);
 };
+
+#endif
