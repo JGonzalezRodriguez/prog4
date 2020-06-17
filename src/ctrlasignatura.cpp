@@ -62,12 +62,18 @@ void CtrlAsignatura::elegirdocente(modalidad mod, std::string emaildocente) {
 }
 
 bool CtrlAsignatura::getConfi(){
-    std::cout << "Desea asignar al docente %s a la asignatura %s con modalidad %s?" , this->doc->getNombre(), this->asig->getNombre(), std::to_string(this->mod);
+    std::cout << "\nDesea asignar al docente "<<this->doc->getNombre()<< " a la asignatura " << this->asig->getNombre() << " con la modalidad seleccionada?" << std::endl;
     printf("\n 1. Si");
     printf("\n 2. No");
-    int yn;
-    scanf("%d", &yn);
-    return (yn-1);
+    printf("\n");
+    bool confi = false;
+    char inst;
+    scanf("%s", &inst);
+    if(inst == '1'){
+        confi = true;
+    }
+    return confi;
+
 }
 
 void CtrlAsignatura::confirmarAsignacionDocenteAsignatura(bool confi) {

@@ -5,20 +5,23 @@
 #include <cstdio>
 #include <sstream>
 #include "../include/fabrica.h"
+#include "../include/reloj.h"
 #include <map>
 #include <iterator>
 
 using namespace std;
 int main() {
-    printf("\n Bienvenide, elija una opcion:");
+    printf("\nBienvenide a FingClass, elija una opcion:");
+    printf("\n");
     int opcion;
     while(opcion != 5){
+    try {
         printf("\n1. Administrador");
         printf("\n2. Docente");
         printf("\n3. Estudiante");
         printf("\n4. Cargar datos de prueba");
         printf("\n5. Salir");
-        printf("\n");
+        printf("\n\n");
             
         scanf("%d", &opcion);
         switch(opcion){
@@ -159,13 +162,10 @@ int main() {
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
                         //creando asignatura
-                        Fabrica *interface = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
-                        interface->getIAsignatura()->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
-                        DtAsignatura* asignatura = interface->getIAsignatura()->mostrarDatosAsignatura();
-                        //TODO: sobrecargar '<<' para poder imprimir DtAsignatura (no quiero pisarme con nadie)
-                        //mostrando datos a lo rustico de maneria provisoria:
-                        //std::cout << asignatura->getNombre();
-                        //std::cout << asignatura->getCodigo();
+                        Fabrica* fabrica = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
+                        IAsignatura* interface = fabrica->getIAsignatura();
+                        interface->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
+                        DtAsignatura* asignatura = interface->mostrarDatosAsignatura();
                         cout << *asignatura;
                         //confirmando
                         printf("\nConfirmar alta de asignatura? s/n\n");
@@ -179,8 +179,8 @@ int main() {
                         }else{
                             throw std::invalid_argument("\nRepuesta no valida, debe ingresar 's' o 'n'.\n");
                         }
-                        interface->getIAsignatura()->confirmarAltaAsignatura(bConf);
-                        
+                        interface->confirmarAltaAsignatura(bConf);
+                        delete asignatura; 
                         break;
                     }
                     case 3: {
@@ -204,10 +204,12 @@ int main() {
                         if (z.empty()) break;
                         std::set<DtDocente*>::iterator it2;
                         for (it2 = z.begin(); it2 != z.end(); it2++){
-                            std::cout << "%d. (%s, %s)" <<(*it2), (*it2)->getNombre(), (*it2)->getEmail();
+                            //std::cout << "%d. (%s, %s)" <<(*it2), (*it2)->getNombre(), (*it2)->getEmail();
+                            cout << **it2;
                         }
-                        int id = 0;
+                        /*int id = 0;
                         int mod;
+                        //que se quiere hacer???
                         while (id > std::distance(it2, z.begin()) || id <= 0){
                             std::cout << "\nIngrese el numero del docente deseado.\n";
                             std::cin >> id;
@@ -218,16 +220,66 @@ int main() {
                         printf("\n 2. Practico");
                         printf("\n 3. Monitoreo");
                         printf("\n");
-                        std::cin >> mod;
-                        ctrl->getIAsignatura()->elegirdocente(modalidad(mod),(*it2)->getEmail());
-                        delete[] &z;
+                        std::cin >> mod;*/
+                        std::string email;
+                        std::cout << "\nIngrese el email del docente deseado.\n";
+                        cin.ignore();
+                        getline(std::cin, email);
+                        printf("\n Elija la modalidad del docente:");
+                        printf("\n 1. Teórico");
+                        printf("\n 2. Práctico");
+                        printf("\n 3. Monitoreo");
+                        printf("\n Elija una opcion: ");
+                        char inst;
+                        scanf("%s", &inst);
+                        modalidad mod;
+                        
+                        switch(inst) {
+                            case '1': mod = teorico;
+                                break;
+                            case '2': mod = practico;
+                                break;
+                            case '3': mod = monitoreo;
+                                break; 
+            
+                            default: {
+                                throw std::invalid_argument("Número no válido");
+                                break;    
+                            }
+                        }   
+
+                        ctrl->getIAsignatura()->elegirdocente(mod,email);
+                        //delete[] &z;
                         bool confi = ctrl->getIAsignatura()->getConfi();
                         ctrl->getIAsignatura()->confirmarAsignacionDocenteAsignatura(confi);
+                        break;
                     }
                     case 5: {
+                        //////////MODIFICAR FECHA DEL SISTEMA////////////
+                        int anio, mes, dia, min, hora;
+                        printf("\nIngrese el año deseado\n");
+                        scanf("%d", &anio);
+                        printf("\nIngrese el mes deseado\n");
+                        scanf("%d", &mes);
+                        printf("\nIngrese el dia deseado\n");
+                        scanf("%d", &dia);
+                        printf("\nIngrese la hora deseada\n");
+                        scanf("%d", &hora);
+                        printf("\nIngrese el minuto deseado\n");
+                        scanf("%d", &min);
+                        Reloj* reloj = Reloj::getInstancia();
+                        DtFecha* fecha = new DtFecha(dia, mes, anio, hora, min);
+                        reloj->setFecha(fecha);
+                        printf("\nFecha ingresada con exito. El tiempo de sistema es el siguiente:\n");
+                        std::cout << *fecha;
                         break;
                     }
                     case 6: {
+                        //////////CONSULTAR FECHA DEL SISTEMA////////////
+                        Reloj* reloj = Reloj::getInstancia();
+                        DtFecha* fecha = reloj->getFecha();
+                        printf("\nEl tiempo de sistema es el siguiente:\n");
+                        std::cout << *fecha;
                         break;
                     }
                     default: {
@@ -462,6 +514,10 @@ int main() {
                 break;
             }
         }
+    } catch (const std::invalid_argument& ia) {
+        std::cerr << "Invalid argument: " << ia.what() << '\n';
+        //atrapa el invalid argument y lo imprime, evitando que termine el programa.
+    }
     }
     return 0;
 }
