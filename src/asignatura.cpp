@@ -48,15 +48,15 @@ std::string Asignatura::getCodigo() {
 }
 
 bool Asignatura::tieneTeo() {
-    return true;
+    return this->tieneteo;
 }   
 
 bool Asignatura::tienePrac() {
-    return true;
+    return this->tieneprac;
 }
 
 bool Asignatura::tieneMon() {
-    return true;
+    return this->tienemon;
 }
 
 DtAsignatura* Asignatura::getDt() {
