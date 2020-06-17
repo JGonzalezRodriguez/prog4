@@ -3,6 +3,7 @@
 #include "../include/handlerasignaturas.h"
 #include "../include/dt/dtclase.h"
 #include "../include/dt/dtpreview.h"
+#include "../include/clase.h"
 #include "../include/practico.h"
 #include "../include/teorico.h"
 #include "../include/monitoreo.h"
@@ -122,15 +123,33 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
         Reloj* r = Reloj::getInstancia();
         if (mod == practico) {
             Practico* c = new Practico(nombre, r->getFecha(), asignatura, docente);
+            c->setEnVivo(true);
+            std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
+            c->setUrl(url);
+            int seed = Clase::getSeed();
+            c->setId(std::to_string(seed));
+            Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
         } else if (mod == teorico) {
             Teorico* c = new Teorico(nombre, r->getFecha(), asignatura, docente);
+            c->setEnVivo(true);
+            std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
+            c->setUrl(url);
+            int seed = Clase::getSeed();
+            c->setId(std::to_string(seed));
+            Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
         } else if (mod == monitoreo) {
             Monitoreo* c = new Monitoreo(nombre, r->getFecha(), asignatura, docente);
             c->setEstudiantes(estudiantes);
+            c->setEnVivo(true);
+            std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
+            c->setUrl(url);
+            int seed = Clase::getSeed();
+            c->setId(std::to_string(seed));
+            Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
         }

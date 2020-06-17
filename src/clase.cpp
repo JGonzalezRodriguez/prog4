@@ -6,6 +6,10 @@ int Clase::getSeed() {
     return seed;
 }
 
+void Clase::incSeed() {
+    seed = seed + 1;
+}
+
 DtFecha *Clase::getFechayhoracomienzo(){
     return this->fechayhoracomienzo;
 }

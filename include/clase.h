@@ -29,6 +29,7 @@ class Clase {
         Docente* doc;
     public:
         static int getSeed();
+        static void incSeed();
         DtFecha *getFechayhoracomienzo();
         void setFechayhoracomienzo(DtFecha*);
         void setId(std::string);

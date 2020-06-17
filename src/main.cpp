@@ -330,15 +330,16 @@ int main() {
                             char letraselec;
                             printf("\n Desea agregar un nuevo estudiante al monitoreo? s/n: ");
                             scanf("%s", &letraselec);
-                            while (cant < 15 && letraselec == 's') {
+                            while (cant < 15 && letraselec == 's') { // ESTE LISTAR NO DEBERIA LISTAR LOS YA ELEGIDOS
                                 std::set<DtEstudiante*> coldtest= ctrl->listarEstudiantesHabilitados();
 
                                 for (std::set<DtEstudiante*>::iterator it=coldtest.begin(); it!=coldtest.end(); ++it) {
-                                    std::cout << std::endl << *it;
+                                    std::cout << std::endl << **it;
                                 }
 
                                 printf("\n Introduzca la CI del estudiante al que desea agregar: ");
                                 std::string CI;
+                                cin.ignore();
                                 getline(std::cin, CI);
                                 ctrl->elegirEstudiante(CI);
                                 printf("\n Desea agregar un nuevo estudiante al monitoreo? s/n: ");
@@ -348,6 +349,7 @@ int main() {
                         }
                         DtPreview* preview = ctrl->mostrarDatos();
                         std::cout << std::endl << *preview;
+                        // LUEGO DEL PREVIEW SE DEBERIA LISTAR LOS ESTUDIANTES ELEGIDOS
 
                         printf("\n Desea confirmar s/n: ");
                         char letraconf;
