@@ -30,7 +30,7 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 - Alta de asignatura: **OK**
 - Asignación de docentes a una asignatura SANTI ESTA DEBUGEANDO
 - Inscripción a las asignaturas **OK**
-- Inicio de clase HECHA FALTA TESTEAR
+- Inicio de clase **OK**
 - Finalización de clase HACIENDO ACQUA
 - Envío de mensaje HACIENDO NICO
 - Asistencia a clase en vivo HACIENDO JOACO
