@@ -316,7 +316,7 @@ int main() {
                         ctrl->identificarse(email, contrasenia);
                         std::set<DtAsignatura*> coldtasig = ctrl->listarAsignaturasDocente();
                         for (std::set<DtAsignatura*>::iterator it=coldtasig.begin(); it!=coldtasig.end(); ++it) {
-                            std::cout << std::endl << *it;
+                            std::cout << std::endl << *(*it);
                         }
                         std::string codigo, nombre;
                         printf("\n Introduzca el codigo de la asignatura de la cual desea iniciar una clase: ");

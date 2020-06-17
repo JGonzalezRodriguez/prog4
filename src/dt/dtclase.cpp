@@ -39,6 +39,6 @@ DtDocente* DtClase::getDocente(){
 }
 
 std::ostream& operator<< (std::ostream& os, DtClase &b) {
-    os << "Fecha comiezo: " << b.getFechaYHoraComienzo() << std::endl << "Fecha final: " << b.getFechaYHoraFinal() << std::endl << "Id: " << b.getId() << std::endl << "Url: " << b.getUrl() << std::endl << "Docente: " << b.getDocente() << std::endl << "Nombre: " << b.getNombre() << std::endl;
+    os << "Fecha comiezo: " << *(b.getFechaYHoraComienzo()) << std::endl << "Fecha final: " << *(b.getFechaYHoraFinal()) << std::endl << "Id: " << b.getId() << std::endl << "Url: " << b.getUrl() << std::endl << "Docente: " << *(b.getDocente()) << std::endl << "Nombre: " << b.getNombre() << std::endl;
     return os;
 }
