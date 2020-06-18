@@ -1,11 +1,15 @@
 #include "../include/dt/dtfecha.h"
 
 DtFecha::DtFecha(int dia, int mes, int anio, int hora, int min){
+    if(dia > 30 || mes > 12 || hora > 24 || min > 60 ){
+        throw std::invalid_argument("Fecha introducida no válida");
+    }else{
     this->dia = dia;
     this->mes = mes;
     this->anio = anio;
     this->hora = hora;
     this->min = min;
+    }
 }
 
 DtFecha::DtFecha(DtFecha* f) {

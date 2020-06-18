@@ -122,8 +122,9 @@ DtPreview* CtrlClase::mostrarDatos(){
 void CtrlClase::confirmarInicioDeClase(bool conf){
     if (conf) {
         Reloj* r = Reloj::getInstancia();
+        DtFecha *fechaaux = new DtFecha(r->getFecha());
         if (mod == practico) {
-            Practico* c = new Practico(nombre, r->getFecha(), asignatura, docente);
+            Practico* c = new Practico(nombre, fechaaux, asignatura, docente);
             c->setEnVivo(true);
             std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
             c->setUrl(url);
@@ -133,7 +134,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             docente->addClase(c);
             asignatura->addClase(c);
         } else if (mod == teorico) {
-            Teorico* c = new Teorico(nombre, r->getFecha(), asignatura, docente);
+            Teorico* c = new Teorico(nombre, fechaaux, asignatura, docente);
             c->setEnVivo(true);
             std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
             c->setUrl(url);
@@ -143,7 +144,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             docente->addClase(c);
             asignatura->addClase(c);
         } else if (mod == monitoreo) {
-            Monitoreo* c = new Monitoreo(nombre, r->getFecha(), asignatura, docente);
+            Monitoreo* c = new Monitoreo(nombre, fechaaux, asignatura, docente);
             c->setEstudiantes(estudiantes);
             c->setEnVivo(true);
             std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
@@ -165,7 +166,7 @@ std::set<DtPreview*> CtrlClase::listarClasesEnVivo(){
 
         modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
         DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
-        DtPreview* dtpreview = new DtPreview(mod, fecha, clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
+        DtPreview* dtpreview = new DtPreview(mod, clase->getFechayhoracomienzo(), clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
         coldtpreview.insert(dtpreview);
         
     }

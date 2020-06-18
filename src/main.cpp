@@ -531,11 +531,11 @@ int main() {
                 //IClase* ctrlC = Fabrica::getIClase();
                 //Cargar Docentes
 
-                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(6));
+                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(6));
+                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(6));
+                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
                 //Cargar Estudiantes
                 ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");

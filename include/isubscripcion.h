@@ -30,6 +30,8 @@ class ISubscripcion {
         Elimina el puntero a subscripcion del usuario actual.
         */
         virtual void eliminarSubscripcion() = 0;
+
+        virtual bool getIdentifico() = 0;
 };
 
 #endif

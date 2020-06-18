@@ -6,7 +6,13 @@ CtrlSubscripcion* CtrlSubscripcion::getInstancia() {
     return NULL;
 }
 
+bool CtrlSubscripcion::getIdentifico(){
+    return this->identifico;
+}
+
 void CtrlSubscripcion::identificarse(std::string mail, std::string constrasenia) {
+    //Handlerusuarios *u = Handlerusuarios::getInstancia();
+
 
 }
 
