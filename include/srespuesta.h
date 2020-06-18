@@ -3,6 +3,7 @@
 
 #include "subscripcion.h"
 
+
 class SRespuesta : public Subscripcion {
     private:
         static SRespuesta* instancia;

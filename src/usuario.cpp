@@ -45,6 +45,8 @@
 
         }
         void Usuario::elegirModo(){
+            SRespuesta *resp = SRespuesta::getInstancia();
+            this->subscripcion = resp; 
 
         }
         void Usuario::eliminarSubscripcion(){

@@ -438,6 +438,26 @@ int main() {
                         break;
                     }
                     case 3: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ctrl->getISubscripcion()->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getISubscripcion()->getIdentifico()){
+                            ctrl->getISubscripcion()->elegirModo();
+                            printf("\nHa quedado suscrito al modo respuesta a un usuario");
+                            printf("\n");
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+
                         break;
                     }
                     case 4: {
@@ -539,6 +559,26 @@ int main() {
                         break;
                     }
                     case 4: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ctrl->getISubscripcion()->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getISubscripcion()->getIdentifico()){
+                            ctrl->getISubscripcion()->elegirModo();
+                            printf("\nHa quedado suscrito al modo respuesta a un usuario");
+                            printf("\n");
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+
                         break;
                     }
                     case 5: {
@@ -562,11 +602,11 @@ int main() {
                 //IClase* ctrlC = Fabrica::getIClase();
                 //Cargar Docentes
 
-                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(6));
+                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(6));
+                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(6));
+                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
                 //Cargar Estudiantes
                 ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");

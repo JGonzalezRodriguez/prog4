@@ -14,6 +14,7 @@ class CtrlSubscripcion : public ISubscripcion {
         static CtrlSubscripcion* instancia;
         Usuario* u;
         CtrlSubscripcion();
+        bool identifico;
     public:
         static CtrlSubscripcion* getInstancia();
         /**
@@ -37,6 +38,10 @@ class CtrlSubscripcion : public ISubscripcion {
         Elimina el puntero a subscripcion del usuario actual.
         */
         void eliminarSubscripcion();
+
+        bool getIdentifico();
+
+        
 };
 
 #endif
