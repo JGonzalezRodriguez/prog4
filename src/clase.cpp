@@ -54,13 +54,21 @@ void Clase::setNombre(std::string nombre){
     this->nombre = nombre;
 }
 
+Docente* Clase::getDoc() {
+    return this->doc;
+}
+
 //metodos de las operaciones de la clase
 Asignatura *Clase::getAsignatura(){
     return asig;
 }
 
 void Clase::finalizar(){
-
+    std::set<ClaseEstudiante*> colce = claseestudiantes;
+    for (std::set<ClaseEstudiante*>::iterator it=colce.begin(); it!=colce.end(); ++it) {
+        ClaseEstudiante* ce = *it;
+        ce->finalizarVisualizacionesVivo();
+    }
 }
 bool Clase::tieneClaseEst(Estudiante *est){
     return false;

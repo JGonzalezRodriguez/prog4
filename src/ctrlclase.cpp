@@ -98,6 +98,7 @@ void CtrlClase::elegirEstudiante(std::string ci){
 DtPreview* CtrlClase::mostrarDatos(){
     mod = docente->getModalidad(asignatura);
     Reloj* r = Reloj::getInstancia();
+    DtFecha* f = new DtFecha(r->getFecha());
     DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
     std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
 
@@ -108,11 +109,11 @@ DtPreview* CtrlClase::mostrarDatos(){
             DtEstudiante* nuevodt = new DtEstudiante(est->getCi(),est->getNombre(),est->getEmail(),est->getImagen(),est->getContrasenia());
             setdtest.insert(nuevodt);
         }
-        DtPreview* dtpreview = new DtPreview(mod, setdtest, r->getFecha(), std::to_string(Clase::getSeed()), nombre, url, dtdoc);
+        DtPreview* dtpreview = new DtPreview(mod, setdtest, f, std::to_string(Clase::getSeed()), nombre, url, dtdoc);
         // podria haber un problema en la string del url
         return dtpreview;
     } else {
-        DtPreview* dtpreview = new DtPreview(mod, r->getFecha(), std::to_string(Clase::getSeed()), nombre, url, dtdoc);
+        DtPreview* dtpreview = new DtPreview(mod, f, std::to_string(Clase::getSeed()), nombre, url, dtdoc);
         return dtpreview;
     }
     
@@ -122,8 +123,9 @@ DtPreview* CtrlClase::mostrarDatos(){
 void CtrlClase::confirmarInicioDeClase(bool conf){
     if (conf) {
         Reloj* r = Reloj::getInstancia();
+        DtFecha* f = new DtFecha(r->getFecha());
         if (mod == practico) {
-            Practico* c = new Practico(nombre, r->getFecha(), asignatura, docente);
+            Practico* c = new Practico(nombre, f, asignatura, docente);
             c->setEnVivo(true);
             std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
             c->setUrl(url);
@@ -134,7 +136,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             asignatura->addClase(c);
             c->setDocente(docente); // por alguna razon esto es necesario? a pesar de que docente ya estaba en el constructor
         } else if (mod == teorico) {
-            Teorico* c = new Teorico(nombre, r->getFecha(), asignatura, docente);
+            Teorico* c = new Teorico(nombre, f, asignatura, docente);
             c->setEnVivo(true);
             std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
             c->setUrl(url);
@@ -145,7 +147,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             asignatura->addClase(c);
             c->setDocente(docente); // por alguna razon esto es necesario? a pesar de que docente ya estaba en el constructor
         } else if (mod == monitoreo) {
-            Monitoreo* c = new Monitoreo(nombre, r->getFecha(), asignatura, docente);
+            Monitoreo* c = new Monitoreo(nombre, f, asignatura, docente);
             c->setEstudiantes(estudiantes);
             c->setEnVivo(true);
             std::string url = "https://fingclass.edu.uy/" + asignatura->getNombre() + "/" + std::to_string(Clase::getSeed());
@@ -160,18 +162,35 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
     }
     this->estudiantes.clear();
 }
-std::set<DtClase*> CtrlClase::listarClasesEnVivo(){
-    std::set<DtClase*> x;
-    return x;
+std::set<DtPreview*> CtrlClase::listarClasesEnVivo(){
+    std::set<Clase*> colclase = docente->getClasesEnVivo();
+    std::set<DtPreview*> coldtpreview;
+    for (std::set<Clase*>::iterator it=colclase.begin(); it!=colclase.end(); ++it) {
+        Clase* clase = *it;
+
+        modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
+        DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
+        DtPreview* dtpreview = new DtPreview(mod, clase->getFechayhoracomienzo(), clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
+        coldtpreview.insert(dtpreview);
+        
+    }
+    return coldtpreview;
 }
 void CtrlClase::elegirClase(std::string id){
-
+    clase = docente->getClase(id);
 }
-DtClase *CtrlClase::mostrarClase(){
-    return NULL;
+DtPreview *CtrlClase::mostrarClase(){
+    modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
+    DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
+    DtPreview* dtpreview = new DtPreview(mod, clase->getFechayhoracomienzo(), clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
+    return dtpreview;
 }
 void CtrlClase::confirmarFinalizacionDeClase(bool conf){
-
+    clase->finalizar();
+    clase->setEnVivo(false);
+    Reloj* r = Reloj::getInstancia();
+    DtFecha* f = new DtFecha(r->getFecha());
+    clase->setFechayhorafinal(f);
 }
 void CtrlClase::elegirAsignaturaDoc(std::string codigo){
 
@@ -179,4 +198,65 @@ void CtrlClase::elegirAsignaturaDoc(std::string codigo){
 std::set<DtClase*> CtrlClase::listarClasesDocente(){
     std::set<DtClase*> x;
     return x;
+}
+
+int CtrlClase::tiempoTranscurrido(DtFecha *fechacomienzo, DtFecha *fechafin){
+    int cantminscomienzo, cantminsfin;
+    int anio1, anio2, mes, dia, hora, min;
+    anio1 = fechacomienzo->getAnio();
+    anio2 = fechafin->getAnio();
+    int tiempo;
+
+    mes = fechacomienzo->getMes();
+    dia = fechacomienzo->getDia();
+    hora = fechacomienzo->getHora();
+    min = fechacomienzo->getMin();
+    cantminscomienzo = ((mes - 1)*30 + dia)*24*60 + hora*60 + min; //se pasa a minutos
+    mes = fechafin->getMes();
+    dia = fechafin->getDia();
+    hora = fechafin->getHora();
+    min = fechafin->getMin();
+    cantminsfin = ((mes - 1)*30 + dia)*24*60 + hora*60 + min;
+    
+    if(anio1 == anio2){
+        tiempo = cantminsfin - cantminscomienzo;
+        return tiempo;
+    }else{
+        int restaanios = anio2 - anio1;
+        cantminsfin = cantminsfin + restaanios*360*24*60;
+        tiempo = cantminsfin - cantminscomienzo;
+        return tiempo;
+
+    }
+    
+}
+
+std::set<DtTiempoAsignatura*> CtrlClase::tiempoDictadoClases(){
+    HandlerAsignaturas *a = HandlerAsignaturas::getInstancia();
+    std::map<std::string, Asignatura*> asignaturas = a->get();
+    std::map<std::string, Asignatura*>::iterator it;
+    std::set<DtTiempoAsignatura*> res;
+    
+    if(!asignaturas.empty()){
+        for(it = asignaturas.begin(); it != asignaturas.end(); ++it){
+            std::set<Clase*> clases = it->second->getClases();
+            std::set<Clase*>::iterator itclase;
+            int tiempotranscurrido = 0;
+            for(itclase = clases.begin(); itclase != clases.end(); ++itclase){
+                if(!(*itclase)->getEnVivo()){
+                    tiempotranscurrido = tiempotranscurrido + tiempoTranscurrido((*itclase)->getFechayhoracomienzo(),(*itclase)->getFechayhorafinal());
+                }
+            }
+            int horas, mins;
+            horas = tiempotranscurrido/60;
+            mins = tiempotranscurrido%60;
+            DtTiempoAsignatura *nuevo = new DtTiempoAsignatura(it->second->getNombre(), horas, mins);
+            res.insert(nuevo);
+
+        }
+    }else{
+        throw std::invalid_argument("No hay asignaturas en el sistema");
+    }
+return res;
+
 }

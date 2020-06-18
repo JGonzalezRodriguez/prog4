@@ -58,6 +58,7 @@ int main() {
                 printf("\n4. Asignacion de docentes a una asignatura");
                 printf("\n5. Modificar fecha del sistema");
                 printf("\n6. Consultar fecha del sistema");
+                printf("\n7. Tiempo de dictado de clase");
                 printf("\n");
                     
                 int opcion2;
@@ -315,6 +316,17 @@ int main() {
                         std::cout << *fecha;
                         break;
                     }
+                    case 7:{
+                        //TIEMPO DE DICTADO DE CLASE//
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        std::set<DtTiempoAsignatura*> colec = ctrl->getIClase()->tiempoDictadoClases();
+                        std::set<DtTiempoAsignatura*>::iterator it;
+                        for(it = colec.begin(); it != colec.end(); ++it){
+                            cout << **it;
+                        }
+
+                        break;
+                    }
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
@@ -328,9 +340,8 @@ int main() {
                 printf("\n2. Finalizacion de clase");
                 printf("\n3. Suscribirse a notificacion");
                 printf("\n4. Consulta de notificaciones");
-                printf("\n5. Tiempo de dictado de clase");
-                printf("\n6. Tiempo de asistencia a clase");
-                printf("\n7. Envio de mensaje");
+                printf("\n5. Tiempo de asistencia a clase");
+                printf("\n6. Envio de mensaje");
                 printf("\n");
                     
                 
@@ -383,14 +394,15 @@ int main() {
                         DtPreview* preview = ctrl->mostrarDatos();
                         std::cout << std::endl << *preview << std::endl;
                         // LUEGO DEL PREVIEW SE DEBERIA LISTAR LOS ESTUDIANTES ELEGIDOS
-                        std::cout  << "Estudiantes elegidos: " << std::endl;
-                        std::set<DtEstudiante*> setest = (*preview).getEstudiantes();
-                        for (std::set<DtEstudiante*>::iterator it=setest.begin(); it!=setest.end(); ++it) {
-                            DtEstudiante* dtest = *it;
-                            std::cout << std::endl << *dtest << std::endl;
-                            // aca hay un bug, saque el * de dtest para ver que onda con los punteros
+                        if (mod == monitoreo) {
+                            std::cout  << "Estudiantes elegidos: " << std::endl;
+                            std::set<DtEstudiante*> setest = (*preview).getEstudiantes();
+                            for (std::set<DtEstudiante*>::iterator it=setest.begin(); it!=setest.end(); ++it) {
+                                DtEstudiante* dtest = *it;
+                                std::cout << std::endl << *dtest << std::endl;
+                            }
                         }
-
+                        
                         printf("\n Desea confirmar s/n: ");
                         char letraconf;
                         scanf("%s", &letraconf);
@@ -399,6 +411,30 @@ int main() {
                         break;
                     }
                     case 2: {
+                        // --- finalizacion de clase ---
+                        IClase* ctrl = Fabrica::getIClase();
+                        std::string email, contrasenia;
+                        std::cin.ignore();
+                        printf("\n Introduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\n Introduzca su contrasenia: ");
+                        getline(std::cin, contrasenia);
+                        ctrl->identificarse(email, contrasenia);
+                        std::set<DtPreview*> coldtpreview = ctrl->listarClasesEnVivo();
+                        for (std::set<DtPreview*>::iterator it=coldtpreview.begin(); it!=coldtpreview.end(); ++it) {
+                            std::cout << std::endl << **it << std::endl;
+                        }
+                        printf("\n Introduzca el id de la clase que desea finalizar: ");
+                        std::string id;
+                        getline(std::cin, id);
+                        ctrl->elegirClase(id);
+                        std::cout << std::endl << *(ctrl->mostrarClase()) << std::endl;
+                        printf("\n Desea confirmar la finalizacion de esta clase? s/n: ");
+                        char letraselec;
+                        scanf("%s", &letraselec);
+                        if (letraselec == 's') {
+                            ctrl->confirmarFinalizacionDeClase(true);
+                        }
                         break;
                     }
                     case 3: {
@@ -407,6 +443,7 @@ int main() {
                     case 4: {
                         break;
                     }
+                   
                     case 5: {
                         break;
                     }
@@ -417,6 +454,7 @@ int main() {
                         envioMensaje();
                         break;
                     }
+                    
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;

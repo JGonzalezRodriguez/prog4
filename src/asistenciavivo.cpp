@@ -28,7 +28,9 @@ bool AsistenciaVivo::getEstaMirando(){
 }
 
 void AsistenciaVivo::finalizarVisualizacionVivo(){
-    // TODO
+    Reloj* r = Reloj::getInstancia();
+    ultimasalidavivo = r->getFecha();
+    estamirando = false;
 }
 
 
