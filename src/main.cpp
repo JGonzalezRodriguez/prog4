@@ -32,7 +32,8 @@ void envioMensaje(){
     printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
     getline(std::cin, id);
     interface->elegirClase(id);
-    
+    // printf("\nListando los mensajes de la clase:\n");
+    // printf("\n------------------------------\n");
 }
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");
