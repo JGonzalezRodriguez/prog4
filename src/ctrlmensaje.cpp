@@ -1,4 +1,10 @@
+#include <stdexcept>
 #include "../include/ctrlmensaje.h"
+#include "../include/handlerusuarios.h"
+#include "../include/dt/enums.h"
+#include "../include/teorico.h"
+#include "../include/practico.h"
+#include "../include/monitoreo.h"
 
 CtrlMensaje* CtrlMensaje::instancia = NULL;
 
@@ -42,17 +48,53 @@ void CtrlMensaje::setMensaje(Mensaje* m){
 }
 
 void CtrlMensaje::identificarse(std::string mail, std::string contrasenia){
-    //TODO
+    Handlerusuarios* handler = Handlerusuarios::getInstancia();
+    if (handler->identificarse(mail, contrasenia)){
+        this->u = handler->getUsuario(mail);
+    }else{
+        throw std::invalid_argument("\nDatos de identificación incorrectos");
+    }
 }
 
 std::set<DtClase*> CtrlMensaje::listarClases(){
-    //TODO
-    std::set<DtClase*> x;
-    return x;
+    Usuario* user = this->u;
+    std::set<Clase*> clases = user->listarClases();
+    std::set<DtClase*> dtclases;
+    //iterando para crear un set de dtclases a partir de el set de clases
+    for (std::set<Clase*>::iterator it=clases.begin(); it!=clases.end(); ++it){
+        modalidad mod;
+        //viendo la modalidad de la clase
+        Clase* c = *it;
+        if(dynamic_cast<Teorico*>(c) != NULL){
+            mod = teorico;
+        }else if(dynamic_cast<Practico*>(c) != NULL){
+            mod = practico;
+        }else{
+            mod = monitoreo;
+        }
+        //copiando fechas
+        DtFecha* fcomienzo = new DtFecha(c->getFechayhoracomienzo());
+        DtFecha* ffinal = NULL;
+        if (c->getFechayhorafinal() != NULL){
+            ffinal = new DtFecha(c->getFechayhorafinal());
+        }
+        //creando dtdocente
+        Docente* doc = c->getDocente();
+        if (doc == NULL){//no deberia pasar nunca
+            throw std::invalid_argument("\nERROR: se intento imprimir una clase que no tiene docente");
+        }
+        DtDocente* dtdoc = new DtDocente(doc->getInstituto(), doc->getNombre(), doc->getEmail(), doc->getImagen(), doc->getContrasenia());
+        //creando dtclase
+        DtClase* dtclase = new DtClase(mod, fcomienzo, ffinal, c->getEnVivo(), c->getId(), c->getNombre(), c->getUrl(), dtdoc);
+        //agregando al set
+        dtclases.insert(dtclase);
+    }
+    return dtclases;
 }
 
 void CtrlMensaje::elegirClase(std::string id){
-    //TODO
+    Usuario* user = this->u;
+    this->c = user->elegirClase(id);
 }
 
 std::set<DtMensaje*> CtrlMensaje::listarMensajes(){

@@ -10,6 +10,13 @@ void Clase::incSeed() {
     seed = seed + 1;
 }
 
+void Clase::setDocente(Docente* doc){
+    this->doc = doc;
+}
+Docente* Clase::getDocente(){
+    return this->doc;
+}
+
 DtFecha *Clase::getFechayhoracomienzo(){
     return this->fechayhoracomienzo;
 }
@@ -87,7 +94,10 @@ void Clase::agregarPadre(Mensaje *m){
 Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){
     this->nombre = nombre;
     this->fechayhoracomienzo = fecha;
+    this->fechayhorafinal = NULL;
     this->asig = asignatura;
     this->doc = doc;
     this->envivo = true;
+}
+Clase::~Clase(){
 }

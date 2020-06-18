@@ -134,6 +134,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
+            c->setDocente(docente); // por alguna razon esto es necesario? a pesar de que docente ya estaba en el constructor
         } else if (mod == teorico) {
             Teorico* c = new Teorico(nombre, f, asignatura, docente);
             c->setEnVivo(true);
@@ -144,6 +145,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
+            c->setDocente(docente); // por alguna razon esto es necesario? a pesar de que docente ya estaba en el constructor
         } else if (mod == monitoreo) {
             Monitoreo* c = new Monitoreo(nombre, f, asignatura, docente);
             c->setEstudiantes(estudiantes);
@@ -155,6 +157,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
+            c->setDocente(docente); // por alguna razon esto es necesario? a pesar de que docente ya estaba en el constructor
         }
     }
     this->estudiantes.clear();

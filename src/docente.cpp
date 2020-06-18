@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/docente.h"
 
 instituto Docente::getInstituto(){
@@ -7,13 +8,22 @@ void Docente::setInstituto(instituto inst){
     this->inst = inst;
 }
 
-//operaciones que hereda de usuario
+//operaciones de usuario que sobreescribe
 std::set<Clase*> Docente::listarClases(){
-    std::set<Clase*> x;
-        return x;
+    return this->clases;
 }
 bool Docente::tieneAsignatura(Asignatura *a){
     return false;
+}
+Clase* Docente::elegirClase(std::string id){
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it){
+        Clase* c = *it; 
+        if (c->getId() == id){
+            return c;
+        }
+    }
+    //si el docente no esta en ninguna clase con ese id
+    throw std::invalid_argument("\nEl usuario no tiene está en ninguna clase con ese ID");
 }
        
 //operaciones mismas de docente
