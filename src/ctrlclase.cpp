@@ -177,3 +177,64 @@ std::set<DtClase*> CtrlClase::listarClasesDocente(){
     std::set<DtClase*> x;
     return x;
 }
+
+int CtrlClase::tiempoTranscurrido(DtFecha *fechacomienzo, DtFecha *fechafin){
+    int cantminscomienzo, cantminsfin;
+    int anio1, anio2, mes, dia, hora, min;
+    anio1 = fechacomienzo->getAnio();
+    anio2 = fechafin->getAnio();
+    int tiempo;
+
+    mes = fechacomienzo->getMes();
+    dia = fechacomienzo->getDia();
+    hora = fechacomienzo->getHora();
+    min = fechacomienzo->getMin();
+    cantminscomienzo = ((mes - 1)*30 + dia)*24*60 + hora*60 + min; //se pasa a minutos
+    mes = fechafin->getMes();
+    dia = fechafin->getDia();
+    hora = fechafin->getHora();
+    min = fechafin->getMin();
+    cantminsfin = ((mes - 1)*30 + dia)*24*60 + hora*60 + min;
+    
+    if(anio1 == anio2){
+        tiempo = cantminsfin - cantminscomienzo;
+        return tiempo;
+    }else{
+        int restaanios = anio2 - anio1;
+        cantminsfin = cantminsfin + restaanios*360*24*60;
+        tiempo = cantminsfin - cantminscomienzo;
+        return tiempo;
+
+    }
+    
+}
+
+std::set<DtTiempoAsignatura*> CtrlClase::tiempoDictadoClases(){
+    HandlerAsignaturas *a = HandlerAsignaturas::getInstancia();
+    std::map<std::string, Asignatura*> asignaturas = a->get();
+    std::map<std::string, Asignatura*>::iterator it;
+    std::set<DtTiempoAsignatura*> res;
+    
+    if(!asignaturas.empty()){
+        for(it = asignaturas.begin(); it != asignaturas.end(); ++it){
+            std::set<Clase*> clases = it->second->getClases();
+            std::set<Clase*>::iterator itclase;
+            int tiempotranscurrido = 0;
+            for(itclase = clases.begin(); itclase != clases.end(); ++itclase){
+                if(!(*itclase)->getEnVivo()){
+                    tiempotranscurrido = tiempotranscurrido + tiempoTranscurrido((*itclase)->getFechayhoracomienzo(),(*itclase)->getFechayhorafinal());
+                }
+            }
+            int horas, mins;
+            horas = tiempotranscurrido/60;
+            mins = tiempotranscurrido%60;
+            DtTiempoAsignatura *nuevo = new DtTiempoAsignatura(it->second->getNombre(), horas, mins);
+            res.insert(nuevo);
+
+        }
+    }else{
+        throw std::invalid_argument("No hay asignaturas en el sistema");
+    }
+return res;
+
+}

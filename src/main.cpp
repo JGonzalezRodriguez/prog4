@@ -33,6 +33,7 @@ int main() {
                 printf("\n4. Asignacion de docentes a una asignatura");
                 printf("\n5. Modificar fecha del sistema");
                 printf("\n6. Consultar fecha del sistema");
+                printf("\n7. Tiempo de dictado de clase");
                 printf("\n");
                     
                 int opcion2;
@@ -290,6 +291,17 @@ int main() {
                         std::cout << *fecha;
                         break;
                     }
+                    case 7:{
+                        //TIEMPO DE DICTADO DE CLASE//
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        std::set<DtTiempoAsignatura*> colec = ctrl->getIClase()->tiempoDictadoClases();
+                        std::set<DtTiempoAsignatura*>::iterator it;
+                        for(it = colec.begin(); it != colec.end(); ++it){
+                            cout << **it;
+                        }
+
+                        break;
+                    }
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
@@ -303,9 +315,8 @@ int main() {
                 printf("\n2. Finalizacion de clase");
                 printf("\n3. Suscribirse a notificacion");
                 printf("\n4. Consulta de notificaciones");
-                printf("\n5. Tiempo de dictado de clase");
-                printf("\n6. Tiempo de asistencia a clase");
-                printf("\n7. Envio de mensaje");
+                printf("\n5. Tiempo de asistencia a clase");
+                printf("\n6. Envio de mensaje");
                 printf("\n");
                     
                 
@@ -382,13 +393,11 @@ int main() {
                     case 4: {
                         break;
                     }
+                   
                     case 5: {
                         break;
                     }
                     case 6: {
-                        break;
-                    }
-                    case 7: {
                         break;
                     }
                     default: {
