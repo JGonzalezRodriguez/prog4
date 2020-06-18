@@ -73,8 +73,8 @@ std::set<DtClase*> CtrlMensaje::listarClases(){
             mod = monitoreo;
         }
         //copiando fechas
-        DtFecha* comienzo = new DtFecha(c->getFechayhoracomienzo);
-        DtFecha* final = new DtFecha(c->getFechayhorafinal);
+        DtFecha* comienzo = new DtFecha(c->getFechayhoracomienzo());
+        DtFecha* final = new DtFecha(c->getFechayhorafinal());
         //creando dtdocente
         Docente* doc = c->getDocente();
         DtDocente* dtdoc = new DtDocente(doc->getInstituto(), doc->getNombre(), doc->getEmail(), doc->getImagen(), doc->getContrasenia());

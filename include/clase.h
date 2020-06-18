@@ -30,31 +30,32 @@ class Clase {
     public:
         static int getSeed();
         static void incSeed();
-        DtFecha *getFechayhoracomienzo();
-        void setFechayhoracomienzo(DtFecha*);
-        void setId(std::string);
-        void setEnVivo(bool);
-        DtFecha *getFechayhorafinal();
-        void setFechayhorafinal(DtFecha*);
-        std::string getUrl();
-        void setUrl(std::string);
-        std::string getNombre();
-        void setNombre(std::string);
+        virtual DtFecha *getFechayhoracomienzo();
+        virtual void setFechayhoracomienzo(DtFecha*);
+        virtual void setId(std::string);
+        virtual void setEnVivo(bool);
+        virtual DtFecha *getFechayhorafinal();
+        virtual void setFechayhorafinal(DtFecha*);
+        virtual std::string getUrl();
+        virtual void setUrl(std::string);
+        virtual std::string getNombre();
+        virtual void setNombre(std::string);
 
         
-        Docente* getDocente();
-        Asignatura *getAsignatura();
-        bool getEnVivo();
-        void finalizar();
-        bool tieneClaseEst(Estudiante *est);
-        ClaseEstudiante *crearClaseEst(Estudiante *est, Clase *c);
-        ClaseEstudiante *getClaseEstExistente();
-        std::set<Mensaje*> getMensajes();
-        std::string getId();
-        Mensaje* seleccionarMensaje(std::string idmensaje);
-        void agregarPadre(Mensaje *m);
+        virtual Docente* getDocente();
+        virtual Asignatura *getAsignatura();
+        virtual bool getEnVivo();
+        virtual void finalizar();
+        virtual bool tieneClaseEst(Estudiante *est);
+        virtual ClaseEstudiante *crearClaseEst(Estudiante *est, Clase *c);
+        virtual ClaseEstudiante *getClaseEstExistente();
+        virtual std::set<Mensaje*> getMensajes();
+        virtual std::string getId();
+        virtual Mensaje* seleccionarMensaje(std::string idmensaje);
+        virtual void agregarPadre(Mensaje *m);
 
         Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
+        virtual ~Clase() = 0;
 };
 
 #endif
