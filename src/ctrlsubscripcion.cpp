@@ -41,7 +41,7 @@ std::set<DtNotificacion*> CtrlSubscripcion::listarNotificaciones() {
     return coldtnot;
 }
 void CtrlSubscripcion::eliminarNotificaciones() {
-
+    u->eliminarNotificaciones();
 }
 
 void CtrlSubscripcion::elegirModo() {

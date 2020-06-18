@@ -38,7 +38,10 @@
             return notificaciones;
         }
         void Usuario::eliminarNotificaciones(){
-
+            for (std::set<Notificacion*>::iterator it=notificaciones.begin(); it!=notificaciones.end(); ++it) {
+                delete *it;
+            }
+            this->notificaciones.clear();
         }
         void Usuario::eliminarNotificacionAsign(Asignatura *a){
 

@@ -461,6 +461,31 @@ int main() {
                         break;
                     }
                     case 4: {
+                        // consulta de notificaciones ---------
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ISubscripcion* ctrl = f->getISubscripcion();
+                        ctrl->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getIdentifico()){    
+                            std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                            }
+
+                            ctrl->eliminarNotificaciones();
+
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+
                         break;
                     }
                    
@@ -582,6 +607,30 @@ int main() {
                         break;
                     }
                     case 5: {
+                        // consulta de notificaciones ---------
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ISubscripcion* ctrl = f->getISubscripcion();
+                        ctrl->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getIdentifico()){    
+                            std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                            }
+
+                            ctrl->eliminarNotificaciones();
+
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
                         break;
                     }
                     default: {
