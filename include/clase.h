@@ -42,6 +42,7 @@ class Clase {
         virtual void setNombre(std::string);
 
         
+        virtual void setDocente(Docente* doc);
         virtual Docente* getDocente();
         virtual Asignatura *getAsignatura();
         virtual bool getEnVivo();

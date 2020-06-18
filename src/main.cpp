@@ -22,8 +22,12 @@ void envioMensaje(){
     getline(std::cin, contrasenia);
     interface->identificarse(email, contrasenia);
     std::set<DtClase*> clases = interface->listarClases();
+    printf("\nListando clases disponibles:\n");
+    printf("\n------------------------------\n");
     for (std::set<DtClase*>::iterator it=clases.begin(); it!=clases.end(); ++it){
-        std::cout << *it;
+        DtClase* c = *it;
+        std::cout << *c;
+        printf("\n------------------------------\n");
     }
     
 }

@@ -73,17 +73,22 @@ std::set<DtClase*> CtrlMensaje::listarClases(){
             mod = monitoreo;
         }
         //copiando fechas
-        DtFecha* comienzo = new DtFecha(c->getFechayhoracomienzo());
-        DtFecha* final = new DtFecha(c->getFechayhorafinal());
+        DtFecha* fcomienzo = new DtFecha(c->getFechayhoracomienzo());
+        DtFecha* ffinal = NULL;
+        if (c->getFechayhorafinal() != NULL){
+            ffinal = new DtFecha(c->getFechayhorafinal());
+        }
         //creando dtdocente
         Docente* doc = c->getDocente();
+        if (doc == NULL){//no deberia pasar nunca
+            throw std::invalid_argument("\nERROR: se intento imprimir una clase que no tiene docente");
+        }
         DtDocente* dtdoc = new DtDocente(doc->getInstituto(), doc->getNombre(), doc->getEmail(), doc->getImagen(), doc->getContrasenia());
         //creando dtclase
-        DtClase* dtclase = new DtClase(mod, comienzo, final, c->getEnVivo(), c->getId(), c->getNombre(), c->getUrl(), dtdoc);
+        DtClase* dtclase = new DtClase(mod, fcomienzo, ffinal, c->getEnVivo(), c->getId(), c->getNombre(), c->getUrl(), dtdoc);
         //agregando al set
         dtclases.insert(dtclase);
     }
-
     return dtclases;
 }
 
