@@ -413,6 +413,26 @@ int main() {
                         break;
                     }
                     case 3: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ctrl->getISubscripcion()->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getISubscripcion()->getIdentifico()){
+                            ctrl->getISubscripcion()->elegirModo();
+                            printf("\nHa quedado suscrito al modo respuesta a un usuario");
+                            printf("\n");
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+
                         break;
                     }
                     case 4: {
@@ -508,6 +528,26 @@ int main() {
                         break;
                     }
                     case 4: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ctrl->getISubscripcion()->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getISubscripcion()->getIdentifico()){
+                            ctrl->getISubscripcion()->elegirModo();
+                            printf("\nHa quedado suscrito al modo respuesta a un usuario");
+                            printf("\n");
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+
                         break;
                     }
                     case 5: {

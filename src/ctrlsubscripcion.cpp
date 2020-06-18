@@ -1,9 +1,13 @@
 #include "../include/ctrlsubscripcion.h"
 
+CtrlSubscripcion::CtrlSubscripcion(){}
 
+CtrlSubscripcion *CtrlSubscripcion::instancia = NULL;
 
 CtrlSubscripcion* CtrlSubscripcion::getInstancia() {
-    return NULL;
+    if(instancia == NULL)
+        instancia = new CtrlSubscripcion();
+    return instancia;
 }
 
 bool CtrlSubscripcion::getIdentifico(){
@@ -11,9 +15,14 @@ bool CtrlSubscripcion::getIdentifico(){
 }
 
 void CtrlSubscripcion::identificarse(std::string mail, std::string constrasenia) {
-    //Handlerusuarios *u = Handlerusuarios::getInstancia();
+    Handlerusuarios *usuario = Handlerusuarios::getInstancia();
+    if(usuario->identificarse(mail, constrasenia)){
+        this->identifico = true;
+        this->u = usuario->getUsuario(mail);
+    }else{
+        this->identifico = false;
 
-
+    }
 }
 
 std::set<DtNotificacion*> CtrlSubscripcion::listarNotificaciones() {
@@ -25,6 +34,8 @@ void CtrlSubscripcion::eliminarNotificaciones() {
 }
 
 void CtrlSubscripcion::elegirModo() {
+    
+    this->u->elegirModo();
 
 }
  

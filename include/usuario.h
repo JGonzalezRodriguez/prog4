@@ -6,12 +6,13 @@
 #include "mensaje.h"
 #include "subscripcion.h"
 #include "notificacion.h"
-#include "subscripcion.h"
+//#include "subscripcion.h"
 #include <set>
+#include "srespuesta.h"
 
 class Asignatura;
 class Clase;
-class Subscripcion;
+//class Subscripcion;
 
 class Usuario {
     private:
