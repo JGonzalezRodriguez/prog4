@@ -93,7 +93,8 @@ std::set<DtClase*> CtrlMensaje::listarClases(){
 }
 
 void CtrlMensaje::elegirClase(std::string id){
-    //TODO
+    Usuario* user = this->u;
+    this->c = user->elegirClase(id);
 }
 
 std::set<DtMensaje*> CtrlMensaje::listarMensajes(){

@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/estudiante.h"
 
 std::string Estudiante::getCi(){
@@ -19,6 +20,18 @@ void Estudiante::setCi(std::string ci){
        bool Estudiante::tieneAsignatura(Asignatura *a){
             return false;
         }
+       Clase* Estudiante::elegirClase(std::string id){
+            std::set<ClaseEstudiante*> ces = this->claseestudiantes;
+            for (std::set<ClaseEstudiante*>::iterator it=ces.begin(); it!=ces.end(); ++it){
+                ClaseEstudiante* ce = *it;
+                Clase* c = ce->getClase();
+                if (c->getId() == id){
+                    return c;
+                }
+            }
+            //si el estudiante no esta en ninguna clase con ese id
+            throw std::invalid_argument("\nEl usuario no tiene está en ninguna clase con ese ID");
+       }
         
 //operaciones mismas de estudiante
         void Estudiante::eliminarAsignatura(Asignatura *a){

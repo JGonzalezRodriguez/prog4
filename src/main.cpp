@@ -14,7 +14,7 @@ using namespace std;
 void envioMensaje(){
     Fabrica* fabrica = Fabrica::getInstancia();
     IMensaje* interface = fabrica->getIMensaje();
-    std::string email, contrasenia;
+    std::string email, contrasenia, id;
     printf("\n Introduzca su email: ");
     std::cin.ignore(1);
     getline(std::cin, email);
@@ -29,6 +29,9 @@ void envioMensaje(){
         std::cout << *c;
         printf("\n------------------------------\n");
     }
+    printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
+    getline(std::cin, id);
+    interface->elegirClase(id);
     
 }
 int main() {
