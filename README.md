@@ -31,7 +31,7 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 - Asignación de docentes a una asignatura **OK**
 - Inscripción a las asignaturas **OK**
 - Inicio de clase **OK**
-- Finalización de clase HACIENDO ACQUA
+- Finalización de clase **OK**
 - Envío de mensaje HACIENDO NICO
 - Asistencia a clase en vivo HACIENDO JOACO
 - Finalización de asistencia a clase en vivo (QUIZAS LA HAGA JOACO)
