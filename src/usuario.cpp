@@ -35,8 +35,7 @@
     Usuario::~Usuario(){}
 
         std::set<Notificacion*> Usuario::listarNotificaciones(){
-            std::set<Notificacion*> x;
-            return x;
+            return notificaciones;
         }
         void Usuario::eliminarNotificaciones(){
 
