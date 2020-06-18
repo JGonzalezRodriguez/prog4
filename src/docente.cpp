@@ -7,10 +7,9 @@ void Docente::setInstituto(instituto inst){
     this->inst = inst;
 }
 
-//operaciones que hereda de usuario
+//operaciones de usuario que sobreescribe
 std::set<Clase*> Docente::listarClases(){
-    std::set<Clase*> x;
-        return x;
+    return this->clases;
 }
 bool Docente::tieneAsignatura(Asignatura *a){
     return false;

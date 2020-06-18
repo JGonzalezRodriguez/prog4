@@ -42,6 +42,7 @@ class Clase {
         void setNombre(std::string);
 
         
+        Docente* getDocente();
         Asignatura *getAsignatura();
         bool getEnVivo();
         void finalizar();

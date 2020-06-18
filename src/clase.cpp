@@ -10,6 +10,10 @@ void Clase::incSeed() {
     seed = seed + 1;
 }
 
+Docente* Clase::getDocente(){
+    return this->doc;
+}
+
 DtFecha *Clase::getFechayhoracomienzo(){
     return this->fechayhoracomienzo;
 }

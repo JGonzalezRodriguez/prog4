@@ -9,8 +9,12 @@ void Estudiante::setCi(std::string ci){
 
 //operaciones que hereda de usuario
         std::set<Clase*> Estudiante::listarClases(){
-            std::set<Clase*> x;
-            return x;
+            std::set<Clase*> clases;
+            for (std::set<ClaseEstudiante*>::iterator it=this->claseestudiantes.begin(); it!=this->claseestudiantes.end(); ++it){
+                ClaseEstudiante* ce = *it;
+                clases.insert(ce->getClase());
+            }
+            return clases;
         }
        bool Estudiante::tieneAsignatura(Asignatura *a){
             return false;

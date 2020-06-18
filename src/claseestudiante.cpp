@@ -9,11 +9,9 @@ void ClaseEstudiante::finalizarVisualizacionesVivo() {
 }
 
 Estudiante* ClaseEstudiante::getEstudiante() {
-    Estudiante* x = NULL;
-    return x;
+    return this->est;
 }
 
 Clase* ClaseEstudiante::getClase() {
-    Clase* x = NULL;
-    return x;
+    return this->c;
 }
