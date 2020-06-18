@@ -32,8 +32,13 @@ void envioMensaje(){
     printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
     getline(std::cin, id);
     interface->elegirClase(id);
-    // printf("\nListando los mensajes de la clase:\n");
-    // printf("\n------------------------------\n");
+    std::set<DtMensaje*> msjs = interface->listarMensajes();
+    printf("\nListando los mensajes de la clase:\n");
+    printf("\n------------------------------\n");
+    for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        DtMensaje* msj = *it;
+        msj->recursivePrint();
+    }
 }
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");

@@ -98,9 +98,13 @@ void CtrlMensaje::elegirClase(std::string id){
 }
 
 std::set<DtMensaje*> CtrlMensaje::listarMensajes(){
-    //TODO
-    std::set<DtMensaje*> x;
-    return x;
+    std::set<Mensaje*> msjs = this->c->getMensajes();
+    std::set<DtMensaje*> dtmsjs;
+    for (std::set<Mensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        Mensaje* msj = *it;
+        dtmsjs.insert(msj->toDt());
+    }
+    return dtmsjs;
 }
 
 void CtrlMensaje::seleccionarMensaje(std::string idMensaje){
