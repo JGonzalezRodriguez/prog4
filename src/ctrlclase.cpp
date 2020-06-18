@@ -157,18 +157,34 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
     }
     this->estudiantes.clear();
 }
-std::set<DtClase*> CtrlClase::listarClasesEnVivo(){
-    std::set<DtClase*> x;
-    return x;
+std::set<DtPreview*> CtrlClase::listarClasesEnVivo(){
+    std::set<Clase*> colclase = docente->getClasesEnVivo();
+    std::set<DtPreview*> coldtpreview;
+    for (std::set<Clase*>::iterator it=colclase.begin(); it!=colclase.end(); ++it) {
+        Clase* clase = *it;
+
+        modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
+        DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
+        DtPreview* dtpreview = new DtPreview(mod, fecha, clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
+        coldtpreview.insert(dtpreview);
+        
+    }
+    return coldtpreview;
 }
 void CtrlClase::elegirClase(std::string id){
-
+    clase = docente->getClase(id);
 }
-DtClase *CtrlClase::mostrarClase(){
-    return NULL;
+DtPreview *CtrlClase::mostrarClase(){
+    modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
+    DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
+    DtPreview* dtpreview = new DtPreview(mod, fecha, clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
+    return dtpreview;
 }
 void CtrlClase::confirmarFinalizacionDeClase(bool conf){
-
+    clase->finalizar();
+    clase->setEnVivo(false);
+    Reloj* r = Reloj::getInstancia();
+    clase->setFechayhorafinal(r->getFecha());
 }
 void CtrlClase::elegirAsignaturaDoc(std::string codigo){
 

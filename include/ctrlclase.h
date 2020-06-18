@@ -22,6 +22,7 @@ class CtrlClase: public IClase{
         Asignatura *asignatura;
         Docente *docente;
         std::set<Estudiante*> estudiantes;//recordar que el maximo del set es 15, chequearlo con un if al momento de implementar
+        Clase* clase;
     public:
         static CtrlClase *getInstancia();
 
@@ -39,9 +40,9 @@ class CtrlClase: public IClase{
         void elegirEstudiante(std::string ci);
         DtPreview* mostrarDatos();
         void confirmarInicioDeClase(bool conf);
-        std::set<DtClase*> listarClasesEnVivo();
+        std::set<DtPreview*> listarClasesEnVivo();
         void elegirClase(std::string id);
-        DtClase* mostrarClase();
+        DtPreview* mostrarClase();
         void confirmarFinalizacionDeClase(bool conf);
         void elegirAsignaturaDoc(std::string codigo);
         std::set<DtClase*> listarClasesDocente();

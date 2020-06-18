@@ -40,6 +40,7 @@ class Clase {
         void setUrl(std::string);
         std::string getNombre();
         void setNombre(std::string);
+        Docente* getDoc();
 
         
         Asignatura *getAsignatura();
