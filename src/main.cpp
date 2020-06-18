@@ -358,14 +358,15 @@ int main() {
                         DtPreview* preview = ctrl->mostrarDatos();
                         std::cout << std::endl << *preview << std::endl;
                         // LUEGO DEL PREVIEW SE DEBERIA LISTAR LOS ESTUDIANTES ELEGIDOS
-                        std::cout  << "Estudiantes elegidos: " << std::endl;
-                        std::set<DtEstudiante*> setest = (*preview).getEstudiantes();
-                        for (std::set<DtEstudiante*>::iterator it=setest.begin(); it!=setest.end(); ++it) {
-                            DtEstudiante* dtest = *it;
-                            std::cout << std::endl << *dtest << std::endl;
-                            // aca hay un bug, saque el * de dtest para ver que onda con los punteros
+                        if (mod == monitoreo) {
+                            std::cout  << "Estudiantes elegidos: " << std::endl;
+                            std::set<DtEstudiante*> setest = (*preview).getEstudiantes();
+                            for (std::set<DtEstudiante*>::iterator it=setest.begin(); it!=setest.end(); ++it) {
+                                DtEstudiante* dtest = *it;
+                                std::cout << std::endl << *dtest << std::endl;
+                            }
                         }
-
+                        
                         printf("\n Desea confirmar s/n: ");
                         char letraconf;
                         scanf("%s", &letraconf);
