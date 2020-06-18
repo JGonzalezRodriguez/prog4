@@ -12,6 +12,7 @@ class Monitoreo: public Clase{
     public:
         void setEstudiantes(std::set<Estudiante*> ColMonitoreo);
         Monitoreo(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
+        ~Monitoreo();
 };
 
 #endif
