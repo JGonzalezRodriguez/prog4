@@ -24,3 +24,8 @@ std::string DtNotificacion::getIdClase(){
 DtAsignatura* DtNotificacion::getAsignatura(){
     return this->asignatura;
 }
+
+std::ostream& operator<< (std::ostream& os, DtNotificacion &b) {
+    os << "Fecha enviado: " << *(b.getFechaYHoraEnviado()) << std::endl << "Nombre clase: " << b.getNombreClase() << std::endl << "Id clase: " << b.getIdClase() << std::endl << "Asignatura: " << b.getAsignatura() << std::endl;
+    return os;
+}

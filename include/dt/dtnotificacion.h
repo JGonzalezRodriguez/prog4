@@ -20,4 +20,7 @@ class DtNotificacion{
         std::string getIdClase();
         DtAsignatura* getAsignatura();
 };
+
+std::ostream& operator<< (std::ostream& os, DtNotificacion &b);
+
 #endif
