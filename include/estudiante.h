@@ -26,6 +26,7 @@ class Estudiante : public Usuario {
     //operaciones que hereda de usuario
         virtual std::set<Clase*> listarClases();//tiene metodo
         virtual bool tieneAsignatura(Asignatura *a);
+        virtual Clase* elegirClase(std::string id);
     //operaciones mismas de estudiante
         void eliminarAsignatura(Asignatura *a);
         std::set<Asignatura*> getAsignaturas();

@@ -10,6 +10,31 @@
 #include <iterator>
 
 using namespace std;
+//para envio mensaje hacemos un metodo porque se llama en dos casos en docentes (7) y en estudiantes (3)
+void envioMensaje(){
+    Fabrica* fabrica = Fabrica::getInstancia();
+    IMensaje* interface = fabrica->getIMensaje();
+    std::string email, contrasenia, id;
+    printf("\n Introduzca su email: ");
+    std::cin.ignore(1);
+    getline(std::cin, email);
+    printf("\n Introduzca su contrasenia: ");
+    getline(std::cin, contrasenia);
+    interface->identificarse(email, contrasenia);
+    std::set<DtClase*> clases = interface->listarClases();
+    printf("\nListando clases disponibles:\n");
+    printf("\n------------------------------\n");
+    for (std::set<DtClase*>::iterator it=clases.begin(); it!=clases.end(); ++it){
+        DtClase* c = *it;
+        std::cout << *c;
+        printf("\n------------------------------\n");
+    }
+    printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
+    getline(std::cin, id);
+    interface->elegirClase(id);
+    // printf("\nListando los mensajes de la clase:\n");
+    // printf("\n------------------------------\n");
+}
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");
     printf("\n");
@@ -445,6 +470,11 @@ int main() {
                     case 6: {
                         break;
                     }
+                    case 7: {
+                        envioMensaje();
+                        break;
+                    }
+                    
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
@@ -525,6 +555,7 @@ int main() {
                         break;
                     }
                     case 3: {
+                        envioMensaje();
                         break;
                     }
                     case 4: {

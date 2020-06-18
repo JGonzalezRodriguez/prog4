@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/dt/dtfecha.h"
 
 DtFecha::DtFecha(int dia, int mes, int anio, int hora, int min){
@@ -13,6 +14,9 @@ DtFecha::DtFecha(int dia, int mes, int anio, int hora, int min){
 }
 
 DtFecha::DtFecha(DtFecha* f) {
+    if (f == NULL){
+        throw std::invalid_argument("\nERROR: intentando copiar una fecha que es NULL");
+    }
     this->dia = f->dia;
     this->mes = f->mes;
     this->anio = f->anio;

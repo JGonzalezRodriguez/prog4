@@ -41,7 +41,7 @@ class Usuario {
        void elegirModo();
        void eliminarSubscripcion();
        virtual std::set<Clase*> listarClases() = 0;
-       Clase *elegirClase(std::string id);
+       virtual Clase *elegirClase(std::string id);
        virtual bool tieneAsignatura(Asignatura *a) = 0;
        void notificarUsuario(Mensaje *m);
        virtual ~Usuario(); //no estoy seguro del destructor
