@@ -41,7 +41,15 @@ void Estudiante::setCi(std::string ci){
             return this->asignaturas;
         }
         Asignatura *Estudiante::getAsignatura(std::string codigo){
-            return NULL;
+            Asignatura* asig;
+            std::set<Asignatura*>::iterator it;
+            for(it=asignaturas.begin();it != asignaturas.end(); it++){
+                if((*it)->getCodigo() == codigo) {
+                    asig = (*it);
+                    return asig;
+                }
+            }
+            throw std::invalid_argument("El codigo no es valido");
         }
 
         Estudiante::Estudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci):Usuario(nombre, email, imagen, contrasenia){

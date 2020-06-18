@@ -552,6 +552,47 @@ int main() {
                         break;
                     }
                     case 2: {
+
+                        cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IReproduccion* ctrlR = f->getIReproduccion();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        //se identifica el estudiante
+                        ctrlR->identificarse(email, contrasenia);
+                        printf("Estas son las asignaturas a las que esta inscripto:\n\n");
+                        std::set<DtAsignatura*> lista = ctrlR->listarAsignaturasEstudiante();
+                        std::set<DtAsignatura*>::iterator it;
+                        for(it = lista.begin(); it != lista.end(); ++it){
+                            cout << **it;
+                        }
+                        // for(it = lista.begin(); it != lista.end(); ++it){
+                        //     cout << "\nNombre:"<< (*it)->getNombre() << endl << "Codigo: " << (*it)->getCodigo() << endl;
+                        // }
+                        std::string codigo;
+                        std::cout << "\nIntroduzca el codigo de la asignatura a la que desea asistir:";
+                        std::cin >> codigo;
+                        ctrlR->elegirAsignaturaEst(codigo);
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudiante();
+                        std::set<DtClase*>::iterator it2;
+                        for(it2 = x.begin(); it2 != x.end(); it2++){
+                            cout << endl << **it2;
+                        }
+                        std::string id;
+                        std::cout << endl << "Introduzca el id de la clase a la que desea asistir:";
+                        std::cin >> id;
+                        ctrlR->elegirClase(id);
+                        std::cout << "Desea Asistir a la siguiente clase?\n\n" << ctrlR->mostrarDatosClase();
+                        std::cout << endl;
+                        std::cout << "1. Si \n2. No\n";
+                        
+                        int i;
+                        std::cin >> i;
+                        bool confi = !(i-1);
+                        ctrlR->confirmarAsistenciaClaseEnVivo(confi);                      
                         break;
                     }
                     case 3: {
@@ -611,7 +652,7 @@ int main() {
                 //Cargar Estudiantes
                 ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "p4ss", "fotito.com/4", "23456789");
+                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "pass", "fotito.com/4", "23456789");
                 ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaEstudiante("Ramon Valdez", "ramon@mail.com", "pass", "fotito.com/5", "34567890");
                 ctrlU->confirmarAltaUsuario(true);
