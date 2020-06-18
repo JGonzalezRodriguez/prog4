@@ -5,7 +5,7 @@ ClaseEstudiante::ClaseEstudiante(Clase* c, Estudiante* a) {
 }
 
 void ClaseEstudiante::finalizarVisualizacionesVivo() {
-
+    avivo->finalizarVisualizacionVivo();
 }
 
 Estudiante* ClaseEstudiante::getEstudiante() {

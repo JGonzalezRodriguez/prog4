@@ -374,6 +374,30 @@ int main() {
                         break;
                     }
                     case 2: {
+                        // --- finalizacion de clase ---
+                        IClase* ctrl = Fabrica::getIClase();
+                        std::string email, contrasenia;
+                        std::cin.ignore();
+                        printf("\n Introduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\n Introduzca su contrasenia: ");
+                        getline(std::cin, contrasenia);
+                        ctrl->identificarse(email, contrasenia);
+                        std::set<DtPreview*> coldtpreview = ctrl->listarClasesEnVivo();
+                        for (std::set<DtPreview*>::iterator it=coldtpreview.begin(); it!=coldtpreview.end(); ++it) {
+                            std::cout << std::endl << **it << std::endl;
+                        }
+                        printf("\n Introduzca el id de la clase que desea finalizar: ");
+                        std::string id;
+                        getline(std::cin, id);
+                        ctrl->elegirClase(id);
+                        std::cout << std::endl << *(ctrl->mostrarClase()) << std::endl;
+                        printf("\n Desea confirmar la finalizacion de esta clase? s/n: ");
+                        char letraselec;
+                        scanf("%s", &letraselec);
+                        if (letraselec == 's') {
+                            ctrl->confirmarFinalizacionDeClase(true);
+                        }
                         break;
                     }
                     case 3: {

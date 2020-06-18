@@ -46,10 +46,29 @@ void Docente::addClase(Clase *c){
 }
 std::set<Clase*> Docente::getClasesEnVivo(){
     std::set<Clase*> x;
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
+        Clase* c = *it;
+        if (c->getEnVivo())
+            x.insert(c);
+    }
     return x;
 }
 Clase *Docente::getClase(std::string id){
-    return NULL;
+    Clase* c = NULL;
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
+        //printf("ITERANDO-");
+        //std::cout << (*it)->getId() << "-VS-";
+        //std::cout << id;
+        //printf("-DEBUG-");
+        if ((*it)->getId() == id) {
+            c = *it;
+        }
+    }
+    if (c == NULL) {
+        throw std::invalid_argument("No hay una clase valida con ese ID");
+    } else {
+        return c;
+    }
 }
 Asignatura *Docente::getAsignatura(std::string codigo){
     return NULL;
