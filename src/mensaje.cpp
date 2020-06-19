@@ -3,12 +3,13 @@
 
 int Mensaje::seed = 1; //compile time B)
 
-Mensaje::Mensaje(std::string texto, Clase* clase, Usuario* autor){
+Mensaje::Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz){
     this->id = std::to_string(this->seed);  // si no compila 
     this->seed++;                           // cambiar a Mensaje::seed
     this->clase = clase;
     this->texto = texto;
     this->autor = autor;
+    this->isroot = esRaiz;
     Reloj* r = Reloj::getInstancia();
     DtFecha* f = new DtFecha(r->getFecha()); // f es una copia de dtfecha que hay en ese instante en el reloj
     this->fechayhoraenviado = f;         
@@ -42,6 +43,10 @@ std::set<Mensaje*> Mensaje::getHijos(){
 
 void Mensaje::agregarHijo(Mensaje* m){
     //TODO
+}
+
+bool Mensaje::esRaiz(){
+    return this->isroot;
 }
 
 DtMensaje* Mensaje::toDt(){

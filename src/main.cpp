@@ -14,7 +14,7 @@ using namespace std;
 void envioMensaje(){
     Fabrica* fabrica = Fabrica::getInstancia();
     IMensaje* interface = fabrica->getIMensaje();
-    std::string email, contrasenia, id;
+    std::string email, contrasenia, id, idMensaje;
     printf("\n Introduzca su email: ");
     std::cin.ignore(1);
     getline(std::cin, email);
@@ -32,12 +32,25 @@ void envioMensaje(){
     printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
     getline(std::cin, id);
     interface->elegirClase(id);
-    std::set<DtMensaje*> msjs = interface->listarMensajes();
+    std::set<DtMensaje*> msjs = interface->listarMensajes(); //solo agarra los mensajes hoja para que luego recursivePrint no repita mensajes
     printf("\nListando los mensajes de la clase:\n");
     printf("\n------------------------------\n");
     for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
         DtMensaje* msj = *it;
         msj->recursivePrint();
+    }
+    printf("\nDesea responder a algún mensaje existente? s/n\n");
+    char letra;
+    scanf("%s", &letra);
+    if (letra != 's' && letra != 'n'){
+        throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
+    }
+    // bool esRaiz = true;
+    if (letra == 's'){
+        // esRaiz = false;
+        printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
+        getline(std::cin, id);
+        interface->seleccionarMensaje(idMensaje);
     }
 }
 int main() {

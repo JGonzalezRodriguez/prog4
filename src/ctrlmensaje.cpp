@@ -98,17 +98,19 @@ void CtrlMensaje::elegirClase(std::string id){
 }
 
 std::set<DtMensaje*> CtrlMensaje::listarMensajes(){
+    //solo agarra los mensajes raiz para que luego recursivePrint no repita mensaje
     std::set<Mensaje*> msjs = this->c->getMensajes();
     std::set<DtMensaje*> dtmsjs;
     for (std::set<Mensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
         Mensaje* msj = *it;
-        dtmsjs.insert(msj->toDt());
+        if (msj->esRaiz()){
+            dtmsjs.insert(msj->toDt());
+        }
     }
     return dtmsjs;
 }
 
 void CtrlMensaje::seleccionarMensaje(std::string idMensaje){
-    //TODO
 }
 
 void CtrlMensaje::textoEnviar(std::string texto){

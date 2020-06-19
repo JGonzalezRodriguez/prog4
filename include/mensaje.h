@@ -21,10 +21,12 @@ class Mensaje{
         std::string id;
         std::string texto;
         Usuario* autor;
+        bool isroot;
         std::set<Mensaje*> respondidopor;
     public:
-        Mensaje(std::string texto, Clase* clase, Usuario* autor);
+        Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz);
         ~Mensaje();
+        bool esRaiz();
         Asignatura* getAsignatura();
         Clase* getClase();
         DtFecha* getFechaYHoraEnviado();
