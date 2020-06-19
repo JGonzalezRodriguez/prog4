@@ -1,7 +1,8 @@
 #include "../include/claseestudiante.h"
 
 ClaseEstudiante::ClaseEstudiante(Clase* c, Estudiante* a) {
-
+    Reloj* r = Reloj::getInstancia();
+    this->avivo = new AsistenciaVivo(r->getFecha());
 }
 
 void ClaseEstudiante::finalizarVisualizacionesVivo() {

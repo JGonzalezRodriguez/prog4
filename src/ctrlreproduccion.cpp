@@ -45,8 +45,10 @@ CtrlReproduccion::CtrlReproduccion() {}
 
     void CtrlReproduccion::confirmarAsistenciaClaseEnVivo(bool confi){
         if (confi) {
-
-            printf("TODO yes");
+            if (!c->tieneClaseEst(est)){
+            c->crearClaseEst(est, c);
+            }
+            printf("Asistiendo a la clase");
         } else {
             printf("Asistencia Cancelada");
         }

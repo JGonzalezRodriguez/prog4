@@ -562,7 +562,7 @@ int main() {
                         printf("\nIntroduzca su contraseña: ");
                         getline(std::cin, contrasenia);
                         //se identifica el estudiante
-                        ctrlR->identificarse(email, contrasenia);
+                        if (!ctrlR->identificarse(email, contrasenia)) break;
                         printf("Estas son las asignaturas a las que esta inscripto:\n\n");
                         std::set<DtAsignatura*> lista = ctrlR->listarAsignaturasEstudiante();
                         std::set<DtAsignatura*>::iterator it;
@@ -585,7 +585,7 @@ int main() {
                         std::cout << endl << "Introduzca el id de la clase a la que desea asistir:";
                         std::cin >> id;
                         ctrlR->elegirClase(id);
-                        std::cout << "Desea Asistir a la siguiente clase?\n\n" << ctrlR->mostrarDatosClase();
+                        std::cout << "Desea Asistir a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
                         std::cout << endl;
                         std::cout << "1. Si \n2. No\n";
                         
