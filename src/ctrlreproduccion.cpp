@@ -16,9 +16,13 @@ CtrlReproduccion::CtrlReproduccion() {}
     bool CtrlReproduccion::identificarse(std::string email, std::string contrasenia){
         Handlerusuarios* h = Handlerusuarios::getInstancia();
         if (h->identificarse(email, contrasenia)){
+            if (h->getEstudiante(email) != NULL) {
             this->est = h->getEstudiante(email);
             std::cout << "\nBienvenide " << this->est->getNombre() << ".\n";
             return true;
+            } else {
+                throw std::invalid_argument("Usted no es un estudiante.");
+            }
         } else {
             printf("El usuario y/o contrasenia son incorrectos.");
             return false;
