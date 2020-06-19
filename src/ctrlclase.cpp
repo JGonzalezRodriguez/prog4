@@ -168,7 +168,7 @@ std::set<DtPreview*> CtrlClase::listarClasesEnVivo(){
     for (std::set<Clase*>::iterator it=colclase.begin(); it!=colclase.end(); ++it) {
         Clase* clase = *it;
 
-        modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
+        modalidad mod = (clase->getDocente())->getModalidad(clase->getAsignatura());
         DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
         DtPreview* dtpreview = new DtPreview(mod, clase->getFechayhoracomienzo(), clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
         coldtpreview.insert(dtpreview);
@@ -180,7 +180,7 @@ void CtrlClase::elegirClase(std::string id){
     clase = docente->getClase(id);
 }
 DtPreview *CtrlClase::mostrarClase(){
-    modalidad mod = (clase->getDoc())->getModalidad(clase->getAsignatura());
+    modalidad mod = (clase->getDocente())->getModalidad(clase->getAsignatura());
     DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
     DtPreview* dtpreview = new DtPreview(mod, clase->getFechayhoracomienzo(), clase->getId(), clase->getNombre(), clase->getUrl(), dtdoc);
     return dtpreview;
@@ -247,6 +247,7 @@ std::set<DtTiempoAsignatura*> CtrlClase::tiempoDictadoClases(){
                     tiempotranscurrido = tiempotranscurrido + tiempoTranscurrido((*itclase)->getFechayhoracomienzo(),(*itclase)->getFechayhorafinal());
                 }
             }
+
             int horas, mins;
             horas = tiempotranscurrido/60;
             mins = tiempotranscurrido%60;
