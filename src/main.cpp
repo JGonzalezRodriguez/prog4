@@ -14,7 +14,7 @@ using namespace std;
 void envioMensaje(){
     Fabrica* fabrica = Fabrica::getInstancia();
     IMensaje* interface = fabrica->getIMensaje();
-    std::string email, contrasenia, id, idMensaje;
+    std::string email, contrasenia, id, idMensaje, texto;
     printf("\n Introduzca su email: ");
     std::cin.ignore(1);
     getline(std::cin, email);
@@ -45,13 +45,26 @@ void envioMensaje(){
     if (letra != 's' && letra != 'n'){
         throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
     }
-    // bool esRaiz = true;
+    bool esRaiz = true;
     if (letra == 's'){
-        // esRaiz = false;
+        esRaiz = false;
         printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
         getline(std::cin, id);
         interface->seleccionarMensaje(idMensaje);
     }
+    printf("\nIngrese el contenido de su mensaje:\n");
+    getline(std::cin, texto);
+    interface->textoEnviar(texto);
+    printf("\nConfirmar envio de mensaje? s/n\n");
+    scanf("%s", &letra);
+    if (letra != 's' && letra != 'n'){
+        throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
+    }
+    bool conf = false;
+    if (letra == 's'){
+        conf = true;
+    }
+    interface->confirmarEnvioMensaje(conf, esRaiz);
 }
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");

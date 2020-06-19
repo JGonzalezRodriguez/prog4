@@ -114,9 +114,9 @@ void CtrlMensaje::seleccionarMensaje(std::string idMensaje){
 }
 
 void CtrlMensaje::textoEnviar(std::string texto){
-    //TODO
+    this->texto = texto;
 }
 
-void CtrlMensaje::confirmarEnvioMensaje(bool conf){
+void CtrlMensaje::confirmarEnvioMensaje(bool conf, bool esRaiz){
     //TODO
 }

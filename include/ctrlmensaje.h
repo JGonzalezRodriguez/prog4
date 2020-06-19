@@ -51,7 +51,7 @@ class CtrlMensaje: public IMensaje{
         /**
         Guarda el mensaje en la clase mensaje. En caso de ser respuesta lo guarda en la col(Mensaje) de respuestas a un mensaje.
         */
-        void confirmarEnvioMensaje(bool conf);
+        void confirmarEnvioMensaje(bool conf, bool esRaiz);
 };
 
 #endif
