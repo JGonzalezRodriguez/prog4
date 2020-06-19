@@ -563,8 +563,16 @@ int main() {
                         getline(std::cin, contrasenia);
                         //se identifica el estudiante
                         if (!ctrlR->identificarse(email, contrasenia)) break;
+                        if (ctrlR->estaAsistiendo()) {
+                            printf("Usted ya esta asistiendo a una clase");
+                            break;
+                        }
                         printf("Estas son las asignaturas a las que esta inscripto:\n\n");
                         std::set<DtAsignatura*> lista = ctrlR->listarAsignaturasEstudiante();
+                        if (lista.empty()) {
+                            printf("Usted no esta cursando ninguna asignatura");
+                            break;
+                        };
                         std::set<DtAsignatura*>::iterator it;
                         for(it = lista.begin(); it != lista.end(); ++it){
                             cout << **it;

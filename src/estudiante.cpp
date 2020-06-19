@@ -59,3 +59,17 @@ void Estudiante::setCi(std::string ci){
         void Estudiante::addAsignatura(Asignatura *a){
             this->asignaturas.insert(a);
         }
+
+        bool Estudiante::estaAsistiendo(){
+            std::set<ClaseEstudiante*>::iterator it;
+            for(it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+                if ((*it)->getAvivo()->getEstaMirando()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void Estudiante::addClaseEstudiante(ClaseEstudiante* ce) {
+            this->claseestudiantes.insert(ce);
+        }

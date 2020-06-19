@@ -61,6 +61,8 @@ class CtrlReproduccion : public IReproduccion {
         Confirma la asistencia a la clase.
         */
         void confirmarAsistenciaClaseEnVivo(bool confi);
+
+        bool estaAsistiendo();
         
 };
 #endif

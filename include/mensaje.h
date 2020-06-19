@@ -3,8 +3,8 @@
 
 #include <string>
 #include <set>
-#include "clase.h"
-#include "asignatura.h"
+//#include "clase.h"
+//#include "asignatura.h"
 #include "dt/dtfecha.h"
 #include "reloj.h"
 
@@ -22,7 +22,7 @@ class Mensaje{
     public:
         Mensaje(std::string texto, Clase* clase);
         ~Mensaje();
-        Asignatura* getAsignatura();
+        //Asignatura* getAsignatura();
         Clase* getClase();
         DtFecha* getFechaYHoraEnviado();
         std::string getTexto();

@@ -6,10 +6,11 @@
 #include "claseestudiante.h"
 #include "clase.h"
 #include <set>
+#include "asistenciavivo.h"
 
 class Asignatura;
 class Clase;
-class ClaseEstudiante;
+// class ClaseEstudiante;
 
 class Estudiante : public Usuario {
     private:
@@ -33,6 +34,8 @@ class Estudiante : public Usuario {
         Asignatura *getAsignatura(std::string codigo);
         Estudiante(std::string nombre, std::string email, std::string contrasenia, std::string imagen, std::string ci);//constructor
         void addAsignatura(Asignatura *a);//se agrega para poder asignarle una asignatura al estudiante
+        bool estaAsistiendo();
+        void addClaseEstudiante(ClaseEstudiante* ce);
 };
 
 

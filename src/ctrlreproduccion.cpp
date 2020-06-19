@@ -45,10 +45,12 @@ CtrlReproduccion::CtrlReproduccion() {}
 
     void CtrlReproduccion::confirmarAsistenciaClaseEnVivo(bool confi){
         if (confi) {
+            ClaseEstudiante* ce;
             if (!c->tieneClaseEst(est)){
-            c->crearClaseEst(est, c);
-            }
-            printf("Asistiendo a la clase");
+                ce = c->crearClaseEst(est, c);
+                if (ce->getAvivo()->getEstaMirando());
+                printf("Asistiendo a la clase");
+            };
         } else {
             printf("Asistencia Cancelada");
         }
@@ -95,4 +97,8 @@ CtrlReproduccion::CtrlReproduccion() {}
     std::set<DtMensaje*> CtrlReproduccion::ListarMensajes(){
         std::set<DtMensaje*> trash;
         return trash;
+    }
+
+    bool CtrlReproduccion::estaAsistiendo(){
+        return this->est->estaAsistiendo();
     }

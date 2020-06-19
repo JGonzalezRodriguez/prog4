@@ -18,6 +18,7 @@ class IReproduccion {
         virtual DtClase* mostrarDatosClase() = 0;
         virtual std::set<DtMensaje*> ListarMensajes() = 0;
         virtual void confirmarAsistenciaClaseEnVivo(bool confi) = 0;
+        virtual bool estaAsistiendo() = 0;
         virtual ~IReproduccion() {};
         
 };

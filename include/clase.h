@@ -7,10 +7,10 @@
 #include "dt/dtfecha.h"
 #include <set>
 #include <string>
-//#include <estudiante.h>
+#include <estudiante.h>
 
 class Docente;
-class Estudiante;
+//class Estudiante;
 class ClaseEstudiante;
 class Mensaje;
 

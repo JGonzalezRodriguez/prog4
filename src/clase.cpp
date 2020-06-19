@@ -82,6 +82,7 @@ bool Clase::tieneClaseEst(Estudiante *est){
 ClaseEstudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
     ClaseEstudiante* ce = new ClaseEstudiante(c, est);
     this->claseestudiantes.insert(ce);
+    est->addClaseEstudiante(ce);
     return ce;
 }
 ClaseEstudiante *Clase::getClaseEstExistente(){
