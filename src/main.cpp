@@ -45,14 +45,13 @@ void envioMensaje(){
     if (letra != 's' && letra != 'n'){
         throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
     }
+    std::cin.ignore(1);
     if (letra == 's'){
         printf("\nIngrese el ID del mensaje al cual desea responder: ");
-        std::cin.ignore(1);
         getline(std::cin, idMensaje);
         interface->seleccionarMensaje(idMensaje);
     }
     printf("\nIngrese el contenido de su mensaje:\n");
-    std::cin.ignore(1);
     getline(std::cin, texto);
     interface->textoEnviar(texto);
     printf("\nConfirmar envio de mensaje? s/n\n");
