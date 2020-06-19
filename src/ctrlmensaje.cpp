@@ -142,5 +142,6 @@ void CtrlMensaje::confirmarEnvioMensaje(bool conf){
             }
         }
         this->c->agregarPadre(msj); //mal nombre. agregarMensaje seria mejor
+        //TODO: NOTIFICAR
     }
 }
