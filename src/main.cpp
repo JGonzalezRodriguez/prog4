@@ -489,6 +489,7 @@ int main() {
                 printf("\n3. Envio de mensaje");
                 printf("\n4. Suscribirse a notificacion");
                 printf("\n5. Consulta de notificaciones");
+                printf("\n6. Finalizar asistencia a clase en vivo");
                 printf("\n");
 
                 int opcion2;
@@ -638,6 +639,44 @@ int main() {
                         break;
                     }
                     case 5: {
+                        break;
+                    }
+                    case 6: {
+                        cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IReproduccion* ctrlR = f->getIReproduccion();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        //se identifica el estudiante
+                        if (!ctrlR->identificarse(email, contrasenia)) break;
+                        if (!ctrlR->estaAsistiendo()) {
+                            printf("Usted no esta asistiendo a una clase");
+                            break;
+                        }
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudiante();
+                        std::set<DtClase*>::iterator it2;
+                        for(it2 = x.begin(); it2 != x.end(); it2++){
+                            cout << endl << **it2;
+                        }
+                        std::string id;
+                        std::cout << endl << "Introduzca el id de la clase a la que desea finalizar su asistencia:";
+                        std::cin >> id;
+                        ctrlR->elegirClase(id);
+                        if (ctrlR->mostrarDatosClase() == NULL) {
+                            printf("No hay clase asociada a ese id");
+                            break;
+                        }
+                        std::cout << "Desea finalizar su asistencia a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
+                        std::cout << endl;
+                        std::cout << "1. Si \n2. No\n";
+
+                        int i;
+                        std::cin >> i;
+                        bool confi = !(i-1);
+                        ctrlR->confirmarFinalizacionAsistencia(confi);                      
                         break;
                     }
                     default: {

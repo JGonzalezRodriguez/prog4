@@ -85,7 +85,13 @@ ClaseEstudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
     est->addClaseEstudiante(ce);
     return ce;
 }
-ClaseEstudiante *Clase::getClaseEstExistente(){
+ClaseEstudiante *Clase::getClaseEstExistente(Estudiante* est){
+    std::set<ClaseEstudiante*>::iterator it;
+    for (it = this->claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+        if ((*it)->getEstudiante() == est){
+            return (*it);
+        }
+    }
     return NULL;
 }
 std::set<Mensaje*> Clase::getMensajes(){

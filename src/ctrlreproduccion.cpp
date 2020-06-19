@@ -68,8 +68,6 @@ CtrlReproduccion::CtrlReproduccion() {}
                 DtClase* nueva = new DtClase(m,(*it)->getFechayhoracomienzo(),(*it)->getFechayhorafinal(),true,(*it)->getId(),(*it)->getNombre(),(*it)->getUrl(),doc);
                 x.insert(nueva);
             }
-            else {
-            }
         }
         if (!x.empty()) {
             std::cout << "Estas son las clases en vivo para la asignatura " << this->a->getNombre() << ":";
@@ -79,7 +77,7 @@ CtrlReproduccion::CtrlReproduccion() {}
         return x;
     }
     void CtrlReproduccion::elegirClase(std::string id){
-        std::set<Clase*>::iterator it = this->a->getClases().begin();
+        std::set<Clase*>::iterator it = this->est->listarClases().begin();
         bool encuentra = false;
         for(it = this->colclase.begin(); it != colclase.end(); it++){
             if ((*it)->getId() == id) {
@@ -102,3 +100,32 @@ CtrlReproduccion::CtrlReproduccion() {}
     bool CtrlReproduccion::estaAsistiendo(){
         return this->est->estaAsistiendo();
     }
+
+    std::set<DtClase*> CtrlReproduccion::listarClasesEstudianteVivo(){
+        std::set<Clase*>::iterator it;
+        std::set<DtClase*> x;
+        this->colclase = est->listarClasesVivo();
+        for(it = this->colclase.begin(); it != colclase.end(); it++){
+                modalidad m = (*it)->getDoc()->getModalidad((*it)->getAsignatura());
+                DtDocente* doc = (*it)->getDoc()->getDt();
+                DtClase* nueva = new DtClase(m,(*it)->getFechayhoracomienzo(),(*it)->getFechayhorafinal(),true,(*it)->getId(),(*it)->getNombre(),(*it)->getUrl(),doc);
+                x.insert(nueva);
+        }
+
+        if (!x.empty()) {
+            std::cout << "\nEstas son las clases a las que usted esta asistiendo " << this->a->getNombre() << ":";
+        } else {
+            printf("\nNo esta asistiendo a ninguna clase"); 
+            }
+        return x;
+    }
+
+    void CtrlReproduccion::confirmarFinalizacionAsistencia(bool confi) {
+        if (confi) {
+            c->getClaseEstExistente(est)->getAvivo()->finalizarVisualizacionVivo();
+            printf("Asistencia Finalizada");
+        } else {
+            printf("Cancelado.");
+        }
+    }
+

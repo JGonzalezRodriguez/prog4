@@ -62,7 +62,11 @@ class CtrlReproduccion : public IReproduccion {
         */
         void confirmarAsistenciaClaseEnVivo(bool confi);
 
+        std::set<DtClase*> listarClasesEstudianteVivo();
+
         bool estaAsistiendo();
+
+        virtual void confirmarFinalizacionAsistencia(bool confi);
         
 };
 #endif

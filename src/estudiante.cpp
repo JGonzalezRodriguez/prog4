@@ -17,6 +17,17 @@ void Estudiante::setCi(std::string ci){
             }
             return clases;
         }
+        std::set<Clase*> Estudiante::listarClasesVivo(){
+            std::set<Clase*> clases;
+            for (std::set<ClaseEstudiante*>::iterator it=this->claseestudiantes.begin(); it!=this->claseestudiantes.end(); ++it){
+                ClaseEstudiante* ce = *it;
+                if(ce->getAvivo()->getEstaMirando()){
+                    clases.insert(ce->getClase());
+                }
+            }
+            return clases;
+        }
+
        bool Estudiante::tieneAsignatura(Asignatura *a){
             return false;
         }
