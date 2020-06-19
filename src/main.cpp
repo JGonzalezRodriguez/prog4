@@ -45,9 +45,7 @@ void envioMensaje(){
     if (letra != 's' && letra != 'n'){
         throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
     }
-    bool esRaiz = true;
     if (letra == 's'){
-        esRaiz = false;
         printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
         getline(std::cin, id);
         interface->seleccionarMensaje(idMensaje);
@@ -64,7 +62,7 @@ void envioMensaje(){
     if (letra == 's'){
         conf = true;
     }
-    interface->confirmarEnvioMensaje(conf, esRaiz);
+    interface->confirmarEnvioMensaje(conf);
 }
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");

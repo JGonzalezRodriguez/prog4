@@ -87,7 +87,7 @@ Mensaje* Clase::seleccionarMensaje(std::string idmensaje){
     return NULL;
 }
 void Clase::agregarPadre(Mensaje *m){
-
+    this->mensajes.insert(m);
 }
 
 Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){

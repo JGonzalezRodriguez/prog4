@@ -111,12 +111,33 @@ std::set<DtMensaje*> CtrlMensaje::listarMensajes(){
 }
 
 void CtrlMensaje::seleccionarMensaje(std::string idMensaje){
+    std::set<Mensaje*> msjs = this->c->getMensajes();
+    for (std::set<Mensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        Mensaje* msj = *it;
+        if(msj->getId() == idMensaje){
+            this->m = msj;
+        }
+    }
+    if(this->m == NULL){
+        throw std::invalid_argument("\nEl ID ingresado no corresponde a ninguno de los mensajes de esta clase");
+    }
+
 }
 
 void CtrlMensaje::textoEnviar(std::string texto){
     this->texto = texto;
 }
 
-void CtrlMensaje::confirmarEnvioMensaje(bool conf, bool esRaiz){
-    //TODO
+void CtrlMensaje::confirmarEnvioMensaje(bool conf){
+    if (conf){
+        bool esRaiz = true;
+        if(this->m != NULL){
+            esRaiz = false;
+        }
+        Mensaje* msj = new Mensaje(this->texto, this->c, this->u, esRaiz);
+        if(!esRaiz){
+            this->m->agregarHijo(msj);
+        }
+        this->c->agregarPadre(msj);
+    }
 }
