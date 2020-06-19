@@ -32,7 +32,8 @@ std::set<DtMensaje*> DtMensaje::getRespuestas(){
 }
 
 std::ostream& operator<< (std::ostream& os, DtMensaje&b){
-    os << "ID: " << b.getId() << std::endl << "Autor: " << b.getAutor() << std::endl << "Contenido: " << b.getTexto() << std::endl;
+    DtFecha* f = b.getFechaYHora(); 
+    os << "ID: " << b.getId() << std::endl << "Autor: " << b.getAutor() << std::endl << "Contenido: " << b.getTexto() << std::endl << "Fecha: " << f->getDia() << "/" << f->getMes() << "/" << f->getAnio() << " " << f->getHora() << ":" << f->getMin() << std::endl;
     return os;
 }
 
