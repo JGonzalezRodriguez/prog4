@@ -35,9 +35,9 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 - Envío de mensaje HACIENDO NICO
 - Asistencia a clase en vivo HACIENDO JOACO
 - Finalización de asistencia a clase en vivo (QUIZAS LA HAGA JOACO)
-- Tiempo de dictado de clases **OK**
+- Tiempo de dictado de clases **OK** DEBUGEANDO
 - Tiempo de asistencia a clase
 - Eliminación de asignatura LA HACEMOS JUNTOS AL FINAL
-- Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario)
-- Consulta de notificaciones
+- Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario) **OK** FALTA TESTEAR
+- Consulta de notificaciones **OK** FALTA TESTEAR
 
