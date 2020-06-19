@@ -98,19 +98,50 @@ void CtrlMensaje::elegirClase(std::string id){
 }
 
 std::set<DtMensaje*> CtrlMensaje::listarMensajes(){
-    //TODO
-    std::set<DtMensaje*> x;
-    return x;
+    //solo agarra los mensajes raiz para que luego recursivePrint no repita mensaje
+    std::set<Mensaje*> msjs = this->c->getMensajes();
+    std::set<DtMensaje*> dtmsjs;
+    for (std::set<Mensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        Mensaje* msj = *it;
+        if (msj->esRaiz()){
+            dtmsjs.insert(msj->toDt());
+        }
+    }
+    return dtmsjs;
 }
 
 void CtrlMensaje::seleccionarMensaje(std::string idMensaje){
-    //TODO
+    std::set<Mensaje*> msjs = this->c->getMensajes();
+    for (std::set<Mensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        Mensaje* msj = *it;
+        if(msj->getId() == idMensaje){
+            this->m = msj;
+        }
+    }
+    if(this->m == NULL){
+        throw std::invalid_argument("\nEl ID ingresado no corresponde a ninguno de los mensajes de esta clase");
+    }
+
 }
 
 void CtrlMensaje::textoEnviar(std::string texto){
-    //TODO
+    this->texto = texto;
 }
 
 void CtrlMensaje::confirmarEnvioMensaje(bool conf){
-    //TODO
+    if (conf){
+        bool esRaiz = true;
+        if(this->m != NULL){
+            esRaiz = false;
+        }
+        Mensaje* msj = new Mensaje(this->texto, this->c, this->u, esRaiz);
+        if(!esRaiz){
+            this->m->agregarHijo(msj);
+            if (m->getHijos().empty()){
+                throw std::invalid_argument("\nNOT WORKING YO");
+            }
+        }
+        this->c->agregarPadre(msj); //mal nombre. agregarMensaje seria mejor
+        //TODO: NOTIFICAR
+    }
 }
