@@ -32,7 +32,7 @@ void envioMensaje(){
     printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
     getline(std::cin, id);
     interface->elegirClase(id);
-    std::set<DtMensaje*> msjs = interface->listarMensajes(); //solo agarra los mensajes hoja para que luego recursivePrint no repita mensajes
+    std::set<DtMensaje*> msjs = interface->listarMensajes(); //solo agarra los mensajes raiz para que luego recursivePrint no repita mensajes
     printf("\nListando los mensajes de la clase:\n");
     printf("\n------------------------------\n");
     for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
@@ -46,8 +46,9 @@ void envioMensaje(){
         throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
     }
     if (letra == 's'){
-        printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
-        getline(std::cin, id);
+        printf("\nIngrese el ID del mensaje al cual desea responder: ");
+        std::cin.ignore(1);
+        getline(std::cin, idMensaje);
         interface->seleccionarMensaje(idMensaje);
     }
     printf("\nIngrese el contenido de su mensaje:\n");

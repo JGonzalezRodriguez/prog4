@@ -138,6 +138,6 @@ void CtrlMensaje::confirmarEnvioMensaje(bool conf){
         if(!esRaiz){
             this->m->agregarHijo(msj);
         }
-        this->c->agregarPadre(msj);
+        this->c->agregarPadre(msj); //mal nombre. agregarMensaje seria mejor
     }
 }
