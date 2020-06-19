@@ -122,7 +122,8 @@ CtrlReproduccion::CtrlReproduccion() {}
 
     void CtrlReproduccion::confirmarFinalizacionAsistencia(bool confi) {
         if (confi) {
-            c->getClaseEstExistente(est)->getAvivo()->finalizarVisualizacionVivo();
+            AsistenciaVivo* av = c->getClaseEstExistente(est)->getAvivo();
+            //av->finalizarVisualizacionVivo();
             printf("Asistencia Finalizada");
         } else {
             printf("Cancelado.");
