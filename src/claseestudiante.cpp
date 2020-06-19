@@ -3,6 +3,8 @@
 ClaseEstudiante::ClaseEstudiante(Clase* c, Estudiante* a) {
     Reloj* r = Reloj::getInstancia();
     this->avivo = new AsistenciaVivo(r->getFecha());
+    this->est = a;
+    this->c = c;
 }
 
 void ClaseEstudiante::finalizarVisualizacionesVivo() {

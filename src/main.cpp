@@ -564,10 +564,7 @@ int main() {
                         getline(std::cin, contrasenia);
                         //se identifica el estudiante
                         if (!ctrlR->identificarse(email, contrasenia)) break;
-                        if (ctrlR->estaAsistiendo()) {
-                            printf("Usted ya esta asistiendo a una clase");
-                            break;
-                        }
+                        //lista asignaturas a las que el estudiante esta inscripto
                         printf("Estas son las asignaturas a las que esta inscripto:\n\n");
                         std::set<DtAsignatura*> lista = ctrlR->listarAsignaturasEstudiante();
                         if (lista.empty()) {
@@ -578,9 +575,7 @@ int main() {
                         for(it = lista.begin(); it != lista.end(); ++it){
                             cout << **it;
                         }
-                        // for(it = lista.begin(); it != lista.end(); ++it){
-                        //     cout << "\nNombre:"<< (*it)->getNombre() << endl << "Codigo: " << (*it)->getCodigo() << endl;
-                        // }
+
                         std::string codigo;
                         std::cout << "\nIntroduzca el codigo de la asignatura a la que desea asistir:";
                         std::cin >> codigo;
@@ -653,10 +648,10 @@ int main() {
                         //se identifica el estudiante
                         if (!ctrlR->identificarse(email, contrasenia)) break;
                         if (!ctrlR->estaAsistiendo()) {
-                            printf("Usted no esta asistiendo a una clase");
+                            printf("Usted no esta asistiendo a ninguna clase");
                             break;
                         }
-                        std::set<DtClase*> x = ctrlR->listarClasesEstudiante();
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudianteVivo();
                         std::set<DtClase*>::iterator it2;
                         for(it2 = x.begin(); it2 != x.end(); it2++){
                             cout << endl << **it2;

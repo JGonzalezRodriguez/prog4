@@ -87,7 +87,7 @@ ClaseEstudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
 }
 ClaseEstudiante *Clase::getClaseEstExistente(Estudiante* est){
     std::set<ClaseEstudiante*>::iterator it;
-    for (it = this->claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+    for (it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
         if ((*it)->getEstudiante() == est){
             return (*it);
         }
