@@ -51,6 +51,7 @@ void envioMensaje(){
         interface->seleccionarMensaje(idMensaje);
     }
     printf("\nIngrese el contenido de su mensaje:\n");
+    std::cin.ignore(1);
     getline(std::cin, texto);
     interface->textoEnviar(texto);
     printf("\nConfirmar envio de mensaje? s/n\n");
