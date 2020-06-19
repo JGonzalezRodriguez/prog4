@@ -42,7 +42,7 @@ std::set<Mensaje*> Mensaje::getHijos(){
 }
 
 void Mensaje::agregarHijo(Mensaje* m){
-    //TODO
+    this->respondidopor.insert(m);
 }
 
 bool Mensaje::esRaiz(){

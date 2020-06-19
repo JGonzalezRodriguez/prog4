@@ -137,6 +137,9 @@ void CtrlMensaje::confirmarEnvioMensaje(bool conf){
         Mensaje* msj = new Mensaje(this->texto, this->c, this->u, esRaiz);
         if(!esRaiz){
             this->m->agregarHijo(msj);
+            if (m->getHijos().empty()){
+                throw std::invalid_argument("\nNOT WORKING YO");
+            }
         }
         this->c->agregarPadre(msj); //mal nombre. agregarMensaje seria mejor
     }
