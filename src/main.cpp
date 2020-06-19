@@ -37,7 +37,7 @@ void envioMensaje(){
     printf("\n------------------------------\n");
     for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
         DtMensaje* msj = *it;
-        msj->recursivePrint();
+        msj->recursivePrint(0);
     }
     printf("\nDesea responder a algún mensaje existente? s/n\n");
     char letra;

@@ -20,7 +20,7 @@ class DtMensaje{
         std::string getAutor();
         DtFecha* getFechaYHora();
         std::set<DtMensaje*> getRespuestas();
-        void recursivePrint();
+        void recursivePrint(int iter);
 };
 std::ostream& operator<< (std::ostream& os, DtMensaje&b);
 #endif
