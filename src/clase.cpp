@@ -54,6 +54,10 @@ void Clase::setNombre(std::string nombre){
     this->nombre = nombre;
 }
 
+std::set<ClaseEstudiante*> Clase::getClaseEstudiantes() {
+    return this->claseestudiantes;
+}
+
 //Docente* Clase::getDoc() {
 //    return this->doc;
 //}

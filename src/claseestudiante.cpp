@@ -15,3 +15,7 @@ Estudiante* ClaseEstudiante::getEstudiante() {
 Clase* ClaseEstudiante::getClase() {
     return this->c;
 }
+
+AsistenciaVivo* ClaseEstudiante::getavivo() {
+    return this->avivo;
+}

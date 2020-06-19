@@ -11,6 +11,7 @@
 #include <set>
 #include "handlerusuarios.h"//por dependencia
 #include "dt/dttiempoasignatura.h"
+#include "dt/dtpromasistencia.h"
 
 //es singleton
 class CtrlClase: public IClase{
@@ -48,6 +49,7 @@ class CtrlClase: public IClase{
         void elegirAsignaturaDoc(std::string codigo);
         std::set<DtClase*> listarClasesDocente();
         std::set<DtTiempoAsignatura*> tiempoDictadoClases();
+        std::set<DtPromAsistencia*> promedioAsistencia();
         int tiempoTranscurrido(DtFecha *fechacomienzo, DtFecha *fechafin);
 };
 

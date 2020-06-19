@@ -63,6 +63,16 @@ std::set<Clase*> Docente::getClasesEnVivo(){
     }
     return x;
 }
+std::set<Clase*> Docente::getClasesFinalizadas() {
+    std::set<Clase*> x;
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
+        Clase* c = *it;
+        if (!(c->getEnVivo()))
+            x.insert(c);
+    }
+    return x;
+}
+
 Clase *Docente::getClase(std::string id){
     Clase* c = NULL;
     for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
