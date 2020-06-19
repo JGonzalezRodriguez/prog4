@@ -477,13 +477,9 @@ int main() {
                         break;
                     }
                     case 6: {
-                        break;
-                    }
-                    case 7: {
                         envioMensaje();
                         break;
                     }
-                    
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
