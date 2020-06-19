@@ -37,12 +37,43 @@ std::ostream& operator<< (std::ostream& os, DtMensaje&b){
     return os;
 }
 
-void DtMensaje::recursivePrint(){
-    std::cout << *this;
+void DtMensaje::recursivePrint(int iter){
+    for (int i = 0; i <= iter; i++){
+        printf("      ");
+    }
+    printf("ID: ");
+    std::cout << this->getId();
+    printf("\n");
+    for (int j = 0; j <= iter; j++){
+        printf("      ");
+    }
+    printf("Autor: ");
+    std::cout << this->getAutor();
+    printf("\n");
+    for (int k = 0; k <= iter; k++){
+        printf("      ");
+    }
+    printf("Contenido: ");
+    std::cout << this->getTexto();
+    printf("\n");
+    for (int l = 0; l <= iter; l++){
+        printf("      ");
+    }
+    printf("Fecha: ");
+    DtFecha* f = this->getFechaYHora(); 
+    std::cout << f->getDia();
+    printf("/");
+    std::cout << f->getMes();
+    printf("/");
+    std::cout << f->getAnio();
+    printf(" ");
+    std::cout << f->getHora();
+    printf(":");
+    std::cout << f->getMin();
     printf("\n------------------------------\n");
     std::set<DtMensaje*> msjs = this->respuestas;
     for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
         DtMensaje* msj = *it;
-        msj->recursivePrint();
+        msj->recursivePrint(iter+1);
     }
 }
