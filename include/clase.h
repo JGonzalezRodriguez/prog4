@@ -40,7 +40,7 @@ class Clase {
         virtual void setUrl(std::string);
         virtual std::string getNombre();
         virtual void setNombre(std::string);
-        Docente* getDoc();
+        //Docente* getDoc();
         
         virtual void setDocente(Docente* doc);
         virtual Docente* getDocente();
