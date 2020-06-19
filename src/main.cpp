@@ -577,6 +577,9 @@ int main() {
                         std::cin >> codigo;
                         ctrlR->elegirAsignaturaEst(codigo);
                         std::set<DtClase*> x = ctrlR->listarClasesEstudiante();
+                        if (x.empty()) { 
+                            break;
+                        };
                         std::set<DtClase*>::iterator it2;
                         for(it2 = x.begin(); it2 != x.end(); it2++){
                             cout << endl << **it2;
@@ -585,6 +588,10 @@ int main() {
                         std::cout << endl << "Introduzca el id de la clase a la que desea asistir:";
                         std::cin >> id;
                         ctrlR->elegirClase(id);
+                        if (ctrlR->mostrarDatosClase() == NULL) {
+                            printf("No hay clase asociada a ese id");
+                            break;
+                        }
                         std::cout << "Desea Asistir a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
                         std::cout << endl;
                         std::cout << "1. Si \n2. No\n";

@@ -56,7 +56,6 @@ CtrlReproduccion::CtrlReproduccion() {}
 
 
     std::set<DtClase*> CtrlReproduccion::listarClasesEstudiante(){
-        std::cout << "Estas son las clases en vivo para la asignatura " << this->a->getNombre() << ":";
         std::set<Clase*>::iterator it;
         std::set<DtClase*> x;
         this->colclase = a->getClases();
@@ -70,15 +69,23 @@ CtrlReproduccion::CtrlReproduccion() {}
             else {
             }
         }
+        if (!x.empty()) {
+            std::cout << "Estas son las clases en vivo para la asignatura " << this->a->getNombre() << ":";
+        } else {
+            printf("\nNo hay clases disponibles"); 
+            }
         return x;
     }
     void CtrlReproduccion::elegirClase(std::string id){
         std::set<Clase*>::iterator it = this->a->getClases().begin();
+        bool encuentra = false;
         for(it = this->colclase.begin(); it != colclase.end(); it++){
             if ((*it)->getId() == id) {
                 this->c = (*it);
+                encuentra = true;
             }
         }
+        if (!encuentra) { throw std::invalid_argument("Id no Valido"); }
     }
     DtClase* CtrlReproduccion::mostrarDatosClase(){
         DtClase* muestra = new DtClase(c->getDoc()->getModalidad(a),c->getFechayhoracomienzo(), c->getFechayhorafinal(), true, c->getId(), c->getNombre(), c->getUrl(), c->getDoc()->getDt());
