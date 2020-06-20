@@ -22,6 +22,7 @@ class ClaseEstudiante {
         Estudiante* getEstudiante();
         Clase* getClase();
         AsistenciaVivo* getavivo();
+        void asistirVivo();
 
         
 };

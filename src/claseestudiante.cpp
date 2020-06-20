@@ -22,3 +22,7 @@ Clase* ClaseEstudiante::getClase() {
 AsistenciaVivo* ClaseEstudiante::getavivo(){
     return this->avivo;
 }
+ 
+void ClaseEstudiante::asistirVivo(){
+    this->avivo->setEstaMirando(true);
+}

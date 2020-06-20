@@ -51,6 +51,16 @@ CtrlReproduccion::CtrlReproduccion() {}
                 if (ce->getavivo()->getEstaMirando() && c->tieneClaseEst(est)){
                     printf("Asistiendo a la clase");
                 }
+            }
+            if (c->tieneClaseEst(est)) {
+                ce = c->getClaseEstExistente(est);
+                if (ce == NULL) {
+                    throw ("Error de backend.");
+                }
+                ce->asistirVivo();
+                if (c->getClaseEstExistente(est)->getavivo()) {
+                    printf("Asistiendo a la clase");
+                }
             };
         } else {
             printf("Asistencia Cancelada");
