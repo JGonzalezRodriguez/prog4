@@ -1,9 +1,9 @@
 #ifndef ASISTENCIAVIVO_H
 #define ASISTENCIAVIVO_H
 
-#include "claseestudiante.h"
+//#include "claseestudiante.h"
 #include "dt/dtfecha.h"
-
+#include "reloj.h"
 class AsistenciaVivo{
     private:
         DtFecha* primeringresovivo;

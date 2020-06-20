@@ -78,7 +78,12 @@ void Handlerusuarios::notificar(Asignatura* a, Mensaje* m){
 }
 
 void Handlerusuarios::addSubscripto(Usuario* u){
+    this->usuariosubs.insert(u);
 }
 
 void Handlerusuarios::removerSubscripto(Usuario* u){
+}
+
+std::set<Usuario*> Handlerusuarios::getSubscritos(){
+    return this->usuariosubs;
 }

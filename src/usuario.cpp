@@ -51,6 +51,11 @@
             this->subscripcion = resp; 
 
         }
+
+        void Usuario::addNotificacion(Notificacion *n){
+            this->notificaciones.insert(n);
+        }
+
         void Usuario::eliminarSubscripcion(){
 
         }
@@ -60,7 +65,7 @@
         }
        
         void Usuario::notificarUsuario(Mensaje *m){
-
+            this->subscripcion->notificar(this, m);
         }
 
    

@@ -1,7 +1,7 @@
 #ifndef CLASEESTUDIANTE_H
 #define CLASEESTUDIANTE_H
 
-#include "clase.h"
+//#include "clase.h"
 #include "asistenciavivo.h"
 
 class Clase;
@@ -22,6 +22,8 @@ class ClaseEstudiante {
         Estudiante* getEstudiante();
         Clase* getClase();
         AsistenciaVivo* getavivo();
+
+        
 };
 
 #endif 

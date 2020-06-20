@@ -1,8 +1,8 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include <string> 
-#include "asignatura.h"
-#include "clase.h"
+//#include "asignatura.h"
+//#include "clase.h"
 #include "mensaje.h"
 #include "subscripcion.h"
 #include "notificacion.h"
@@ -34,6 +34,7 @@ class Usuario {
        void setImagen(std::string);
        std::string getContrasenia();
        void setContrasenia(std::string);
+       void addNotificacion(Notificacion *n);
 
        std::set<Notificacion*> listarNotificaciones();
        void eliminarNotificaciones();

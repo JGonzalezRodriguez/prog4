@@ -3,8 +3,8 @@
 
 #include <string>
 #include <set>
-#include "clase.h"
-#include "asignatura.h"
+//#include "clase.h"
+//#include "asignatura.h"
 #include "dt/dtfecha.h"
 #include "dt/dtmensaje.h"
 #include "reloj.h"
@@ -23,11 +23,14 @@ class Mensaje{
         Usuario* autor;
         bool isroot;
         std::set<Mensaje*> respondidopor;
+        Mensaje *padre;
     public:
         Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz);
         ~Mensaje();
+        //Asignatura* getAsignatura();
+
         bool esRaiz();
-        Asignatura* getAsignatura();
+        
         Clase* getClase();
         DtFecha* getFechaYHoraEnviado();
         std::string getTexto();
@@ -39,6 +42,9 @@ class Mensaje{
         */
         void agregarHijo(Mensaje* m);
         DtMensaje* toDt(); //crea un DT recursivamente
+        Mensaje *getPadre();
+        void setPadre(Mensaje *m);
+        Usuario *getAutor();
 };
 
 #endif

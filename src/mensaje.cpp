@@ -17,9 +17,9 @@ Mensaje::Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz){
 
 Mensaje::~Mensaje(){}
 
-Asignatura* Mensaje::getAsignatura(){
-    return this->clase->getAsignatura();
-}
+// Asignatura* Mensaje::getAsignatura(){
+//     return this->clase->getAsignatura();
+// }
 
 Clase* Mensaje::getClase(){
     return this->clase;
@@ -47,6 +47,18 @@ void Mensaje::agregarHijo(Mensaje* m){
 
 bool Mensaje::esRaiz(){
     return this->isroot;
+}
+
+Mensaje *Mensaje::getPadre(){
+    return this->padre;
+}
+
+void Mensaje::setPadre(Mensaje *m){
+    this->padre = m;
+}
+
+Usuario *Mensaje::getAutor(){
+    return this->autor;
 }
 
 DtMensaje* Mensaje::toDt(){
