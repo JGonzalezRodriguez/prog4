@@ -223,11 +223,17 @@ std::set<DtPromAsistencia*> CtrlClase::promedioAsistencia() {
             sumamins = sumamins + tiempoTranscurrido(ce->getavivo()->getPrimerIngresoVivo(), ce->getavivo()->getUltimaSalidaVivo());
             cantest++;
         }
-        int sumaminsprom = sumamins / cantest;
-        int calchoras = sumaminsprom / 60;
-        int calcmins = sumaminsprom % 60;
-        DtPromAsistencia* nuevodt = new DtPromAsistencia(dtc, calchoras, calcmins);
-        dtpromasis.insert(nuevodt);
+        if (cantest > 0) {
+            int sumaminsprom = sumamins / cantest;
+            int calchoras = sumaminsprom / 60;
+            int calcmins = sumaminsprom % 60;
+            DtPromAsistencia* nuevodt = new DtPromAsistencia(dtc, calchoras, calcmins);
+            dtpromasis.insert(nuevodt);
+        } else {
+            DtPromAsistencia* nuevodt = new DtPromAsistencia(dtc, 0, 0);
+            dtpromasis.insert(nuevodt);
+        }
+        
     }
     return dtpromasis;
 }
