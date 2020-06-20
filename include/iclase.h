@@ -9,6 +9,7 @@
 #include "dt/dtclase.h"
 #include "dt/dtpreview.h"
 #include "dt/dttiempoasignatura.h"
+#include "dt/dtpromasistencia.h"
 
 
 class IClase {
@@ -29,6 +30,7 @@ class IClase {
         virtual std::set<DtClase*> listarClasesDocente() = 0;
         virtual ~IClase() {};
         virtual std::set<DtTiempoAsignatura*> tiempoDictadoClases() = 0;
+        virtual std::set<DtPromAsistencia*> promedioAsistencia() = 0;
 };
 
 #endif

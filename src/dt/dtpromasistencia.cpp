@@ -21,7 +21,7 @@ int DtPromAsistencia::getMins(){
 }
 
 std::ostream& operator<< (std::ostream& os, DtPromAsistencia &b){
-    os << b.getClase() << std::endl << "Tiempo promedio de asistencia: "  << std::endl << b.getHoras() << ":" << b.getMins() << std::endl << std::endl;
+    os << *(b.getClase()) << std::endl << "Tiempo promedio de asistencia: "  << std::endl << b.getHoras() << ":" << b.getMins() << std::endl << std::endl;
     return os;
 
 }

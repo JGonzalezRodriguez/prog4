@@ -520,6 +520,29 @@ int main() {
                     }
                    
                     case 5: {
+                        // tiempo asistencia asignatura
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        IClase* ctrl = f->getIClase();
+                        ctrl->identificarse(email, contrasenia);
+                        std::set<DtAsignatura*> coldtasig = ctrl->listarAsignaturasDocente();
+                        for (std::set<DtAsignatura*>::iterator it=coldtasig.begin(); it!=coldtasig.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                        }
+                        printf("\nInserte el codigo de la asignatura cuyos tiempos de asistencia en promedio desea ver: ");
+                        std::string codigo;
+                        getline(std::cin, codigo);
+                        ctrl->elegirAsignaturaDoc(codigo);
+                        std::set<DtPromAsistencia*> coldtprom = ctrl->promedioAsistencia();
+                        for (std::set<DtPromAsistencia*>::iterator it=coldtprom.begin(); it!=coldtprom.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                        }
                         break;
                     }
                     case 6: {
