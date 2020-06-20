@@ -34,6 +34,7 @@ class Usuario {
        void setImagen(std::string);
        std::string getContrasenia();
        void setContrasenia(std::string);
+       void addNotificacion(Notificacion *n);
 
        std::set<Notificacion*> listarNotificaciones();
        void eliminarNotificaciones();

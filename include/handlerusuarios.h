@@ -28,6 +28,7 @@ class Handlerusuarios{
         void notificar(Asignatura* a, Mensaje* m);
         void addSubscripto(Usuario* u);
         void removerSubscripto(Usuario* u);
+        std::set<Usuario*> getSubscritos();
 };
 
 #endif

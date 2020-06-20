@@ -11,5 +11,12 @@ SRespuesta *SRespuesta::getInstancia(){
 }
 
 void SRespuesta::notificar(Usuario* u, Mensaje* m) {
+    if(!m->esRaiz()){
+        Usuario *uaux = m->getPadre()->getAutor();
+        if(u == uaux){
+            Notificacion *noti = new Notificacion(m);
+            u->addNotificacion(noti);
+        }
+    }
 
 }
