@@ -32,12 +32,12 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 - Inscripción a las asignaturas **OK**
 - Inicio de clase **OK**
 - Finalización de clase **OK**
-- Envío de mensaje **OK** FALTA NOTIFICAR HACIENDO SANTI
-- Asistencia a clase en vivo **OK** FALTA TESTEAR
-- Finalización de asistencia a clase en vivo HACIENDO JOACO
+- Envío de mensaje **OK** 
+- Asistencia a clase en vivo **OK**
+- Finalización de asistencia a clase en vivo **OK**
 - Tiempo de dictado de clases **OK**
-- Tiempo de asistencia a clase HACIENDO ACQUA
+- Tiempo de asistencia a clase **OK**
 - Eliminación de asignatura LA HACEMOS JUNTOS AL FINAL
-- Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario) **OK** FALTA TESTEAR
-- Consulta de notificaciones **OK** FALTA TESTEAR
+- Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario) **OK**
+- Consulta de notificaciones **OK**
 
