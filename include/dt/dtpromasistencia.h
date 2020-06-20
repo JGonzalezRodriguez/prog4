@@ -2,15 +2,21 @@
 #define DTPROMASISTENCIA_H
 
 #include <string>
+#include "dtclase.h"
 
 class DtPromAsistencia{
     private:
-        std::string clase;
-        int tiempoprom;
+        DtClase* clase;
+        int horas;
+        int mins;
     public:
-        DtPromAsistencia(std::string clase, int tiempoprom);
+        DtPromAsistencia(DtClase* clase, int horas, int mins);
         ~DtPromAsistencia();
-        std::string getClase();
-        int getTiempoProm();
+        DtClase* getClase();
+        int getHoras();
+        int getMins();
 };
+
+std::ostream& operator<< (std::ostream& os, DtPromAsistencia &b);
+
 #endif

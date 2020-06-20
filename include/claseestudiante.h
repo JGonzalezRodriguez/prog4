@@ -21,7 +21,9 @@ class ClaseEstudiante {
         void finalizarVisualizacionesVivo();
         Estudiante* getEstudiante();
         Clase* getClase();
-        AsistenciaVivo* getAvivo();
+        AsistenciaVivo* getavivo();
+
+        
 };
 
 #endif 

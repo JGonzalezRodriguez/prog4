@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../include/handlerasignaturas.h"
 #include "../include/dt/dtclase.h"
+#include "../include/dt/dtdocente.h"
 #include "../include/dt/dtpreview.h"
 #include "../include/clase.h"
 #include "../include/practico.h"
@@ -193,8 +194,44 @@ void CtrlClase::confirmarFinalizacionDeClase(bool conf){
     clase->setFechayhorafinal(f);
 }
 void CtrlClase::elegirAsignaturaDoc(std::string codigo){
-
+    std::set<Asignatura*> colasig = docente->getAsignaturas();
+    bool encontro = false;
+    for (std::set<Asignatura*>::iterator it=colasig.begin(); it!=colasig.end(); ++it) {
+        Asignatura* a = *it;
+        if (a->getCodigo() == codigo) {
+            this->asignatura = a;
+            encontro = true;
+        }     
+    }
+    if (!encontro) 
+        throw std::invalid_argument("El docente no tiene una asignatura con ese codigo");
 }
+
+std::set<DtPromAsistencia*> CtrlClase::promedioAsistencia() {
+    std::set<Clase*> colclases = docente->getClasesFinalizadas();
+    std::set<Clase*>::iterator it;
+    std::set<DtPromAsistencia*> dtpromasis;
+    for (it = colclases.begin(); it!=colclases.end(); ++it) {
+        Clase* c = *it;
+        DtDocente* dtdoc = new DtDocente(docente->getInstituto(),docente->getNombre(),docente->getEmail(),docente->getImagen(),docente->getContrasenia());
+        DtClase* dtc = new DtClase(c->getDocente()->getModalidad(c->getAsignatura()), c->getFechayhoracomienzo(), c->getFechayhorafinal(), c->getEnVivo(), c->getId(), c->getNombre(), c->getUrl(), dtdoc);
+        std::set<ClaseEstudiante*> colclaseest = c->getClaseEstudiantes();
+        int sumamins = 0;
+        int cantest = 0;
+        for (std::set<ClaseEstudiante*>::iterator it=colclaseest.begin(); it!=colclaseest.end(); it++) {
+            ClaseEstudiante* ce = *it;
+            sumamins = sumamins + tiempoTranscurrido(ce->getavivo()->getPrimerIngresoVivo(), ce->getavivo()->getUltimaSalidaVivo());
+            cantest++;
+        }
+        int sumaminsprom = sumamins / cantest;
+        int calchoras = sumaminsprom / 60;
+        int calcmins = sumaminsprom % 60;
+        DtPromAsistencia* nuevodt = new DtPromAsistencia(dtc, calchoras, calcmins);
+        dtpromasis.insert(nuevodt);
+    }
+    return dtpromasis;
+}
+
 std::set<DtClase*> CtrlClase::listarClasesDocente(){
     std::set<DtClase*> x;
     return x;
