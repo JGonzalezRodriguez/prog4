@@ -21,7 +21,7 @@ void Estudiante::setCi(std::string ci){
             std::set<Clase*> clases;
             for (std::set<ClaseEstudiante*>::iterator it=this->claseestudiantes.begin(); it!=this->claseestudiantes.end(); ++it){
                 ClaseEstudiante* ce = *it;
-                if(ce->getAvivo()->getEstaMirando()){
+                if(ce->getavivo()->getEstaMirando()){
                     clases.insert(ce->getClase());
                 }
             }
@@ -74,7 +74,7 @@ void Estudiante::setCi(std::string ci){
         bool Estudiante::estaAsistiendo(){
             std::set<ClaseEstudiante*>::iterator it;
             for(it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
-                if ((*it)->getAvivo()->getEstaMirando()) {
+                if ((*it)->getavivo()->getEstaMirando()) {
                     return true;
                 }
             }

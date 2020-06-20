@@ -1,5 +1,6 @@
 #include "../include/mensaje.h"
 #include "../include/usuario.h"
+#include "../include/clase.h"
 
 int Mensaje::seed = 1; //compile time B)
 
@@ -17,9 +18,9 @@ Mensaje::Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz){
 
 Mensaje::~Mensaje(){}
 
-// Asignatura* Mensaje::getAsignatura(){
-//     return this->clase->getAsignatura();
-// }
+Asignatura* Mensaje::getAsignatura(){
+     return this->clase->getAsignatura();
+}
 
 Clase* Mensaje::getClase(){
     return this->clase;

@@ -48,7 +48,7 @@ CtrlReproduccion::CtrlReproduccion() {}
             ClaseEstudiante* ce;
             if (!c->tieneClaseEst(est)){
                 ce = c->crearClaseEst(est, c);
-                if (ce->getAvivo()->getEstaMirando() && c->tieneClaseEst(est)){
+                if (ce->getavivo()->getEstaMirando() && c->tieneClaseEst(est)){
                     printf("Asistiendo a la clase");
                 }
             };
@@ -67,12 +67,12 @@ CtrlReproduccion::CtrlReproduccion() {}
                 continue;
             }
             if ((*it)->tieneClaseEst(est)) {
-                if ((*it)->getClaseEstExistente(est)->getAvivo()->getEstaMirando()){
+                if ((*it)->getClaseEstExistente(est)->getavivo()->getEstaMirando()){
                     continue;
                 }
             }
-            modalidad m = (*it)->getDoc()->getModalidad((*it)->getAsignatura());
-            DtDocente* doc = (*it)->getDoc()->getDt();
+            modalidad m = (*it)->getDocente()->getModalidad((*it)->getAsignatura());
+            DtDocente* doc = (*it)->getDocente()->getDt();
             DtClase* nueva = new DtClase(m,(*it)->getFechayhoracomienzo(),(*it)->getFechayhorafinal(),true,(*it)->getId(),(*it)->getNombre(),(*it)->getUrl(),doc);
             x.insert(nueva);
         }
@@ -95,7 +95,7 @@ CtrlReproduccion::CtrlReproduccion() {}
         if (!encuentra) { throw std::invalid_argument("Id no Valido"); }
     }
     DtClase* CtrlReproduccion::mostrarDatosClase(){
-        DtClase* muestra = new DtClase(c->getDoc()->getModalidad(a),c->getFechayhoracomienzo(), c->getFechayhorafinal(), true, c->getId(), c->getNombre(), c->getUrl(), c->getDoc()->getDt());
+        DtClase* muestra = new DtClase(c->getDocente()->getModalidad(a),c->getFechayhoracomienzo(), c->getFechayhorafinal(), true, c->getId(), c->getNombre(), c->getUrl(), c->getDocente()->getDt());
         return muestra;
     }
 
@@ -113,8 +113,8 @@ CtrlReproduccion::CtrlReproduccion() {}
         std::set<DtClase*> x;
         this->colclase = est->listarClasesVivo();
         for(it = this->colclase.begin(); it != colclase.end(); it++){
-                modalidad m = (*it)->getDoc()->getModalidad((*it)->getAsignatura());
-                DtDocente* doc = (*it)->getDoc()->getDt();
+                modalidad m = (*it)->getDocente()->getModalidad((*it)->getAsignatura());
+                DtDocente* doc = (*it)->getDocente()->getDt();
                 DtClase* nueva = new DtClase(m,(*it)->getFechayhoracomienzo(),(*it)->getFechayhorafinal(),true,(*it)->getId(),(*it)->getNombre(),(*it)->getUrl(),doc);
                 x.insert(nueva);
         }

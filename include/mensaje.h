@@ -27,7 +27,7 @@ class Mensaje{
     public:
         Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz);
         ~Mensaje();
-        //Asignatura* getAsignatura();
+        Asignatura* getAsignatura();
 
         bool esRaiz();
         
