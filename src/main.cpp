@@ -14,7 +14,7 @@ using namespace std;
 void envioMensaje(){
     Fabrica* fabrica = Fabrica::getInstancia();
     IMensaje* interface = fabrica->getIMensaje();
-    std::string email, contrasenia, id;
+    std::string email, contrasenia, id, idMensaje, texto;
     printf("\n Introduzca su email: ");
     std::cin.ignore(1);
     getline(std::cin, email);
@@ -32,8 +32,38 @@ void envioMensaje(){
     printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
     getline(std::cin, id);
     interface->elegirClase(id);
-    // printf("\nListando los mensajes de la clase:\n");
-    // printf("\n------------------------------\n");
+    std::set<DtMensaje*> msjs = interface->listarMensajes(); //solo agarra los mensajes raiz para que luego recursivePrint no repita mensajes
+    printf("\nListando los mensajes de la clase:\n");
+    printf("\n------------------------------\n");
+    for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        DtMensaje* msj = *it;
+        msj->recursivePrint(0);
+    }
+    printf("\nDesea responder a algún mensaje existente? s/n\n");
+    char letra;
+    scanf("%s", &letra);
+    if (letra != 's' && letra != 'n'){
+        throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
+    }
+    std::cin.ignore(1);
+    if (letra == 's'){
+        printf("\nIngrese el ID del mensaje al cual desea responder: ");
+        getline(std::cin, idMensaje);
+        interface->seleccionarMensaje(idMensaje);
+    }
+    printf("\nIngrese el contenido de su mensaje:\n");
+    getline(std::cin, texto);
+    interface->textoEnviar(texto);
+    printf("\nConfirmar envio de mensaje? s/n\n");
+    scanf("%s", &letra);
+    if (letra != 's' && letra != 'n'){
+        throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
+    }
+    bool conf = false;
+    if (letra == 's'){
+        conf = true;
+    }
+    interface->confirmarEnvioMensaje(conf);
 }
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");
@@ -461,6 +491,31 @@ int main() {
                         break;
                     }
                     case 4: {
+                        // consulta de notificaciones ---------
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ISubscripcion* ctrl = f->getISubscripcion();
+                        ctrl->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getIdentifico()){    
+                            std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                            }
+
+                            ctrl->eliminarNotificaciones();
+
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+
                         break;
                     }
                    
@@ -468,13 +523,9 @@ int main() {
                         break;
                     }
                     case 6: {
-                        break;
-                    }
-                    case 7: {
                         envioMensaje();
                         break;
                     }
-                    
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
@@ -634,6 +685,30 @@ int main() {
                         break;
                     }
                     case 5: {
+                        // consulta de notificaciones ---------
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ISubscripcion* ctrl = f->getISubscripcion();
+                        ctrl->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getIdentifico()){    
+                            std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                            }
+
+                            ctrl->eliminarNotificaciones();
+
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
                         break;
                     }
                     case 6: {

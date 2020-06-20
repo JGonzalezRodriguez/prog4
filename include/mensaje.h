@@ -6,10 +6,12 @@
 //#include "clase.h"
 //#include "asignatura.h"
 #include "dt/dtfecha.h"
+#include "dt/dtmensaje.h"
 #include "reloj.h"
 
 class Clase;
 class Asignatura;
+class Usuario;
 
 class Mensaje{
     private:
@@ -18,21 +20,31 @@ class Mensaje{
         DtFecha* fechayhoraenviado;
         std::string id;
         std::string texto;
+        Usuario* autor;
+        bool isroot;
         std::set<Mensaje*> respondidopor;
+        Mensaje *padre;
     public:
-        Mensaje(std::string texto, Clase* clase);
+        Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz);
         ~Mensaje();
         //Asignatura* getAsignatura();
+
+        bool esRaiz();
+        
         Clase* getClase();
         DtFecha* getFechaYHoraEnviado();
         std::string getTexto();
         std::string getId();
-        // std::set<Mensaje*> getHijos();
+        std::set<Mensaje*> getHijos();
         /**
         Agrega una respuesta al mensaje
         @param m Mensaje en respuesta al mensaje actual
         */
         void agregarHijo(Mensaje* m);
+        DtMensaje* toDt(); //crea un DT recursivamente
+        Mensaje *getPadre();
+        void setPadre(Mensaje *m);
+        Usuario *getAutor();
 };
 
 #endif

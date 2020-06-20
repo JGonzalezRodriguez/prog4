@@ -39,7 +39,7 @@ DtFecha* Clase::getFechayhorafinal(){
     return this->fechayhorafinal;
 }
 void Clase::setFechayhorafinal(DtFecha *fecha){
-    this->fechayhoracomienzo = fecha;
+    this->fechayhorafinal = fecha;
 }
 std::string Clase::getUrl(){
     return this->url;
@@ -54,9 +54,9 @@ void Clase::setNombre(std::string nombre){
     this->nombre = nombre;
 }
 
-Docente* Clase::getDoc() {
-    return this->doc;
-}
+//Docente* Clase::getDoc() {
+//    return this->doc;
+//}
 
 //metodos de las operaciones de la clase
 Asignatura *Clase::getAsignatura(){
@@ -95,15 +95,14 @@ ClaseEstudiante *Clase::getClaseEstExistente(Estudiante* est){
     return NULL;
 }
 std::set<Mensaje*> Clase::getMensajes(){
-    std::set<Mensaje*> x;
-    return x;
+    return this->mensajes;
 }
 
 Mensaje* Clase::seleccionarMensaje(std::string idmensaje){
     return NULL;
 }
 void Clase::agregarPadre(Mensaje *m){
-
+    this->mensajes.insert(m);
 }
 
 Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){
