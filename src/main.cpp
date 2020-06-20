@@ -505,8 +505,10 @@ int main() {
                         
                         if(ctrl->getIdentifico()){    
                             std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            printf("\nNotificaciones: ");
+                            printf("\n-------------------------------\n");
                             for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
-                                std::cout << std::endl << **it << std::endl;
+                                std::cout << std::endl << **it << "-------------------------------";
                             }
 
                             ctrl->eliminarNotificaciones();
@@ -722,8 +724,10 @@ int main() {
                         
                         if(ctrl->getIdentifico()){    
                             std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            printf("\nNotificaciones: ");
+                            printf("\n-------------------------------\n");
                             for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
-                                std::cout << std::endl << **it << std::endl;
+                                std::cout << std::endl << **it << "-------------------------------";
                             }
 
                             ctrl->eliminarNotificaciones();

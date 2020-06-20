@@ -32,11 +32,13 @@ std::set<DtNotificacion*> CtrlSubscripcion::listarNotificaciones() {
     for (std::set<Notificacion*>::iterator it=colnot.begin(); it!=colnot.end(); ++it) {
         Notificacion* noti = *it;
         DtFecha* f = noti->getMensaje()->getFechaYHoraEnviado();
+        std::string nombreautor = noti->getMensaje()->getAutor()->getNombre();
+        std::string textomsj = noti->getMensaje()->getTexto();
         std::string nombreclase = noti->getMensaje()->getClase()->getNombre();
         std::string idclase = noti->getMensaje()->getClase()->getId();
         DtAsignatura* asig = new DtAsignatura(noti->getMensaje()->getAsignatura()->getNombre(), noti->getMensaje()->getAsignatura()->getCodigo());
-        DtNotificacion* dtnoti = new DtNotificacion(f, nombreclase, idclase, asig);
-        coldtnot.insert(dtnoti);;
+        DtNotificacion* dtnoti = new DtNotificacion(f,nombreautor,textomsj, nombreclase, idclase, asig);
+        coldtnot.insert(dtnoti);
     }
     return coldtnot;
 }

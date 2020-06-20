@@ -1,6 +1,8 @@
 #include "../include/dt/dtnotificacion.h"
 
-DtNotificacion::DtNotificacion(DtFecha* fechayhoraenviado, std::string nombreclase, std::string idclase, DtAsignatura* asignatura){
+DtNotificacion::DtNotificacion(DtFecha* fechayhoraenviado, std::string nombreautor, std::string textomsj, std::string nombreclase, std::string idclase, DtAsignatura* asignatura){
+    this->nombreautor = nombreautor;
+    this->textomsj = textomsj;
     this->fechayhoraenviado = fechayhoraenviado;
     this->nombreclase = nombreclase;
     this->idclase = idclase;
@@ -25,7 +27,15 @@ DtAsignatura* DtNotificacion::getAsignatura(){
     return this->asignatura;
 }
 
+std::string DtNotificacion::getNombreAutor(){
+    return this->nombreautor;
+}
+
+std::string DtNotificacion::getTextoMsj(){
+    return this->textomsj;
+}
+
 std::ostream& operator<< (std::ostream& os, DtNotificacion &b) {
-    os << "Fecha enviado: " << *(b.getFechaYHoraEnviado()) << std::endl << "Nombre clase: " << b.getNombreClase() << std::endl << "Id clase: " << b.getIdClase() << std::endl << "Asignatura: " << b.getAsignatura() << std::endl;
+    os << "Fecha enviado: " << *(b.getFechaYHoraEnviado()) << std::endl << "Nombre autor: " << b.getNombreAutor() << std::endl << "Texto del mensaje: " << b.getTextoMsj() << std::endl << "Nombre clase: " << b.getNombreClase() << std::endl << "ID clase: " << b.getIdClase() << std::endl << "Asignatura: " << *(b.getAsignatura()) << std::endl;
     return os;
 }

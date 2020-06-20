@@ -59,7 +59,7 @@ CtrlReproduccion::CtrlReproduccion() {}
                 }
                 ce->asistirVivo();
                 if (c->getClaseEstExistente(est)->getavivo()) {
-                    printf("Asistiendo a la clase");
+                    //printf("Asistiendo a la clase");
                 }
             };
         } else {
