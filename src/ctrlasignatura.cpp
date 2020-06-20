@@ -133,7 +133,7 @@ void CtrlAsignatura::confirmarAltaAsignatura(bool conf){
     if(conf){
         HandlerAsignaturas* handler = HandlerAsignaturas::getInstancia();
         handler->add(this->asig);
-        printf("\nAsignatura dada de alta con exito.\n");
+        // printf("\nAsignatura dada de alta con exito.\n"); // No deberia haber prints en la capa lógica!!!!!!!!!!
     }else{
         printf("\nCancelando. La asignatura no fue dada de alta.\n");
     }
