@@ -23,6 +23,7 @@ class Mensaje{
         Usuario* autor;
         bool isroot;
         std::set<Mensaje*> respondidopor;
+        Mensaje *padre;
     public:
         Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz);
         ~Mensaje();
@@ -39,6 +40,9 @@ class Mensaje{
         */
         void agregarHijo(Mensaje* m);
         DtMensaje* toDt(); //crea un DT recursivamente
+        Mensaje *getPadre();
+        void setPadre(Mensaje *m);
+        Usuario *getAutor();
 };
 
 #endif

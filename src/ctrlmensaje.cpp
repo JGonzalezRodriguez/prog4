@@ -137,12 +137,21 @@ void CtrlMensaje::confirmarEnvioMensaje(bool conf){
         Mensaje* msj = new Mensaje(this->texto, this->c, this->u, esRaiz);
         if(!esRaiz){
             this->m->agregarHijo(msj);
+            msj->setPadre(this->m);//seteo el padre en caso de que el mensaje sea respuesta
             if (m->getHijos().empty()){
                 throw std::invalid_argument("\nNOT WORKING YO");
             }
         }
         this->c->agregarPadre(msj); //mal nombre. agregarMensaje seria mejor
-        //TODO: NOTIFICAR
+        //NOTIFICAR
+        Handlerusuarios *u = Handlerusuarios::getInstancia();
+        std::set<Usuario*> subs = u->getSubscritos();
+        std::set<Usuario*>::iterator it;
+        for(it = subs.begin(); it != subs.end(); ++it){
+            (*it)->notificarUsuario(msj);
+        }
+        
     }
     this->m = NULL; //des-selecciona el mensaje para la proxima ejecucion del caso de uso
+
 }

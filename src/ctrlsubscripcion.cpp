@@ -45,8 +45,9 @@ void CtrlSubscripcion::eliminarNotificaciones() {
 }
 
 void CtrlSubscripcion::elegirModo() {
-    
     this->u->elegirModo();
+    Handlerusuarios *subscribir = Handlerusuarios::getInstancia();
+    subscribir->addSubscripto(this->u);
 
 }
  

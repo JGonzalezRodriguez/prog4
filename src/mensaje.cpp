@@ -49,6 +49,18 @@ bool Mensaje::esRaiz(){
     return this->isroot;
 }
 
+Mensaje *Mensaje::getPadre(){
+    return this->padre;
+}
+
+void Mensaje::setPadre(Mensaje *m){
+    this->padre = m;
+}
+
+Usuario *Mensaje::getAutor(){
+    return this->autor;
+}
+
 DtMensaje* Mensaje::toDt(){
     DtFecha* fechayhora = new DtFecha(this->fechayhoraenviado);
     std::set<DtMensaje*> dthijos;
