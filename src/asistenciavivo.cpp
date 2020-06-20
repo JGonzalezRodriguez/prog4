@@ -29,7 +29,8 @@ bool AsistenciaVivo::getEstaMirando(){
 
 void AsistenciaVivo::finalizarVisualizacionVivo(){
     Reloj* r = Reloj::getInstancia();
-    ultimasalidavivo = r->getFecha();
+    DtFecha* dtf = new DtFecha(r->getFecha());
+    ultimasalidavivo = dtf;
     estamirando = false;
 }
 

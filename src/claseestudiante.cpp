@@ -2,7 +2,8 @@
 
 ClaseEstudiante::ClaseEstudiante(Clase* c, Estudiante* a) {
     Reloj* r = Reloj::getInstancia();
-    this->avivo = new AsistenciaVivo(r->getFecha());
+    DtFecha* dtf = new DtFecha(r->getFecha());
+    this->avivo = new AsistenciaVivo(dtf);
     this->est = a;
     this->c = c;
 }
