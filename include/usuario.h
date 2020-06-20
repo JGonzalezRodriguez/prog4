@@ -1,8 +1,8 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include <string> 
-#include "asignatura.h"
-#include "clase.h"
+//#include "asignatura.h"
+//#include "clase.h"
 #include "mensaje.h"
 #include "subscripcion.h"
 #include "notificacion.h"

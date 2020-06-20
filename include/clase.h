@@ -7,10 +7,10 @@
 #include "dt/dtfecha.h"
 #include <set>
 #include <string>
-//#include <estudiante.h>
+#include <estudiante.h>
 
 class Docente;
-class Estudiante;
+//class Estudiante;
 class ClaseEstudiante;
 class Mensaje;
 
@@ -49,7 +49,7 @@ class Clase {
         virtual void finalizar();
         virtual bool tieneClaseEst(Estudiante *est);
         virtual ClaseEstudiante *crearClaseEst(Estudiante *est, Clase *c);
-        virtual ClaseEstudiante *getClaseEstExistente();
+        virtual ClaseEstudiante *getClaseEstExistente(Estudiante *est);
         virtual std::set<Mensaje*> getMensajes();
         virtual std::string getId();
         virtual Mensaje* seleccionarMensaje(std::string idmensaje);

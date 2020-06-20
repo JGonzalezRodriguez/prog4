@@ -540,6 +540,7 @@ int main() {
                 printf("\n3. Envio de mensaje");
                 printf("\n4. Suscribirse a notificacion");
                 printf("\n5. Consulta de notificaciones");
+                printf("\n6. Finalizar asistencia a clase en vivo");
                 printf("\n");
 
                 int opcion2;
@@ -603,6 +604,57 @@ int main() {
                         break;
                     }
                     case 2: {
+
+                        cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IReproduccion* ctrlR = f->getIReproduccion();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        //se identifica el estudiante
+                        if (!ctrlR->identificarse(email, contrasenia)) break;
+                        //lista asignaturas a las que el estudiante esta inscripto
+                        printf("Estas son las asignaturas a las que esta inscripto:\n\n");
+                        std::set<DtAsignatura*> lista = ctrlR->listarAsignaturasEstudiante();
+                        if (lista.empty()) {
+                            printf("Usted no esta cursando ninguna asignatura");
+                            break;
+                        };
+                        std::set<DtAsignatura*>::iterator it;
+                        for(it = lista.begin(); it != lista.end(); ++it){
+                            cout << **it;
+                        }
+
+                        std::string codigo;
+                        std::cout << "\nIntroduzca el codigo de la asignatura a la que desea asistir:";
+                        std::cin >> codigo;
+                        ctrlR->elegirAsignaturaEst(codigo);
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudiante();
+                        if (x.empty()) { 
+                            break;
+                        };
+                        std::set<DtClase*>::iterator it2;
+                        for(it2 = x.begin(); it2 != x.end(); it2++){
+                            cout << endl << **it2;
+                        }
+                        std::string id;
+                        std::cout << endl << "Introduzca el id de la clase a la que desea asistir:";
+                        std::cin >> id;
+                        ctrlR->elegirClase(id);
+                        if (ctrlR->mostrarDatosClase() == NULL) {
+                            printf("No hay clase asociada a ese id");
+                            break;
+                        }
+                        std::cout << "Desea Asistir a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
+                        std::cout << endl;
+                        std::cout << "1. Si \n2. No\n";
+                        
+                        int i;
+                        std::cin >> i;
+                        bool confi = !(i-1);
+                        ctrlR->confirmarAsistenciaClaseEnVivo(confi);                      
                         break;
                     }
                     case 3: {
@@ -659,6 +711,44 @@ int main() {
                         }
                         break;
                     }
+                    case 6: {
+                        cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IReproduccion* ctrlR = f->getIReproduccion();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        //se identifica el estudiante
+                        if (!ctrlR->identificarse(email, contrasenia)) break;
+                        if (!ctrlR->estaAsistiendo()) {
+                            printf("Usted no esta asistiendo a ninguna clase");
+                            break;
+                        }
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudianteVivo();
+                        std::set<DtClase*>::iterator it2;
+                        for(it2 = x.begin(); it2 != x.end(); it2++){
+                            cout << endl << **it2;
+                        }
+                        std::string id;
+                        std::cout << endl << "Introduzca el id de la clase a la que desea finalizar su asistencia:";
+                        std::cin >> id;
+                        ctrlR->elegirClase(id);
+                        if (ctrlR->mostrarDatosClase() == NULL) {
+                            printf("No hay clase asociada a ese id");
+                            break;
+                        }
+                        std::cout << "Desea finalizar su asistencia a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
+                        std::cout << endl;
+                        std::cout << "1. Si \n2. No\n";
+
+                        int i;
+                        std::cin >> i;
+                        bool confi = !(i-1);
+                        ctrlR->confirmarFinalizacionAsistencia(confi);                      
+                        break;
+                    }
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
@@ -686,7 +776,7 @@ int main() {
                 //Cargar Estudiantes
                 ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "p4ss", "fotito.com/4", "23456789");
+                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "pass", "fotito.com/4", "23456789");
                 ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaEstudiante("Ramon Valdez", "ramon@mail.com", "pass", "fotito.com/5", "34567890");
                 ctrlU->confirmarAltaUsuario(true);

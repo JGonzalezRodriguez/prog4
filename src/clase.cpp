@@ -71,12 +71,27 @@ void Clase::finalizar(){
     }
 }
 bool Clase::tieneClaseEst(Estudiante *est){
+    std::set<ClaseEstudiante*>::iterator it = claseestudiantes.begin();
+    for (it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+        if ((*it)->getEstudiante() == est){
+            return true;
+        }
+    }
     return false;
 }
 ClaseEstudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
-    return NULL;
+    ClaseEstudiante* ce = new ClaseEstudiante(c, est);
+    this->claseestudiantes.insert(ce);
+    est->addClaseEstudiante(ce);
+    return ce;
 }
-ClaseEstudiante *Clase::getClaseEstExistente(){
+ClaseEstudiante *Clase::getClaseEstExistente(Estudiante* est){
+    std::set<ClaseEstudiante*>::iterator it;
+    for (it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+        if ((*it)->getEstudiante() == est){
+            return (*it);
+        }
+    }
     return NULL;
 }
 std::set<Mensaje*> Clase::getMensajes(){

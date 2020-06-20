@@ -6,6 +6,8 @@
 #include <string>
 #include "clase.h"
 #include "estudiante.h"
+#include "docente.h"
+#include "handlerusuarios.h"
 
 
 #include "dt/dtclase.h"
@@ -26,8 +28,9 @@ class CtrlReproduccion : public IReproduccion {
         Identifica al usuario actual, llama a getEstudiante(email)
         @param email el id para buscar al estudiante
         @param contrasenia la contrasenia del usuario (Decorativo?)
+        @return Booleano que confirma que la identificacion funciono.
         */
-        void identificarse(std::string email, std::string contrasenia);
+        bool identificarse(std::string email, std::string contrasenia);
         /**
         @return Coleccion de DtAsignatura las asignaturas del estudiante actual
         */
@@ -54,5 +57,16 @@ class CtrlReproduccion : public IReproduccion {
         Debe crear la coleccion a partir de la coleccion de mensajes de la clase.
         */
         std::set<DtMensaje*> ListarMensajes();
+        /**
+        Confirma la asistencia a la clase.
+        */
+        void confirmarAsistenciaClaseEnVivo(bool confi);
+
+        std::set<DtClase*> listarClasesEstudianteVivo();
+
+        bool estaAsistiendo();
+
+        virtual void confirmarFinalizacionAsistencia(bool confi);
+        
 };
 #endif
