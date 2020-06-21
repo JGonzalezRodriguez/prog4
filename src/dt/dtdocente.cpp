@@ -13,6 +13,18 @@ instituto DtDocente::getInstituto(){
     return this->inst;
 }
 
+std::string decodeInstituto(instituto i){
+    switch(i){
+        case 0: return "IMERL";
+        case 1: return "IIE";
+        case 2: return "IA";
+        case 3: return "DISI";
+        case 4: return "IF";
+        case 5: return "INCO";
+        default: return "ERROR";
+    }
+}
+
 std::ostream& operator<< (std::ostream& os, DtDocente &b) {
     os << "Nombre: " << b.getNombre() << std::endl << "Email: " << b.getEmail() << std::endl << "Imagen: " << b.getImagen() << std::endl << "Instituto: " << b.getInstituto() << std::endl;
     return os;
