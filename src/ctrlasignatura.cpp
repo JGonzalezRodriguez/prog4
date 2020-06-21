@@ -168,9 +168,9 @@ void CtrlAsignatura::altaAsignatura(std::string nombre, std::string codigo, bool
     this->asig = new Asignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
 }
 
-DtAsignatura* CtrlAsignatura::mostrarDatosAsignatura(){
+DtAsignaturaExt* CtrlAsignatura::mostrarDatosAsignatura(){
     // return this->asig.getDt(); 
-    DtAsignatura* dummy = new DtAsignatura(this->asig->getNombre(), this->asig->getCodigo());
+    DtAsignaturaExt* dummy = new DtAsignaturaExt(this->asig->getNombre(), this->asig->getCodigo(), asig->tieneMon(), asig->tienePrac(), asig->tieneTeo());
     return dummy;
     //TODO: borrar y descomentar
 }

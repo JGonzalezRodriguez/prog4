@@ -7,6 +7,7 @@
 #include "dt/dtasignatura.h"
 #include "dt/dtdocente.h"
 #include "dt/enums.h"
+#include "dt/dtasignaturaext.h"
 
 class IAsignatura {
     public:
@@ -20,7 +21,7 @@ class IAsignatura {
         virtual ~IAsignatura() {};
         //virtual ~IAsignatura() = 0;
         virtual void altaAsignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon) = 0;
-        virtual DtAsignatura* mostrarDatosAsignatura() = 0;
+        virtual DtAsignaturaExt* mostrarDatosAsignatura() = 0;
         virtual void confirmarAltaAsignatura(bool conf) = 0;
 
         //Agrego las operaciones correspondientes al caso de uso inscripcion a asignatura

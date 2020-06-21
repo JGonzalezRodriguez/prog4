@@ -15,4 +15,8 @@ class DtAsignaturaExt: public DtAsignatura{
         bool tienePrac();
         bool tieneMon();
 };
+
+std::ostream& operator<< (std::ostream& os, DtAsignaturaExt &b);
+
+
 #endif

@@ -19,3 +19,17 @@ bool DtAsignaturaExt::tienePrac(){
 bool DtAsignaturaExt::tieneMon(){
     return this->tienemon;
 }
+
+std::ostream& operator<< (std::ostream& os, DtAsignaturaExt &b) {
+    os << "Nombre: " << b.getNombre() << std::endl << "Código: " << b.getCodigo() << std::endl << "Modalidades: \n";
+    if (b.tieneTeo()) {
+        os << "             Teorico\n";
+    }
+    if (b.tienePrac()) {
+        os << "             Practico\n";
+    }
+    if (b.tieneMon()) {
+        os << "             Monitoreo\n";
+    }
+    return os;
+}

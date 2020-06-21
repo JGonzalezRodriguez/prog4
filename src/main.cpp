@@ -221,7 +221,7 @@ int main() {
                         Fabrica* fabrica = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
                         IAsignatura* interface = fabrica->getIAsignatura();
                         interface->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
-                        DtAsignatura* asignatura = interface->mostrarDatosAsignatura();
+                        DtAsignaturaExt* asignatura = interface->mostrarDatosAsignatura();
                         cout << *asignatura;
                         //confirmando
                         printf("\nConfirmar alta de asignatura? s/n\n");
