@@ -115,6 +115,47 @@ void CtrlAsignatura::confirmarAsignacionDocenteAsignatura(bool confi) {
 }
 
 void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
+    if (conf == false) {
+        printf("Cancelado.");
+        return;
+    }
+
+    HandlerAsignaturas* h = HandlerAsignaturas::getInstancia();
+    h->remove(asig);
+
+    std::set<Estudiante*> x =asig->getEstudiantes();
+    std::set<Estudiante*>::iterator it;
+    for(it = x.begin(); it != x.end(); it++) {
+        (*it)->eliminarNotificacionAsign(asig);
+        (*it)->eliminarAsignatura(asig);
+    }
+
+    std::set<Dicta*> y = asig->getDictas();
+    std::set<Dicta*>::iterator it2;
+    for(it2 = y.begin(); it2 != y.end(); it++) {
+        (*it2)->getDocente()->eliminarNotificacionAsign(asig);
+        (*it2)->getDocente()->deslinkear(*it2);
+        delete (*it2); //Delete Dicta
+    }
+
+    std::set<Clase*> z = asig->getClases();
+    std::set<Clase*>::iterator it3;
+    for(it3=z.begin(); it3 != z.end(); it3++){
+        std::set<ClaseEstudiante*> ces = (*it3)->getClaseEstudiantes();
+        std::set<ClaseEstudiante*>::iterator it4;
+        for(it4=ces.begin(); it4 != ces.end(); it4++){
+            (*it4)->getEstudiante()->deslinkear(*it4);
+            (*it4)->getClase()->deslinkear(*it4);
+            delete (*it4); // Delete ClaseEstudiante
+        }
+        std::set<Mensaje*> colMensajes = (*it3)->getMensajes();
+        std::set<Mensaje*>::iterator it5;
+        for(it5=colMensajes.begin(); it5 != colMensajes.end(); it5++){
+            delete (*it5); // Delete Mensaje
+        }
+
+        delete *it3; // Delete la Clase
+    }  
 
 }
 

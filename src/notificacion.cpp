@@ -11,6 +11,8 @@ Mensaje* Notificacion::getMensaje(){
 }
 
 bool Notificacion::esDeAsignatura(Asignatura* a){
-    //TODO
+    if (mensaje->getAsignatura() == a) {
+        return true;
+    }
     return false;
 }

@@ -46,8 +46,9 @@ void Estudiante::setCi(std::string ci){
         
 //operaciones mismas de estudiante
         void Estudiante::eliminarAsignatura(Asignatura *a){
-
+            this->asignaturas.erase(a);
         }
+
         std::set<Asignatura*> Estudiante::getAsignaturas(){
             return this->asignaturas;
         }
@@ -83,4 +84,8 @@ void Estudiante::setCi(std::string ci){
 
         void Estudiante::addClaseEstudiante(ClaseEstudiante* ce) {
             this->claseestudiantes.insert(ce);
+        }
+
+        void Estudiante::deslinkear(ClaseEstudiante* ce) {
+            claseestudiantes.erase(ce);
         }

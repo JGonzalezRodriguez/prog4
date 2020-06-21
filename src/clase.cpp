@@ -122,5 +122,9 @@ bool Clase::estaHabilitado(Estudiante* est) {
     return true;
 }
 
+void Clase::deslinkear(ClaseEstudiante* ce) {
+    claseestudiantes.erase(ce);
+}
+
 Clase::~Clase(){
 }

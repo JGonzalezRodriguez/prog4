@@ -44,8 +44,15 @@
             this->notificaciones.clear();
         }
         void Usuario::eliminarNotificacionAsign(Asignatura *a){
-
+            std::set<Notificacion*>::iterator it;
+            for(it = notificaciones.begin(); it != notificaciones.end(); it++){
+                if ((*it)->esDeAsignatura(a)) {
+                    notificaciones.erase(it);
+                    delete (*it);
+                }
+            }
         }
+
         void Usuario::elegirModo(){
             SRespuesta *resp = SRespuesta::getInstancia();
             this->subscripcion = resp; 

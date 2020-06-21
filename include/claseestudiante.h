@@ -23,6 +23,9 @@ class ClaseEstudiante {
         Clase* getClase();
         AsistenciaVivo* getavivo();
         void asistirVivo();
+        void deslinkearEstudiante();
+        void deslinkearClase();
+        ~ClaseEstudiante();
 
         
 };

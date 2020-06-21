@@ -27,3 +27,9 @@ AsistenciaVivo* ClaseEstudiante::getavivo(){
 void ClaseEstudiante::asistirVivo(){
     this->avivo->setEstaMirando(true);
 }
+
+ClaseEstudiante::~ClaseEstudiante() {
+    if (avivo != NULL) {
+        delete avivo;
+    }
+}

@@ -31,7 +31,7 @@ void Docente::addAsignatura(Dicta *dicta){
     this->dictas.insert(dicta);
 }
 void Docente::deslinkear(Dicta *dicta){
-
+    this->dictas.erase(dicta);
 }
 std::set<Asignatura*> Docente::getAsignaturas(){
     std::set<Asignatura*> x;

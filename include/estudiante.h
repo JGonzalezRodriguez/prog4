@@ -37,6 +37,7 @@ class Estudiante : public Usuario {
         void addAsignatura(Asignatura *a);//se agrega para poder asignarle una asignatura al estudiante
         bool estaAsistiendo();
         void addClaseEstudiante(ClaseEstudiante* ce);
+        void deslinkear(ClaseEstudiante* ce);
 };
 
 

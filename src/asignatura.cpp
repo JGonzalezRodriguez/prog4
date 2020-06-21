@@ -58,6 +58,10 @@ bool Asignatura::tieneMon() {
     return this->tienemon;
 }
 
+std::set<Dicta*> Asignatura::getDictas() {
+    return this->dictas;
+}
+
 DtAsignatura* Asignatura::getDt() {
     DtAsignatura* x = new DtAsignatura(this->nombre, this->codigo);
     return x;

@@ -57,6 +57,8 @@ class Clase {
         virtual void agregarPadre(Mensaje *m);
         virtual bool estaHabilitado(Estudiante* est);
 
+        virtual void deslinkear(ClaseEstudiante* ce);
+
         Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
         virtual ~Clase() = 0;
 };
