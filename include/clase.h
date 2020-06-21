@@ -55,6 +55,7 @@ class Clase {
         virtual std::string getId();
         virtual Mensaje* seleccionarMensaje(std::string idmensaje);
         virtual void agregarPadre(Mensaje *m);
+        virtual bool estaHabilitado(Estudiante* est);
 
         Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
         virtual ~Clase() = 0;

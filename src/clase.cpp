@@ -117,5 +117,10 @@ Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente
     this->doc = doc;
     this->envivo = true;
 }
+
+bool Clase::estaHabilitado(Estudiante* est) {
+    return true;
+}
+
 Clase::~Clase(){
 }
