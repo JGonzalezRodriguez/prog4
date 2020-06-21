@@ -129,7 +129,7 @@ void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
     for(it = x.begin(); it != x.end(); it++) {
         (*it)->eliminarNotificacionAsign(asig);
         (*it)->eliminarAsignatura(asig);
-        printf("loop 1\n");
+       
     }
 
     std::set<Dicta*> y = asig->getDictas();
@@ -137,7 +137,7 @@ void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
     for(it2 = y.begin(); it2 != y.end(); it2++) {
         (*it2)->getDocente()->eliminarNotificacionAsign(asig);
         (*it2)->getDocente()->deslinkear(*it2);
-        printf("loop 2\n");
+       
         delete (*it2); //Delete Dicta
     }
 
@@ -149,16 +149,16 @@ void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
         for(it4=ces.begin(); it4 != ces.end(); it4++){
             (*it4)->getEstudiante()->deslinkear(*it4);
             (*it4)->getClase()->deslinkear(*it4);
-            printf("loop 3.1\n");
+            
             delete (*it4); // Delete ClaseEstudiante
         }
         std::set<Mensaje*> colMensajes = (*it3)->getMensajes();
         std::set<Mensaje*>::iterator it5;
         for(it5=colMensajes.begin(); it5 != colMensajes.end(); it5++){
-            printf("loop 3.2\n");
+            
             delete (*it5); // Delete Mensaje
         }
-        printf("loop 3\n");
+        
         delete *it3; // Delete la Clase
     }  
 
