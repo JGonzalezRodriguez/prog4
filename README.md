@@ -37,7 +37,7 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 - Finalización de asistencia a clase en vivo **OK**
 - Tiempo de dictado de clases **OK**
 - Tiempo de asistencia a clase **OK**
-- Eliminación de asignatura LA HACEMOS JUNTOS AL FINAL
+- Eliminación de asignatura **OK**
 - Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario) **OK**
 - Consulta de notificaciones **OK**
 
