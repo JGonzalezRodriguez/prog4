@@ -45,12 +45,18 @@
         }
         void Usuario::eliminarNotificacionAsign(Asignatura *a){
             std::set<Notificacion*>::iterator it;
-            for(it = notificaciones.begin(); it != notificaciones.end(); it++){
+            //if (notificaciones.empty()) return;
+            std::set<Notificacion*> x;
+            for(it = notificaciones.begin(); it != notificaciones.end();it++){
                 if ((*it)->esDeAsignatura(a)) {
-                    notificaciones.erase(it);
-                    delete (*it);
+                    x.insert(*it);
                 }
             }
+            for(it = x.begin(); it != x.end(); it++) {
+                notificaciones.erase(*it);
+                delete (*it);
+            }
+            x.clear();
         }
 
         void Usuario::elegirModo(){

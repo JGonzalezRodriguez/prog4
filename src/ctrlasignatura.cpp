@@ -137,7 +137,6 @@ void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
     for(it2 = y.begin(); it2 != y.end(); it2++) {
         (*it2)->getDocente()->eliminarNotificacionAsign(asig);
         (*it2)->getDocente()->deslinkear(*it2);
-        (*it2)->getDocente()->eliminarNotificacionAsign(asig);
         printf("loop 2\n");
         delete (*it2); //Delete Dicta
     }

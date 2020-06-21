@@ -19,7 +19,7 @@ Mensaje::Mensaje(std::string texto, Clase* clase, Usuario* autor, bool esRaiz){
 Mensaje::~Mensaje(){}
 
 Asignatura* Mensaje::getAsignatura(){
-     return this->clase->getAsignatura();
+     return clase->getAsignatura();
 }
 
 Clase* Mensaje::getClase(){
