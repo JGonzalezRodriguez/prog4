@@ -240,6 +240,24 @@ int main() {
                         break;
                     }
                     case 3: {
+                        std::cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IAsignatura* ctrlA = f->getIAsignatura();
+                        std::set<DtAsignatura*> asignaturas = ctrlA->listarAsignaturas();
+                        std::set<DtAsignatura*>::iterator it;
+                        for(it=asignaturas.begin(); it != asignaturas.end(); it++) {
+                            std::cout << *(*it) << endl;
+                        }
+                        std::string id;
+                        printf("Por favor ingrese el codigo de la asignatura a eliminar:\n");
+                        std::cin >> id;
+                        ctrlA->elegirAsignaturaAdmin(id);
+                        printf("Desea eliminar asignatura?");
+                        printf("\n1. Si");
+                        printf("\n2. No\n");
+                        int i;
+                        std::cin >> i;
+                        ctrlA->confirmarEliminacionAsignatura(!(i-1));
                         break;
                     }
                     case 4: {
