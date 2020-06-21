@@ -100,8 +100,9 @@ CtrlReproduccion::CtrlReproduccion() {}
         return x;
     }
     void CtrlReproduccion::elegirClase(std::string id){
-        std::set<Clase*>::iterator it = this->est->listarClases().begin();
+        std::set<Clase*>::iterator it;
         bool encuentra = false;
+        this->colclase = a->getClases();
         for(it = this->colclase.begin(); it != colclase.end(); it++){
             if ((*it)->getId() == id) {
                 this->c = (*it);

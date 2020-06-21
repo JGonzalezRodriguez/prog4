@@ -578,7 +578,7 @@ int main() {
             }
             case 3: {// casos de uso de estudiante
                 printf("\n Elija el caso de uso a ejecutar como Estudiante: ");
-                printf("\n1. Inscripcion a las asignaturas");
+                printf("\n1. Inscripción a las asignaturas");
                 printf("\n2. Asistencia a clase en vivo");
                 printf("\n3. Envio de mensaje");
                 printf("\n4. Suscribirse a notificacion");
@@ -807,6 +807,10 @@ int main() {
                 Fabrica* f = Fabrica::getInstancia();
                 IAsignatura* ctrlA = f->getIAsignatura();
                 IUsuario* ctrlU = f->getIUsuario();
+                IClase *ctrlC = f->getIClase();
+                IReproduccion *ctrlR = f->getIReproduccion();
+                IMensaje *ctrlM = f->getIMensaje();
+                
                 //IAsignatura* ctrlA = Fabrica::getIAsignatura();
                 //IUsuario* ctrlU = Fabrica::getIUsuario();
                 //IClase* ctrlC = Fabrica::getIClase();
@@ -837,12 +841,12 @@ int main() {
                 ctrlA->elegirdocente(teorico, "juan@mail.com");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
-                ctrlA->elegirdocente(practico, "maria@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->elegirdocente(practico, "maria@mail.com");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
-                ctrlA->elegirdocente(monitoreo, "jorge@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->elegirdocente(monitoreo, "jorge@mail.com");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
                 ctrlA->identificarse("roberto@mail.com","pass");
@@ -858,6 +862,227 @@ int main() {
                 ctrlA->identificarse("ramon@mail.com","pass");
                 ctrlA->elegirAsignaturaEst("P1");
                 ctrlA->confirmarInscripcionAsignatura(true);
+
+                //CLASES
+                Reloj* reloj = Reloj::getInstancia();
+                //para iniciar C1
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha1 = new DtFecha(1, 5, 2020, 9, 0);
+                reloj->setFecha(fecha1);
+                ctrlC->inicioDeClase("P1", "Intro");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id1 = ctrlC->getIdgenerado();
+
+                //E1 para asistir a C1
+                ctrlR->identificarse("roberto@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha13 = new DtFecha(1, 5, 2020, 9, 1);
+                reloj->setFecha(fecha13);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //E2 para asistir C1
+                ctrlR->identificarse("ana@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha15 = new DtFecha(1, 5, 2020, 9, 2);
+                reloj->setFecha(fecha15);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //E3 para asistir a C1
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha17 = new DtFecha(1, 5, 2020, 9, 3);
+                reloj->setFecha(fecha17);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //MENSAJES
+
+                //los id de los mensajes comienza en 1
+                ctrlM->identificarse("juan@mail.com","123");
+                ctrlM->elegirClase(id1);
+                ctrlM->textoEnviar("Bienvenidos!");
+                DtFecha* fecha21 = new DtFecha(1, 5, 2020, 9, 1);
+                reloj->setFecha(fecha21);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("juan@mail.com","123");
+                ctrlM->elegirClase(id1);
+                ctrlM->textoEnviar("Confirmen materiales por favor.");
+                DtFecha* fecha22 = new DtFecha(1, 5, 2020, 9, 2);
+                reloj->setFecha(fecha22);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("roberto@mail.com","pass");
+                ctrlM->elegirClase(id1);
+                ctrlM->seleccionarMensaje(to_string(1));
+                ctrlM->textoEnviar("Listo para aprender.");
+                DtFecha* fecha24 = new DtFecha(1, 5, 2020, 9, 5);
+                reloj->setFecha(fecha24);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("juan@mail.com","123");
+                ctrlM->elegirClase(id1);
+                ctrlM->seleccionarMensaje(to_string(3));
+                ctrlM->textoEnviar("Me alegro");
+                DtFecha* fecha25 = new DtFecha(1, 5, 2020, 9, 6);
+                reloj->setFecha(fecha25);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("ana@mail.com","pass");
+                ctrlM->elegirClase(id1);
+                ctrlM->seleccionarMensaje(to_string(2));
+                ctrlM->textoEnviar("Todo listo");
+                DtFecha* fecha26 = new DtFecha(1, 5, 2020, 9, 6);
+                reloj->setFecha(fecha26);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                //para finalizar asistencia de E1
+                ctrlR->identificarse("roberto@mail.com", "pass");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha14 = new DtFecha(1, 5, 2020, 9, 21);
+                reloj->setFecha(fecha14);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                //para finalizar asistencia de E2
+                ctrlR->identificarse("ana@mail.com", "pass");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha16 = new DtFecha(1, 5, 2020, 9, 32);
+                reloj->setFecha(fecha16);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                //para finalizar asistencia E3
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha18 = new DtFecha(1, 5, 2020, 9, 43);
+                reloj->setFecha(fecha18);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                
+                //para finalizar C1
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha2 = new DtFecha(1, 5, 2020, 10, 0);
+                reloj->setFecha(fecha2);
+                ctrlC->elegirClase(id1);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                
+                //para iniciar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha3 = new DtFecha(3, 5, 2020, 9, 0);
+                reloj->setFecha(fecha3);
+                ctrlC->inicioDeClase("P1", "Tema1");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id2 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha4 = new DtFecha(3, 5, 2020, 10, 0);
+                reloj->setFecha(fecha4);
+                ctrlC->elegirClase(id2);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                //para iniciar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha5 = new DtFecha(8, 5, 2020, 9, 0);
+                reloj->setFecha(fecha5);
+                ctrlC->inicioDeClase("P1", "Tema2");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id3 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha6 = new DtFecha(8, 5, 2020, 10, 0);
+                reloj->setFecha(fecha6);
+                ctrlC->elegirClase(id3);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                //para iniciar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha7 = new DtFecha(2, 5, 2020, 16, 0);
+                reloj->setFecha(fecha7);
+                ctrlC->inicioDeClase("P1", "Pra1");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id4 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha8 = new DtFecha(2, 5, 2020, 17, 0);
+                reloj->setFecha(fecha8);
+                ctrlC->elegirClase(id4);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                //para iniciar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha9 = new DtFecha(3, 5, 2020, 16, 0);
+                reloj->setFecha(fecha9);
+                ctrlC->inicioDeClase("P1", "Pra2");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id5 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha10 = new DtFecha(3, 5, 2020, 17, 0);
+                reloj->setFecha(fecha10);
+                ctrlC->elegirClase(id5);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                
+                //para iniciar C6
+                ctrlC->identificarse("jorge@mail.com", "passw0rd");
+                DtFecha* fecha11 = new DtFecha(4, 5, 2020, 16, 0);
+                reloj->setFecha(fecha11);
+                ctrlC->inicioDeClase("P1", "06/01/20");
+                //Estudiantes habilitados
+                ctrlC->elegirEstudiante("23456789");
+                ctrlC->elegirEstudiante("34567890");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id6 = ctrlC->getIdgenerado();
+
+                //E3 para asistir C6
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id6);
+                DtFecha* fecha19 = new DtFecha(4, 5, 2020, 16, 0);
+                reloj->setFecha(fecha19);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //MENSAJES
+                
+                ctrlM->identificarse("jorge@mail.com","passw0rd");
+                ctrlM->elegirClase(id6);
+                ctrlM->textoEnviar("Comparto pantalla.");
+                DtFecha* fecha23 = new DtFecha(4, 5, 2020, 16, 1);
+                reloj->setFecha(fecha23);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                
+                ctrlM->identificarse("ramon@mail.com","pass");
+                ctrlM->elegirClase(id6);
+                ctrlM->seleccionarMensaje(to_string(6));
+                ctrlM->textoEnviar("Ya la vemos");
+                DtFecha* fecha27 = new DtFecha(4, 5, 2020, 16, 5);
+                reloj->setFecha(fecha27);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+
+                //para finalizar asistencia de E3
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirClase(id6);
+                DtFecha* fecha20 = new DtFecha(4, 5, 2020, 17, 0);
+                reloj->setFecha(fecha20);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                //para finalizar C6
+                ctrlC->identificarse("jorge@mail.com", "passw0rd");
+                DtFecha* fecha12 = new DtFecha(4, 5, 2020, 17, 0);
+                reloj->setFecha(fecha12);
+                ctrlC->elegirClase(id6);
+                ctrlC->confirmarFinalizacionDeClase(true);
+
+
+                
 
                 printf("\nDatos de Prueba Cargados\n");
                 break;
