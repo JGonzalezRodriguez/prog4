@@ -83,10 +83,14 @@ modalidad CtrlClase::getModalidad(){
 std::set<DtEstudiante*> CtrlClase::listarEstudiantesHabilitados(){
     std::set<Estudiante*> colest = asignatura->getEstudiantes();
     std::set<DtEstudiante*> coldtest;
+    std::set<Estudiante*>::iterator x;
     for (std::set<Estudiante*>::iterator it=colest.begin(); it!=colest.end(); ++it) {
-        Estudiante* est = *it;
-        DtEstudiante* nuevodt = new DtEstudiante(est->getCi(),est->getNombre(),est->getEmail(),est->getImagen(),est->getContrasenia());
-        coldtest.insert(nuevodt);
+        x = estudiantes.find((*it));
+        if (x == estudiantes.end()) {
+            Estudiante* est = *it;
+            DtEstudiante* nuevodt = new DtEstudiante(est->getCi(),est->getNombre(),est->getEmail(),est->getImagen(),est->getContrasenia());
+            coldtest.insert(nuevodt);;
+        }
     }
     return coldtest;
 }

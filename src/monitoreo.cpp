@@ -8,7 +8,6 @@ bool Monitoreo::estaHabilitado(Estudiante* est) {
     std::set<Estudiante*>::iterator it;
     for (it = habilitados.begin(); it != habilitados.end(); it++) {
         if ((*it) == est) {
-            printf("El estudiante esta habilitado");
             return true;
         }
     }
