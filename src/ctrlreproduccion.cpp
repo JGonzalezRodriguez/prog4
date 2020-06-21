@@ -76,6 +76,12 @@ CtrlReproduccion::CtrlReproduccion() {}
             if (!(*it)->getEnVivo()) {
                 continue;
             }
+            
+            if (!(*it)->estaHabilitado(est)) {
+                printf("no esta habilitado");
+                continue;
+            }
+
             if ((*it)->tieneClaseEst(est)) {
                 if ((*it)->getClaseEstExistente(est)->getavivo()->getEstaMirando()){
                     continue;
