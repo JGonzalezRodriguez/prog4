@@ -26,7 +26,7 @@ std::string decodeInstituto(instituto i){
 }
 
 std::ostream& operator<< (std::ostream& os, DtDocente &b) {
-    os << "Nombre: " << b.getNombre() << std::endl << "Email: " << b.getEmail() << std::endl << "Imagen: " << b.getImagen() << std::endl << "Instituto: " << b.getInstituto() << std::endl;
+    os << "Nombre: " << b.getNombre() << std::endl << "Email: " << b.getEmail() << std::endl << "Imagen: " << b.getImagen() << std::endl << "Instituto: " << decodeInstituto(b.getInstituto()) << std::endl;
     return os;
 }
 //es necesario mostrar la contraseña?
