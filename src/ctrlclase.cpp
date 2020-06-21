@@ -132,6 +132,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             c->setUrl(url);
             int seed = Clase::getSeed();
             c->setId(std::to_string(seed));
+            this->idgenerado = c->getId();
             Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
@@ -143,6 +144,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             c->setUrl(url);
             int seed = Clase::getSeed();
             c->setId(std::to_string(seed));
+            this->idgenerado = c->getId();
             Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
@@ -155,6 +157,7 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
             c->setUrl(url);
             int seed = Clase::getSeed();
             c->setId(std::to_string(seed));
+            this->idgenerado = c->getId();
             Clase::incSeed();
             docente->addClase(c);
             asignatura->addClase(c);
@@ -163,6 +166,14 @@ void CtrlClase::confirmarInicioDeClase(bool conf){
     }
     this->estudiantes.clear();
 }
+
+std::string CtrlClase::getIdgenerado(){
+    return this->idgenerado;
+}
+
+
+
+
 std::set<DtPreview*> CtrlClase::listarClasesEnVivo(){
     std::set<Clase*> colclase = docente->getClasesEnVivo();
     std::set<DtPreview*> coldtpreview;

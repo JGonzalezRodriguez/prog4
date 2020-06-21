@@ -31,6 +31,7 @@ class IClase {
         virtual ~IClase() {};
         virtual std::set<DtTiempoAsignatura*> tiempoDictadoClases() = 0;
         virtual std::set<DtPromAsistencia*> promedioAsistencia() = 0;
+        virtual std::string getIdgenerado() = 0;
 };
 
 #endif
