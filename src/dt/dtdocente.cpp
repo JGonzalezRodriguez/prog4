@@ -15,12 +15,12 @@ instituto DtDocente::getInstituto(){
 
 std::string decodeInstituto(instituto i){
     switch(i){
-        case 0: return "IMERL";
-        case 1: return "IIE";
-        case 2: return "IA";
-        case 3: return "DISI";
-        case 4: return "IF";
-        case 5: return "INCO";
+        case IMERL: return "IMERL";
+        case IIE: return "IIE";
+        case IA: return "IA";
+        case DISI: return "DISI";
+        case IF: return "IF";
+        case INCO: return "INCO";
         default: return "ERROR";
     }
 }
