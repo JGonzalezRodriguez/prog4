@@ -36,8 +36,7 @@ void Asignatura::addClase(Clase* c) {
 }
 
 std::set<Clase*> Asignatura::getClases() {
-    std::set<Clase*> x;
-    return x;
+    return this->clases;
 }
 
 std::string Asignatura::getNombre() {
@@ -57,6 +56,10 @@ bool Asignatura::tienePrac() {
 
 bool Asignatura::tieneMon() {
     return this->tienemon;
+}
+
+std::set<Dicta*> Asignatura::getDictas() {
+    return this->dictas;
 }
 
 DtAsignatura* Asignatura::getDt() {

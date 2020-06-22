@@ -8,6 +8,7 @@ class Practico: public Clase{
 
     public:
         Practico(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc);
+        ~Practico();
 };
 
 #endif

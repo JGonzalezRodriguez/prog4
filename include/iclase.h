@@ -8,6 +8,8 @@
 #include "dt/dtestudiante.h"
 #include "dt/dtclase.h"
 #include "dt/dtpreview.h"
+#include "dt/dttiempoasignatura.h"
+#include "dt/dtpromasistencia.h"
 
 
 class IClase {
@@ -20,13 +22,16 @@ class IClase {
         virtual void elegirEstudiante(std::string ci) = 0;
         virtual DtPreview* mostrarDatos() = 0;
         virtual void confirmarInicioDeClase(bool conf) = 0;
-        virtual std::set<DtClase*> listarClasesEnVivo() = 0;
+        virtual std::set<DtPreview*> listarClasesEnVivo() = 0;
         virtual void elegirClase(std::string id) = 0;
-        virtual DtClase* mostrarClase() = 0;
+        virtual DtPreview* mostrarClase() = 0;
         virtual void confirmarFinalizacionDeClase(bool conf) = 0;
         virtual void elegirAsignaturaDoc(std::string codigo) = 0;
         virtual std::set<DtClase*> listarClasesDocente() = 0;
         virtual ~IClase() {};
+        virtual std::set<DtTiempoAsignatura*> tiempoDictadoClases() = 0;
+        virtual std::set<DtPromAsistencia*> promedioAsistencia() = 0;
+        virtual std::string getIdgenerado() = 0;
 };
 
 #endif

@@ -49,8 +49,16 @@ std::set<DtEstudiante*> DtPreview::getEstudiantes() {
     return this->estudiantes;
 }
 
+std::string decodeModalidad(modalidad i){
+    switch(i){
+        case teorico: return "Teorico";
+        case practico: return "Practico";
+        case monitoreo: return "Monitoreo";
+        default: return "ERROR";
+    }
+}
 
 std::ostream& operator<< (std::ostream& os, DtPreview &b) {
-    os << "Fecha comiezo: " << *(b.getFechaYHoraComienzo()) << std::endl << "Id: " << b.getId() << std::endl << "Url: " << b.getUrl() << std::endl << "Modalidad: " << b.getMod() << std::endl << "Docente: " << std::endl << *(b.getDocente()) << std::endl << "Nombre: " << b.getNombre() << std::endl;
+    os << "Fecha comiezo: " << *(b.getFechaYHoraComienzo()) << std::endl << "Id: " << b.getId() << std::endl << "Url: " << b.getUrl() << std::endl << "Modalidad: " << decodeModalidad(b.getMod()) << std::endl << "Docente: " << std::endl << *(b.getDocente()) << std::endl << "Nombre: " << b.getNombre() << std::endl;
     return os;
 }

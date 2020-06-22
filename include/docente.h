@@ -25,6 +25,7 @@ class Docente: public Usuario{
         
         virtual std::set<Clase*> listarClases();
         virtual bool tieneAsignatura(Asignatura *a);
+        virtual Clase* elegirClase(std::string id);
        
         //operaciones mismas de docente
         /**
@@ -41,7 +42,6 @@ class Docente: public Usuario{
         Clase *getClase(std::string id);
         Asignatura *getAsignatura(std::string codigo);
         Docente(std::string nombre, std::string email, std::string contrasenia, std::string imagen, instituto instituto);
-        
-       
+        std::set<Clase*> getClasesFinalizadas();
 };
 #endif

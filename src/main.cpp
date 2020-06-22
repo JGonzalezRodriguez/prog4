@@ -10,6 +10,61 @@
 #include <iterator>
 
 using namespace std;
+//para envio mensaje hacemos un metodo porque se llama en dos casos en docentes (7) y en estudiantes (3)
+void envioMensaje(){
+    Fabrica* fabrica = Fabrica::getInstancia();
+    IMensaje* interface = fabrica->getIMensaje();
+    std::string email, contrasenia, id, idMensaje, texto;
+    printf("\n Introduzca su email: ");
+    std::cin.ignore(1);
+    getline(std::cin, email);
+    printf("\n Introduzca su contrasenia: ");
+    getline(std::cin, contrasenia);
+    interface->identificarse(email, contrasenia);
+    std::set<DtClase*> clases = interface->listarClases();
+    printf("\nListando clases disponibles:\n");
+    printf("\n------------------------------\n");
+    for (std::set<DtClase*>::iterator it=clases.begin(); it!=clases.end(); ++it){
+        DtClase* c = *it;
+        std::cout << *c;
+        printf("\n------------------------------\n");
+    }
+    printf("\nIngrese el ID de la clase en la cual desea escribir un mensaje: ");
+    getline(std::cin, id);
+    interface->elegirClase(id);
+    std::set<DtMensaje*> msjs = interface->listarMensajes(); //solo agarra los mensajes raiz para que luego recursivePrint no repita mensajes
+    printf("\nListando los mensajes de la clase:\n");
+    printf("\n------------------------------\n");
+    for (std::set<DtMensaje*>::iterator it=msjs.begin(); it!=msjs.end(); ++it){
+        DtMensaje* msj = *it;
+        msj->recursivePrint(0);
+    }
+    printf("\nDesea responder a algún mensaje existente? s/n\n");
+    char letra;
+    scanf("%s", &letra);
+    if (letra != 's' && letra != 'n'){
+        throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
+    }
+    std::cin.ignore(1);
+    if (letra == 's'){
+        printf("\nIngrese el ID del mensaje al cual desea responder: ");
+        getline(std::cin, idMensaje);
+        interface->seleccionarMensaje(idMensaje);
+    }
+    printf("\nIngrese el contenido de su mensaje:\n");
+    getline(std::cin, texto);
+    interface->textoEnviar(texto);
+    printf("\nConfirmar envio de mensaje? s/n\n");
+    scanf("%s", &letra);
+    if (letra != 's' && letra != 'n'){
+        throw std::invalid_argument("Respuesta no válida, debe escribir 's' o 'n'");
+    }
+    bool conf = false;
+    if (letra == 's'){
+        conf = true;
+    }
+    interface->confirmarEnvioMensaje(conf);
+}
 int main() {
     printf("\nBienvenide a FingClass, elija una opcion:");
     printf("\n");
@@ -33,6 +88,7 @@ int main() {
                 printf("\n4. Asignacion de docentes a una asignatura");
                 printf("\n5. Modificar fecha del sistema");
                 printf("\n6. Consultar fecha del sistema");
+                printf("\n7. Tiempo de dictado de clase");
                 printf("\n");
                     
                 int opcion2;
@@ -165,7 +221,7 @@ int main() {
                         Fabrica* fabrica = Fabrica::getInstancia(); //esto va a explotar cuando santi suba la fabrica nueva que es singleton
                         IAsignatura* interface = fabrica->getIAsignatura();
                         interface->altaAsignatura(nombre, codigo, tieneteo, tieneprac, tienemon);
-                        DtAsignatura* asignatura = interface->mostrarDatosAsignatura();
+                        DtAsignaturaExt* asignatura = interface->mostrarDatosAsignatura();
                         cout << *asignatura;
                         //confirmando
                         printf("\nConfirmar alta de asignatura? s/n\n");
@@ -184,6 +240,24 @@ int main() {
                         break;
                     }
                     case 3: {
+                        std::cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IAsignatura* ctrlA = f->getIAsignatura();
+                        std::set<DtAsignatura*> asignaturas = ctrlA->listarAsignaturas();
+                        std::set<DtAsignatura*>::iterator it;
+                        for(it=asignaturas.begin(); it != asignaturas.end(); it++) {
+                            std::cout << *(*it) << endl;
+                        }
+                        std::string id;
+                        printf("Por favor ingrese el codigo de la asignatura a eliminar:\n");
+                        std::cin >> id;
+                        ctrlA->elegirAsignaturaAdmin(id);
+                        printf("Desea eliminar asignatura?");
+                        printf("\n1. Si");
+                        printf("\n2. No\n");
+                        int i;
+                        std::cin >> i;
+                        ctrlA->confirmarEliminacionAsignatura(!(i-1));
                         break;
                     }
                     case 4: {
@@ -290,6 +364,17 @@ int main() {
                         std::cout << *fecha;
                         break;
                     }
+                    case 7:{
+                        //TIEMPO DE DICTADO DE CLASE//
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        std::set<DtTiempoAsignatura*> colec = ctrl->getIClase()->tiempoDictadoClases();
+                        std::set<DtTiempoAsignatura*>::iterator it;
+                        for(it = colec.begin(); it != colec.end(); ++it){
+                            cout << **it;
+                        }
+
+                        break;
+                    }
                     default: {
                         throw std::invalid_argument("Opcion no valida");
                         break;
@@ -303,9 +388,8 @@ int main() {
                 printf("\n2. Finalizacion de clase");
                 printf("\n3. Suscribirse a notificacion");
                 printf("\n4. Consulta de notificaciones");
-                printf("\n5. Tiempo de dictado de clase");
-                printf("\n6. Tiempo de asistencia a clase");
-                printf("\n7. Envio de mensaje");
+                printf("\n5. Tiempo de asistencia a clase");
+                printf("\n6. Envio de mensaje");
                 printf("\n");
                     
                 
@@ -358,14 +442,15 @@ int main() {
                         DtPreview* preview = ctrl->mostrarDatos();
                         std::cout << std::endl << *preview << std::endl;
                         // LUEGO DEL PREVIEW SE DEBERIA LISTAR LOS ESTUDIANTES ELEGIDOS
-                        std::cout  << "Estudiantes elegidos: " << std::endl;
-                        std::set<DtEstudiante*> setest = (*preview).getEstudiantes();
-                        for (std::set<DtEstudiante*>::iterator it=setest.begin(); it!=setest.end(); ++it) {
-                            DtEstudiante* dtest = *it;
-                            std::cout << std::endl << *dtest << std::endl;
-                            // aca hay un bug, saque el * de dtest para ver que onda con los punteros
+                        if (mod == monitoreo) {
+                            std::cout  << "Estudiantes elegidos: " << std::endl;
+                            std::set<DtEstudiante*> setest = (*preview).getEstudiantes();
+                            for (std::set<DtEstudiante*>::iterator it=setest.begin(); it!=setest.end(); ++it) {
+                                DtEstudiante* dtest = *it;
+                                std::cout << std::endl << *dtest << std::endl;
+                            }
                         }
-
+                        
                         printf("\n Desea confirmar s/n: ");
                         char letraconf;
                         scanf("%s", &letraconf);
@@ -374,21 +459,114 @@ int main() {
                         break;
                     }
                     case 2: {
+                        // --- finalizacion de clase ---
+                        IClase* ctrl = Fabrica::getIClase();
+                        std::string email, contrasenia;
+                        std::cin.ignore();
+                        printf("\n Introduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\n Introduzca su contrasenia: ");
+                        getline(std::cin, contrasenia);
+                        ctrl->identificarse(email, contrasenia);
+                        std::set<DtPreview*> coldtpreview = ctrl->listarClasesEnVivo();
+                        for (std::set<DtPreview*>::iterator it=coldtpreview.begin(); it!=coldtpreview.end(); ++it) {
+                            std::cout << std::endl << **it << std::endl;
+                        }
+                        printf("\n Introduzca el id de la clase que desea finalizar: ");
+                        std::string id;
+                        getline(std::cin, id);
+                        ctrl->elegirClase(id);
+                        std::cout << std::endl << *(ctrl->mostrarClase()) << std::endl;
+                        printf("\n Desea confirmar la finalizacion de esta clase? s/n: ");
+                        char letraselec;
+                        scanf("%s", &letraselec);
+                        if (letraselec == 's') {
+                            ctrl->confirmarFinalizacionDeClase(true);
+                        }
                         break;
                     }
                     case 3: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ctrl->getISubscripcion()->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getISubscripcion()->getIdentifico()){
+                            ctrl->getISubscripcion()->elegirModo();
+                            printf("\nHa quedado suscrito al modo respuesta a un usuario");
+                            printf("\n");
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+
                         break;
                     }
                     case 4: {
+                        // consulta de notificaciones ---------
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ISubscripcion* ctrl = f->getISubscripcion();
+                        ctrl->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getIdentifico()){    
+                            std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            printf("\nNotificaciones: ");
+                            printf("\n-------------------------------\n");
+                            for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
+                                std::cout << std::endl << **it << "-------------------------------";
+                            }
+
+                            ctrl->eliminarNotificaciones();
+
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+
                         break;
                     }
+                   
                     case 5: {
+                        // tiempo asistencia asignatura
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        IClase* ctrl = f->getIClase();
+                        ctrl->identificarse(email, contrasenia);
+                        std::set<DtAsignatura*> coldtasig = ctrl->listarAsignaturasDocente();
+                        for (std::set<DtAsignatura*>::iterator it=coldtasig.begin(); it!=coldtasig.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                        }
+                        printf("\nInserte el codigo de la asignatura cuyos tiempos de asistencia en promedio desea ver: ");
+                        std::string codigo;
+                        getline(std::cin, codigo);
+                        ctrl->elegirAsignaturaDoc(codigo);
+                        std::set<DtPromAsistencia*> coldtprom = ctrl->promedioAsistencia();
+                        for (std::set<DtPromAsistencia*>::iterator it=coldtprom.begin(); it!=coldtprom.end(); ++it) {
+                                std::cout << std::endl << **it << std::endl;
+                        }
                         break;
                     }
                     case 6: {
-                        break;
-                    }
-                    case 7: {
+                        envioMensaje();
                         break;
                     }
                     default: {
@@ -400,11 +578,12 @@ int main() {
             }
             case 3: {// casos de uso de estudiante
                 printf("\n Elija el caso de uso a ejecutar como Estudiante: ");
-                printf("\n1. Inscripcion a las asignaturas");
+                printf("\n1. Inscripción a las asignaturas");
                 printf("\n2. Asistencia a clase en vivo");
                 printf("\n3. Envio de mensaje");
                 printf("\n4. Suscribirse a notificacion");
                 printf("\n5. Consulta de notificaciones");
+                printf("\n6. Finalizar asistencia a clase en vivo");
                 printf("\n");
 
                 int opcion2;
@@ -468,15 +647,151 @@ int main() {
                         break;
                     }
                     case 2: {
+
+                        cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IReproduccion* ctrlR = f->getIReproduccion();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        //se identifica el estudiante
+                        if (!ctrlR->identificarse(email, contrasenia)) break;
+                        //lista asignaturas a las que el estudiante esta inscripto
+                        printf("Estas son las asignaturas a las que esta inscripto:\n\n");
+                        std::set<DtAsignatura*> lista = ctrlR->listarAsignaturasEstudiante();
+                        if (lista.empty()) {
+                            printf("Usted no esta cursando ninguna asignatura");
+                            break;
+                        };
+                        std::set<DtAsignatura*>::iterator it;
+                        for(it = lista.begin(); it != lista.end(); ++it){
+                            cout << **it;
+                        }
+
+                        std::string codigo;
+                        std::cout << "\nIntroduzca el codigo de la asignatura a la que desea asistir:";
+                        std::cin >> codigo;
+                        ctrlR->elegirAsignaturaEst(codigo);
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudiante();
+                        if (x.empty()) { 
+                            break;
+                        };
+                        std::set<DtClase*>::iterator it2;
+                        for(it2 = x.begin(); it2 != x.end(); it2++){
+                            cout << endl << **it2;
+                        }
+                        std::string id;
+                        std::cout << endl << "Introduzca el id de la clase a la que desea asistir:";
+                        std::cin >> id;
+                        ctrlR->elegirClase(id);
+                        if (ctrlR->mostrarDatosClase() == NULL) {
+                            printf("No hay clase asociada a ese id");
+                            break;
+                        }
+                        std::cout << "Desea Asistir a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
+                        std::cout << endl;
+                        std::cout << "1. Si \n2. No\n";
+                        
+                        int i;
+                        std::cin >> i;
+                        bool confi = !(i-1);
+                        ctrlR->confirmarAsistenciaClaseEnVivo(confi);                      
                         break;
                     }
                     case 3: {
+                        envioMensaje();
                         break;
                     }
                     case 4: {
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica *ctrl = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ctrl->getISubscripcion()->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getISubscripcion()->getIdentifico()){
+                            ctrl->getISubscripcion()->elegirModo();
+                            printf("\nHa quedado suscrito al modo respuesta a un usuario");
+                            printf("\n");
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        
+
                         break;
                     }
                     case 5: {
+                        // consulta de notificaciones ---------
+                        cin.ignore();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        Fabrica* f = Fabrica::getInstancia();
+                        //se identifica el estudiante
+                        ISubscripcion* ctrl = f->getISubscripcion();
+                        ctrl->identificarse(email, contrasenia);
+                        
+                        if(ctrl->getIdentifico()){    
+                            std::set<DtNotificacion*> coldtnot = ctrl->listarNotificaciones();
+                            printf("\nNotificaciones: ");
+                            printf("\n-------------------------------\n");
+                            for (std::set<DtNotificacion*>::iterator it=coldtnot.begin(); it!=coldtnot.end(); ++it) {
+                                std::cout << std::endl << **it << "-------------------------------";
+                            }
+
+                            ctrl->eliminarNotificaciones();
+
+                        }else{
+                            printf("\nEl email o la contraseña son incorrectos");
+                            printf("\n");
+                        }
+                        break;
+                    }
+                    case 6: {
+                        cin.ignore();
+                        Fabrica* f = Fabrica::getInstancia();
+                        IReproduccion* ctrlR = f->getIReproduccion();
+                        std::string email, contrasenia;
+                        printf("\nIntroduzca su email: ");
+                        getline(std::cin, email);
+                        printf("\nIntroduzca su contraseña: ");
+                        getline(std::cin, contrasenia);
+                        //se identifica el estudiante
+                        if (!ctrlR->identificarse(email, contrasenia)) break;
+                        if (!ctrlR->estaAsistiendo()) {
+                            printf("Usted no esta asistiendo a ninguna clase");
+                            break;
+                        }
+                        std::set<DtClase*> x = ctrlR->listarClasesEstudianteVivo();
+                        std::set<DtClase*>::iterator it2;
+                        for(it2 = x.begin(); it2 != x.end(); it2++){
+                            cout << endl << **it2;
+                        }
+                        std::string id;
+                        std::cout << endl << "Introduzca el id de la clase a la que desea finalizar su asistencia:";
+                        std::cin >> id;
+                        ctrlR->elegirClase(id);
+                        if (ctrlR->mostrarDatosClase() == NULL) {
+                            printf("No hay clase asociada a ese id");
+                            break;
+                        }
+                        std::cout << "Desea finalizar su asistencia a la siguiente clase?\n\n" << *(ctrlR->mostrarDatosClase());
+                        std::cout << endl;
+                        std::cout << "1. Si \n2. No\n";
+
+                        int i;
+                        std::cin >> i;
+                        bool confi = !(i-1);
+                        ctrlR->confirmarFinalizacionAsistencia(confi);                      
                         break;
                     }
                     default: {
@@ -492,21 +807,25 @@ int main() {
                 Fabrica* f = Fabrica::getInstancia();
                 IAsignatura* ctrlA = f->getIAsignatura();
                 IUsuario* ctrlU = f->getIUsuario();
+                IClase *ctrlC = f->getIClase();
+                IReproduccion *ctrlR = f->getIReproduccion();
+                IMensaje *ctrlM = f->getIMensaje();
+                
                 //IAsignatura* ctrlA = Fabrica::getIAsignatura();
                 //IUsuario* ctrlU = Fabrica::getIUsuario();
                 //IClase* ctrlC = Fabrica::getIClase();
                 //Cargar Docentes
 
-                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(6));
+                ctrlU->altaDocente("Juan Perez", "juan@mail.com","123","fotito.com/1", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(6));
+                ctrlU->altaDocente("Maria Pires", "maria@mail.com","1234","fotito.com/2", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(6));
+                ctrlU->altaDocente("Jorge Chacho", "jorge@mail.com", "passw0rd", "imgur/elChacho", instituto(5));
                 ctrlU->confirmarAltaUsuario(true);
                 //Cargar Estudiantes
                 ctrlU->altaEstudiante("Roberto Parra", "roberto@mail.com", "pass", "fotito.com/3", "12345678");
                 ctrlU->confirmarAltaUsuario(true);
-                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "p4ss", "fotito.com/4", "23456789");
+                ctrlU->altaEstudiante("Ana Rodriguez", "ana@mail.com", "pass", "fotito.com/4", "23456789");
                 ctrlU->confirmarAltaUsuario(true);
                 ctrlU->altaEstudiante("Ramon Valdez", "ramon@mail.com", "pass", "fotito.com/5", "34567890");
                 ctrlU->confirmarAltaUsuario(true);
@@ -522,12 +841,12 @@ int main() {
                 ctrlA->elegirdocente(teorico, "juan@mail.com");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
-                ctrlA->elegirdocente(practico, "maria@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->elegirdocente(practico, "maria@mail.com");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
-                ctrlA->elegirdocente(monitoreo, "jorge@mail.com");
                 ctrlA->elegirAsignaturaAdmin("P1");
+                ctrlA->elegirdocente(monitoreo, "jorge@mail.com");
                 ctrlA->confirmarAsignacionDocenteAsignatura(true);
 
                 ctrlA->identificarse("roberto@mail.com","pass");
@@ -544,7 +863,232 @@ int main() {
                 ctrlA->elegirAsignaturaEst("P1");
                 ctrlA->confirmarInscripcionAsignatura(true);
 
+                //CLASES
+                Reloj* reloj = Reloj::getInstancia();
+                //para iniciar C1
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha1 = new DtFecha(1, 5, 2020, 9, 0);
+                reloj->setFecha(fecha1);
+                ctrlC->inicioDeClase("P1", "Intro");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id1 = ctrlC->getIdgenerado();
+
+                //E1 para asistir a C1
+                ctrlR->identificarse("roberto@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha13 = new DtFecha(1, 5, 2020, 9, 1);
+                reloj->setFecha(fecha13);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //E2 para asistir C1
+                ctrlR->identificarse("ana@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha15 = new DtFecha(1, 5, 2020, 9, 2);
+                reloj->setFecha(fecha15);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //E3 para asistir a C1
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha17 = new DtFecha(1, 5, 2020, 9, 3);
+                reloj->setFecha(fecha17);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //MENSAJES
+
+                //los id de los mensajes comienza en 1
+                ctrlM->identificarse("juan@mail.com","123");
+                ctrlM->elegirClase(id1);
+                ctrlM->textoEnviar("Bienvenidos!");
+                DtFecha* fecha21 = new DtFecha(1, 5, 2020, 9, 1);
+                reloj->setFecha(fecha21);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("juan@mail.com","123");
+                ctrlM->elegirClase(id1);
+                ctrlM->textoEnviar("Confirmen materiales por favor.");
+                DtFecha* fecha22 = new DtFecha(1, 5, 2020, 9, 2);
+                reloj->setFecha(fecha22);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("roberto@mail.com","pass");
+                ctrlM->elegirClase(id1);
+                ctrlM->seleccionarMensaje(to_string(1));
+                ctrlM->textoEnviar("Listo para aprender.");
+                DtFecha* fecha24 = new DtFecha(1, 5, 2020, 9, 5);
+                reloj->setFecha(fecha24);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("juan@mail.com","123");
+                ctrlM->elegirClase(id1);
+                ctrlM->seleccionarMensaje(to_string(3));
+                ctrlM->textoEnviar("Me alegro");
+                DtFecha* fecha25 = new DtFecha(1, 5, 2020, 9, 6);
+                reloj->setFecha(fecha25);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                ctrlM->identificarse("ana@mail.com","pass");
+                ctrlM->elegirClase(id1);
+                ctrlM->seleccionarMensaje(to_string(2));
+                ctrlM->textoEnviar("Todo listo");
+                DtFecha* fecha26 = new DtFecha(1, 5, 2020, 9, 6);
+                reloj->setFecha(fecha26);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                //para finalizar asistencia de E1
+                ctrlR->identificarse("roberto@mail.com", "pass");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha14 = new DtFecha(1, 5, 2020, 9, 21);
+                reloj->setFecha(fecha14);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                //para finalizar asistencia de E2
+                ctrlR->identificarse("ana@mail.com", "pass");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha16 = new DtFecha(1, 5, 2020, 9, 32);
+                reloj->setFecha(fecha16);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                //para finalizar asistencia E3
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirClase(id1);
+                DtFecha* fecha18 = new DtFecha(1, 5, 2020, 9, 43);
+                reloj->setFecha(fecha18);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                
+                //para finalizar C1
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha2 = new DtFecha(1, 5, 2020, 10, 0);
+                reloj->setFecha(fecha2);
+                ctrlC->elegirClase(id1);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                
+                //para iniciar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha3 = new DtFecha(3, 5, 2020, 9, 0);
+                reloj->setFecha(fecha3);
+                ctrlC->inicioDeClase("P1", "Tema1");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id2 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha4 = new DtFecha(3, 5, 2020, 10, 0);
+                reloj->setFecha(fecha4);
+                ctrlC->elegirClase(id2);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                //para iniciar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha5 = new DtFecha(8, 5, 2020, 9, 0);
+                reloj->setFecha(fecha5);
+                ctrlC->inicioDeClase("P1", "Tema2");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id3 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("juan@mail.com", "123");
+                DtFecha* fecha6 = new DtFecha(8, 5, 2020, 10, 0);
+                reloj->setFecha(fecha6);
+                ctrlC->elegirClase(id3);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                //para iniciar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha7 = new DtFecha(2, 5, 2020, 16, 0);
+                reloj->setFecha(fecha7);
+                ctrlC->inicioDeClase("P1", "Pra1");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id4 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha8 = new DtFecha(2, 5, 2020, 17, 0);
+                reloj->setFecha(fecha8);
+                ctrlC->elegirClase(id4);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                //para iniciar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha9 = new DtFecha(3, 5, 2020, 16, 0);
+                reloj->setFecha(fecha9);
+                ctrlC->inicioDeClase("P1", "Pra2");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id5 = ctrlC->getIdgenerado();
+                //para finalizar
+                ctrlC->identificarse("maria@mail.com", "1234");
+                DtFecha* fecha10 = new DtFecha(3, 5, 2020, 17, 0);
+                reloj->setFecha(fecha10);
+                ctrlC->elegirClase(id5);
+                ctrlC->confirmarFinalizacionDeClase(true);
+                //-----------------------------------------
+                
+                //para iniciar C6
+                ctrlC->identificarse("jorge@mail.com", "passw0rd");
+                DtFecha* fecha11 = new DtFecha(4, 5, 2020, 16, 0);
+                reloj->setFecha(fecha11);
+                ctrlC->inicioDeClase("P1", "06/01/20");
+                //Estudiantes habilitados
+                ctrlC->elegirEstudiante("23456789");
+                ctrlC->elegirEstudiante("34567890");
+                ctrlC->confirmarInicioDeClase(true);
+                std::string id6 = ctrlC->getIdgenerado();
+
+                //E3 para asistir C6
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirAsignaturaEst("P1");
+                ctrlR->elegirClase(id6);
+                DtFecha* fecha19 = new DtFecha(4, 5, 2020, 16, 0);
+                reloj->setFecha(fecha19);
+                ctrlR->confirmarAsistenciaClaseEnVivo(true);
+                
+
+                //MENSAJES
+                
+                ctrlM->identificarse("jorge@mail.com","passw0rd");
+                ctrlM->elegirClase(id6);
+                ctrlM->textoEnviar("Comparto pantalla.");
+                DtFecha* fecha23 = new DtFecha(4, 5, 2020, 16, 1);
+                reloj->setFecha(fecha23);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+                
+                ctrlM->identificarse("ramon@mail.com","pass");
+                ctrlM->elegirClase(id6);
+                ctrlM->seleccionarMensaje(to_string(6));
+                ctrlM->textoEnviar("Ya la vemos");
+                DtFecha* fecha27 = new DtFecha(4, 5, 2020, 16, 5);
+                reloj->setFecha(fecha27);
+                ctrlM->confirmarEnvioMensaje(true);
+                //-----------------------------------------
+
+                //para finalizar asistencia de E3
+                ctrlR->identificarse("ramon@mail.com", "pass");
+                ctrlR->elegirClase(id6);
+                DtFecha* fecha20 = new DtFecha(4, 5, 2020, 17, 0);
+                reloj->setFecha(fecha20);
+                ctrlR->confirmarFinalizacionAsistencia(true);
+
+                //para finalizar C6
+                ctrlC->identificarse("jorge@mail.com", "passw0rd");
+                DtFecha* fecha12 = new DtFecha(4, 5, 2020, 17, 0);
+                reloj->setFecha(fecha12);
+                ctrlC->elegirClase(id6);
+                ctrlC->confirmarFinalizacionDeClase(true);
+
+
+                
+
                 printf("\nDatos de Prueba Cargados\n");
+                printf("\nLas contraseñas de los docentes son:");
+                printf("\nJuan: 123, Maria: 1234, Jorge: passw0rd");
+                printf("\nLas contraseñas de los estudiantes son:");
+                printf("\nRoberto: pass, Ana: pass, Ramon: pass\n");
                 break;
             }
             case 5: {

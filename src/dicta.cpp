@@ -12,7 +12,7 @@ Docente* Dicta::getDocente(){
 };
 
 void Dicta::deslinkearDocente() {
-    //TODO
+    //doc->deslinkear(this);
 };
 
 Asignatura* Dicta::getAsignatura() {

@@ -35,18 +35,40 @@
     Usuario::~Usuario(){}
 
         std::set<Notificacion*> Usuario::listarNotificaciones(){
-            std::set<Notificacion*> x;
-            return x;
+            return notificaciones;
         }
         void Usuario::eliminarNotificaciones(){
-
+            for (std::set<Notificacion*>::iterator it=notificaciones.begin(); it!=notificaciones.end(); ++it) {
+                delete *it;
+            }
+            this->notificaciones.clear();
         }
         void Usuario::eliminarNotificacionAsign(Asignatura *a){
-
+            std::set<Notificacion*>::iterator it;
+            //if (notificaciones.empty()) return;
+            std::set<Notificacion*> x;
+            for(it = notificaciones.begin(); it != notificaciones.end();it++){
+                if ((*it)->esDeAsignatura(a)) {
+                    x.insert(*it);
+                }
+            }
+            for(it = x.begin(); it != x.end(); it++) {
+                notificaciones.erase(*it);
+                delete (*it);
+            }
+            x.clear();
         }
+
         void Usuario::elegirModo(){
+            SRespuesta *resp = SRespuesta::getInstancia();
+            this->subscripcion = resp; 
 
         }
+
+        void Usuario::addNotificacion(Notificacion *n){
+            this->notificaciones.insert(n);
+        }
+
         void Usuario::eliminarSubscripcion(){
 
         }
@@ -56,7 +78,7 @@
         }
        
         void Usuario::notificarUsuario(Mensaje *m){
-
+            this->subscripcion->notificar(this, m);
         }
 
    

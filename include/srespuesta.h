@@ -2,6 +2,8 @@
 #define SRESPUESTA_H
 
 #include "subscripcion.h"
+#include "notificacion.h"
+#include "usuario.h"
 
 class SRespuesta : public Subscripcion {
     private:

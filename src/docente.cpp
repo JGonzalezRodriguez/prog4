@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "../include/docente.h"
 
 instituto Docente::getInstituto(){
@@ -7,13 +8,22 @@ void Docente::setInstituto(instituto inst){
     this->inst = inst;
 }
 
-//operaciones que hereda de usuario
+//operaciones de usuario que sobreescribe
 std::set<Clase*> Docente::listarClases(){
-    std::set<Clase*> x;
-        return x;
+    return this->clases;
 }
 bool Docente::tieneAsignatura(Asignatura *a){
     return false;
+}
+Clase* Docente::elegirClase(std::string id){
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it){
+        Clase* c = *it; 
+        if (c->getId() == id){
+            return c;
+        }
+    }
+    //si el docente no esta en ninguna clase con ese id
+    throw std::invalid_argument("\nEl usuario no tiene está en ninguna clase con ese ID");
 }
        
 //operaciones mismas de docente
@@ -21,7 +31,7 @@ void Docente::addAsignatura(Dicta *dicta){
     this->dictas.insert(dicta);
 }
 void Docente::deslinkear(Dicta *dicta){
-
+    this->dictas.erase(dicta);
 }
 std::set<Asignatura*> Docente::getAsignaturas(){
     std::set<Asignatura*> x;
@@ -46,10 +56,39 @@ void Docente::addClase(Clase *c){
 }
 std::set<Clase*> Docente::getClasesEnVivo(){
     std::set<Clase*> x;
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
+        Clase* c = *it;
+        if (c->getEnVivo())
+            x.insert(c);
+    }
     return x;
 }
+std::set<Clase*> Docente::getClasesFinalizadas() {
+    std::set<Clase*> x;
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
+        Clase* c = *it;
+        if (!(c->getEnVivo()))
+            x.insert(c);
+    }
+    return x;
+}
+
 Clase *Docente::getClase(std::string id){
-    return NULL;
+    Clase* c = NULL;
+    for (std::set<Clase*>::iterator it=this->clases.begin(); it!=this->clases.end(); ++it) {
+        //printf("ITERANDO-");
+        //std::cout << (*it)->getId() << "-VS-";
+        //std::cout << id;
+        //printf("-DEBUG-");
+        if ((*it)->getId() == id) {
+            c = *it;
+        }
+    }
+    if (c == NULL) {
+        throw std::invalid_argument("No hay una clase valida con ese ID");
+    } else {
+        return c;
+    }
 }
 Asignatura *Docente::getAsignatura(std::string codigo){
     return NULL;

@@ -10,6 +10,13 @@ void Clase::incSeed() {
     seed = seed + 1;
 }
 
+void Clase::setDocente(Docente* doc){
+    this->doc = doc;
+}
+Docente* Clase::getDocente(){
+    return this->doc;
+}
+
 DtFecha *Clase::getFechayhoracomienzo(){
     return this->fechayhoracomienzo;
 }
@@ -32,7 +39,7 @@ DtFecha* Clase::getFechayhorafinal(){
     return this->fechayhorafinal;
 }
 void Clase::setFechayhorafinal(DtFecha *fecha){
-    this->fechayhoracomienzo = fecha;
+    this->fechayhorafinal = fecha;
 }
 std::string Clase::getUrl(){
     return this->url;
@@ -47,39 +54,77 @@ void Clase::setNombre(std::string nombre){
     this->nombre = nombre;
 }
 
+std::set<ClaseEstudiante*> Clase::getClaseEstudiantes() {
+    return this->claseestudiantes;
+}
+
+//Docente* Clase::getDoc() {
+//    return this->doc;
+//}
+
 //metodos de las operaciones de la clase
 Asignatura *Clase::getAsignatura(){
     return asig;
 }
 
 void Clase::finalizar(){
-
+    std::set<ClaseEstudiante*> colce = claseestudiantes;
+    for (std::set<ClaseEstudiante*>::iterator it=colce.begin(); it!=colce.end(); ++it) {
+        ClaseEstudiante* ce = *it;
+        ce->finalizarVisualizacionesVivo();
+    }
 }
 bool Clase::tieneClaseEst(Estudiante *est){
+    std::set<ClaseEstudiante*>::iterator it = claseestudiantes.begin();
+    for (it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+        if ((*it)->getEstudiante() == est){
+            return true;
+        }
+    }
     return false;
 }
 ClaseEstudiante *Clase::crearClaseEst(Estudiante *est, Clase *c){
-    return NULL;
+    ClaseEstudiante* ce = new ClaseEstudiante(c, est);
+    this->claseestudiantes.insert(ce);
+    est->addClaseEstudiante(ce);
+    return ce;
 }
-ClaseEstudiante *Clase::getClaseEstExistente(){
+ClaseEstudiante *Clase::getClaseEstExistente(Estudiante* est){
+    std::set<ClaseEstudiante*>::iterator it;
+    for (it = claseestudiantes.begin(); it != claseestudiantes.end(); it++){
+        if ((*it)->getEstudiante() == est){
+            return (*it);
+        }
+    }
     return NULL;
 }
 std::set<Mensaje*> Clase::getMensajes(){
-    std::set<Mensaje*> x;
-    return x;
+    return this->mensajes;
 }
 
 Mensaje* Clase::seleccionarMensaje(std::string idmensaje){
     return NULL;
 }
 void Clase::agregarPadre(Mensaje *m){
-
+    this->mensajes.insert(m);
 }
 
 Clase::Clase(std::string nombre, DtFecha *fecha, Asignatura *asignatura, Docente *doc){
     this->nombre = nombre;
     this->fechayhoracomienzo = fecha;
+    this->fechayhorafinal = NULL;
     this->asig = asignatura;
     this->doc = doc;
     this->envivo = true;
+}
+
+bool Clase::estaHabilitado(Estudiante* est) {
+    return true;
+}
+
+void Clase::deslinkear(ClaseEstudiante* ce) {
+    claseestudiantes.erase(ce);
+}
+
+Clase::~Clase(){
 }

@@ -1,17 +1,18 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include <string> 
-#include "asignatura.h"
-#include "clase.h"
+//#include "asignatura.h"
+//#include "clase.h"
 #include "mensaje.h"
 #include "subscripcion.h"
 #include "notificacion.h"
-#include "subscripcion.h"
+//#include "subscripcion.h"
 #include <set>
+#include "srespuesta.h"
 
 class Asignatura;
 class Clase;
-class Subscripcion;
+//class Subscripcion;
 
 class Usuario {
     private:
@@ -33,6 +34,7 @@ class Usuario {
        void setImagen(std::string);
        std::string getContrasenia();
        void setContrasenia(std::string);
+       void addNotificacion(Notificacion *n);
 
        std::set<Notificacion*> listarNotificaciones();
        void eliminarNotificaciones();
@@ -40,7 +42,7 @@ class Usuario {
        void elegirModo();
        void eliminarSubscripcion();
        virtual std::set<Clase*> listarClases() = 0;
-       Clase *elegirClase(std::string id);
+       virtual Clase *elegirClase(std::string id);
        virtual bool tieneAsignatura(Asignatura *a) = 0;
        void notificarUsuario(Mensaje *m);
        virtual ~Usuario(); //no estoy seguro del destructor

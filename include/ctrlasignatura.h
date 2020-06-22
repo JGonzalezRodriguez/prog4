@@ -72,7 +72,7 @@ class CtrlAsignatura : public IAsignatura {
         */
         bool getConfi();
         void altaAsignatura(std::string nombre, std::string codigo, bool tieneteo, bool tieneprac, bool tienemon);
-        DtAsignatura* mostrarDatosAsignatura();
+        DtAsignaturaExt* mostrarDatosAsignatura();
         void confirmarAltaAsignatura(bool conf);
 
         //Agrego las operaciones correspondientes al caso de uso inscripcion a asignatura

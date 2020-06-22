@@ -57,6 +57,10 @@ class Asignatura {
         @return DtAsignatura del objeto
         */
         DtAsignatura* getDt();
+        /**
+        @return Devuelve una col de Dictas
+        */
+        std::set<Dicta*> getDictas();
         
         bool tieneTeo();
         bool tienePrac();

@@ -25,11 +25,13 @@ class ISubscripcion {
         Cambia el modo de subscripcion del usuario actual.
         @param modo El nuevo modo de subscripcion.
         */
-        virtual void elegirModo(Subscripcion* modo) = 0;
+        virtual void elegirModo() = 0;
         /**
         Elimina el puntero a subscripcion del usuario actual.
         */
         virtual void eliminarSubscripcion() = 0;
+
+        virtual bool getIdentifico() = 0;
 };
 
 #endif

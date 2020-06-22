@@ -1,7 +1,7 @@
 #ifndef SUBSCRIPCION_H
 #define SUBSCRIPCION_H
 
-#include "usuario.h"
+//#include "usuario.h"
 #include "mensaje.h"
 
 class Usuario;

@@ -45,7 +45,7 @@ void CtrlUsuario::setCi(std::string ci){
     this->ci = ci;
 }
 instituto CtrlUsuario::getInstituto(){
-    return instituto(1);
+    return this->inst;
 }
 void CtrlUsuario::setInstituto(instituto instituto){
     this->inst = instituto;
@@ -63,7 +63,7 @@ void CtrlUsuario::altaDocente(std::string nombre, std::string email, std::string
     this->email = email;
     this->contrasenia = contrasenia;
     this->imagen = imagen;
-    this->inst = inst;
+    this->inst = instituto;
     this->esdocente = true;
 
 }
