@@ -41,3 +41,4 @@ https://eva.fing.edu.uy/pluginfile.php/55264/mod_page/content/67/18%20-%20implem
 - Suscribirse a notificaciones (solo el tercer modo, respuesta a un mensaje del usuario) **OK**
 - Consulta de notificaciones **OK**
 
+
