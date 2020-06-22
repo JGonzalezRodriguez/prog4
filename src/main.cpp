@@ -1085,6 +1085,10 @@ int main() {
                 
 
                 printf("\nDatos de Prueba Cargados\n");
+                printf("\nLas contraseñas de los docentes son:");
+                printf("\nJuan: 123, Maria: 1234, Jorge: passw0rd");
+                printf("\nLas contraseñas de los estudiantes son:");
+                printf("\nRoberto: pass, Ana: pass, Ramon: pass\n");
                 break;
             }
             case 5: {
