@@ -34,6 +34,7 @@ class Docente: public Usuario{
         */
         DtDocente* getDt();
         void addAsignatura(Dicta *dicta);
+        void deslinkearClase(Clase* c);
         void deslinkear(Dicta *dicta);
         std::set<Asignatura*> getAsignaturas();
         modalidad getModalidad(Asignatura *a);

@@ -30,6 +30,11 @@ Clase* Docente::elegirClase(std::string id){
 void Docente::addAsignatura(Dicta *dicta){
     this->dictas.insert(dicta);
 }
+
+void Docente::deslinkearClase(Clase* c){
+    this->clases.erase(c);
+}
+
 void Docente::deslinkear(Dicta *dicta){
     this->dictas.erase(dicta);
 }

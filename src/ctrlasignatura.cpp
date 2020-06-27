@@ -144,6 +144,7 @@ void CtrlAsignatura::confirmarEliminacionAsignatura(bool conf) {
     std::set<Clase*> z = asig->getClases();
     std::set<Clase*>::iterator it3;
     for(it3=z.begin(); it3 != z.end(); it3++){
+        (*it3)->getDocente()->deslinkearClase(*it3);
         std::set<ClaseEstudiante*> ces = (*it3)->getClaseEstudiantes();
         std::set<ClaseEstudiante*>::iterator it4;
         for(it4=ces.begin(); it4 != ces.end(); it4++){
